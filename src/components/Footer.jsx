@@ -2,10 +2,8 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import appstore from '../assets/imgs/icons/appstore.png'
-import googleplay from '../assets/imgs/icons/googleplay.png'
-import appgallery from '../assets/imgs/icons/appgallery.png'
 import { RxCaretDown } from "react-icons/rx"
+import AppLinks from './AppLinks'
 
 const Footer = () => {
     return (
@@ -31,23 +29,7 @@ const Footer = () => {
                         </nav>
                     </Col>
                     <Col>
-                        <ul className='apps-links list-unstyled d-flex justify-content-end'>
-                            <li>
-                                <a href="/">
-                                    <img src={appstore} alt="appstore" />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/">
-                                    <img src={googleplay} alt="googleplay" />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/">
-                                    <img src={appgallery} alt="appgallery" />
-                                </a>
-                            </li>
-                        </ul>
+                        <AppLinks/>
                     </Col>
                 </Row>
                 <hr />

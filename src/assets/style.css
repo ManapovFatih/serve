@@ -401,10 +401,121 @@ main {
   transform: translate3d(0px, 0px, 0px);
 }
 
+.sec-3 {
+  background-color: #D9FAE6;
+}
+
+.slider-orders {
+  height: 450px;
+}
+.slider-orders .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+.slider-orders .swiper-slide {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  transition-timing-function: linear !important;
+}
+
+.recent-orders {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2em;
+}
+.recent-orders-item {
+  width: 25%;
+  background-color: #fff;
+  border-radius: 2em;
+  height: 230px;
+  padding: 1em;
+}
+.recent-orders-item:nth-child(even) {
+  transform: translateY(50%);
+}
+
+.sec-4 .thumbslides .swiper-slide {
+  display: flex;
+}
+.sec-4 .thumbslides .swiper-slide p {
+  flex: 1;
+  padding: 0.5em 1em;
+  color: #737373;
+  font-size: 1.25em;
+}
+.sec-4 .thumbslides .swiper-slide .indicator {
+  width: 3px;
+  border-radius: 3px;
+  background-color: #D9FAE6;
+  position: relative;
+}
+.sec-4 .thumbslides .swiper-slide .indicator::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 0%;
+  border-radius: 3px;
+  background-color: #84D9B1;
+}
+.sec-4 .thumbslides .swiper-slide-thumb-active p {
+  color: #0D0D0D;
+}
+.sec-4 .thumbslides .swiper-slide-thumb-active .indicator::before {
+  height: 100%;
+  transition: 3s linear;
+}
+.sec-4 .thumbs-main img {
+  width: 100%;
+  border-radius: 4em;
+  height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.sec-5 {
+  background-color: #F2F2F2;
+  border-radius: 2em;
+  padding: 2em 4em;
+  position: relative;
+}
+.sec-5 .apps-links {
+  justify-content: flex-start;
+  margin-top: 2em;
+}
+.sec-5 .bg {
+  position: absolute;
+  right: 11%;
+  bottom: 0px;
+}
+
+.sec-6 .box {
+  background-color: #D9FAE6;
+  padding: 1em 1.5em;
+  border-radius: 2em;
+}
+
+.services-grid {
+  margin-top: 2em;
+}
+.services-grid a {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+}
+.services-grid a svg {
+  font-size: 2em;
+  margin-right: 0.5em;
+}
+
 .apps-links {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  list-style: none;
+  padding-left: 0px;
 }
 .apps-links li:not(:first-child) {
   margin-left: 1em;
