@@ -14,7 +14,7 @@ import 'swiper/css/thumbs'
 import 'swiper/css/effect-fade'
 
 import Labor from '../components/Labor'
-import SearchForm from '../components/SearchForm'
+import SearchForm2 from '../components/SearchForm2'
 import AppLinks from '../components/AppLinks'
 
 import icon1 from '../assets/imgs/icons/icon-1.png'
@@ -26,6 +26,7 @@ import smartphone from '../assets/imgs/smartphone.png'
 import { TfiPaintRoller, TfiBriefcase, TfiTruck, TfiCar, TfiMore } from "react-icons/tfi"
 import { SlScreenDesktop } from "react-icons/sl"
 import { RxScissors, RxLapTimer } from "react-icons/rx"
+import RecentOrder from '../components/RecentOrder'
 
 
 const Home = () => {
@@ -38,7 +39,7 @@ const Home = () => {
                     <Row className='h-100'>
                         <Col md={8} className='d-flex flex-column justify-content-center'>
                             <h1>Не&nbsp;оставим наедине с&nbsp;проблемами</h1>
-                            <SearchForm btnType={1} />
+                            <SearchForm2 />
                         </Col>
                     </Row>
                 </Container>
@@ -53,6 +54,20 @@ const Home = () => {
                         spaceBetween={20}
                         slidesPerView={6}
                         navigation
+                        breakpoints={{
+                            576: {
+                                slidesPerView: 4,
+                                spaceBetween: 20,
+                            },
+                            1200: {
+                                slidesPerView: 5,
+                                spaceBetween: 20,
+                            },
+                            1400: {
+                                slidesPerView: 6,
+                                spaceBetween: 20,
+                            },
+                        }}
                         >
                         <SwiperSlide>
                             <Labor />
@@ -93,7 +108,7 @@ const Home = () => {
                                         <p>Мы найдём специалистов, которые живут рядом с вами!</p>
                                     </div>
                                     <input type="text" placeholder='Ваш адрес'/>
-                                    <button type='button' className='btn-1 w-100'>Расскажите, что у&nbsp;вас случилось</button>
+                                    <button type='button' className='btn-1 w-100 px-3'>Расскажите, что у&nbsp;вас случилось</button>
                                 </form>
                                 
                             </div>
@@ -146,10 +161,10 @@ const Home = () => {
             <section className="sec-3">
                 <Container>
                     <Row className='gx-0 align-items-center'>
-                        <Col lg={4}>
+                        <Col lg={3} xxl={4}>
                             <h3>Работаем <br /> без остановок</h3>
                         </Col>
-                        <Col lg={8}>
+                        <Col lg={9} xxl={8}>
                             <Swiper
                                 modules={[Autoplay, FreeMode]}
                                 className='slider-orders'
@@ -167,66 +182,34 @@ const Home = () => {
                                 >
                                 <SwiperSlide>
                                     <div className="recent-orders">
-                                        <div className="recent-orders-item">
-                                            1
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
+                                        <RecentOrder scope={1} name={'Генеральная уборка'} />
+                                        <RecentOrder scope={2} name={'Сделать ремонт в квартире'} />
+                                        <RecentOrder scope={6} name={'Ремонт и установка телевизоров'} />
+                                        <RecentOrder scope={3} name={'Провести личную консультацию по банкротству физического лица'} />
                                     </div>
                                 </SwiperSlide>
                                 <SwiperSlide>
                                     <div className="recent-orders">
-                                        <div className="recent-orders-item">
-                                            2
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
+                                        <RecentOrder scope={2} name={'Постелить линолеум и монтаж плинтусов'} />
+                                        <RecentOrder scope={6} name={'Заменить аккумулятор телефона'} />
+                                        <RecentOrder scope={7} name={'Отремонтировать экран на Леново'} />
+                                        <RecentOrder scope={8} name={'Установка смесителя в ванной'} />
                                     </div>
                                 </SwiperSlide>
                                 <SwiperSlide>
                                     <div className="recent-orders">
-                                        <div className="recent-orders-item">
-                                            3
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
+                                        <RecentOrder scope={5} name={'Оказать услуги службы буксировки'} />
+                                        <RecentOrder scope={1} name={'Поддерживающая уборка'} />
+                                        <RecentOrder scope={9} name={'Стрижка'} />
+                                        <RecentOrder scope={10} name={'Создать файл с текстом'} />
                                     </div>
                                 </SwiperSlide>
                                 <SwiperSlide>
                                     <div className="recent-orders">
-                                        <div className="recent-orders-item">
-                                            4
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
-                                        <div className="recent-orders-item">
-                                            Ремонт и установка телевизоров
-                                        </div>
+                                        <RecentOrder scope={2} name={'Постелить линолеум и монтаж плинтусов'} />
+                                        <RecentOrder scope={6} name={'Заменить аккумулятор телефона'} />
+                                        <RecentOrder scope={7} name={'Отремонтировать экран на Леново'} />
+                                        <RecentOrder scope={8} name={'Установка смесителя в ванной'} />
                                     </div>
                                 </SwiperSlide>
                             </Swiper>
@@ -238,7 +221,7 @@ const Home = () => {
             <section className="sec-4 py-5 mb-5">
                 <Container>
                     <Row>
-                        <Col lg={7}>
+                        <Col lg={6} xxl={7}>
                             <h3 className='mb-4'>Поможем с подбором <br /> исполнителя</h3>
                             <Swiper
                                 direction="vertical"
@@ -273,7 +256,7 @@ const Home = () => {
                                 </SwiperSlide>
                             </Swiper>
                         </Col>
-                        <Col lg={5}>
+                        <Col lg={6} xxl={5}>
                             <Swiper
                                 spaceBetween={20}
                                 thumbs={{
