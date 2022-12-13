@@ -4,12 +4,18 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { RxCaretDown } from "react-icons/rx"
 import AppLinks from './AppLinks'
+import useIsMobile from '../hooks/isMobile'
+import { SlBubbles, SlGrid, SlOptions } from "react-icons/sl"
+import { TfiPencilAlt } from "react-icons/tfi";
 
 const Footer = () => {
+    const {mobile} = useIsMobile('991px')
+
     return (
+        <>
         <footer>
             <Container>
-                <Row lg={2}>
+                <Row xs={1} xl={2}>
                     <Col>
                         <nav className='menu'>
                             <ul>
@@ -28,7 +34,7 @@ const Footer = () => {
                             </ul>
                         </nav>
                     </Col>
-                    <Col>
+                    <Col className='mt-4 mt-xl-0'>
                         <AppLinks/>
                     </Col>
                 </Row>
@@ -44,6 +50,43 @@ const Footer = () => {
                 </div>
             </Container>
         </footer>
+
+        {
+            (mobile === true) &&
+            <footer className="mobile">
+                <Container>
+                    <nav>
+                        <ul className="list-unstyled">
+                            <li>
+                                <a href="/" className='active'>
+                                    <SlGrid/>
+                                    <span>Главная</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/">
+                                    <TfiPencilAlt/>
+                                    <span>Заказы</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/">
+                                    <SlBubbles/>
+                                    <span>сообщения</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/">
+                                    <SlOptions/>
+                                    <span>Меню</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </Container>
+            </footer>
+        }
+        </>
     );
 };
 

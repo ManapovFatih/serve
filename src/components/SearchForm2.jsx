@@ -5,7 +5,7 @@ const SearchForm2 = (props) => {
     return (
         <form action="" className={'form-search-2 ' + props.className}>
             <input type="text" placeholder='Чем вам помочь?'/>
-            <button type='button'>
+            <button type='button' className='btn-3'>
                 <TfiArrowRight/>
             </button>
         </form>

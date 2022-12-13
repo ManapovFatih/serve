@@ -4,6 +4,7 @@ import { SlBubbles, SlBell, SlUser } from "react-icons/sl"
 import { IoSearch } from "react-icons/io5"
 import { TfiSearch } from "react-icons/tfi"
 import Offcanvas from 'react-bootstrap/Offcanvas'
+import logo from '../assets/imgs/servicio365.png'
 
 const Header = () => {
     const [search, setSearch] = useState(false);
@@ -14,7 +15,7 @@ const Header = () => {
             <header>
                 <Container>
                     <nav className='left'>
-                        <span className='fw-7 fs-20 logo'>LOGO</span>
+                        <img src={logo} alt="servicio365" className='logo'/>
                         <button type='button' onClick={showSearch} className='color-1 fs-15 d-xl-none'>
                             <IoSearch/>
                         </button>

@@ -5,13 +5,18 @@
 :root {
     --h-height: 80px;
     --f-height: 220px;
+    --m-footer: 60px;
+    @media (max-width: 1199px){
+        --f-height: 270px;
+    }
 }
 
 $main-font: "Noto Sans";
-$color-1: #071540;
-$color-2: #41A778;
-$color-3: #84D9B1;
-$color-4: #D9FAE6;
+$color-1: #105622;
+$color-2: #26C24A;
+$color-3: #AAEEBA;
+$color-4: #FFB199;
+$color-5: #FF6332;
 $gray-1: #F2F2F2;
 $gray-2: #BFBFBF;
 $gray-3: #737373;
@@ -32,6 +37,10 @@ $radius: 2em;
     -moz-appearance: none;
     -ms-appearance: none;
     outline: none;
+}
+@mixin safariFix {
+    isolation: isolate;
+    transform: translateZ(0);
 }
 
 a, a:hover, a:focus, a:active {
@@ -83,7 +92,7 @@ button {
     transition: $transition;
     width: fit-content;
     font-size: 1em;
-    font-weight: 400;
+    font-weight: 500;
     border-radius: $radius;
     &-1 {
         @extend .btn;
@@ -91,7 +100,7 @@ button {
         background: $color-2;
         &:hover, &:focus, &:active {
             color: #fff;
-            background: $color-1;
+            background: $color-5;
         }
     }
     &-2 {
@@ -99,8 +108,17 @@ button {
         color: $gray-5;
         background: #fff;
         &:hover, &:focus, &:active {
-            color: $gray-5;
-            background: $color-4;
+            color: #fff;
+            background: $color-5;
+        }
+    }
+    &-3 {
+        @extend .btn;
+        color: #fff;
+        background: $color-5;
+        &:hover, &:focus, &:active {
+            color: #fff;
+            background: $color-2;
         }
     }
 }
@@ -144,17 +162,12 @@ button {
         z-index: 10;
         right: .5em;
         top: .5em;
-        background-color: $color-2;
-        color: #fff;
-        border-radius: 50%;
         height: 3em;
         width: 3em;
-        transition: $transition;
+        padding: 0px;
+        @include flex-center();
         svg {
             font-size: 2em;
-        }
-        &:hover, &:focus, &:active {
-            background-color: $color-1;
         }
     }
 }
@@ -181,10 +194,8 @@ h3 {
 }
 h4 {
     text-align: left;
-    font-size: 1.2em;
-    font-weight: 400;
-    color: $color-4;
-    text-transform: uppercase;
+    font-size: 1.25em;
+    font-weight: 500;
     margin-bottom: 1em;
 }
 h5 {
@@ -233,6 +244,32 @@ h6 {
 .color-3 {color: $color-3;}
 .gray-2 {color: $gray-2;}
 
+.swiper {
+    position: unset;
+    &-button {
+        background-color: #fff;
+        width: 3em;
+        height: 3em;
+        @include flex-center();
+        border-radius: 50%;
+        box-shadow: 0px 2px 6px rgba($gray-4, .25);
+        &::after {
+            color: $color-2;
+            font-size: 1.5em;
+        }
+        &-next {
+            @extend .swiper-button;
+            right: 0px;
+            transform: translateX(50%);
+        }
+        &-prev {
+            @extend .swiper-button;
+            left: 0px;
+            transform: translateX(-50%);
+        }
+    }
+}
+
 
 body {
     margin: 0;
@@ -242,13 +279,15 @@ body {
     font-size: 16px;
     color: $gray-5;
     font-weight: 400;
-    color: $gray-5;
     overflow-x: hidden;
     @media (max-width: 1399px){
         font-size: 15px;
     }
     @media (max-width: 1199px){
         font-size: 14px;
+    }
+    @media (max-width: 991px){
+        padding-bottom: var(--m-footer);
     }
 }
 
@@ -266,13 +305,13 @@ header {
             @include flex-center();
             .logo {
                 display: block;
-                width: 130px;
+                width: 150px;
                 height: 30px;
                 object-fit: scale-down;
                 line-height: 30px;
                 margin-right: 1em;
                 @media (max-width: 1399px){
-                    width: 100px;
+                    width: 125px;
                 }
             }
             form {
@@ -364,18 +403,36 @@ main {
 
 .sec-2 {
     .box {
-        background-color: $color-4;
+        background-color: $gray-1;
         border-radius: $radius;
         padding: 3em;
         height: 100%;
         @media (max-width: 1199px){
             padding: 2em;
         }
+        @media (max-width: 991px){
+            background-color: transparent;
+            border-radius: 0px;
+            padding: 0px;
+            height: fit-content;
+        }
         form {
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            @media (max-width: 991px){
+                position: absolute;
+                top: 1em;
+                left: 5%;
+                width: 90%;
+                height: fit-content;
+                z-index: 10;
+                filter: drop-shadow(0px 3px 6px rgba($gray-3, .4));
+                div, button {
+                    display: none;
+                }
+            }
         }
     }
     .svg-animation {
@@ -383,27 +440,16 @@ main {
         width: 100%; 
         height: 100%; 
         transform: translate3d(0px, 0px, 0px);
+        position: relative;
+        z-index: 1;
     }
 }
 
 .sec-3 {
-    background-color: $color-4;
-    position: relative;
-    &::before, &::after {
-        content: '';
-        z-index: 10;
-        position: absolute;
-        left: 0px;
-        width: 100%;
-        height: 15%;
-    }
-    &::before {
-        top: 0px;
-        background-image: linear-gradient(to bottom, rgba($color-4, .4), transparent);
-    }
-    &::after {
-        bottom: 0px;
-        background-image: linear-gradient(to top, rgba($color-4, .4), transparent);
+    background-color: $color-3;
+    @media (max-width: 991px){
+        padding: 3em 0;
+        border-radius: $radius;
     }
     .container {
         position: relative;
@@ -412,9 +458,44 @@ main {
 }
 .slider-orders {
     height: 450px;
+    position: relative;
+    &::before, &::after {
+        content: '';
+        z-index: 10;
+        position: absolute;
+        left: 0px;
+        width: 100%;
+        height: 15%;
+        @media (max-width: 991px){
+            width: 15%;
+            height: 100%;
+            left: unset;
+            top: 0px;
+        }
+    }
+    &::before {
+        top: 0px;
+        background-image: linear-gradient(to bottom, rgba($color-3, .4), transparent);
+        @media (max-width: 991px){
+            left: 0px;
+            background-image: linear-gradient(to right, $color-3, transparent);
+        }
+    }
+    &::after {
+        bottom: 0px;
+        background-image: linear-gradient(to top, rgba($color-3, .4), transparent);
+        @media (max-width: 991px){
+            right: 0px;
+            background-image: linear-gradient(to left, $color-3, transparent);
+        }
+    }
+    @media (max-width: 991px){
+        height: fit-content;
+        margin-top: 1em;
+    }
     .swiper-wrapper {
         transition-timing-function: linear !important;
-      }
+    }
     .swiper-slide {
         height: fit-content;
         transition-timing-function: linear !important;
@@ -435,11 +516,14 @@ main {
         flex-direction: column;
         justify-content: space-between;
         align-items: stretch;
-        &:nth-child(even){
-            transform: translateY(50%);
+        @media (min-width: 992px){
+            &:nth-child(even){
+                transform: translateY(50%);
+            }
         }
         .icon {
-            background-color: $color-3;
+            background-color: $color-2;
+            color: #fff;
             font-size: 1.5em;
             height: 2em;
             width: 2em;
@@ -459,6 +543,9 @@ main {
                 padding: .5em 1em;
                 color: $gray-3;
                 font-size: 1.25em;
+                @media (max-width: 1199px){
+                    font-size: 1em;
+                }
             }
             .indicator {
                 width: 3px;
@@ -473,7 +560,7 @@ main {
                     width: 100%;
                     height: 0%;
                     border-radius: 3px;
-                    background-color: $color-3;
+                    background-color: $color-5;
                 }
             }
             &-thumb-active {
@@ -493,6 +580,35 @@ main {
             border-radius: $radius*2;
             height: 500px;
             object-fit: cover;
+            @media (max-width: 1199px){
+                height: 450px;
+            }
+        }
+    }
+    .help-slider {
+        height: 700px;
+        background-color: #fff;
+        box-shadow: 0 0 1em rgba($gray-3, .15);
+        border-radius: $radius*2;
+        @include safariFix();
+        @media (max-width: 767px){
+            height: 515px;
+        }
+        .swiper-slide {
+            overflow: hidden;
+            padding: 2em;
+            @include flex-center();
+            flex-direction: column;
+            opacity: 0 !important;
+            transition: $transition;
+            &-visible {opacity: 1 !important;}
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                border-radius: $radius*2;
+                flex: 1;
+            }
         }
     }
 }
@@ -510,12 +626,16 @@ main {
         position: absolute;
         right: 11%;
         bottom: 0px;
+        max-height: 120%;
+        @media (max-width: 1199px){
+            max-height: 110%;
+        }
     }
 }
 
 .sec-6 {
     .box {
-        background-color: $color-4;
+        background-color: $color-3;
         padding: 1em 1.5em;
         border-radius: $radius;
     }
@@ -539,6 +659,9 @@ main {
     align-items: center;
     list-style: none;
     padding-left: 0px;
+    @media (max-width: 1199px){
+        justify-content: flex-start;
+    }
     li {
         &:not(:first-child){margin-left: 1em;}
         img {
@@ -591,10 +714,42 @@ footer {
             &>*:not(:first-child) {margin-left: 1.5em;}
         }
     }
+    &.mobile {
+        position: fixed;
+        z-index: 100;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: var(--m-footer);
+        background-color: #fff;
+        box-shadow: 0 3px 12px rgb(13 35 67 / 20%);
+        nav {
+            ul {
+                @include flex-center();
+                li {
+                    width: 25%;
+                    a {
+                        width: 100%;
+                        @include flex-center();
+                        flex-direction: column;
+                        color: $gray-3;
+                        &.active {
+                            color: $color-5;
+                        }
+                        svg {font-size: 1.75em;}
+                        span {
+                            font-size: .8em;
+                            margin-top: .35em;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .offcanvas {
-    &-top {
+    &.offcanvas-top {
         height: fit-content;
         .offcanvas-body {
             padding: var(--h-height) 0 2em 0;
