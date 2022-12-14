@@ -58,6 +58,11 @@ const Header = () => {
                                     <SlUser/>
                                 </button>
                             </li>
+                            <li>
+                                <button type='button'>
+                                    RU
+                                </button>
+                            </li>
                         </ul>
                     </nav>
                 </Container>

@@ -333,13 +333,16 @@ header {
                     height: 40px;
                 }
                 @media (max-width: 575px){
-                    width: 180px;
+                    width: 160px;
                     height: 35px;
                 }
             }
             form {
                 display: flex;
                 width: 250px;
+                @media (max-width: 1399px){
+                    width: 225px;
+                }
             }
             ul {
                 list-style: none;
@@ -371,6 +374,9 @@ header {
                         font-size: 1.75em;
                         color: $gray-3;
                         transition: $transition;
+                        @media (max-width: 1399px){
+                            font-size: 1.5em;
+                        }
                         &:hover, &:focus, &:active {
                             color: $gray-5;
                         }

@@ -400,13 +400,18 @@ header .container nav.left .logo {
 }
 @media (max-width: 575px) {
   header .container nav.left .logo {
-    width: 180px;
+    width: 160px;
     height: 35px;
   }
 }
 header .container nav.left form {
   display: flex;
   width: 250px;
+}
+@media (max-width: 1399px) {
+  header .container nav.left form {
+    width: 225px;
+  }
 }
 header .container nav.left ul {
   list-style: none;
@@ -441,6 +446,11 @@ header .container nav.right ul li button, header .container nav.right ul li a {
   font-size: 1.75em;
   color: #737373;
   transition: 0.3s ease;
+}
+@media (max-width: 1399px) {
+  header .container nav.right ul li button, header .container nav.right ul li a {
+    font-size: 1.5em;
+  }
 }
 header .container nav.right ul li button:hover, header .container nav.right ul li button:focus, header .container nav.right ul li button:active, header .container nav.right ul li a:hover, header .container nav.right ul li a:focus, header .container nav.right ul li a:active {
   color: #0D0D0D;
