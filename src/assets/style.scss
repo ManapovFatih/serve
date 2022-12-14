@@ -9,6 +9,9 @@
     @media (max-width: 1199px){
         --f-height: 270px;
     }
+    @media (max-width: 767px){
+        --h-height: 60px;
+    }
 }
 
 $main-font: "Noto Sans";
@@ -179,12 +182,18 @@ h1 {
     font-weight: 700;
     line-height: 100%;
     margin-bottom: 1em;
+    @media (max-width: 575px){
+        font-size: 2.5em;
+    }
 }
 h2 {
     text-align: left;
     font-size: 2.4em;
     font-weight: 500;
     margin-bottom: .5em;
+    @media (max-width: 575px){
+        font-size: 1.75em;
+    }
 }
 h3 {
     text-align: left;
@@ -253,6 +262,9 @@ h6 {
         @include flex-center();
         border-radius: 50%;
         box-shadow: 0px 2px 6px rgba($gray-4, .25);
+        @media (max-width: 991px){
+            display: none;
+        }
         &::after {
             color: $color-2;
             font-size: 1.5em;
@@ -312,6 +324,17 @@ header {
                 margin-right: 1em;
                 @media (max-width: 1399px){
                     width: 125px;
+                }
+                @media (max-width: 1199px){
+                    width: 150px;
+                }
+                @media (max-width: 991px){
+                    width: 200px;
+                    height: 40px;
+                }
+                @media (max-width: 575px){
+                    width: 180px;
+                    height: 35px;
                 }
             }
             form {
@@ -374,12 +397,28 @@ main {
     @media (max-width: 1199px){
         height: 500px;
     }
+    @media (max-width: 991px){
+        background-position: 75% 50%;
+    }
+    @media (max-width: 767px){
+        padding-bottom: 2em;
+    }
+    @media (max-width: 575px){
+        height: 100vw;
+    }
     .container {
         height: 100%;
         h1 {color: #fff;}
     }
 }
 
+@media (max-width: 767px){
+    .slider-6 {
+        .swiper-slide {
+            width: 220px;
+        }
+    }
+}
 .labor {
     border-radius: $radius;
     overflow: hidden;
@@ -399,7 +438,6 @@ main {
         width: calc(100% - 2em);
     }
 }
-
 
 .sec-2 {
     .box {
@@ -442,6 +480,11 @@ main {
         transform: translate3d(0px, 0px, 0px);
         position: relative;
         z-index: 1;
+        @media (max-width: 767px){
+            height: 350px; 
+            width: 100%; 
+            object-fit: cover;
+        }
     }
 }
 
@@ -450,6 +493,9 @@ main {
     @media (max-width: 991px){
         padding: 3em 0;
         border-radius: $radius;
+    }
+    @media (max-width: 575px){
+        padding: 2em 0;
     }
     .container {
         position: relative;
@@ -467,7 +513,7 @@ main {
         width: 100%;
         height: 15%;
         @media (max-width: 991px){
-            width: 15%;
+            width: 10%;
             height: 100%;
             left: unset;
             top: 0px;
@@ -478,7 +524,7 @@ main {
         background-image: linear-gradient(to bottom, rgba($color-3, .4), transparent);
         @media (max-width: 991px){
             left: 0px;
-            background-image: linear-gradient(to right, $color-3, transparent);
+            background-image: linear-gradient(to right, $color-3, rgba($color-3, .4), transparent);
         }
     }
     &::after {
@@ -486,7 +532,7 @@ main {
         background-image: linear-gradient(to top, rgba($color-3, .4), transparent);
         @media (max-width: 991px){
             right: 0px;
-            background-image: linear-gradient(to left, $color-3, transparent);
+            background-image: linear-gradient(to left, $color-3, rgba($color-3, .4), transparent);
         }
     }
     @media (max-width: 991px){
@@ -499,6 +545,9 @@ main {
     .swiper-slide {
         height: fit-content;
         transition-timing-function: linear !important;
+        @media (max-width: 575px){
+            width: 160px;
+        }
     }
 }
 .recent-orders {
@@ -520,6 +569,9 @@ main {
             &:nth-child(even){
                 transform: translateY(50%);
             }
+        }
+        @media (max-width: 991px){
+            width: 100%;
         }
         .icon {
             background-color: $color-2;
@@ -594,6 +646,10 @@ main {
         @media (max-width: 767px){
             height: 515px;
         }
+        @media (max-width: 575px){
+            height: 125vw;
+            border-radius: $radius;
+        }
         .swiper-slide {
             overflow: hidden;
             padding: 2em;
@@ -602,6 +658,10 @@ main {
             opacity: 0 !important;
             transition: $transition;
             &-visible {opacity: 1 !important;}
+            @media (max-width: 575px){
+                padding: 1em;
+                h4 {font-size: 1em;}
+            }
             img {
                 width: 100%;
                 height: auto;
@@ -614,13 +674,28 @@ main {
 }
 
 .sec-5 {
-    background-color: $gray-1;
-    border-radius: $radius;
-    padding: 2em 4em;
-    position: relative;
+    @media (max-width: 991px){
+        border-bottom: 1px solid $gray-1;
+    }
+    .container {
+        background-color: $gray-1;
+        border-radius: $radius;
+        padding: 2em 4em;
+        position: relative;
+        @media (max-width: 991px){
+            background-color: transparent;
+            border-radius: 0;
+            padding: 0;
+            text-align: center;
+        }
+    }
     .apps-links {
         justify-content: flex-start;
         margin-top: 2em;
+        @media (max-width: 991px){
+            justify-content: center;
+            margin-bottom: 2em;
+        }
     }
     .bg {
         position: absolute;
@@ -629,6 +704,13 @@ main {
         max-height: 120%;
         @media (max-width: 1199px){
             max-height: 110%;
+        }
+        @media (max-width: 991px){
+            position: unset;
+            right: unset;
+            bottom: unset;
+            max-height: auto;
+            max-width: 100%;
         }
     }
 }
@@ -663,9 +745,17 @@ main {
         justify-content: flex-start;
     }
     li {
-        &:not(:first-child){margin-left: 1em;}
+        &:not(:first-child){
+            margin-left: 1em;
+            @media (max-width: 575px){
+                margin-left: .25em;
+            }
+        }
         img {
             max-height: 50px;
+            @media (max-width: 575px){
+                max-height: 40px;
+            }
         }
     }
 }

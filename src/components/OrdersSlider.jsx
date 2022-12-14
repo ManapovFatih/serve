@@ -18,47 +18,74 @@ const OrdersSlider = () => {
                 className='slider-orders'
                 loop={true}
                 spaceBetween={20}
-                slidesPerView={1}
+                slidesPerView={'auto'}
                 allowTouchMove={true}
                 direction={'horizontal'}
                 speed={15000}
+                freeMode={true}
                 autoplay={{
                     delay: 0,
                     disableOnInteraction: false,
                     waitForTransition: true
                 }}
+                breakpoints={{
+                    576: {
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 20,
+                    },
+                }}
                 >
                 <SwiperSlide>
-                    <div className="recent-orders">
-                        <RecentOrder scope={1} name={'Генеральная уборка'} />
-                        <RecentOrder scope={2} name={'Сделать ремонт в квартире'} />
-                        <RecentOrder scope={6} name={'Ремонт и установка телевизоров'} />
-                        <RecentOrder scope={3} name={'Провести личную консультацию по банкротству физического лица'} />
-                    </div>
+                    <RecentOrder scope={1} name={'Генеральная уборка'} />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="recent-orders">
-                        <RecentOrder scope={2} name={'Постелить линолеум и монтаж плинтусов'} />
-                        <RecentOrder scope={6} name={'Заменить аккумулятор телефона'} />
-                        <RecentOrder scope={7} name={'Отремонтировать экран на Леново'} />
-                        <RecentOrder scope={8} name={'Установка смесителя в ванной'} />
-                    </div>
+                    <RecentOrder scope={2} name={'Сделать ремонт в квартире'} />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="recent-orders">
-                        <RecentOrder scope={5} name={'Оказать услуги службы буксировки'} />
-                        <RecentOrder scope={1} name={'Поддерживающая уборка'} />
-                        <RecentOrder scope={9} name={'Стрижка'} />
-                        <RecentOrder scope={10} name={'Создать файл с текстом'} />
-                    </div>
+                    <RecentOrder scope={6} name={'Ремонт и установка телевизоров'} />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="recent-orders">
-                        <RecentOrder scope={2} name={'Постелить линолеум и монтаж плинтусов'} />
-                        <RecentOrder scope={6} name={'Заменить аккумулятор телефона'} />
-                        <RecentOrder scope={7} name={'Отремонтировать экран на Леново'} />
-                        <RecentOrder scope={8} name={'Установка смесителя в ванной'} />
-                    </div>
+                    <RecentOrder scope={3} name={'Провести личную консультацию по банкротству физического лица'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={2} name={'Постелить линолеум и монтаж плинтусов'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={6} name={'Заменить аккумулятор телефона'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={7} name={'Отремонтировать экран на Леново'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={8} name={'Установка смесителя в ванной'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={5} name={'Оказать услуги службы буксировки'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={1} name={'Поддерживающая уборка'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={9} name={'Стрижка'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={10} name={'Создать файл с текстом'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={2} name={'Постелить линолеум и монтаж плинтусов'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={6} name={'Заменить аккумулятор телефона'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={7} name={'Отремонтировать экран на Леново'} />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <RecentOrder scope={8} name={'Установка смесителя в ванной'} />
                 </SwiperSlide>
             </Swiper>
         )
