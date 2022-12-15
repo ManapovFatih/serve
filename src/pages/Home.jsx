@@ -25,6 +25,7 @@ import { SlScreenDesktop } from "react-icons/sl"
 import { RxScissors, RxLapTimer } from "react-icons/rx"
 import OrdersSlider from '../components/OrdersSlider'
 import HelpSlider from '../components/HelpSlider'
+import CategoryCard from '../components/CategoryCard'
 
 
 const Home = () => {
@@ -43,7 +44,7 @@ const Home = () => {
 
             <section className="sec-1 py-4 py-sm-5">
                 <Container>
-                    <h3>Предложите ваше задание</h3>
+                    {/* <h3>Предложите ваше задание</h3>
                     <div className="position-relative">
                         <Swiper
                             className='slider-6 mt-4'
@@ -97,6 +98,34 @@ const Home = () => {
                                 <Labor />
                             </SwiperSlide>
                         </Swiper>
+                    </div> */}
+
+                    <h3>Поручите дела специалистам</h3>
+                    <div className="grid mt-4 mt-sm-5">
+                        <div>
+                            <CategoryCard title={"Электрика"} imgUrl={"imgs/1.png"}/>
+                        </div>
+                        <div>
+                            <CategoryCard title={"Сантехника"} imgUrl={"imgs/2.png"}/>
+                        </div>
+                        <div>
+                            <CategoryCard title={'Химчистка мебели'} imgUrl={'imgs/3.png'}/>
+                        </div>
+                        <div>
+                            <CategoryCard title={'Стиральные машины'} imgUrl={'imgs/4.png'}/>
+                        </div>
+                        <div>
+                            <CategoryCard title={'Поверка счётчиков'} imgUrl={'imgs/5.png'}/>
+                        </div>
+                        <div>
+                            <CategoryCard title={'Дезинсекция'} imgUrl={'imgs/6.png'}/>
+                        </div>
+                        <div>
+                            <CategoryCard title={'Ремонт и установка замков'} imgUrl={'imgs/7.png'}/>
+                        </div>
+                        <div>
+                            <CategoryCard title={'Вывоз мусора'} imgUrl={'imgs/8.png'}/>
+                        </div>
                     </div>
                 </Container>
             </section>
