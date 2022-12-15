@@ -6,11 +6,23 @@
     --h-height: 80px;
     --f-height: 220px;
     --m-footer: 60px;
+    --w: 1320px;
+    @media (max-width: 1399px){
+        --w: 1140px;
+    }
     @media (max-width: 1199px){
         --f-height: 270px;
+        --w: 960px;
+    }
+    @media (max-width: 991px){
+        --w: 720px;
     }
     @media (max-width: 767px){
         --h-height: 60px;
+        --w: 540px;
+    }
+    @media (max-width: 575px){
+        --w: 100%;
     }
 }
 
@@ -264,6 +276,9 @@ h6 {
 .swiper {
     position: unset;
     &-button {
+        top: 50%;
+        margin: 0px;
+        transform: translateY(-50%);
         background-color: #fff;
         width: 3em;
         height: 3em;
@@ -453,6 +468,36 @@ main {
     }
 }
 
+.slider-main {
+    position: relative;
+    .swiper-button-disabled {
+        opacity: 0 !important;
+    }
+    .swiper-button-next {
+        top: unset;
+        bottom: 3em;
+        right: unset;
+        left: calc(50% + var(--w)/2);
+        transform: translateX(-100%);
+        @media (max-width: 991px){display: flex;}
+        @media (max-width: 767px){
+            top: 3em;
+            bottom: unset;
+        }
+    }
+    .swiper-button-prev {
+        top: unset;
+        bottom: 3em;
+        left: calc(50% + var(--w)/2);
+        right: unset;
+        transform: translateX(-100%);
+        @media (max-width: 991px){display: flex;}
+        @media (max-width: 767px){
+            top: 3em;
+            bottom: unset;
+        }
+    }
+}
 .sec-1 {
     .grid {
         display: grid;

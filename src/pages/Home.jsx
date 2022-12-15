@@ -31,16 +31,38 @@ import CategoryCard from '../components/CategoryCard'
 const Home = () => {
     return (
         <main>
-            <section className="main">
-                <Container>
-                    <Row className='h-100'>
-                        <Col md={8} className='d-flex flex-column justify-content-end justify-content-md-center'>
-                            <h1>Не&nbsp;оставим наедине с&nbsp;проблемами</h1>
-                            <SearchForm2 />
-                        </Col>
-                    </Row>
-                </Container>
-            </section>
+            <Swiper
+                className='slider-main'
+                modules={[Navigation]}
+                spaceBetween={0}
+                slidesPerView={1}
+                navigation
+                >
+                <SwiperSlide>
+                    <section className="main">
+                        <Container>
+                            <Row className='h-100'>
+                                <Col md={8} className='d-flex flex-column justify-content-end justify-content-md-center'>
+                                    <h1>Не&nbsp;оставим наедине с&nbsp;проблемами</h1>
+                                    <SearchForm2 />
+                                </Col>
+                            </Row>
+                        </Container>
+                    </section>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <section className="main">
+                        <Container>
+                            <Row className='h-100'>
+                                <Col md={8} className='d-flex flex-column justify-content-end justify-content-md-center'>
+                                    <h1>Не&nbsp;оставим наедине с&nbsp;проблемами</h1>
+                                    <SearchForm2 />
+                                </Col>
+                            </Row>
+                        </Container>
+                    </section>
+                </SwiperSlide>
+            </Swiper>
 
             <section className="sec-1 py-4 py-sm-5">
                 <Container>
