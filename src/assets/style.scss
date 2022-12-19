@@ -1013,7 +1013,7 @@ footer {
         width: 100%;
         height: var(--m-footer);
         background-color: #fff;
-        box-shadow: 0 3px 12px rgb(13 35 67 / 20%);
+        box-shadow: 0 3px 12px rgba(13, 35, 67, 0.2);
         nav {
             ul {
                 @include flex-center();
