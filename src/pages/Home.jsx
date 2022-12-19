@@ -10,7 +10,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/free-mode'
 
-import Labor from '../components/Labor'
+// import Labor from '../components/Labor'
 import SearchForm2 from '../components/SearchForm2'
 import AppLinks from '../components/AppLinks'
 
