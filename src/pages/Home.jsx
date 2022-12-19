@@ -20,13 +20,13 @@ import icon3 from '../assets/imgs/icons/icon-3.png'
 import icon4 from '../assets/imgs/icons/icon-4.png'
 import map from '../assets/imgs/map.jpg'
 import smartphone from '../assets/imgs/smartphone.png'
-import { TfiPaintRoller, TfiBriefcase, TfiTruck, TfiCar, TfiMore } from "react-icons/tfi"
+import { TfiPaintRoller, TfiBriefcase, TfiTruck, TfiCar, TfiMore, TfiArrowRight } from "react-icons/tfi"
 import { SlScreenDesktop } from "react-icons/sl"
 import { RxScissors, RxLapTimer } from "react-icons/rx"
 import OrdersSlider from '../components/OrdersSlider'
 import HelpSlider from '../components/HelpSlider'
 import CategoryCard from '../components/CategoryCard'
-
+import CategoryMini from '../components/CategoryMini'
 
 const Home = () => {
     return (
@@ -64,98 +64,141 @@ const Home = () => {
                 </SwiperSlide>
             </Swiper>
 
-            <section className="sec-1 py-4 py-sm-5">
-                <Container>
-                    {/* <h3>Предложите ваше задание</h3>
-                    <div className="position-relative">
+            <Container>
+                <section className="sec-1 p-3 p-sm-4 p-md-5 mt-5">
+                        {/* <h3>Предложите ваше задание</h3>
+                        <div className="position-relative">
+                            <Swiper
+                                className='slider-6 mt-4'
+                                modules={[Navigation, FreeMode]}
+                                spaceBetween={20}
+                                slidesPerView={'auto'}
+                                freeMode={true}
+                                navigation
+                                breakpoints={{
+                                    768: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 20,
+                                        freeMode: false,
+                                    },
+                                    992: {
+                                        slidesPerView: 4,
+                                        spaceBetween: 20,
+                                    },
+                                    1200: {
+                                        slidesPerView: 5,
+                                        spaceBetween: 20,
+                                    },
+                                    1400: {
+                                        slidesPerView: 6,
+                                        spaceBetween: 20,
+                                    },
+                                }}
+                                >
+                                <SwiperSlide>
+                                    <Labor />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <Labor />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <Labor />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <Labor />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <Labor />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <Labor />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <Labor />
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <Labor />
+                                </SwiperSlide>
+                            </Swiper>
+                        </div> */}
+                        <form className='mb-4 mb-sm-5'>
+                            <input type="search" placeholder='Чем вам помочь?' />
+                            <button type='button' className='btn-3 ms-lg-3'>
+                                <span className='d-none d-lg-inline'>Найти</span>
+                                <TfiArrowRight className='d-lg-none'/>
+                            </button>
+                        </form>
+
                         <Swiper
-                            className='slider-6 mt-4'
-                            modules={[Navigation, FreeMode]}
+                            className='slider-auto mb-4 mb-sm-5'
+                            loop={false}
+                            modules={[FreeMode]}
                             spaceBetween={20}
                             slidesPerView={'auto'}
                             freeMode={true}
-                            navigation
-                            breakpoints={{
-                                768: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 20,
-                                    freeMode: false,
-                                },
-                                992: {
-                                    slidesPerView: 4,
-                                    spaceBetween: 20,
-                                },
-                                1200: {
-                                    slidesPerView: 5,
-                                    spaceBetween: 20,
-                                },
-                                1400: {
-                                    slidesPerView: 6,
-                                    spaceBetween: 20,
-                                },
-                            }}
                             >
                             <SwiperSlide>
-                                <Labor />
+                                <CategoryMini title={"Установка техники"} imgUrl={"imgs/img7.jpg"}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <Labor />
+                                <CategoryMini title={"Электрика"} imgUrl={"imgs/img6.jpg"}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <Labor />
+                                <CategoryMini title={"Стиральные машины"} imgUrl={"imgs/img8.jpg"}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <Labor />
+                                <CategoryMini title={"Химчистка мебели"} imgUrl={"imgs/img9.jpg"}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <Labor />
+                                <CategoryMini title={"Установка техники"} imgUrl={"imgs/img7.jpg"}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <Labor />
+                                <CategoryMini title={"Электрика"} imgUrl={"imgs/img6.jpg"}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <Labor />
+                                <CategoryMini title={"Стиральные машины"} imgUrl={"imgs/img8.jpg"}/>
                             </SwiperSlide>
                             <SwiperSlide>
-                                <Labor />
+                                <CategoryMini title={"Химчистка мебели"} imgUrl={"imgs/img9.jpg"}/>
                             </SwiperSlide>
                         </Swiper>
-                    </div> */}
 
-                    <h3>Поручите дела специалистам</h3>
-                    <div className="grid mt-4 mt-sm-5">
-                        <div>
-                            <CategoryCard title={"Электрика"} imgUrl={"imgs/1.png"}/>
+                        <h3>Поручите дела специалистам</h3>
+                        <div className="grid mt-3 mt-sm-4">
+                            <div>
+                                <CategoryCard title={"Электрика"} imgUrl={"imgs/1.png"}/>
+                            </div>
+                            <div>
+                                <CategoryCard title={"Сантехника"} imgUrl={"imgs/2.png"}/>
+                            </div>
+                            <div>
+                                <CategoryCard title={'Химчистка мебели'} imgUrl={'imgs/3.png'}/>
+                            </div>
+                            <div>
+                                <CategoryCard title={'Стиральные машины'} imgUrl={'imgs/4.png'}/>
+                            </div>
+                            <div>
+                                <CategoryCard title={'Поверка счётчиков'} imgUrl={'imgs/5.png'}/>
+                            </div>
+                            <div>
+                                <CategoryCard title={'Дезинсекция'} imgUrl={'imgs/6.png'}/>
+                            </div>
+                            <div>
+                                <CategoryCard title={'Ремонт и установка замков'} imgUrl={'imgs/7.png'}/>
+                            </div>
+                            <div>
+                                <CategoryCard title={'Вывоз мусора'} imgUrl={'imgs/8.png'}/>
+                            </div>
                         </div>
-                        <div>
-                            <CategoryCard title={"Сантехника"} imgUrl={"imgs/2.png"}/>
-                        </div>
-                        <div>
-                            <CategoryCard title={'Химчистка мебели'} imgUrl={'imgs/3.png'}/>
-                        </div>
-                        <div>
-                            <CategoryCard title={'Стиральные машины'} imgUrl={'imgs/4.png'}/>
-                        </div>
-                        <div>
-                            <CategoryCard title={'Поверка счётчиков'} imgUrl={'imgs/5.png'}/>
-                        </div>
-                        <div>
-                            <CategoryCard title={'Дезинсекция'} imgUrl={'imgs/6.png'}/>
-                        </div>
-                        <div>
-                            <CategoryCard title={'Ремонт и установка замков'} imgUrl={'imgs/7.png'}/>
-                        </div>
-                        <div>
-                            <CategoryCard title={'Вывоз мусора'} imgUrl={'imgs/8.png'}/>
-                        </div>
-                    </div>
-                </Container>
-            </section>
+                </section>
+            </Container>
 
             <section className="sec-2 py-4 py-sm-5">
                 <Container>
-                    <h3>114 исполнителей живут неподалёку</h3>
-                    <p className='mb-4'>Обратитесь к ним, чтобы не ждать специалиста с другого конца города</p>
+                    <div className="d-lg-none">
+                        <h3>114 исполнителей живут неподалёку</h3>
+                        <p className='mb-4'>Обратитесь к ним, чтобы не ждать специалиста с другого конца города</p>
+                    </div>
                     <Row className='gx-0 position-relative'>
                         <Col lg={4}>
                             <div className="box">

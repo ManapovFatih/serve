@@ -19,6 +19,7 @@
 @media (max-width: 991px) {
   :root {
     --w: 720px;
+    --f-height: 360px;
   }
 }
 @media (max-width: 767px) {
@@ -30,6 +31,7 @@
 @media (max-width: 575px) {
   :root {
     --w: 100%;
+    --f-height: 480px;
   }
 }
 
@@ -222,7 +224,7 @@ h5 {
 }
 
 h6 {
-  font-size: 1.1em;
+  font-size: 0.9em;
   font-weight: 600;
   margin-bottom: 0px;
 }
@@ -589,15 +591,87 @@ main {
   }
 }
 
+.sec-1 {
+  border-radius: 2em;
+  background-color: #fff2ed;
+}
+@media (max-width: 575px) {
+  .sec-1 {
+    border-radius: 1em;
+  }
+}
+.sec-1 form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sec-1 form input {
+  flex: 1;
+}
+.sec-1 form button {
+  padding: 1.2em 5em;
+}
+@media (max-width: 991px) {
+  .sec-1 form button {
+    position: absolute;
+    z-index: 10;
+    right: 0.5em;
+    top: 0.5em;
+    height: 3em;
+    width: 3em;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sec-1 form button svg {
+    font-size: 2em;
+  }
+}
+.sec-1 .slider-auto .swiper-slide {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.sec-1 .category-mini {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.sec-1 .category-mini img {
+  width: 3.5em;
+  height: 3.5em;
+  border-radius: 50%;
+}
+.sec-1 .category-mini figcaption {
+  margin-top: 0.25em;
+  font-size: 0.8em;
+  font-weight: 500;
+}
 .sec-1 .grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 30px 30px;
 }
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .sec-1 .grid {
     gap: 1em 1em;
+    font-size: 12px;
+  }
+}
+@media (max-width: 767px) {
+  .sec-1 .grid {
+    font-size: 10px;
+  }
+}
+@media (max-width: 575px) {
+  .sec-1 .grid {
+    font-size: 8px;
   }
 }
 .sec-1 .grid div {
@@ -606,21 +680,6 @@ main {
 }
 .sec-1 .grid div:nth-child(5n+4), .sec-1 .grid div:nth-child(5n+5) {
   grid-column: span 3;
-}
-@media (max-width: 575px) {
-  .sec-1 .grid div:nth-child(5n+4), .sec-1 .grid div:nth-child(5n+5) {
-    grid-column: span 6;
-  }
-}
-@media (max-width: 991px) {
-  .sec-1 .grid div {
-    grid-column: span 3;
-  }
-}
-@media (max-width: 575px) {
-  .sec-1 .grid div {
-    grid-column: span 6;
-  }
 }
 .sec-1 .grid div .category-card {
   display: block;
@@ -644,14 +703,20 @@ main {
     height: 220px;
   }
 }
+@media (max-width: 991px) {
+  .sec-1 .grid div figure {
+    height: 180px;
+  }
+}
 @media (max-width: 767px) {
   .sec-1 .grid div figure {
-    height: 200px;
+    height: 150px;
   }
 }
 @media (max-width: 575px) {
   .sec-1 .grid div figure {
-    height: 60vw;
+    height: 28vw;
+    border-radius: 1em;
   }
 }
 .sec-1 .grid div figure img {
@@ -677,6 +742,11 @@ main {
   padding: 1.5em;
   width: 100%;
   height: 100%;
+}
+@media (max-width: 575px) {
+  .sec-1 .grid div figure figcaption {
+    padding: 1em;
+  }
 }
 
 .sec-2 .box {
@@ -878,7 +948,7 @@ main {
 .sec-4 .thumbslides .swiper-slide .indicator {
   width: 3px;
   border-radius: 3px;
-  background-color: #FFB199;
+  background-color: #fff2ed;
   position: relative;
 }
 .sec-4 .thumbslides .swiper-slide .indicator::before {
@@ -1079,12 +1149,23 @@ footer .container {
 footer .container .menu {
   display: flex;
 }
+@media (max-width: 575px) {
+  footer .container .menu {
+    display: block;
+  }
+}
 footer .container .menu ul {
   list-style: none;
   padding-left: 0px;
 }
 footer .container .menu ul:not(:first-child) {
   margin-left: 3em;
+}
+@media (max-width: 575px) {
+  footer .container .menu ul:not(:first-child) {
+    margin-left: 0;
+    margin-top: 0.75em;
+  }
 }
 footer .container .menu ul li:not(:first-child) {
   margin-top: 0.75em;
@@ -1103,6 +1184,16 @@ footer .container .bottom {
 }
 footer .container .bottom > *:not(:first-child) {
   margin-left: 1.5em;
+}
+@media (max-width: 991px) {
+  footer .container .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  footer .container .bottom > *:not(:first-child) {
+    margin-top: 1em;
+    margin-left: 0em;
+  }
 }
 footer.mobile {
   position: fixed;
