@@ -21,10 +21,11 @@
     @media (max-width: 767px){
         --h-height: 60px;
         --w: 540px;
+        --f-height: 540px;
     }
     @media (max-width: 575px){
         --w: 100%;
-        --f-height: 480px;
+        --f-height: 510px;
     }
 }
 
@@ -396,7 +397,7 @@ header {
                 li {
                     &:not(:first-child){margin-left: 1em;}
                     button, a {
-                        font-size: 1.75em;
+                        font-size: 1.5em;
                         color: $gray-3;
                         transition: $transition;
                         @media (max-width: 1399px){
@@ -965,7 +966,7 @@ footer {
         align-items: stretch;
         .menu {
             display: flex;
-            @media (max-width: 575px){
+            @media (max-width: 767px){
                 display: block;
             }
             ul {
@@ -973,7 +974,7 @@ footer {
                 padding-left: 0px;
                 &:not(:first-child){
                     margin-left: 3em;
-                    @media (max-width: 575px){
+                    @media (max-width: 767px){
                         margin-left: 0;
                         margin-top: .75em;
                     }

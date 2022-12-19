@@ -31,6 +31,7 @@ const Footer = () => {
                             <ul>
                                 <li><a href="/">Журнал</a></li>
                                 <li><a href="/">О сервисе</a></li>
+                                <li><a href="/">Партнерская программа</a></li>
                             </ul>
                         </nav>
                     </Col>
