@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import useIsMobile from '../hooks/isMobile'
+import {Link} from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 import Offcanvas from 'react-bootstrap/Offcanvas'
@@ -31,7 +32,7 @@ const Header = () => {
                             <ul>
                                 <li><a href="/">Создать заказ</a></li>
                                 <li><a href="/">Найти специалиста</a></li>
-                                <li><a href="/">Мои заказы</a></li>
+                                <li><Link to="my-orders">Мои заказы</Link></li>
                                 <li><a href="/">Стать исполнителем</a></li>
                             </ul>
                         }
@@ -54,9 +55,9 @@ const Header = () => {
                                 </button>
                             </li>
                             <li className='d-none d-lg-block'>
-                                <button type='button'>
+                                <Link to='/account'>
                                     <SlUser/>
-                                </button>
+                                </Link>
                             </li>
                             <li>
                                 <button type='button'>
