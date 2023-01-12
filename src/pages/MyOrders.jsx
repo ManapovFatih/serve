@@ -5,8 +5,6 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import { RiProfileLine, RiUserStarLine } from "react-icons/ri"
-import { SlNote, SlSpeech, SlUserFollowing } from "react-icons/sl"
 import { TfiPencilAlt, TfiCommentAlt, TfiIdBadge, TfiLayoutGrid2 } from "react-icons/tfi"
 
 const MyOrders = () => {
