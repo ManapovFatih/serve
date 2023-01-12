@@ -195,9 +195,9 @@ const Home = () => {
 
             <section className="sec-2 py-4 py-sm-5">
                 <Container>
-                    <div className="d-lg-none">
-                        <h3>114 исполнителей живут неподалёку</h3>
-                        <p className='mb-4'>Обратитесь к ним, чтобы не ждать специалиста с другого конца города</p>
+                    <div className="d-lg-none mb-4">
+                        <h3>Рядом с вами</h3>
+                        <p>Мы найдём специалистов, которые живут рядом с вами!</p>
                     </div>
                     <Row className='gx-0 position-relative'>
                         <Col lg={4}>
