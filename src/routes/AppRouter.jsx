@@ -6,6 +6,8 @@ import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 import AccountLayout from '../layouts/AccountLayout'
 import Index from '../pages/account/Index'
+import Addresses from '../pages/account/Addresses'
+import About from '../pages/account/About'
 
 const router = createHashRouter(
     createRoutesFromElements(
@@ -17,6 +19,8 @@ const router = createHashRouter(
         </Route>
         <Route path="account" element={<AccountLayout/>}>
             <Route index element={<Index/>}/>
+            <Route path="addresses" element={<Addresses/>}/>
+            <Route path="about" element={<About/>}/>
         </Route>
         </>
     )

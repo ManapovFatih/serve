@@ -2,32 +2,93 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { IoAlertCircleOutline, IoTrendingUpOutline, IoAddOutline, IoEyeOutline, IoCashOutline, IoPersonCircleOutline, IoInformationCircleOutline, IoLocationOutline, IoVideocamOutline, IoListOutline } from "react-icons/io5"
+
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper'
+import 'swiper/css'
+import 'swiper/css/navigation'
+
+import { IoAlertCircleOutline, IoTrendingUpOutline, IoAddOutline, IoEyeOutline, IoCashOutline, IoPersonCircleOutline, IoInformationCircleOutline, IoLocationOutline, IoVideocamOutline, IoListOutline, IoCheckmarkCircleOutline } from "react-icons/io5"
 
 const Index = () => {
     return (
         <section>
             <h1 className='inner text-center mb-4'>Имя Фамиллия</h1>
             <p className='d-flex align-items-center justify-content-center text-center gray-3 mb-5'>
-                <IoAlertCircleOutline className='fs-15 red'/>
+                <IoAlertCircleOutline className='fs-13 red'/>
                 <span className='ms-2'>Профиль опубликован – 1 ошибка</span>
             </p>
 
-            <div className="box mb-4">
-                <div className='d-flex align-items-center'>
-                    <IoAlertCircleOutline className='fs-18 red'/>
-                    <h4 className='mb-0 ms-2'>Профиль не опубликован</h4>
-                </div>
-                <ul className="list-unstyled">
-                    <li className='mt-3'>
-                        <a href='/' className='link'>Паспорт</a> — 
-                        <span className='red'> не заполнено</span>
-                    </li>
-                    <li className='mt-3'>
-                        <a href='/' className='link'>Телефон</a> — 
-                        <span className='red'> уже используется другим пользователем</span>
-                    </li>
-                </ul>
+            <div className="box mb-4 position-relative">
+                <Swiper
+                    className='sw-mini'
+                    modules={[Navigation]}
+                    spaceBetween={0}
+                    slidesPerView={1}
+                    navigation
+                    >
+                    <SwiperSlide>
+                        <div className='d-flex align-items-center'>
+                            <IoAlertCircleOutline className='fs-18 red'/>
+                            <h4 className='mb-0 ms-2'>Профиль не опубликован</h4>
+                        </div>
+                        <ul className="list-unstyled">
+                            <li className='mt-3'>
+                                <a href='/' className='link'>Паспорт</a> — 
+                                <span className='red'> не заполнено</span>
+                            </li>
+                            <li className='mt-3'>
+                                <a href='/' className='link'>Телефон</a> — 
+                                <span className='red'> уже используется другим пользователем</span>
+                            </li>
+                        </ul>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className='d-flex align-items-center'>
+                            <IoAlertCircleOutline className='fs-18 red'/>
+                            <h4 className='mb-0 ms-2'>Подтвердите, что вы — это вы</h4>
+                        </div>
+                        <div className='d-flex mt-3'>
+                            <div className="flex-1">
+                                <p>Чтобы опубликовать ваш профиль на Яндекс.Услугах, нужно пройти проверку: загрузить фото профиля и показать нам паспорт (больше его никто не увидит).</p>
+                            </div>
+                            <button type='button' className='btn-4 p-3'>
+                                <IoAddOutline className='fs-13 me-1'/>
+                                <span>Начать</span>
+                            </button>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className='d-flex align-items-center'>
+                            <IoCheckmarkCircleOutline className='fs-18 gray-3'/>
+                            <h4 className='mb-0 ms-2'>Добавьте цены</h4>
+                        </div>
+                        <div className='d-flex mt-3'>
+                            <div className="flex-1">
+                                <p>Так заказчикам будет легче сделать выбор</p>
+                            </div>
+                            <button type='button' className='btn-4 p-3'>
+                                <IoAddOutline className='fs-13 me-1'/>
+                                <span>Добавить</span>
+                            </button>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className='d-flex align-items-center'>
+                            <IoCheckmarkCircleOutline className='fs-18 gray-3'/>
+                            <h4 className='mb-0 ms-2'>Добавьте детали работы</h4>
+                        </div>
+                        <div className='d-flex mt-3'>
+                            <div className="flex-1">
+                                <p>Укажите специфику работы, рабочее время в категории «Разработка сайтов»</p>
+                            </div>
+                            <button type='button' className='btn-4 p-3'>
+                                <IoAddOutline className='fs-13 me-1'/>
+                                <span>Добавить</span>
+                            </button>
+                        </div>
+                    </SwiperSlide>
+                </Swiper>
             </div>
 
             <div className="box mb-4 d-flex align-items-center">
@@ -36,14 +97,14 @@ const Index = () => {
                     <p className='gray-3'>Подключите продвижение, чтобы поднять ваш профиль в результатах поиска</p>
                     <button type='button' className='btn-3 py-3 mt-3'>Подключить продвижение</button>
                 </div>
-                <div className='icon'>
+                <div className='icon-mini'>
                     <IoTrendingUpOutline />
                 </div>
             </div>
 
             <Link to='/' className="box d-block mb-4">
                 <div className='d-flex align-items-center mb-3'>
-                    <IoEyeOutline className='fs-18 color-2'/>
+                    <IoEyeOutline className='fs-18 color-5'/>
                     <h4 className='mb-0 ms-2'>Публичный профиль</h4>
                 </div>
                 <p>Посмотрите, как заказчики видят ваш профиль</p>
@@ -62,7 +123,7 @@ const Index = () => {
                 <Col>
                     <Link to='/' className="box d-block mb-4">
                         <div className='d-flex align-items-center mb-3'>
-                            <IoPersonCircleOutline className='fs-18 color-2'/>
+                            <IoPersonCircleOutline className='fs-18 color-5'/>
                             <h4 className='mb-0 ms-2'>Фото профиля</h4>
                         </div>
                         <p>Фото не добавлено</p>
@@ -71,7 +132,7 @@ const Index = () => {
                 <Col>
                     <Link to='/' className="box d-block mb-4">
                         <div className='d-flex align-items-center mb-3'>
-                            <IoLocationOutline className='fs-18 color-2'/>
+                            <IoLocationOutline className='fs-18 color-5'/>
                             <h4 className='mb-0 ms-2'>Адреса</h4>
                         </div>
                         <p>Адрес не добавлен</p>
@@ -98,13 +159,14 @@ const Index = () => {
                 <Col>
                     <Link to='/' className="box d-block mb-4">
                         <div className='d-flex align-items-center mb-3'>
-                            <IoVideocamOutline className='fs-18 color-2'/>
+                            <IoVideocamOutline className='fs-18 color-5'/>
                             <h4 className='mb-0 ms-2'>Видео</h4>
                         </div>
                         <p>Видео не добавлено</p>
                     </Link>
                 </Col>
             </Row>
+
             <Link to='/' className="box d-flex align-items-center justify-content-between mb-4">
                 <div className='flex-1'>
                     <div className='mb-1'>Компьютеры и IT</div>
