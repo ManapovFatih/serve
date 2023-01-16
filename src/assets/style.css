@@ -91,6 +91,7 @@ input[type=radio] {
   border: 1px solid #BFBFBF;
   border-radius: 50%;
   position: relative;
+  cursor: pointer;
 }
 input[type=radio]::after {
   content: "";
@@ -100,19 +101,24 @@ input[type=radio]::after {
   width: 50%;
   height: 50%;
   border-radius: 50%;
-  background-color: #26C24A;
-  opacity: 0;
+  background-color: #BFBFBF;
   transform: translate(50%, 50%);
-  transition: opacity 0.3s ease;
+  transition: 0.3s ease;
 }
 input[type=radio]:checked {
   border: 1px solid #26C24A;
 }
 input[type=radio]:checked::after {
-  opacity: 1;
+  background-color: #26C24A;
 }
 input[type=checkbox] {
   border-radius: 0px;
+}
+
+.form-control {
+  line-height: 3em;
+  border: transparent;
+  border-radius: 2em;
 }
 
 label {
@@ -392,6 +398,10 @@ h6 {
   color: #d70000;
 }
 
+.blue {
+  color: #299dfc;
+}
+
 .bg-1 {
   background-color: #F2F2F2;
 }
@@ -401,7 +411,7 @@ h6 {
 }
 
 .box {
-  border-radius: 1em;
+  border-radius: 2em;
   border: 1px solid #F2F2F2;
   padding: 2em;
   box-shadow: 0px 2px 6px #F2F2F2;
@@ -1246,6 +1256,7 @@ main {
   }
 }
 
+/* Account */
 .account-nav ul {
   list-style: none;
   padding-left: 0px;
@@ -1273,6 +1284,21 @@ main {
   transform: translateY(-50%) translateX(50%);
 }
 
+.form-about-info {
+  background-color: #F2F2F2;
+}
+.form-about-info fieldset:not(:last-child) {
+  border-bottom: 2px dashed #BFBFBF;
+  padding-bottom: 2em;
+  margin-bottom: 2em;
+}
+.form-about-info fieldset legend {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+
+/* Account END */
 footer {
   height: var(--f-height);
   background-color: #0D0D0D;

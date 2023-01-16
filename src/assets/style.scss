@@ -41,6 +41,8 @@ $gray-2: #BFBFBF;
 $gray-3: #737373;
 $gray-4: #404040;
 $gray-5: #0D0D0D;
+$blue: #299dfc;
+$red: #d70000;
 $transition: .3s ease;
 $radius: 2em;
 
@@ -116,6 +118,7 @@ input {
         border: 1px solid $gray-2;
         border-radius: 50%;
         position: relative;
+        cursor: pointer;
         &::after {
             content: '';
             position: absolute;
@@ -124,15 +127,16 @@ input {
             width: 50%;
             height: 50%;
             border-radius: 50%;
-            background-color: $color-2;
-            opacity: 0;
+            background-color: $gray-2;
+            // opacity: 0;
             transform: translate(50%, 50%);
-            transition: opacity $transition;
+            transition: $transition;
         }
         &:checked {
             border: 1px solid $color-2;
             &::after {
-                opacity: 1;
+                // opacity: 1;
+                background-color: $color-2;
             }
         }
     }
@@ -141,6 +145,11 @@ input {
     }
 }
 
+.form-control {
+    line-height: 3em;
+    border: transparent;
+    border-radius: $radius;
+}
 label {
     display: flex;
     align-items: center;
@@ -335,7 +344,8 @@ h6 {
 .color-5 {color: $color-5;}
 .gray-2 {color: $gray-2;}
 .gray-3 {color: $gray-3;}
-.red {color: #d70000;}
+.red {color: $red;}
+.blue {color: $blue;}
 
 .bg-1 {background-color: $gray-1;}
 
@@ -343,7 +353,7 @@ h6 {
     flex: 1;
 }
 .box {
-    border-radius: $radius/2;
+    border-radius: $radius;
     border: 1px solid $gray-1;
     padding: 2em;
     box-shadow: 0px 2px 6px $gray-1;
@@ -1049,6 +1059,8 @@ main {
     }
 }
 
+
+/* Account */
 .account-nav {
     ul {
         list-style: none;
@@ -1078,6 +1090,22 @@ main {
         transform: translateY(-50%) translateX(50%);
     }
 }
+.form-about-info {
+    background-color: $gray-1;
+    fieldset {
+        &:not(:last-child){
+            border-bottom: 2px dashed $gray-2;
+            padding-bottom: 2em;
+            margin-bottom: 2em;
+        }
+        legend {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 1em;
+        }
+    }
+}
+/* Account END */
 
 footer {
     height: var(--f-height);

@@ -1,7 +1,11 @@
 import React from 'react'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
+import AddInput from '../../components/utils/AddInput'
 
-import { IoArrowUndoOutline } from "react-icons/io5"
+import { IoArrowUndoOutline, IoLogoWhatsapp, IoLogoSkype, IoMailOutline, IoLogoYoutube, IoGlobeOutline } from "react-icons/io5"
+import { BsTelegram } from "react-icons/bs"
+import AddPhotos from '../../components/utils/AddPhotos'
 
 const About = () => {
     return (
@@ -9,9 +13,10 @@ const About = () => {
             <h1 className='inner text-center mb-4'>О себе</h1>
             <p className='text-center gray-3 mb-5'>Расскажите подробно о себе, добавьте ссылки на профили в соц. сетях и мессенджерах, <br/>чтобы клиенты смогли получше вас узнать</p>
 
-            <form action="" className='box bg-1'>
+            <form action="" className='form-about-info box'>
                 <fieldset>
-                    <legend className='fs-15 fw-6 mb-4'>Общая информация</legend>
+                    <legend>Общая информация</legend>
+
                     <p>Напишите коротко о ваших сильных сторонах, важных качествах, какие инструменты и технологии используете. Про услуги и опыт напишите в специальных полях.</p>
                     <div className='mt-4 mb-3'>О себе</div>
                     <textarea rows="10" placeholder='Расскажите о себе'></textarea>
@@ -26,13 +31,87 @@ const About = () => {
                             <span className='ms-2'>Мужской</span>
                         </label>
                     </div>
+
+                    <div className='mt-4 mb-3'>Дата рождения</div>
+                    <input type="date" />
+
+                    <div className='mt-4 mb-3'>Видео о себе</div>
+                    <Form.Control type="file" multiple accept="video/*" />
                 </fieldset>
+
+                <fieldset>
+                    <legend>Профильное образование</legend>
+                    <p className='mb-4'>Подробно опишите ваше образование: вуз, название специальности, тип обучения,например, «РГГУ, маркетинг и технологии, бакалавр» или «УГТУ УПИ, графический дизайн, курсы переподготовки»</p>
+
+                    <AddInput />
+
+                    <h5 className='mt-4'>Дипломы, сертификаты, лицензии</h5>
+                    <p>Приложите фотографии или сканы документов, подтверждающих вашу квалификацию</p>
+
+                    <AddPhotos />
+                </fieldset>
+
+                <fieldset>
+                    <legend>Профили в других сервисах</legend>
+                    <p className='mb-5'>Скопируйте ссылки на ваши профили в социальных сетях и мессенджеры, вставьте их в соответствующие поля. Это повысит доверие к вашему профилю и ускорит связь с вами.</p>
+                    <h5>Мессенджеры</h5>
+                    <ul className='list-unstyled row row-cols-2 g-4 mb-5'>
+                        <li>
+                            <div className='d-flex align-items-center mb-2'>
+                                <IoLogoWhatsapp className='fs-13 color-2'/>
+                                <span className='ms-1'>WhatsApp</span>    
+                            </div>
+                            <input type="text" placeholder=''/>
+                        </li>
+                        <li>
+                            <div className='d-flex align-items-center mb-2'>
+                                <BsTelegram className='fs-13 blue'/>
+                                <span className='ms-1'>Telegram</span>    
+                            </div>
+                            <input type="text" placeholder=''/>
+                        </li>
+                        <li>
+                            <div className='d-flex align-items-center mb-2'>
+                                <IoLogoSkype className='fs-13 blue'/>
+                                <span className='ms-1'>Skype</span>    
+                            </div>
+                            <input type="text" placeholder=''/>
+                        </li>
+                        <li>
+                            <div className='d-flex align-items-center mb-2'>
+                                <IoMailOutline className='fs-13 color-2'/>
+                                <span className='ms-1'>Электронная почта для связи</span>    
+                            </div>
+                            <input type="text" placeholder=''/>
+                        </li>
+                    </ul>
+
+                    <h5>Другие сервисы</h5>
+                    <ul className='list-unstyled row row-cols-2 g-4'>
+                        <li>
+                            <div className='d-flex align-items-center mb-2'>
+                                <IoLogoYoutube className='fs-13 red'/>
+                                <span className='ms-1'>YouTube</span>    
+                            </div>
+                            <input type="text" placeholder=''/>
+                        </li>
+                        <li>
+                            <div className='d-flex align-items-center mb-2'>
+                                <IoGlobeOutline className='fs-13 color-5'/>
+                                <span className='ms-1'>Личный сайт</span>    
+                            </div>
+                            <input type="text" placeholder=''/>
+                        </li>
+                    </ul>
+                </fieldset>
+
+                <button type='button' className='btn-3'>Сохранить</button>
             </form>
 
-            <button type='button' className='btn-4 mx-auto mt-4'>
+            <Link to='/account' className='btn-4 mx-auto mt-4'>
                 <IoArrowUndoOutline className='fs-13 me-2'/>
                 <span>Вернуться на страницу профиля</span>
-            </button>
+            </Link>
         </section>
     );
 };
