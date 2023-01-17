@@ -5,7 +5,7 @@ import AddInput from '../../components/utils/AddInput'
 
 import { IoArrowUndoOutline, IoLogoWhatsapp, IoLogoSkype, IoMailOutline, IoLogoYoutube, IoGlobeOutline } from "react-icons/io5"
 import { BsTelegram } from "react-icons/bs"
-import AddPhotos from '../../components/utils/AddPhotos'
+import AddPhoto from '../../components/utils/AddPhoto'
 
 const About = () => {
     return (
@@ -47,8 +47,12 @@ const About = () => {
 
                     <h5 className='mt-4'>Дипломы, сертификаты, лицензии</h5>
                     <p>Приложите фотографии или сканы документов, подтверждающих вашу квалификацию</p>
-
-                    <AddPhotos />
+                    <div className="my-3 d-flex flex-wrap">
+                        <AddPhoto name={'img-1'} id={'img1'} className='me-3'/>
+                        <AddPhoto name={'img-2'} id={'img2'} className='me-3'/>
+                        <AddPhoto name={'img-3'} id={'img3'} className='me-3'/>
+                        <AddPhoto name={'img-4'} id={'img4'} className='me-3'/>
+                    </div>
                 </fieldset>
 
                 <fieldset>

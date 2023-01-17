@@ -8,7 +8,7 @@ import { Navigation } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
-import { IoAlertCircleOutline, IoTrendingUpOutline, IoAddOutline, IoEyeOutline, IoCashOutline, IoPersonCircleOutline, IoInformationCircleOutline, IoLocationOutline, IoVideocamOutline, IoListOutline, IoCheckmarkCircleOutline } from "react-icons/io5"
+import { IoAlertCircleOutline, IoTrendingUpOutline, IoAddOutline, IoEyeOutline, IoCashOutline, IoPersonCircleOutline, IoInformationCircleOutline, IoLocationOutline, IoListOutline, IoCheckmarkCircleOutline } from "react-icons/io5"
 
 const Index = () => {
     return (
@@ -104,7 +104,7 @@ const Index = () => {
 
             <Link to='/' className="box d-block mb-4">
                 <div className='d-flex align-items-center mb-3'>
-                    <IoEyeOutline className='fs-18 color-5'/>
+                    <IoEyeOutline className='fs-18 color-2'/>
                     <h4 className='mb-0 ms-2'>Публичный профиль</h4>
                 </div>
                 <p>Посмотрите, как заказчики видят ваш профиль</p>
@@ -114,7 +114,7 @@ const Index = () => {
                 <Col>
                     <Link to='/' className="box d-block mb-4">
                         <div className='d-flex align-items-center mb-3'>
-                            <IoCashOutline className='fs-18 color-2'/>
+                            <IoCashOutline className='fs-18 color-5'/>
                             <h4 className='mb-0 ms-2'>Продвижение: 0 ₽</h4>
                         </div>
                         <p>Счёт для оплаты продвижения</p>
@@ -123,10 +123,10 @@ const Index = () => {
                 <Col>
                     <Link to='/' className="box d-block mb-4">
                         <div className='d-flex align-items-center mb-3'>
-                            <IoPersonCircleOutline className='fs-18 color-5'/>
+                            <IoPersonCircleOutline className='fs-18 color-2'/>
                             <h4 className='mb-0 ms-2'>Фото профиля</h4>
                         </div>
-                        <p>Фото не добавлено</p>
+                        <p>Фото добавлено</p>
                     </Link>
                 </Col>
                 <Col>
@@ -141,31 +141,21 @@ const Index = () => {
                 <Col>
                     <Link to='/' className="box d-block mb-4">
                         <div className='d-flex align-items-center mb-3'>
-                            <IoInformationCircleOutline className='fs-18 color-2'/>
+                            <IoInformationCircleOutline className='fs-18 color-5'/>
                             <h4 className='mb-0 ms-2'>О себе</h4>
                         </div>
                         <p>Заполнено 0 из 18</p>
                     </Link>
                 </Col>
-                <Col>
-                    <Link to='/' className="box d-block mb-4">
-                        <div className='d-flex align-items-center mb-3'>
-                            <IoListOutline className='fs-18 color-2'/>
-                            <h4 className='mb-0 ms-2'>Специальности</h4>
-                        </div>
-                        <p>Специальности добавлены (1)</p>
-                    </Link>
-                </Col>
-                <Col>
-                    <Link to='/' className="box d-block mb-4">
-                        <div className='d-flex align-items-center mb-3'>
-                            <IoVideocamOutline className='fs-18 color-5'/>
-                            <h4 className='mb-0 ms-2'>Видео</h4>
-                        </div>
-                        <p>Видео не добавлено</p>
-                    </Link>
-                </Col>
             </Row>
+
+            <Link to='/' className="box d-block mb-4">
+                <div className='d-flex align-items-center mb-3'>
+                    <IoListOutline className='fs-18 color-2'/>
+                    <h4 className='mb-0 ms-2'>Специальности</h4>
+                </div>
+                <p>Специальности добавлены (1)</p>
+            </Link>
 
             <Link to='/' className="box d-flex align-items-center justify-content-between mb-4">
                 <div className='flex-1'>

@@ -1,53 +1,50 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 
 const Menu = () => {
     return (
         <nav className='account-nav'>
             <ul>
                 <li>
-                    <Link to='/account'>Профиль</Link>
+                    <NavLink to='/account' end>Профиль</NavLink>
                 </li>
                 <li>
-                    <Link to='/'>Продвижение: 0 ₽</Link>
+                    <NavLink to='promotion'>Продвижение: 0 ₽</NavLink>
                 </li>
                 <li>
-                    <Link to='/'>Фото профиля</Link>
+                    <NavLink to='photo'>Фото профиля</NavLink>
                 </li>
                 <li>
-                    <Link to='addresses'>Адреса</Link>
+                    <NavLink to='addresses'>Адреса</NavLink>
                 </li>
                 <li>
-                    <Link to='about'>О себе</Link>
+                    <NavLink to='about'>О себе</NavLink>
                 </li>
                 <li>
-                    <Link to='/'>Специальности</Link>
-                </li>
-                <li>
-                    <Link to='/'>Видео</Link>
+                    <NavLink to='specialties'>Специальности</NavLink>
                 </li>
             </ul>
 
             <h6 className='gray-2 fw-4 mt-5 mb-3'>Разное</h6>
             <ul>
                 <li>
-                    <Link to='/'>Интернет-маркетолог</Link>
+                    <NavLink to='/'>Интернет-маркетолог</NavLink>
                 </li>
                 <li>
-                    <Link to='/'>SMM-продвижение</Link>
+                    <NavLink to='/'>SMM-продвижение</NavLink>
                 </li>
             </ul>
 
             <h6 className='gray-2 fw-4 mt-5 mb-3'>Компьютеры и IT</h6>
             <ul>
                 <li>
-                    <Link to='/'>Разработка сайтов</Link>
+                    <NavLink to='/'>Разработка сайтов</NavLink>
                 </li>
                 <li>
-                    <Link to='/'>Администрирование</Link>
+                    <NavLink to='/'>Администрирование</NavLink>
                 </li>
                 <li>
-                    <Link to='/'>Другое</Link>
+                    <NavLink to='/'>Другое</NavLink>
                 </li>
             </ul>
         </nav>
