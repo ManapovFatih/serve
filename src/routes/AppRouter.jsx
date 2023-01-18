@@ -11,6 +11,7 @@ import About from '../pages/account/About'
 import ProfilePhoto from '../pages/account/ProfilePhoto'
 import Promotion from '../pages/account/Promotion'
 import Specialties from '../pages/account/Specialties'
+import Services from '../pages/account/Services'
 
 const router = createHashRouter(
     createRoutesFromElements(
@@ -27,6 +28,7 @@ const router = createHashRouter(
             <Route path="photo" element={<ProfilePhoto/>}/>
             <Route path="promotion" element={<Promotion/>}/>
             <Route path="specialties" element={<Specialties/>}/>
+            <Route path="services" element={<Services/>}/>
         </Route>
         </>
     )

@@ -150,6 +150,11 @@ input[type=checkbox]:checked::after {
   opacity: 1;
 }
 
+fieldset legend {
+  display: block;
+  float: unset;
+}
+
 .form-control {
   line-height: 3em;
   border: transparent;
@@ -164,6 +169,114 @@ label span {
   flex: 1;
 }
 
+.simple-select-container {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 150px;
+  max-width: 100%;
+}
+@media (max-width: 575px) {
+  .simple-select-container {
+    min-width: unset;
+  }
+}
+.simple-select__control {
+  border-radius: 2em !important;
+  height: 100%;
+  border: 1px solid #BFBFBF !important;
+  background-color: #fff !important;
+  transition: 0.3s ease !important;
+  padding: 0.7em;
+}
+.simple-select__control--is-focused {
+  border: 1px solid #26C24A !important;
+  box-shadow: none !important;
+}
+.simple-select__value-container {
+  padding: 0px !important;
+  flex-wrap: nowrap !important;
+}
+.simple-select__placeholder {
+  white-space: nowrap;
+}
+.simple-select__single-value {
+  color: #000 !important;
+  cursor: pointer;
+}
+.simple-select__indicators {
+  margin-left: 0.5em;
+}
+.simple-select__indicator {
+  color: #737373 !important;
+  transition: 0.3s ease !important;
+  cursor: pointer;
+  padding: 0px !important;
+  width: 2em;
+  height: 1.35em;
+}
+.simple-select__indicator:hover {
+  color: #26C24A !important;
+}
+.simple-select__indicator svg {
+  width: 100% !important;
+  height: 100% !important;
+}
+.simple-select__indicator-separator {
+  height: 80%;
+  margin: 0px !important;
+  align-self: unset !important;
+}
+.simple-select__input-container {
+  margin: 0px !important;
+  padding: 4px 0px !important;
+  cursor: text;
+}
+.simple-select__multi-value {
+  background-color: #F2F2F2 !important;
+  border-radius: 1em !important;
+}
+.simple-select__multi-value__remove {
+  background-color: #F2F2F2;
+  border-radius: 0px;
+  color: #000;
+  border-radius: 50% !important;
+  transition: 0.3s ease;
+}
+.simple-select__multi-value__remove:hover {
+  background-color: #d70000 !important;
+  color: #fff !important;
+}
+.simple-select__menu {
+  margin-top: 0px !important;
+  top: calc(100% + 0.5em) !important;
+  font-size: 0.9em;
+  min-width: 100%;
+  background-color: #fff !important;
+  border: 1px solid #BFBFBF !important;
+  border-radius: 1em !important;
+  box-shadow: none !important;
+  outline: none !important;
+  width: -webkit-fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  z-index: 10 !important;
+  overflow: hidden;
+}
+.simple-select__option {
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+.simple-select__option:hover, .simple-select__option:focus, .simple-select__option:active, .simple-select__option--is-focused {
+  background-color: #AAEEBA !important;
+  color: #000;
+  cursor: pointer;
+}
+.simple-select__option--is-selected {
+  background-color: #26C24A !important;
+  color: #000;
+}
+
 .add-photo {
   isolation: isolate;
   transform: translateZ(0);
@@ -171,6 +284,7 @@ label span {
   justify-content: center;
   align-items: center;
   border: 2px dashed #BFBFBF;
+  background-color: #fff;
   border-radius: 10px;
   font-size: 2em;
   position: relative;
@@ -1390,6 +1504,24 @@ main {
   font-size: 1.5em;
   font-weight: 600;
   margin-bottom: 1em;
+}
+
+.servises-list {
+  list-style: none;
+  padding-left: 0px;
+}
+.servises-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.servises-list li:not(:last-child) {
+  border-bottom: 2px dashed #F2F2F2;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+}
+.servises-list li button {
+  padding: 0.75em 1em;
 }
 
 /* Account END */

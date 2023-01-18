@@ -173,6 +173,12 @@ input {
         }
     }
 }
+fieldset {
+    legend{
+        display: block;
+        float: unset;
+    }
+}
 
 .form-control {
     line-height: 3em;
@@ -185,10 +191,118 @@ label {
     span {flex: 1;}
 }
 
+.simple-select {
+    &-container {
+        width: fit-content;
+        min-width: 150px;
+        max-width: 100%;
+        @media (max-width: 575px) {
+            min-width: unset;
+        }
+    }
+    &__control {
+        border-radius: $radius !important;
+        height: 100%;
+        border: 1px solid $gray-2 !important;
+        background-color: #fff !important;
+        transition: $transition !important;
+        padding: .7em;
+        &--is-focused {
+            border: 1px solid $color-2 !important;
+            box-shadow: none !important;
+        }
+    }
+    &__value-container {
+        padding: 0px !important;
+        flex-wrap: nowrap !important;
+    }
+    &__placeholder {
+        white-space: nowrap;
+    }
+    &__single-value {
+        color: #000 !important;
+        cursor: pointer;
+    }
+    &__indicators {
+        margin-left: .5em;
+    }
+    &__indicator {
+        color: $gray-3 !important;
+        transition: $transition !important;
+        cursor: pointer;
+        padding: 0px !important;
+        width: 2em;
+        height: 1.35em;
+        &:hover {
+            color: $color-2 !important;
+        }
+        svg {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        &-separator {
+            height: 80%;
+            margin: 0px !important;
+            align-self: unset !important;
+        }
+    }
+    &__input-container {
+        margin: 0px !important;
+        padding: 4px 0px !important;
+        cursor: text;
+    }
+    &__multi-value {
+        background-color: $gray-1 !important;
+        border-radius: 1em !important;
+        &__remove {
+            background-color: $gray-1;
+            border-radius: 0px;
+            color: #000;
+            border-radius: 50% !important;
+            transition: $transition;
+            &:hover {
+                background-color: $red !important;
+                color: #fff !important;
+            }
+        }
+    }
+    &__menu {
+        margin-top: 0px !important;
+        top: calc(100% + .5em) !important;
+        font-size: 0.9em;
+        min-width: 100%;
+        background-color: #fff !important;
+        border: 1px solid $gray-2 !important;
+        border-radius: $radius*.5 !important;
+        box-shadow: none !important;
+        outline: none !important;
+        width: fit-content !important;
+        z-index: 10 !important;
+        overflow: hidden;
+    }
+    &__option {
+        transition: $transition;
+        white-space: nowrap;
+        &:hover,
+        &:focus,
+        &:active,
+        &--is-focused {
+            background-color: $color-3 !important;
+            color: #000;
+            cursor: pointer;
+        }
+        &--is-selected {
+            background-color: $color-2 !important;
+            color: #000;
+        }
+    }
+}
+
 .add-photo {
     @include safariFix();
     @include flex-center();
     border: 2px dashed $gray-2;
+    background-color: #fff;
     border-radius: 10px;
     font-size: 2em;
     position: relative;
@@ -1182,7 +1296,25 @@ main {
         }
     }
 }
+.servises-list {
+    list-style: none;
+    padding-left: 0px;
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &:not(:last-child){
+            border-bottom: 2px dashed $gray-1;
+            margin-bottom: 0.5em;
+            padding-bottom: 0.5em;
+        }
+        button {
+            padding: .75em 1em;
+        }
+    }
+}
 /* Account END */
+
 
 footer {
     height: var(--f-height);

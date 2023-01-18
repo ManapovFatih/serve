@@ -1,6 +1,28 @@
 import React from 'react'
+import Select from 'react-select'
 import {Link} from 'react-router-dom'
 import { IoAddOutline, IoArrowUndoOutline } from "react-icons/io5"
+
+const optionsList = [
+    {value: '1', label: 'Аренда'},
+    {value: '2', label: 'Артисты'},
+    {value: '3', label: 'Дизайнеры'},
+    {value: '4', label: 'Красота'},
+    {value: '5', label: 'Организация мероприятий'},
+    {value: '6', label: 'Охрана и детективы'},
+    {value: '7', label: 'Перевозки и курьеры'},
+    {value: '8', label: 'Ремонт авто'},
+    {value: '9', label: 'Ремонт и строительство'},
+    {value: '10', label: 'Ремонт и установка техники'},
+    {value: '11', label: 'Репетиторы и обучение'},
+    {value: '12', label: 'Творчество, рукоделие и хобби'},
+    {value: '13', label: 'Тренеры'},
+    {value: '14', label: 'Услуги для животных'},
+    {value: '15', label: 'Фото, видео, аудио'},
+    {value: '16', label: 'Хозяйство и уборка'},
+    {value: '17', label: 'Юристы'},
+    {value: '18', label: 'Разное'},
+]
 
 const Specialties = () => {
     return (
@@ -11,7 +33,7 @@ const Specialties = () => {
             <div className="box">
                 <form action="">
                     <fieldset>
-                        <legend>Компьютеры и IT</legend>
+                        <legend className='mb-3'>Компьютеры и IT</legend>
                         <ul className="list-unstyled row row-cols-3 g-4">
                             <li>
                                 <label>
@@ -136,26 +158,27 @@ const Specialties = () => {
                         </ul>
                     </fieldset>
 
-
-                    <fieldset>
-                        <legend>Добавьте специальности</legend>
-                        <div className="d-flex align-items-center mt-4">
-                            <select name="" id="">
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
-                            </select>
-                            <button type='button' className='btn-4 p-3'>
+                    <fieldset className='mt-5'>
+                        <legend className='mb-3'>Добавьте специальности</legend>
+                        <div className="d-flex">
+                            <Select
+                                name="sort"
+                                placeholder="Специальности"
+                                classNamePrefix="simple-select"
+                                className="simple-select-container"
+                                options={optionsList}
+                                isMulti
+                                isClearable={true}
+                                isSearchable={true}
+                            />
+                            <button type='button' className='btn-4 p-3 ms-4'>
                                 <IoAddOutline className='fs-13 me-1'/>
                                 <span>Добавить</span>
                             </button>
                         </div>
                     </fieldset>
-                    
-                    
-                        
-                        <button type='submit' className='btn-1 ms-4 py-3'>Сохранить</button>
-                    
+
+                    <button type='submit' className='btn-1 mt-5 py-3 px-5'>Сохранить</button>
                 </form>
             </div>
 

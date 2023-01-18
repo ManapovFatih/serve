@@ -28,23 +28,23 @@ const Menu = () => {
             <h6 className='gray-2 fw-4 mt-5 mb-3'>Разное</h6>
             <ul>
                 <li>
-                    <NavLink to='/'>Интернет-маркетолог</NavLink>
+                    <NavLink to='services'>Интернет-маркетолог</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/'>SMM-продвижение</NavLink>
+                    <NavLink to='services'>SMM-продвижение</NavLink>
                 </li>
             </ul>
 
             <h6 className='gray-2 fw-4 mt-5 mb-3'>Компьютеры и IT</h6>
             <ul>
                 <li>
-                    <NavLink to='/'>Разработка сайтов</NavLink>
+                    <NavLink to='services'>Разработка сайтов</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/'>Администрирование</NavLink>
+                    <NavLink to='services'>Администрирование</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/'>Другое</NavLink>
+                    <NavLink to='services'>Другое</NavLink>
                 </li>
             </ul>
         </nav>
