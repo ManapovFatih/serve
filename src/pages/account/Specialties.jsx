@@ -27,14 +27,14 @@ const optionsList = [
 const Specialties = () => {
     return (
         <section>
-            <h1 className='inner text-center mb-4'>Специальности</h1>
-            <p className='text-center gray-3 mb-5'>Специальности — это категории услуг, которые вы оказываете. В каждой из них мы предустановили наборы популярных услуг, вам останется проставить им цены.</p>
+            <h1 className='inner text-center mb-3'>Специальности</h1>
+            <p className='text-center gray-3 mb-4 mb-sm-5'>Специальности — это категории услуг, которые вы оказываете. В каждой из них мы предустановили наборы популярных услуг, вам останется проставить им цены.</p>
 
             <div className="box">
                 <form action="">
                     <fieldset>
                         <legend className='mb-3'>Компьютеры и IT</legend>
-                        <ul className="list-unstyled row row-cols-3 g-4">
+                        <ul className="list-unstyled row row-cols-sm-2 row-cols-md-3 g-4">
                             <li>
                                 <label>
                                     <input type="checkbox" />
@@ -160,25 +160,25 @@ const Specialties = () => {
 
                     <fieldset className='mt-5'>
                         <legend className='mb-3'>Добавьте специальности</legend>
-                        <div className="d-flex">
+                        <div className="d-sm-flex">
                             <Select
                                 name="sort"
                                 placeholder="Специальности"
                                 classNamePrefix="simple-select"
-                                className="simple-select-container"
+                                className="simple-select-container w-xs-100"
                                 options={optionsList}
                                 isMulti
                                 isClearable={true}
                                 isSearchable={true}
                             />
-                            <button type='button' className='btn-4 p-3 ms-4'>
+                            <button type='button' className='btn-4 p-3 ms-sm-4 mt-3 mt-sm-0 w-xs-100'>
                                 <IoAddOutline className='fs-13 me-1'/>
                                 <span>Добавить</span>
                             </button>
                         </div>
                     </fieldset>
 
-                    <button type='submit' className='btn-1 mt-5 py-3 px-5'>Сохранить</button>
+                    <button type='submit' className='btn-1 mt-4 mt-sm-5 py-3 px-5 w-xs-100'>Сохранить</button>
                 </form>
             </div>
 

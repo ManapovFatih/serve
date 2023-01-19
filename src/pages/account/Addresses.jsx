@@ -10,12 +10,12 @@ const Addresses = () => {
             <p className='text-center gray-3 mb-5'>Ищем заказы рядом и чаще показываем ваш профиль заказчикам в этих районах.</p>
 
             <div className="box mt-3">
-                <div className='d-flex align-items-center'>
+                <div className='d-sm-flex align-items-center'>
                     <div className="flex-1">
                         <h4 className='mb-2'>Ваша домашняя точка</h4>
                         <p>Чтобы получать заказы поблизости, укажите точный адрес. Другие пользователи его не увидят — им мы покажем примерную область с погрешностью не меньше 300 метров.</p>
                     </div>
-                    <button type='button' className='btn-4 p-3 ms-3'>
+                    <button type='button' className='btn-4 p-3 mt-3 mt-sm-0 ms-sm-3 w-xs-100'>
                         <IoAddOutline className='fs-13 me-1'/>
                         <span>Добавить</span>
                     </button>
@@ -23,12 +23,12 @@ const Addresses = () => {
             </div>
 
             <div className="box mt-3">
-                <div className='d-flex align-items-center'>
+                <div className='d-sm-flex align-items-center'>
                     <div className="flex-1">
                         <h4 className='mb-2'>Принимаете клиентов у себя?</h4>
                         <p>Укажите улицу и дом, где вы готовы принимать клиентов.</p>
                     </div>
-                    <button type='button' className='btn-4 p-3 ms-3'>
+                    <button type='button' className='btn-4 p-3 mt-3 mt-sm-0 ms-sm-3 w-xs-100'>
                         <IoAddOutline className='fs-13 me-1'/>
                         <span>Добавить</span>
                     </button>
@@ -46,12 +46,12 @@ const Addresses = () => {
             </div>
 
             <div className="box mt-3">
-                <div className='d-flex align-items-center'>
+                <div className='d-sm-flex align-items-center'>
                     <div className="flex-1">
                         <h4 className='mb-2'>Выезжаете на заказы?</h4>
                         <p>Укажите область, город или район, куда вы готовы приехать.</p>
                     </div>
-                    <button type='button' className='btn-4 p-3 ms-3'>
+                    <button type='button' className='btn-4 p-3 mt-3 mt-sm-0 ms-sm-3 w-xs-100'>
                         <IoAddOutline className='fs-13 me-1'/>
                         <span>Добавить</span>
                     </button>

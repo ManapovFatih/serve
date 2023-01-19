@@ -9,9 +9,9 @@ const ProfilePhoto = () => {
             <h1 className='inner text-center mb-4'>Фото</h1>
             <p className='text-center gray-3 mb-5'>От фотографии зависит, какое первое впечатление вы произведёте на пользователей сервиса.</p>
             
-            <div className="d-flex">
+            <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center">
                 <AddPhoto name={'photo-1'} id={'photo1'} className="big"/>
-                <div className="flex-1 ms-4">
+                <div className="flex-1 ms-sm-4 mt-4 mt-sm-0">
                     <h3>Рекомендации</h3>
                     <p>Сфотографируйтесь как на паспорт, только с лёгкой улыбкой. Лучше всего — при естественном свете. Хорошая фотография вызовет у людей доверие.</p>
                 </div>
