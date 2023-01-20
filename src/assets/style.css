@@ -73,6 +73,11 @@ input::placeholder, textarea::placeholder {
   color: #737373;
   font-weight: 400;
 }
+@media (max-width: 575px) {
+  input, textarea {
+    padding: 1em 1.5em;
+  }
+}
 
 input[type=radio] {
   appearance: none;
@@ -380,11 +385,16 @@ button {
   font-weight: 500;
   border-radius: 2em;
 }
+@media (max-width: 575px) {
+  .btn, .btn-4, .btn-3, .btn-2, .btn-1 {
+    padding: 1em 1.5em;
+  }
+}
 .btn-1 {
   color: #fff;
   background: #26C24A;
 }
-.btn-1:hover, .btn-1:focus, .btn-1:active {
+.btn-1:hover, .btn-1:focus, .btn-1:active, .btn-1.active {
   color: #fff;
   background: #FF6332;
 }
@@ -392,7 +402,7 @@ button {
   color: #0D0D0D;
   background: #fff;
 }
-.btn-2:hover, .btn-2:focus, .btn-2:active {
+.btn-2:hover, .btn-2:focus, .btn-2:active, .btn-2.active {
   color: #fff;
   background: #FF6332;
 }
@@ -400,7 +410,7 @@ button {
   color: #fff;
   background: #FF6332;
 }
-.btn-3:hover, .btn-3:focus, .btn-3:active {
+.btn-3:hover, .btn-3:focus, .btn-3:active, .btn-3.active {
   color: #fff;
   background: #26C24A;
 }
@@ -408,7 +418,7 @@ button {
   color: #0D0D0D;
   background: #F2F2F2;
 }
-.btn-4:hover, .btn-4:focus, .btn-4:active {
+.btn-4:hover, .btn-4:focus, .btn-4:active, .btn-4.active {
   color: #0D0D0D;
   background: #AAEEBA;
 }
@@ -638,6 +648,10 @@ h6 {
   background-color: #F2F2F2;
 }
 
+.bg-2 {
+  background-color: #AAEEBA;
+}
+
 .flex-1 {
   flex: 1;
 }
@@ -661,6 +675,10 @@ h6 {
   margin: 1em 0px;
   border: none;
   opacity: 1;
+}
+.box hr.dark {
+  background-color: transparent;
+  border: 1px dashed #BFBFBF;
 }
 
 @media (max-width: 575px) {
@@ -835,7 +853,7 @@ header .container nav.left ul li a {
   color: #737373;
   transition: 0.3s ease;
 }
-header .container nav.left ul li a:hover, header .container nav.left ul li a:focus, header .container nav.left ul li a:active {
+header .container nav.left ul li a:hover, header .container nav.left ul li a:focus, header .container nav.left ul li a:active, header .container nav.left ul li a.active {
   color: #0D0D0D;
 }
 header .container nav.right ul {
@@ -1566,6 +1584,9 @@ main {
   font-weight: 600;
   margin-bottom: 1em;
 }
+.form-about-info fieldset legend.mini {
+  font-size: 1.1em;
+}
 
 .servises-list {
   list-style: none;
@@ -1684,7 +1705,7 @@ footer.mobile nav ul {
 footer.mobile nav ul li {
   width: 25%;
 }
-footer.mobile nav ul li a {
+footer.mobile nav ul li a, footer.mobile nav ul li button {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1692,13 +1713,13 @@ footer.mobile nav ul li a {
   flex-direction: column;
   color: #737373;
 }
-footer.mobile nav ul li a.active {
+footer.mobile nav ul li a.active, footer.mobile nav ul li button.active {
   color: #FF6332;
 }
-footer.mobile nav ul li a svg {
+footer.mobile nav ul li a svg, footer.mobile nav ul li button svg {
   font-size: 1.75em;
 }
-footer.mobile nav ul li a span {
+footer.mobile nav ul li a span, footer.mobile nav ul li button span {
   font-size: 0.8em;
   margin-top: 0.35em;
 }

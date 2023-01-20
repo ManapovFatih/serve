@@ -1,6 +1,6 @@
 import React from 'react'
 import useIsMobile from '../hooks/isMobile'
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 
@@ -21,12 +21,12 @@ const HeaderAccount = () => {
                         {
                             (!mobile) &&
                             <ul>
-                                <li><Link to="/">Ваши заказы</Link></li>
-                                <li><Link to="/">Поиск заказов</Link></li>
-                                <li><Link to="/">Мой профиль</Link></li>
-                                <li><Link to="/">Продвижением</Link></li>
-                                <li><Link to="/">Подписки</Link></li>
-                                <li><Link to="/">Настройки</Link></li>
+                                <li><NavLink to="/account">Ваши заказы</NavLink></li>
+                                <li><NavLink to="/account">Поиск заказов</NavLink></li>
+                                <li><NavLink to="/account/profile">Мой профиль</NavLink></li>
+                                <li><NavLink to="/account/promotion">Продвижение</NavLink></li>
+                                <li><NavLink to="/account/subscriptions">Подписки</NavLink></li>
+                                <li><NavLink to="/account/settings">Настройки</NavLink></li>
                             </ul>
                         }
                     </nav>
@@ -57,7 +57,7 @@ const HeaderAccount = () => {
                 </Container>
             </header>
         </>
-    );
-};
+    )
+}
 
 export default HeaderAccount

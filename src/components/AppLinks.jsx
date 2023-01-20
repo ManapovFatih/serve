@@ -22,7 +22,7 @@ const AppLinks = () => {
                 </a>
             </li>
         </ul>
-    );
-};
+    )
+}
 
-export default AppLinks;
+export default AppLinks

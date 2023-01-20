@@ -281,7 +281,7 @@ const Services = () => {
                 <button type='button' className='btn-1 px-5 mt-4 w-xs-100'>Сохранить</button>
             </form>
 
-            <Link to='/account' className='btn-4 mx-auto mt-4 mt-sm-5 w-xs-100'>
+            <Link to='/account/profile' className='btn-4 mx-auto mt-4 mt-sm-5 w-xs-100'>
                 <IoArrowUndoOutline className='fs-13 me-2'/>
                 <span>Вернуться на страницу профиля</span>
             </Link>

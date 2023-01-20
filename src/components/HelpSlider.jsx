@@ -128,7 +128,7 @@ const HelpSlider = () => {
                 </Swiper>
             </Col>
         </Row>
-    );
-};
+    )
+}
 
-export default HelpSlider;
+export default HelpSlider

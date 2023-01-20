@@ -17,7 +17,7 @@ const ProfilePhoto = () => {
                 </div>
             </div>
 
-            <Link to='/account' className='btn-4 mx-auto mt-4'>
+            <Link to='/account/profile' className='btn-4 mx-auto mt-4'>
                 <IoArrowUndoOutline className='fs-13 me-2'/>
                 <span>Вернуться на страницу профиля</span>
             </Link>

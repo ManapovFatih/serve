@@ -104,6 +104,9 @@ input, textarea {
         color: $gray-3;
         font-weight: 400;
     }
+    @media (max-width: 575px) {
+        padding: 1em 1.5em;
+    }
 }
 input {
     &[type='radio'] {
@@ -380,11 +383,14 @@ button {
     font-size: 1em;
     font-weight: 500;
     border-radius: $radius;
+    @media (max-width: 575px) {
+        padding: 1em 1.5em;
+    }
     &-1 {
         @extend .btn;
         color: #fff;
         background: $color-2;
-        &:hover, &:focus, &:active {
+        &:hover, &:focus, &:active, &.active {
             color: #fff;
             background: $color-5;
         }
@@ -393,7 +399,7 @@ button {
         @extend .btn;
         color: $gray-5;
         background: #fff;
-        &:hover, &:focus, &:active {
+        &:hover, &:focus, &:active, &.active {
             color: #fff;
             background: $color-5;
         }
@@ -402,7 +408,7 @@ button {
         @extend .btn;
         color: #fff;
         background: $color-5;
-        &:hover, &:focus, &:active {
+        &:hover, &:focus, &:active, &.active {
             color: #fff;
             background: $color-2;
         }
@@ -411,7 +417,7 @@ button {
         @extend .btn;
         color: $gray-5;
         background: $gray-1;
-        &:hover, &:focus, &:active {
+        &:hover, &:focus, &:active, &.active {
             color: $gray-5;
             background: $color-3;
         }
@@ -556,6 +562,7 @@ h6 {
 .blue {color: $blue;}
 
 .bg-1 {background-color: $gray-1;}
+.bg-2 {background-color: $color-3;}
 
 .flex-1 {
     flex: 1;
@@ -576,6 +583,10 @@ h6 {
         margin: 1em 0px;
         border: none;
         opacity: 1;
+        &.dark {
+            background-color: transparent;
+            border: 1px dashed $gray-2;
+        }
     }
 }
 .w-xs-100 {
@@ -723,7 +734,7 @@ header {
                         font-size: 1em;
                         color: $gray-3;
                         transition: $transition;
-                        &:hover, &:focus, &:active {
+                        &:hover, &:focus, &:active, &.active {
                             color: $gray-5;
                         }
                     }
@@ -1341,6 +1352,9 @@ main {
             font-size: 1.5em;
             font-weight: 600;
             margin-bottom: 1em;
+            &.mini {
+                font-size: 1.1em;
+            }
         }
     }
 }
@@ -1443,7 +1457,7 @@ footer {
                 @include flex-center();
                 li {
                     width: 25%;
-                    a {
+                    a, button {
                         width: 100%;
                         @include flex-center();
                         flex-direction: column;

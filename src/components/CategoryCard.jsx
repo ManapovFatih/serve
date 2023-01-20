@@ -10,7 +10,7 @@ const CategoryCard = (props) => {
                 </figcaption>
             </figure>
         </a>
-    );
-};
+    )
+}
 
 export default CategoryCard

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import useIsMobile from '../hooks/isMobile'
-import {Link} from 'react-router-dom'
+import {NavLink, Link} from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 import Offcanvas from 'react-bootstrap/Offcanvas'
@@ -30,10 +30,10 @@ const Header = () => {
                         {
                             (!mobile) &&
                             <ul>
-                                <li><a href="/">Создать заказ</a></li>
-                                <li><a href="/">Найти специалиста</a></li>
-                                <li><Link to="my-orders">Мои заказы</Link></li>
-                                <li><a href="/">Стать исполнителем</a></li>
+                                <li><NavLink to="/">Создать заказ</NavLink></li>
+                                <li><NavLink to="/">Найти специалиста</NavLink></li>
+                                <li><NavLink to="my-orders">Мои заказы</NavLink></li>
+                                <li><NavLink to="/registration">Стать исполнителем</NavLink></li>
                             </ul>
                         }
                     </nav>

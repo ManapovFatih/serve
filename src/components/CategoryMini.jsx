@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const CategoryMini = (props) => {
     return (
@@ -6,7 +6,7 @@ const CategoryMini = (props) => {
             <img src={props.imgUrl} alt={props.title} />
             <figcaption><a href='/' className='stretched-link'>{props.title}</a></figcaption>
         </figure>
-    );
-};
+    )
+}
 
-export default CategoryMini;
+export default CategoryMini
