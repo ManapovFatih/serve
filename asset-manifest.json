@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.bd1d237b.css",
-    "main.js": "/static/js/main.cfaf3320.js",
-    "static/media/servicio365.png": "/static/media/servicio365.9ab2a8e33fb1bf9c11a8.png",
-    "static/media/map.jpg": "/static/media/map.970a7f7d1ea1f251fbfe.jpg",
-    "static/media/bg.jpg": "/static/media/bg.c12306a8b17a03d95e82.jpg",
-    "static/media/smartphone.png": "/static/media/smartphone.bb12211e232d020bb670.png",
-    "static/media/mark-green.svg": "/static/media/mark-green.5a0176f9b35ce3d973a1.svg",
-    "index.html": "/index.html",
-    "main.bd1d237b.css.map": "/static/css/main.bd1d237b.css.map",
-    "main.cfaf3320.js.map": "/static/js/main.cfaf3320.js.map"
+    "main.css": "/serve/static/css/main.b88ecb58.css",
+    "main.js": "/serve/static/js/main.50d0f506.js",
+    "static/media/servicio365.png": "/serve/static/media/servicio365.9ab2a8e33fb1bf9c11a8.png",
+    "static/media/map.jpg": "/serve/static/media/map.970a7f7d1ea1f251fbfe.jpg",
+    "static/media/bg.jpg": "/serve/static/media/bg.c12306a8b17a03d95e82.jpg",
+    "static/media/smartphone.png": "/serve/static/media/smartphone.bb12211e232d020bb670.png",
+    "static/media/mark-green.svg": "/serve/static/media/mark-green.5a0176f9b35ce3d973a1.svg",
+    "index.html": "/serve/index.html",
+    "main.b88ecb58.css.map": "/serve/static/css/main.b88ecb58.css.map",
+    "main.50d0f506.js.map": "/serve/static/js/main.50d0f506.js.map"
   },
   "entrypoints": [
-    "static/css/main.bd1d237b.css",
-    "static/js/main.cfaf3320.js"
+    "static/css/main.b88ecb58.css",
+    "static/js/main.50d0f506.js"
   ]
 }
