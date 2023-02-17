@@ -48,6 +48,13 @@ $radius: 2em;
 $radius-sm: 1em;
 
 /* mixins */
+@mixin flex($dir, $x, $y, $wrap) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $x;
+    align-items: $y;
+    flex-wrap: $wrap;
+}
 @mixin flex-center {
     display: flex;
     justify-content: center;
@@ -564,9 +571,7 @@ h6 {
 .bg-1 {background-color: $gray-1;}
 .bg-2 {background-color: $color-3;}
 
-.flex-1 {
-    flex: 1;
-}
+.flex-1 {flex: 1;}
 .box {
     border-radius: $radius;
     border: 1px solid $gray-1;
@@ -661,7 +666,7 @@ h6 {
 
 body {
     margin: 0;
-    font-family: $main-font;
+    font-family: $main-font, Arial;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
@@ -687,13 +692,21 @@ header {
     background-color: #fff;
     position: relative;
     z-index: 1100;
+    &.h-search {
+        nav.left {
+            flex: 1;
+            .form-search-1 {
+                flex: 1;
+            }
+        }
+    }
     .container {
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 100%;
         nav.left {
-            @include flex-center();
+            @include flex(row, flex-start, center, nowrap);
             .logo {
                 display: block;
                 width: 150px;
@@ -1275,6 +1288,122 @@ main {
     }
 }
 
+.nav-2 {
+    ul {
+        list-style: none;
+        padding-left: 0px;
+        a {
+            @include flex(row, flex-start, center, nowrap);
+            color: $gray-5;
+            transition: $transition;
+            &:hover, &:focus {
+                color: $color-5;
+            }
+            &:active, &.active {
+                color: $color-2;
+            }
+            svg {
+                font-size: 1.3em;
+                margin-right: .5em;
+            }
+        }
+    }
+}
+.sec-7 {
+    ul {
+        list-style: none;
+        padding-left: 0px;
+        &.categories {
+            li {
+                &:not(:first-child){margin-top: 1em;}
+            }
+            a, button {
+                color: $gray-5;
+                font-weight: 500;
+                transition: $transition;
+                display: block;
+                width: 100%;
+                background-color: $gray-1;
+                text-align: left;
+                padding: .5em .5em .5em .75em;
+                border-radius: $radius;
+                @include flex(row, space-between, center, nowrap);
+                &:hover, &:focus, &:active, &.active {
+                    color: $color-1;
+                }
+                span {
+                    flex:1;
+                    line-height: 100%;
+                }
+                svg {
+                    opacity: 0;
+                }
+                &.active {
+                    svg {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        &.subcategories {
+            a, button {
+                color: $gray-5;
+                font-weight: 400;
+                transition: $transition;
+                &:hover, &:focus, &:active, &.active {
+                    color: $color-5;
+                }
+            }
+            @for $i from 1 through 6 {
+                li:nth-child(#{$i}) {
+                  a {
+                    font-size: 1.2em;
+                    font-weight: 600;
+                  }
+                }
+              }
+        }
+        
+    }
+}
+
+
+.sec-8 {
+    .order {
+        border: 1px solid $gray-1;
+        .info-1 {
+            list-style: none;
+            padding-left: 0px;
+            li {
+                display: inline;
+                &:not(:first-child) {
+                    margin-left: 1em;
+                    &::before {
+                        content: '•';
+                        margin-right: 1em;
+                    }
+                }
+            }
+        }
+        .info-2 {
+            list-style: none;
+            padding-left: 0px;
+            @include flex(row, flex-start, center, nowrap);
+            li:not(:first-child){
+                margin-left: 1em;
+            }
+        }
+    }
+    .orders-list {
+        list-style: none;
+        padding-left: 0px;
+        &>li {
+            &:not(:first-child){margin-top: 2em;}
+        }
+    }
+}
+
+
 .apps-links {
     display: flex;
     justify-content: flex-end;
@@ -1378,6 +1507,17 @@ main {
                 padding: .75em;
             }
         }
+    }
+}
+.tariff {
+    text-align: center;
+    h3, h5 {
+        text-align: center;
+    }
+    hr {
+        background-color: $color-5;
+        width: 80%;
+        margin: 1em auto;
     }
 }
 /* Account END */

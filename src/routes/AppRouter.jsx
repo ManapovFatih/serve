@@ -17,17 +17,26 @@ import ProfileLayout from '../layouts/ProfileLayout'
 import Index from '../pages/account/Index'
 import Settings from '../pages/account/Settings'
 import Subscriptions from '../pages/account/Subscriptions'
+import SecondLayout from '../layouts/SecondLayout'
+import SearchMenu from '../pages/SearchMenu'
+import Submenu from '../components/Submenu'
 
 const router = createHashRouter(
     createRoutesFromElements(
         <>
         <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />}/>
-            <Route path="my-orders" element={<MyOrders/>}/>
             <Route path="registration" element={<Registration/>}/>
             <Route path="*" element={<NotFound />}/>
         </Route>
+        <Route path="search" element={<SecondLayout/>}>
+            <Route index element={<SearchMenu/>}>
+                <Route path=":searchId" element={<Submenu/>} />
+            </Route>
+            <Route path="my-orders" element={<MyOrders/>}/>
+        </Route>
         <Route path="account" element={<AccountLayout/>}>
+            <Route index element={<Index/>}/>
             <Route path="profile" element={<ProfileLayout/>}>
                 <Route index element={<Profile/>}/>
                 <Route path="addresses" element={<Addresses/>}/>
@@ -36,11 +45,9 @@ const router = createHashRouter(
                 <Route path="specialties" element={<Specialties/>}/>
                 <Route path="services" element={<Services/>}/>
             </Route>
-            <Route index element={<Index/>}/>
             <Route path="promotion" element={<Promotion/>}/>
             <Route path="settings" element={<Settings/>}/>
             <Route path="subscriptions" element={<Subscriptions/>}/>
-            
         </Route>
         </>
     )
