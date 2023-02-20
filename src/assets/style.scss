@@ -26,7 +26,7 @@
     }
     @media (max-width: 575px){
         --w: 100%;
-        --f-height: 510px;
+        --f-height: 480px;
     }
 }
 
@@ -78,6 +78,36 @@ $radius-sm: 1em;
     width: 100%;
     height: 100%;
     z-index: 1;
+}
+@mixin box {
+    border-radius: $radius;
+    border: 1px solid $gray-1;
+    padding: 2em;
+    box-shadow: 0px 2px 6px $gray-1;
+    @media (max-width: 575px){
+        border-radius: $radius-sm;
+        padding: 1em;
+    }
+    hr {
+        background-color: $gray-1;
+        height: 1px;
+        width: 100%;
+        margin: 1em 0px;
+        border: none;
+        opacity: 1;
+        &.dark {
+            background-color: transparent;
+            border: 1px dashed $gray-2;
+        }
+    }
+}
+@mixin clamp($count, $line) {
+    display: -webkit-box;
+    -webkit-line-clamp: $count;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: $line;
+    height: $line * $count;
 }
 
 a, a:hover, a:focus, a:active {
@@ -573,26 +603,7 @@ h6 {
 
 .flex-1 {flex: 1;}
 .box {
-    border-radius: $radius;
-    border: 1px solid $gray-1;
-    padding: 2em;
-    box-shadow: 0px 2px 6px $gray-1;
-    @media (max-width: 575px){
-        border-radius: $radius-sm;
-        padding: 1em;
-    }
-    hr {
-        background-color: $gray-1;
-        height: 1px;
-        width: 100%;
-        margin: 1em 0px;
-        border: none;
-        opacity: 1;
-        &.dark {
-            background-color: transparent;
-            border: 1px dashed $gray-2;
-        }
-    }
+    @include box();
 }
 .w-xs-100 {
     @media (max-width: 575px) {
@@ -1328,6 +1339,13 @@ main {
                 padding: .5em .5em .5em .75em;
                 border-radius: $radius;
                 @include flex(row, space-between, center, nowrap);
+                @media (max-width: 991px) {
+                    font-size: 1.25em;
+                    padding: 1em 1em;
+                }
+                @media (max-width: 575px) {
+                    font-size: 1em;
+                }
                 &:hover, &:focus, &:active, &.active {
                     color: $color-1;
                 }
@@ -1337,6 +1355,9 @@ main {
                 }
                 svg {
                     opacity: 0;
+                    @media (max-width: 991px) {
+                        opacity: 1;
+                    }
                 }
                 &.active {
                     svg {
@@ -1363,12 +1384,7 @@ main {
                 }
               }
         }
-        
     }
-}
-
-
-.sec-8 {
     .order {
         border: 1px solid $gray-1;
         .info-1 {
@@ -1402,6 +1418,66 @@ main {
         }
     }
 }
+.service-offer {
+    @include box();
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    grid-template-rows: auto;
+    grid-auto-flow: dense;
+    grid-auto-rows: 1fr;
+    gap: 1em 1em;
+    .photo {
+        grid-column: 1/2;
+        grid-row: 1/3;
+        img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: $radius;
+        }
+    }
+    .rating {
+        grid-column: 1/2;
+        grid-row: 3/4;
+    }
+    .name {
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+    .text {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        @include clamp(2, 1.2em);
+    }
+    .imgs {
+        grid-column: 2/3;
+        grid-row: span 1;
+        min-width: 0;
+        .slider {
+            max-width: 100%;
+            width: 100%;
+            position: relative;
+            .swiper-slide {
+                width: fit-content;
+            }
+        }
+        img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: $radius-sm;
+        }
+    }
+    .btns {
+        grid-column: 2/3;
+        grid-row: span 1;
+        @include flex(row, flex-start, center, nowrap);
+        font-size: .9em;
+    }
+
+}
+
 
 
 .apps-links {

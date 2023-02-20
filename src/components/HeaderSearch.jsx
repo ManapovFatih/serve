@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
-import { SlBubbles, SlBell, SlUser, SlMagnifier } from "react-icons/sl";
+import { SlBell, SlUser, SlMagnifier } from "react-icons/sl";
 import logo from '../assets/imgs/servicio365.png';
 
 const HeaderSearch = () => {
@@ -32,11 +32,6 @@ const HeaderSearch = () => {
                   <li className='d-xl-none'>
                       <button type='button' onClick={showSearch}>
                           <SlMagnifier/>
-                      </button>
-                  </li>
-                  <li className='d-none d-lg-block'>
-                      <button type='button'>
-                          <SlBubbles/>
                       </button>
                   </li>
                   <li>

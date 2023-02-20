@@ -7,7 +7,7 @@ import Order from '../components/Order';
 
 const MyOrders = () => {
     return (
-        <section className='sec-8 mb-5'>
+        <div>
             <h1 className='inner'>Мои заказы</h1>
 
             <h3 className='mb-4 mb-sm-5'>Вы ещё не создавали заказы — время начать!</h3>
@@ -41,7 +41,7 @@ const MyOrders = () => {
                 <li><Order active={true} responseCount={0}/></li>
                 <li><Order active={true} responseCount={3}/></li>
             </ul>
-        </section>
+        </div>
     );
 };
 

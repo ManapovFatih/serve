@@ -1,11 +1,18 @@
-import React from 'react'
-import Container from 'react-bootstrap/Container'
-import { SlBubbles, SlGrid, SlUser } from "react-icons/sl"
-import { TfiPencilAlt } from "react-icons/tfi"
-import {NavLink} from 'react-router-dom'
+import React, {useState} from 'react';
+import Container from 'react-bootstrap/Container';
+import { SlGrid, SlUser, SlOptions } from "react-icons/sl";
+import { TfiPencilAlt } from "react-icons/tfi";
+import { RxCross2 } from "react-icons/rx";
+import {NavLink, Link} from 'react-router-dom';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
 const FooterMob = () => {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return (
+        <>
         <footer className="mobile">
             <Container>
                 <nav>
@@ -23,21 +30,39 @@ const FooterMob = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/">
-                                <SlBubbles/>
-                                <span>сообщения</span>
-                            </NavLink>
-                        </li>
-                        <li>
                             <NavLink to="/account">
                                 <SlUser/>
                                 <span>Профиль</span>
                             </NavLink>
                         </li>
+                        <li>
+                            <button type='button' onClick={handleShow}>
+                                <SlOptions/>
+                                <span>Меню</span>
+                            </button>
+                        </li>
                     </ul>
                 </nav>
             </Container>
         </footer>
+        <Offcanvas show={show} onHide={handleClose} placement={'bottom'}>
+            <Offcanvas.Body>
+                <button type='button' className='close' onClick={handleClose}><RxCross2/></button>
+                <nav>
+                    <ul onClick={handleClose}>
+                        <li>
+                            <Link to='/search'>Найти специалиста</Link>
+                        </li>
+                        <li>
+                            <Link to='/search/my-orders'>Мои заказы</Link>
+                        </li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </nav>
+            </Offcanvas.Body>
+        </Offcanvas>
+        </>
     )
 }
 

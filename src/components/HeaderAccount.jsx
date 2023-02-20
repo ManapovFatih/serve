@@ -4,7 +4,7 @@ import {Link, NavLink} from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 
-import { SlBubbles, SlBell, SlUser } from "react-icons/sl"
+import { SlBell, SlUser } from "react-icons/sl"
 import logo from '../assets/imgs/servicio365.png'
 
 const HeaderAccount = () => {
@@ -32,11 +32,6 @@ const HeaderAccount = () => {
                     </nav>
                     <nav className='right'>
                         <ul>
-                            <li className='d-none d-lg-block'>
-                                <button type='button'>
-                                    <SlBubbles/>
-                                </button>
-                            </li>
                             <li>
                                 <button type='button'>
                                     <SlBell/>

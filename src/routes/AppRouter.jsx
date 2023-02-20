@@ -1,7 +1,6 @@
 import React from 'react'
 import {createHashRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom'
 import AppLayout from '../layouts/AppLayout'
-import MyOrders from '../pages/MyOrders'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
 import AccountLayout from '../layouts/AccountLayout'
@@ -17,9 +16,8 @@ import ProfileLayout from '../layouts/ProfileLayout'
 import Index from '../pages/account/Index'
 import Settings from '../pages/account/Settings'
 import Subscriptions from '../pages/account/Subscriptions'
-import SecondLayout from '../layouts/SecondLayout'
-import SearchMenu from '../pages/SearchMenu'
-import Submenu from '../components/Submenu'
+import Search from '../pages/Search'
+
 
 const router = createHashRouter(
     createRoutesFromElements(
@@ -29,12 +27,7 @@ const router = createHashRouter(
             <Route path="registration" element={<Registration/>}/>
             <Route path="*" element={<NotFound />}/>
         </Route>
-        <Route path="search" element={<SecondLayout/>}>
-            <Route index element={<SearchMenu/>}>
-                <Route path=":searchId" element={<Submenu/>} />
-            </Route>
-            <Route path="my-orders" element={<MyOrders/>}/>
-        </Route>
+        <Route path="search/*" element={<Search/>}/>
         <Route path="account" element={<AccountLayout/>}>
             <Route index element={<Index/>}/>
             <Route path="profile" element={<ProfileLayout/>}>

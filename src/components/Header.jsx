@@ -5,7 +5,7 @@ import {NavLink, Link} from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
-import { SlBubbles, SlBell, SlUser, SlMagnifier } from "react-icons/sl"
+import { SlBell, SlUser, SlMagnifier } from "react-icons/sl"
 import logo from '../assets/imgs/servicio365.png'
 
 const Header = () => {
@@ -33,7 +33,7 @@ const Header = () => {
                             (!mobile) &&
                             <ul>
                                 <li><NavLink to="/">Создать заказ</NavLink></li>
-                                <li><NavLink to="/search/1">Найти специалиста</NavLink></li>
+                                <li><NavLink to="/search">Найти специалиста</NavLink></li>
                                 <li><NavLink to="/search/my-orders">Мои заказы</NavLink></li>
                                 <li><NavLink to="/registration">Стать исполнителем</NavLink></li>
                             </ul>
@@ -44,11 +44,6 @@ const Header = () => {
                             <li className='d-xl-none'>
                                 <button type='button' onClick={showSearch}>
                                     <SlMagnifier/>
-                                </button>
-                            </li>
-                            <li className='d-none d-lg-block'>
-                                <button type='button'>
-                                    <SlBubbles/>
                                 </button>
                             </li>
                             <li>
