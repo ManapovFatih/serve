@@ -151,6 +151,26 @@ input[type=checkbox]:checked {
 input[type=checkbox]:checked::after {
   opacity: 1;
 }
+input[type=checkbox].switch {
+  width: 2.5em;
+  border-radius: 1em;
+}
+input[type=checkbox].switch::after {
+  top: 10%;
+  left: 5%;
+  width: 40%;
+  height: 80%;
+  background-color: #BFBFBF;
+  background-image: unset;
+  opacity: 1;
+}
+input[type=checkbox].switch:checked {
+  background-color: #26C24A;
+}
+input[type=checkbox].switch:checked::after {
+  left: 55%;
+  background-color: #fff;
+}
 
 fieldset legend {
   display: block;
@@ -2098,6 +2118,84 @@ main {
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
+}
+
+.task-filter {
+  border-radius: 2em;
+  border: 1px solid #F2F2F2;
+  padding: 2em;
+  box-shadow: 0px 2px 6px #F2F2F2;
+}
+@media (max-width: 575px) {
+  .task-filter {
+    border-radius: 1em;
+    padding: 1em;
+  }
+}
+.task-filter hr {
+  background-color: #F2F2F2;
+  height: 1px;
+  width: 100%;
+  margin: 1em 0px;
+  border: none;
+  opacity: 1;
+}
+.task-filter hr.dark {
+  background-color: transparent;
+  border: 1px dashed #BFBFBF;
+}
+.task-filter fieldset:not(:last-child) {
+  padding-bottom: 1em;
+  border-bottom: 1px solid rgba(191, 191, 191, 0.5);
+  margin-bottom: 1em;
+}
+.task-filter fieldset legend {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+.task-filter fieldset ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.task-filter fieldset ul li:not(:first-child) {
+  margin-top: 0.5em;
+}
+.task-filter fieldset ul.horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.task-filter fieldset ul.horizontal li {
+  margin-top: 0px;
+  margin-bottom: 0.75em;
+}
+.task-filter fieldset ul.horizontal li:not(:last-child) {
+  margin-right: 1em;
+}
+.task-filter fieldset input:not([type=checkbox]) {
+  border: 1px solid #BFBFBF;
+  padding: 0.9em 1em;
+}
+.task-filter .pill {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: #F2F2F2;
+  border-radius: 1em;
+  font-size: 0.9em;
+  padding: 0 0 0 0.5em;
+  margin-top: 0px;
+}
+.task-filter .pill button {
+  display: flex;
+  margin-left: 0.25em;
+  color: #d70000;
+  font-size: 1.5em;
 }
 
 /* Account END */

@@ -216,6 +216,26 @@ input {
                 opacity: 1;
             }
         }
+        &.switch {
+            width: 2.5em;
+            border-radius: $radius-sm;
+            &::after {
+                top: 10%;
+                left: 5%;
+                width: 40%;
+                height: 80%;
+                background-color: $gray-2;
+                background-image: unset;
+                opacity: 1;
+            }
+            &:checked {
+                background-color: $color-2;
+                &::after {
+                    left: 55%;
+                    background-color: #fff;
+                }
+            }
+        }
     }
 }
 fieldset {
@@ -1728,6 +1748,52 @@ main {
     }
     .btns {
         @include flex(row, space-between, center, nowrap);
+    }
+}
+.task-filter {
+    @include box();
+    // font-size: .9em;
+    fieldset {
+        &:not(:last-child){
+            padding-bottom: 1em;
+            border-bottom: 1px solid rgba($color: $gray-2, $alpha: .5);
+            margin-bottom: 1em;
+        }
+        legend {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: .5em;
+        }
+        ul {
+            @include list();
+            li:not(:first-child){margin-top: .5em;}
+            &.horizontal {
+                @include flex(row, flex-start, flex-start, wrap);
+                li {
+                    margin-top: 0px;
+                    margin-bottom: .75em;
+                    &:not(:last-child){margin-right: 1em;}
+                }
+            }
+        }
+        input:not([type="checkbox"]) {
+            border: 1px solid $gray-2;
+            padding: .9em 1em;
+        }
+    }
+    .pill {
+        @include flex(row, flex-start, center, nowrap);
+        background-color: $gray-1;
+        border-radius: $radius-sm;
+        font-size: .9em;
+        padding: 0 0 0 .5em;
+        margin-top: 0px;
+        button {
+            display: flex;
+            margin-left: .25em;
+            color: $red;
+            font-size: 1.5em;
+        }
     }
 }
 /* Account END */
