@@ -3,7 +3,7 @@ import {Outlet, ScrollRestoration} from 'react-router-dom'
 import useIsMobile from '../hooks/isMobile'
 import Footer from '../components/Footer'
 import HeaderAccount from '../components/HeaderAccount'
-import FooterMobAccount from '../components/FooterMobAccount'
+import FooterMob from '../components/FooterMob'
 
 const AccountLayout = () => {
     const {mobile} = useIsMobile('991px')
@@ -16,7 +16,7 @@ const AccountLayout = () => {
             <Footer />
             {
                 (mobile === true) &&
-                <FooterMobAccount/>
+                <FooterMob/>
             }
         </>
     )

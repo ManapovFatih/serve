@@ -47,19 +47,40 @@ const FooterMob = () => {
         </footer>
         <Offcanvas show={show} onHide={handleClose} placement={'bottom'}>
             <Offcanvas.Body>
-                <button type='button' className='close' onClick={handleClose}><RxCross2/></button>
-                <nav>
-                    <ul onClick={handleClose}>
-                        <li>
-                            <Link to='/search'>Найти специалиста</Link>
-                        </li>
-                        <li>
-                            <Link to='/search/my-orders'>Мои заказы</Link>
-                        </li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </nav>
+                <Container>
+                    <button type='button' className='close' onClick={handleClose}><RxCross2/></button>
+                    <nav className='mobile-menu' onClick={handleClose}>
+                        <ul>
+                            <li>
+                                <Link to='/account/profile'>Мой профиль</Link>
+                            </li>
+                            <li>
+                                <Link to='/account/your-orders'>Ваши заказы</Link>
+                            </li>
+                            <li>
+                                <Link to='/account/offers-search'>Поиск заказов</Link>
+                            </li>
+                            <li>
+                                <Link to='/account/promotion'>Продвижение</Link>
+                            </li>
+                            <li>
+                                <Link to='/account/subscriptions'>Подписки</Link>
+                            </li>
+                            <li>
+                                <Link to='/account/settings'>Настройки</Link>
+                            </li>
+                        </ul>
+                        <hr />
+                        <ul>
+                            <li>
+                                <Link to='/search'>Найти специалиста</Link>
+                            </li>
+                            <li>
+                                <Link to='/search/my-orders'>Мои заказы</Link>
+                            </li>
+                        </ul>
+                    </nav>
+                </Container>
             </Offcanvas.Body>
         </Offcanvas>
         </>

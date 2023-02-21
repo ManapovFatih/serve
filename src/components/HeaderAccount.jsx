@@ -21,8 +21,8 @@ const HeaderAccount = () => {
                         {
                             (!mobile) &&
                             <ul>
-                                <li><NavLink to="/account">Ваши заказы</NavLink></li>
-                                <li><NavLink to="/account">Поиск заказов</NavLink></li>
+                                <li><NavLink to="/account/your-orders">Ваши заказы</NavLink></li>
+                                <li><NavLink to="/account/offers-search">Поиск заказов</NavLink></li>
                                 <li><NavLink to="/account/profile">Мой профиль</NavLink></li>
                                 <li><NavLink to="/account/promotion">Продвижение</NavLink></li>
                                 <li><NavLink to="/account/subscriptions">Подписки</NavLink></li>

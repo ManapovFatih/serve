@@ -1,5 +1,5 @@
 import React from 'react'
-import {createHashRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom'
+import {createHashRouter, createRoutesFromElements, Route, RouterProvider, Navigate} from 'react-router-dom'
 import AppLayout from '../layouts/AppLayout'
 import Home from '../pages/Home'
 import NotFound from '../pages/NotFound'
@@ -17,6 +17,7 @@ import Index from '../pages/account/Index'
 import Settings from '../pages/account/Settings'
 import Subscriptions from '../pages/account/Subscriptions'
 import Search from '../pages/Search'
+import OffersSearch from '../pages/account/OffersSearch'
 
 
 const router = createHashRouter(
@@ -29,7 +30,9 @@ const router = createHashRouter(
         </Route>
         <Route path="search/*" element={<Search/>}/>
         <Route path="account" element={<AccountLayout/>}>
-            <Route index element={<Index/>}/>
+            <Route index element={<Navigate to="your-orders" replace={true} />} />
+            <Route path="your-orders" element={<Index/>}/>
+            <Route path="offers-search" element={<OffersSearch/>}/>
             <Route path="profile" element={<ProfileLayout/>}>
                 <Route index element={<Profile/>}/>
                 <Route path="addresses" element={<Addresses/>}/>
