@@ -260,7 +260,7 @@ label {
 .simple-select {
     &-container {
         width: fit-content;
-        min-width: 150px;
+        // min-width: 150px;
         max-width: 100%;
         @media (max-width: 575px) {
             min-width: unset;
@@ -629,6 +629,7 @@ h6 {
 .box {
     @include box();
 }
+.w-auto {width: auto;}
 .w-xs-100 {
     @media (max-width: 575px) {
         width: 100%;
@@ -1578,7 +1579,6 @@ main {
     }
 }
 
-
 .apps-links {
     @include flex(row, flex-end, center, nowrap);
     @include list();
@@ -1600,7 +1600,6 @@ main {
         }
     }
 }
-
 
 /* Account */
 .account-nav {
@@ -1693,9 +1692,46 @@ main {
 .task {
     @include box();
     margin-bottom: 2em;
+    &-mini {
+        @include flex(row, flex-start, center, nowrap);
+        &:hover, &:focus, &:active {
+            svg, .text h6 {color: $color-5;}
+        }
+        .text {
+            flex: 1;
+            h6 {
+                color: $color-2;
+                transition: $transition;
+                @include clamp(2, 1.2em);
+                margin-bottom: .5em;
+            }
+            ul {
+                @include list();
+                font-size: .9em;
+                color: $gray-3;
+                @include flex(row, flex-start, center, nowrap);
+                li {
+                    &:not(:first-child){
+                        margin-left: .5em;
+                        &::before {
+                            content: '⦁';
+                            margin-right: .5em;
+                        }
+                    }
+                }
+            }
+        }
+        svg {
+            color: $color-2;
+            font-size: 1.5em;
+            transition: $transition;
+        }
+    }
     .top {
         @include flex(row, space-between, center, nowrap);
-        // margin-bottom: 1em;
+        @media (max-width: 575px){
+            font-size: .9em;
+        }
     }
     .info {
         @include list();
@@ -1703,6 +1739,9 @@ main {
         margin-bottom: 1em;
         color: $gray-3;
         font-size: .9em;
+        @media (max-width: 575px){
+            font-size: .8em;
+        }
         li {
             &:not(:first-child){
                 margin-left: 1em;
@@ -1748,6 +1787,18 @@ main {
     }
     .btns {
         @include flex(row, space-between, center, nowrap);
+        .btn-1 {
+            padding: 1em 1.5em;
+            @media (max-width: 575px){
+                padding: .75em 1em;
+            }
+        }
+        .red {
+            font-size: 2em;
+            @media (max-width: 575px){
+                font-size: 1.5em;
+            }
+        }
     }
 }
 .task-filter {
@@ -1793,6 +1844,56 @@ main {
             margin-left: .25em;
             color: $red;
             font-size: 1.5em;
+        }
+    }
+}
+.offers {
+    ul {
+        @include list();
+        @include flex(row, flex-start, center, nowrap);
+        margin-bottom: 2em;
+        li {
+            &:not(:first-child){
+                margin-left: 1em;
+                @media (max-width: 575px) {
+                    margin-left: .5em;
+                }
+            }
+            button, a {
+                padding: 1em 1.5em;
+                @media (max-width: 575px) {
+                    padding: .75em .5em;
+                    line-height: 100%;
+                    font-size: .9em;
+                }
+            }
+        }
+    }
+}
+.list-bordered {
+    @include list();
+    &>li {
+        border-top: 1px solid $gray-1;
+        padding: .75em 0;
+        &:last-child {
+            border-bottom: 1px solid $gray-1;
+        }
+    }
+}
+.respond {
+    .photo {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 1em;
+        background-color: $color-4;
+        box-shadow: 0px 2px 6px rgba($color: $gray-2, $alpha: .5);
+    }
+    .box {
+        background-color: $color-4;
+        hr {
+            background-color: $color-5;
         }
     }
 }
@@ -1922,12 +2023,16 @@ nav.mobile-menu {
         }
     }
     &-end {
+        @media (max-width:575px) {
+            width: 100% !important;
+        }
         &.show {
             padding-top: var(--h-height);
+            padding-bottom: var(--m-footer);
             .close {
                 position: absolute;
                 top: calc(var(--h-height) + 1em);
-                right: 1em;
+                right: 2em;
                 font-size: 1.5em;
                 z-index: 10;
             }

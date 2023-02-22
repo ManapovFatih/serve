@@ -6,6 +6,8 @@ import { RxCaretDown } from "react-icons/rx"
 import AppLinks from './AppLinks'
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
+    
     return (
         <footer>
             <Container>
@@ -41,7 +43,7 @@ const Footer = () => {
                     </button>
                     <a href="/">Все города</a>
                     <a href="/">Пользовательское соглашение</a>
-                    <span>© 2022–2022  Название компании</span>
+                    <span>© 2022–{currentYear} Название компании</span>
                 </div>
             </Container>
         </footer>

@@ -1,11 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
-import AddInput from '../../components/utils/AddInput'
+import AddInput from '../../../components/utils/AddInput'
 
 import { IoArrowUndoOutline, IoLogoWhatsapp, IoLogoSkype, IoMailOutline, IoLogoYoutube, IoGlobeOutline } from "react-icons/io5"
 import { BsTelegram } from "react-icons/bs"
-import AddPhoto from '../../components/utils/AddPhoto'
+import AddPhoto from '../../../components/utils/AddPhoto'
 
 const About = () => {
     return (

@@ -58,7 +58,7 @@ const FooterMob = () => {
                                 <Link to='/account/your-orders'>Ваши заказы</Link>
                             </li>
                             <li>
-                                <Link to='/account/offers-search'>Поиск заказов</Link>
+                                <Link to='/account/offers'>Поиск заказов</Link>
                             </li>
                             <li>
                                 <Link to='/account/promotion'>Продвижение</Link>

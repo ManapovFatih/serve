@@ -1,12 +1,13 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import { SlBan, SlLocationPin, SlEvent } from "react-icons/sl";
 
 const Task = () => {
   return (
     <div className='task'>
       <div className="top">
-        <h4>Доработать форму для сайта на Битрикс</h4>
-        <h4 className='ms-2'>1500&nbsp;€</h4>
+        <h4><Link to='/account/offers/1'>Доработать форму для сайта на Битрикс</Link></h4>
+        <h4 className='ms-3'>1500&nbsp;€</h4>
       </div>
       <ul className="info">
         <li>Поиск исполнителей</li>
@@ -29,13 +30,11 @@ const Task = () => {
       <hr />
       <div className='user'>
         <img src="imgs/img2.jpg" alt="img2.jpg" />
-        <h5 className='ms-4 mb-0'>Михаил</h5>
+        <h5 className='ms-2 ms-sm-4 mb-0'>Михаил</h5>
       </div>
       <div className='btns'>
-        <button type='button' className='btn-1 py-3'>Откликнуться</button>
-        <button type='button' className='red'>
-          <SlBan className='fs-20'/>
-        </button>
+        <button type='button' className='btn-1'>Откликнуться</button>
+        <button type='button' className='red'><SlBan/></button>
       </div>
     </div>
   );

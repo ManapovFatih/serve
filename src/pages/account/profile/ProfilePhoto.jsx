@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { IoArrowUndoOutline } from "react-icons/io5"
-import AddPhoto from '../../components/utils/AddPhoto'
+import AddPhoto from '../../../components/utils/AddPhoto'
 
 const ProfilePhoto = () => {
     return (
