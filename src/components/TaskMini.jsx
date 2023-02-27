@@ -12,7 +12,7 @@ const TaskMini = () => {
           <li>5 откликов</li>
         </ul>
       </div>
-      <RxDoubleArrowRight/>
+      <RxDoubleArrowRight className='ms-3'/>
     </Link>
   );
 };

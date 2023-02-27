@@ -146,7 +146,8 @@ input, textarea {
         font-weight: 400;
     }
     @media (max-width: 575px) {
-        padding: 1em 1.5em;
+        padding: .75em 1em;
+        border-radius: $radius-sm;
     }
 }
 input {
@@ -260,8 +261,12 @@ label {
 .simple-select {
     &-container {
         width: fit-content;
-        // min-width: 150px;
         max-width: 100%;
+        &.borderless {
+            .simple-select__control {
+                border: none !important;
+            }
+        }
         @media (max-width: 575px) {
             min-width: unset;
         }
@@ -273,6 +278,10 @@ label {
         background-color: #fff !important;
         transition: $transition !important;
         padding: .7em;
+        @media (max-width: 575px) {
+            border-radius: $radius-sm !important;
+            padding: .5em;
+        }
         &--is-focused {
             border: 1px solid $color-2 !important;
             box-shadow: none !important;
@@ -445,7 +454,17 @@ button {
     font-weight: 500;
     border-radius: $radius;
     @media (max-width: 575px) {
-        padding: 1em 1.5em;
+        padding: .75em 1em;
+    }
+    &-none {
+        padding: 0px;
+        border: none;
+        &:before, &:after {
+            content: unset;
+        }
+        &:hover, &:focus, &:active, &.active {
+            border: none;
+        }
     }
     &-1 {
         @extend .btn;
@@ -481,6 +500,56 @@ button {
         &:hover, &:focus, &:active, &.active {
             color: $gray-5;
             background: $color-3;
+        }
+    }
+}
+
+.input-file {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    border-radius: $radius;
+    transition: $transition;
+    background-color: #fff;
+    padding: 1.2em 1.5em 1.2em 3em;
+    position: relative;
+    @media (max-width: 575px) {
+        border-radius: $radius-sm;
+        padding: .75em 1em .75em 2em;
+    }
+    &:hover {
+        cursor: pointer;
+    }
+    input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+        top: 0px;
+        left: 0px;
+        padding: 0px;
+    }
+    svg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 1em;
+        z-index: 10;
+        color: $color-2;
+        height: 1.75em;
+        width: 1.75em;
+        @media (max-width: 575px) {
+            height: 1.5em;
+            width: 1.5em;
+        }
+    }
+    .ind {
+        color: $color-2;
+        font-weight: 600;
+        &:empty {
+            display: none;
         }
     }
 }
@@ -531,6 +600,11 @@ button {
         svg {
             font-size: 2em;
         }
+    }
+}
+.form-respond {
+    @media (max-width: 575px) {
+        font-size: .9em;
     }
 }
 
@@ -629,10 +703,9 @@ h6 {
 .box {
     @include box();
 }
-.w-auto {width: auto;}
 .w-xs-100 {
     @media (max-width: 575px) {
-        width: 100%;
+        width: 100% !important;
     }
 }
 
@@ -642,6 +715,34 @@ h6 {
     transition: $transition;
     &:hover, &:focus {
         color: $color-2;
+    }
+}
+
+.dropdown {
+    &-toggle {
+        color: $gray-2;
+        transition: $transition;
+        &:hover, &:focus, &:active, &:focus-visible {
+            color: $color-5 !important;
+        }
+    }
+    &-item {
+        color: $gray-5;
+        transition: $transition;
+        &:hover, &:focus {
+            background-color: $gray-1;
+        }
+        &:active, &.active {
+            background-color: $color-4;
+            color: $color-5;
+        }
+    }
+    &-menu {
+        border-radius: $radius-sm;
+        @include box();
+        padding: .75em 0;
+        overflow: hidden;
+        @include safariFix();
     }
 }
 
@@ -1870,6 +1971,73 @@ main {
         }
     }
 }
+.offer-page-card {
+    position: relative;
+    .btn-none {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: 100;
+    }
+    ul {
+        @include list();
+        &.horizontal {
+            @include flex(row, flex-start, center, nowrap);
+            li {
+                color: $gray-3;
+                font-size: .9em;
+                @media (max-width: 575px) {
+                    font-size: .8em;
+                }
+                &.pill {
+                    background-color: $color-4;
+                    border-radius: $radius-sm;
+                    padding: 0 .5em;
+                }
+                &:not(:first-child){
+                    margin-left: .5em;
+                    &:before {
+                        content: '⦁';
+                        margin-right: .5em;
+                    }
+                }
+            }
+        }
+        &.vertical {
+            li {
+                @include flex(row, flex-start, center, nowrap);
+                .icon {
+                    width: 2em;
+                    height: 2em;
+                    border-radius: 50%;
+                    object-fit: scale-down;
+                    background-color: $color-4;
+                    @include flex(row, center, center, nowrap);
+                    svg {
+                        font-size: 1.2em;
+                        color: $color-5;
+                    }
+                }
+                &:not(:first-child){
+                    margin-top: .75em;
+                }
+            }
+        }
+    }
+    .user {
+        @include flex(row, flex-start, center, nowrap);
+        img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            @media (max-width: 575px) {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    }
+}
 .list-bordered {
     @include list();
     &>li {
@@ -1889,11 +2057,27 @@ main {
         margin-right: 1em;
         background-color: $color-4;
         box-shadow: 0px 2px 6px rgba($color: $gray-2, $alpha: .5);
+        @media (max-width: 767px) {
+            width: 70px;
+            height: 70px;
+        }
+        @media (max-width: 575px) {
+            width: 45px;
+            height: 45px;
+            margin-right: .5em;
+        }
     }
     .box {
         background-color: $color-4;
+        @media (max-width: 767px) {
+            padding: 1.5em;
+        }
+        @media (max-width: 575px) {
+            padding: 1em;
+        }
         hr {
-            background-color: $color-5;
+            background-color: #fff;
+            height: 2px;
         }
     }
 }

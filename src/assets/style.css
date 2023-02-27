@@ -72,7 +72,8 @@ input::placeholder, textarea::placeholder {
 }
 @media (max-width: 575px) {
   input, textarea {
-    padding: 1em 1.5em;
+    padding: 0.75em 1em;
+    border-radius: 1em;
   }
 }
 
@@ -197,6 +198,9 @@ label span {
   width: fit-content;
   max-width: 100%;
 }
+.simple-select-container.borderless .simple-select__control {
+  border: none !important;
+}
 @media (max-width: 575px) {
   .simple-select-container {
     min-width: unset;
@@ -209,6 +213,12 @@ label span {
   background-color: #fff !important;
   transition: 0.3s ease !important;
   padding: 0.7em;
+}
+@media (max-width: 575px) {
+  .simple-select__control {
+    border-radius: 1em !important;
+    padding: 0.5em;
+  }
 }
 .simple-select__control--is-focused {
   border: 1px solid #26C24A !important;
@@ -400,8 +410,18 @@ button {
 }
 @media (max-width: 575px) {
   .btn, .btn-4, .btn-3, .btn-2, .btn-1 {
-    padding: 1em 1.5em;
+    padding: 0.75em 1em;
   }
+}
+.btn-none {
+  padding: 0px;
+  border: none;
+}
+.btn-none:before, .btn-none:after {
+  content: unset;
+}
+.btn-none:hover, .btn-none:focus, .btn-none:active, .btn-none.active {
+  border: none;
 }
 .btn-1 {
   color: #fff;
@@ -434,6 +454,60 @@ button {
 .btn-4:hover, .btn-4:focus, .btn-4:active, .btn-4.active {
   color: #0D0D0D;
   background: #AAEEBA;
+}
+
+.input-file {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  border-radius: 2em;
+  transition: 0.3s ease;
+  background-color: #fff;
+  padding: 1.2em 1.5em 1.2em 3em;
+  position: relative;
+}
+@media (max-width: 575px) {
+  .input-file {
+    border-radius: 1em;
+    padding: 0.75em 1em 0.75em 2em;
+  }
+}
+.input-file:hover {
+  cursor: pointer;
+}
+.input-file input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  top: 0px;
+  left: 0px;
+  padding: 0px;
+}
+.input-file svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1em;
+  z-index: 10;
+  color: #26C24A;
+  height: 1.75em;
+  width: 1.75em;
+}
+@media (max-width: 575px) {
+  .input-file svg {
+    height: 1.5em;
+    width: 1.5em;
+  }
+}
+.input-file .ind {
+  color: #26C24A;
+  font-weight: 600;
+}
+.input-file .ind:empty {
+  display: none;
 }
 
 .form-search-1 {
@@ -488,6 +562,12 @@ button {
 }
 .form-search-2 button svg {
   font-size: 2em;
+}
+
+@media (max-width: 575px) {
+  .form-respond {
+    font-size: 0.9em;
+  }
 }
 
 /* Text styles */
@@ -694,13 +774,9 @@ h6 {
   border: 1px dashed #BFBFBF;
 }
 
-.w-auto {
-  width: auto;
-}
-
 @media (max-width: 575px) {
   .w-xs-100 {
-    width: 100%;
+    width: 100% !important;
   }
 }
 
@@ -711,6 +787,54 @@ h6 {
 }
 .link:hover, .link:focus {
   color: #26C24A;
+}
+
+.dropdown-toggle {
+  color: #BFBFBF;
+  transition: 0.3s ease;
+}
+.dropdown-toggle:hover, .dropdown-toggle:focus, .dropdown-toggle:active, .dropdown-toggle:focus-visible {
+  color: #FF6332 !important;
+}
+.dropdown-item {
+  color: #0D0D0D;
+  transition: 0.3s ease;
+}
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: #F2F2F2;
+}
+.dropdown-item:active, .dropdown-item.active {
+  background-color: #fff2ed;
+  color: #FF6332;
+}
+.dropdown-menu {
+  border-radius: 1em;
+  border-radius: 2em;
+  border: 1px solid #F2F2F2;
+  padding: 2em;
+  box-shadow: 0px 2px 6px #F2F2F2;
+  padding: 0.75em 0;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0);
+}
+@media (max-width: 575px) {
+  .dropdown-menu {
+    border-radius: 1em;
+    padding: 1em;
+  }
+}
+.dropdown-menu hr {
+  background-color: #F2F2F2;
+  height: 1px;
+  width: 100%;
+  margin: 1em 0px;
+  border: none;
+  opacity: 1;
+}
+.dropdown-menu hr.dark {
+  background-color: transparent;
+  border: 1px dashed #BFBFBF;
 }
 
 .icon-mini {
@@ -2303,6 +2427,95 @@ main {
   }
 }
 
+.offer-page-card {
+  position: relative;
+}
+.offer-page-card .btn-none {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 100;
+}
+.offer-page-card ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.offer-page-card ul.horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.offer-page-card ul.horizontal li {
+  color: #737373;
+  font-size: 0.9em;
+}
+@media (max-width: 575px) {
+  .offer-page-card ul.horizontal li {
+    font-size: 0.8em;
+  }
+}
+.offer-page-card ul.horizontal li.pill {
+  background-color: #fff2ed;
+  border-radius: 1em;
+  padding: 0 0.5em;
+}
+.offer-page-card ul.horizontal li:not(:first-child) {
+  margin-left: 0.5em;
+}
+.offer-page-card ul.horizontal li:not(:first-child):before {
+  content: "⦁";
+  margin-right: 0.5em;
+}
+.offer-page-card ul.vertical li {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.offer-page-card ul.vertical li .icon {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  background-color: #fff2ed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.offer-page-card ul.vertical li .icon svg {
+  font-size: 1.2em;
+  color: #FF6332;
+}
+.offer-page-card ul.vertical li:not(:first-child) {
+  margin-top: 0.75em;
+}
+.offer-page-card .user {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.offer-page-card .user img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (max-width: 575px) {
+  .offer-page-card .user img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
 .list-bordered {
   list-style: none;
   padding-left: 0px;
@@ -2325,11 +2538,35 @@ main {
   background-color: #fff2ed;
   box-shadow: 0px 2px 6px rgba(191, 191, 191, 0.5);
 }
+@media (max-width: 767px) {
+  .respond .photo {
+    width: 70px;
+    height: 70px;
+  }
+}
+@media (max-width: 575px) {
+  .respond .photo {
+    width: 45px;
+    height: 45px;
+    margin-right: 0.5em;
+  }
+}
 .respond .box {
   background-color: #fff2ed;
 }
+@media (max-width: 767px) {
+  .respond .box {
+    padding: 1.5em;
+  }
+}
+@media (max-width: 575px) {
+  .respond .box {
+    padding: 1em;
+  }
+}
 .respond .box hr {
-  background-color: #FF6332;
+  background-color: #fff;
+  height: 2px;
 }
 
 /* Account END */
