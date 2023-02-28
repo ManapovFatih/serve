@@ -874,9 +874,9 @@ header {
                 @include list();
                 @include flex-center();
                 margin-left: 2em;
-                li {
+                &>li {
                     &:not(:first-child){margin-left: 1.25em;}
-                    a {
+                    &>a, &>button {
                         font-size: 1em;
                         color: $gray-3;
                         transition: $transition;
@@ -892,9 +892,10 @@ header {
             ul {
                 @include list();
                 @include flex-center();
-                li {
+                &>li {
                     &:not(:first-child){margin-left: 1em;}
-                    button, a {
+                    &>button, &>a {
+                        display: flex;
                         font-size: 1.5em;
                         color: $gray-3;
                         transition: $transition;
@@ -2282,6 +2283,34 @@ nav.mobile-menu {
             &:not(:last-child){
                 margin-right: 1em;
             }
+        }
+    }
+}
+
+.notifications-list {
+    width: 300px;
+    max-height: 450px;
+    overflow-y: auto;
+    border-radius: $radius-sm;
+    background-color: $gray-1;
+    box-shadow: 0px 2px 6px $gray-2;
+    padding: 1em;
+    li {
+        background-color: #fff;
+        font-size: .9em;
+        border-radius: $radius-sm;
+        &:not(:last-child){margin-bottom: .5em;}
+        div {
+            @include flex(row, space-between, center, nowrap);
+            time {
+                font-size: .8em;
+                color: $gray-3;
+            }
+        }
+        p {
+            margin-top: .5em;
+            white-space: normal;
+            font-size: .9em;
         }
     }
 }

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import useIsMobile from '../hooks/isMobile';
 import {NavLink, Link} from 'react-router-dom';
-
 import Container from 'react-bootstrap/Container';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-
-import { SlBell, SlUser, SlMagnifier } from "react-icons/sl";
+import { SlUser, SlMagnifier } from "react-icons/sl";
 import logo from '../assets/imgs/servicio365.png';
 import СreateOrder from './forms/СreateOrder';
+import Notifications from './Notifications';
 
 const Header = () => {
     const {mobile} = useIsMobile('991px')
@@ -48,9 +47,7 @@ const Header = () => {
                                 </button>
                             </li>
                             <li>
-                                <button type='button'>
-                                    <SlBell/>
-                                </button>
+                                <Notifications/>
                             </li>
                             <li className='d-none d-lg-block'>
                                 <Link to='/account'>

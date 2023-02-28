@@ -992,15 +992,15 @@ header .container nav.left ul {
   align-items: center;
   margin-left: 2em;
 }
-header .container nav.left ul li:not(:first-child) {
+header .container nav.left ul > li:not(:first-child) {
   margin-left: 1.25em;
 }
-header .container nav.left ul li a {
+header .container nav.left ul > li > a, header .container nav.left ul > li > button {
   font-size: 1em;
   color: #737373;
   transition: 0.3s ease;
 }
-header .container nav.left ul li a:hover, header .container nav.left ul li a:focus, header .container nav.left ul li a:active, header .container nav.left ul li a.active {
+header .container nav.left ul > li > a:hover, header .container nav.left ul > li > a:focus, header .container nav.left ul > li > a:active, header .container nav.left ul > li > a.active, header .container nav.left ul > li > button:hover, header .container nav.left ul > li > button:focus, header .container nav.left ul > li > button:active, header .container nav.left ul > li > button.active {
   color: #0D0D0D;
 }
 header .container nav.right ul {
@@ -1010,20 +1010,21 @@ header .container nav.right ul {
   justify-content: center;
   align-items: center;
 }
-header .container nav.right ul li:not(:first-child) {
+header .container nav.right ul > li:not(:first-child) {
   margin-left: 1em;
 }
-header .container nav.right ul li button, header .container nav.right ul li a {
+header .container nav.right ul > li > button, header .container nav.right ul > li > a {
+  display: flex;
   font-size: 1.5em;
   color: #737373;
   transition: 0.3s ease;
 }
 @media (max-width: 1399px) {
-  header .container nav.right ul li button, header .container nav.right ul li a {
+  header .container nav.right ul > li > button, header .container nav.right ul > li > a {
     font-size: 1.5em;
   }
 }
-header .container nav.right ul li button:hover, header .container nav.right ul li button:focus, header .container nav.right ul li button:active, header .container nav.right ul li a:hover, header .container nav.right ul li a:focus, header .container nav.right ul li a:active {
+header .container nav.right ul > li > button:hover, header .container nav.right ul > li > button:focus, header .container nav.right ul > li > button:active, header .container nav.right ul > li > a:hover, header .container nav.right ul > li > a:focus, header .container nav.right ul > li > a:active {
   color: #0D0D0D;
 }
 
@@ -2806,4 +2807,38 @@ nav.mobile-menu ul li a, nav.mobile-menu ul li button {
 }
 .create-order-form ul li:not(:last-child) {
   margin-right: 1em;
+}
+
+.notifications-list {
+  width: 300px;
+  max-height: 450px;
+  overflow-y: auto;
+  border-radius: 1em;
+  background-color: #F2F2F2;
+  box-shadow: 0px 2px 6px #BFBFBF;
+  padding: 1em;
+}
+.notifications-list li {
+  background-color: #fff;
+  font-size: 0.9em;
+  border-radius: 1em;
+}
+.notifications-list li:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+.notifications-list li div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.notifications-list li div time {
+  font-size: 0.8em;
+  color: #737373;
+}
+.notifications-list li p {
+  margin-top: 0.5em;
+  white-space: normal;
+  font-size: 0.9em;
 }/*# sourceMappingURL=style.css.map */
