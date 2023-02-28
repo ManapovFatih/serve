@@ -7,6 +7,7 @@ import { SlUser, SlMagnifier } from "react-icons/sl";
 import logo from '../assets/imgs/servicio365.png';
 import СreateOrder from './forms/СreateOrder';
 import Notifications from './Notifications';
+import SearchForm from './forms/SearchForm';
 
 const Header = () => {
     const {mobile} = useIsMobile('991px')
@@ -23,12 +24,7 @@ const Header = () => {
                         <Link to='/'>
                             <img src={logo} alt="servicio365" className='logo'/>
                         </Link>
-                        <form action="" className='d-none d-xl-block form-search-1'>
-                            <input type="text" placeholder='Чем вам помочь?'/>
-                            <button type='button'>
-                                <SlMagnifier/>
-                            </button>
-                        </form>
+                        <SearchForm className={'d-none d-xl-block form-search-1'}/>
                         {
                             (!mobile) &&
                             <ul>
@@ -67,12 +63,7 @@ const Header = () => {
             <Offcanvas show={search} onHide={closeSearch} placement={'top'}>
                 <Offcanvas.Body>
                     <Container>
-                        <form action="" className='form-search-1'>
-                            <input type="text" placeholder='Чем вам помочь?'/>
-                            <button type='button'>
-                                <SlMagnifier/>
-                            </button>
-                        </form>
+                        <SearchForm className={'form-search-1'}/>
                     </Container>
                 </Offcanvas.Body>
             </Offcanvas>

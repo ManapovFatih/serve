@@ -1152,8 +1152,10 @@ main {
 .sec-1 form {
   position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap;
 }
 .sec-1 form input {
   flex: 1;
@@ -1167,15 +1169,15 @@ main {
     z-index: 10;
     right: 0.5em;
     top: 0.5em;
-    height: 3em;
-    width: 3em;
+    height: 2.5em;
+    width: 2.5em;
     padding: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .sec-1 form button svg {
-    font-size: 2em;
+    font-size: 1.75em;
   }
 }
 .sec-1 .slider-auto .swiper-slide {
