@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col'
 
 import { TfiPencilAlt, TfiCommentAlt, TfiIdBadge } from "react-icons/tfi"
 import Order from '../components/Order';
+import CreateOrder from '../components/forms/СreateOrder';
 
 const MyOrders = () => {
     return (
@@ -34,7 +35,7 @@ const MyOrders = () => {
                     <p className='gray-3 fs-09'>Выберите подходящего вам исполнителя по рейтингу, отзывам и цене</p>
                 </Col>
             </Row>
-            <button type='button' className='btn-1 mx-auto my-4 my-sm-5'>Создать заказ</button>
+            <CreateOrder btnClassName='btn-1 mx-auto my-4 my-sm-5'/>
 
             <ul className="orders-list">
                 <li><Order active={false} responseCount={3}/></li>

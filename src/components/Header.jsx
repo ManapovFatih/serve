@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
-import useIsMobile from '../hooks/isMobile'
-import {NavLink, Link} from 'react-router-dom'
+import React, { useState } from 'react';
+import useIsMobile from '../hooks/isMobile';
+import {NavLink, Link} from 'react-router-dom';
 
-import Container from 'react-bootstrap/Container'
-import Offcanvas from 'react-bootstrap/Offcanvas'
+import Container from 'react-bootstrap/Container';
+import Offcanvas from 'react-bootstrap/Offcanvas';
 
-import { SlBell, SlUser, SlMagnifier } from "react-icons/sl"
-import logo from '../assets/imgs/servicio365.png'
+import { SlBell, SlUser, SlMagnifier } from "react-icons/sl";
+import logo from '../assets/imgs/servicio365.png';
+import СreateOrder from './forms/СreateOrder';
 
 const Header = () => {
     const {mobile} = useIsMobile('991px')
@@ -32,7 +33,7 @@ const Header = () => {
                         {
                             (!mobile) &&
                             <ul>
-                                <li><NavLink to="/">Создать заказ</NavLink></li>
+                                <li><СreateOrder/></li>
                                 <li><NavLink to="/search">Найти специалиста</NavLink></li>
                                 <li><NavLink to="/search/my-orders">Мои заказы</NavLink></li>
                                 <li><NavLink to="/registration">Стать исполнителем</NavLink></li>

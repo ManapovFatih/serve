@@ -5,11 +5,12 @@ import { TfiPencilAlt } from "react-icons/tfi";
 import { RxCross2 } from "react-icons/rx";
 import {NavLink, Link} from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import CreateOrder from './forms/СreateOrder';
 
 const FooterMob = () => {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [showFMenu, setShowFMenu] = useState(false);
+    const handleCloseFMenu = () => setShowFMenu(false);
+    const handleShowFMenu = () => setShowFMenu(true);
 
     return (
         <>
@@ -24,7 +25,7 @@ const FooterMob = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/">
+                            <NavLink to="/search/my-orders">
                                 <TfiPencilAlt/>
                                 <span>Заказы</span>
                             </NavLink>
@@ -36,7 +37,7 @@ const FooterMob = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <button type='button' onClick={handleShow}>
+                            <button type='button' onClick={handleShowFMenu}>
                                 <SlOptions/>
                                 <span>Меню</span>
                             </button>
@@ -45,12 +46,12 @@ const FooterMob = () => {
                 </nav>
             </Container>
         </footer>
-        <Offcanvas show={show} onHide={handleClose} placement={'bottom'}>
+        <Offcanvas show={showFMenu} onHide={handleCloseFMenu} placement={'bottom'}>
             <Offcanvas.Body>
                 <Container>
-                    <button type='button' className='close' onClick={handleClose}><RxCross2/></button>
-                    <nav className='mobile-menu' onClick={handleClose}>
-                        <ul>
+                    <button type='button' className='close' onClick={handleCloseFMenu}><RxCross2/></button>
+                    <nav className='mobile-menu'>
+                        <ul onClick={handleCloseFMenu}>
                             <li>
                                 <Link to='/account/profile'>Мой профиль</Link>
                             </li>
@@ -73,9 +74,12 @@ const FooterMob = () => {
                         <hr />
                         <ul>
                             <li>
+                                <CreateOrder/>
+                            </li>
+                            <li onClick={handleCloseFMenu}>
                                 <Link to='/search'>Найти специалиста</Link>
                             </li>
-                            <li>
+                            <li onClick={handleCloseFMenu}>
                                 <Link to='/search/my-orders'>Мои заказы</Link>
                             </li>
                         </ul>
