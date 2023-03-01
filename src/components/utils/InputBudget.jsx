@@ -91,7 +91,6 @@ const InputBudget = () => {
   const [measure, setMeasure] = useState(measuresArr);
   const [showInner, setShowInner] = useState(false);
   const ref = useRef();
-
   useOnClickOutside(ref, () => setShowInner(false));
 
   const handleCheck = (curId) => {

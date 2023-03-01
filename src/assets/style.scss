@@ -2358,32 +2358,28 @@ nav.mobile-menu {
 .create-order-form {
     ul {
         @include list();
-        @include flex(row, flex-start, stretch, wrap);
-        li {
-            @media (max-width: 991px) {
-                margin-bottom: .5em;
-            }
-            &:not(:last-child){
-                margin-right: 1em;
-            }
-        }
+        // @include flex(row, flex-start, stretch, wrap);
     }
 }
 .budget {
     position: relative;
+    width: 100%;
     &-btn {
+        width: 100%;
         position: relative;
         z-index: 1;
-        @include flex(row, center, center, nowrap);
+        @include flex(row, flex-start, center, nowrap);
         padding: 1em;
         text-align: center;
         transition: .3s ease;
-        width: -moz-fit-content;
-        width: fit-content;
         font-size: 1em;
         font-weight: 500;
         border-radius: $radius;
         background-color: #fff;
+        @media (max-width: 575px) {
+            padding: .8em 1em;
+            border-radius: $radius-sm;
+        }
     }
     &-inner {
         z-index: 2;
@@ -2407,6 +2403,49 @@ nav.mobile-menu {
         }
     }
 }
+.limitation {
+    position: relative;
+    width: 100%;
+    &-btn {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        @include flex(row, flex-start, center, nowrap);
+        padding: 1em;
+        text-align: center;
+        transition: .3s ease;
+        font-size: 1em;
+        font-weight: 500;
+        border-radius: $radius;
+        background-color: #fff;
+        @media (max-width: 575px) {
+            padding: .8em 1em;
+            border-radius: $radius-sm;
+        }
+    }
+    &-inner {
+        z-index: 2;
+        position: absolute;
+        top: calc(100% + .3em);
+        left: 0px;
+        width: fit-content;
+        background-color: #fff;
+        border-radius: $radius;
+        padding: 1em;
+        input {
+            border: 1px solid $gray-2;
+        }
+        ul {
+            display: block;
+            max-height: 100px;
+            overflow: auto;
+            li {
+                &:not(:last-child){margin-bottom: .5em;}
+            }
+        }
+    }
+}
+
 
 .notifications-list {
     width: 300px;

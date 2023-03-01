@@ -5,6 +5,7 @@ import Select from 'react-select';
 import InputFile from '../../components/utils/InputFile';
 import { SlPhone } from "react-icons/sl";
 import InputBudget from '../utils/InputBudget';
+import Limitation from '../utils/Limitation';
 
 const locationList = [
   {value: '1', label: 'У меня'},
@@ -41,13 +42,22 @@ const СreateOrder = (props) => {
             <h3>Что нужно сделать?</h3>
             <input type="text" placeholder='Короткое название задачи' className='mb-3'/>
             <textarea placeholder="Расскажите подробнее о задаче" rows="5"  className='mb-3'></textarea>
-            <ul className='mb-3'>
+            <ul className='row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3 mb-3'>
+              <li>
+                <Select
+                  name="location"
+                  placeholder="Выберите категорию"
+                  classNamePrefix="simple-select"
+                  className="simple-select-container borderless w-100"
+                  options={List}
+                />
+              </li>
               <li>
                 <Select
                   name="location"
                   placeholder=""
                   classNamePrefix="simple-select"
-                  className="simple-select-container borderless"
+                  className="simple-select-container borderless w-100"
                   options={locationList}
                   defaultValue={locationList[2]}
                 />
@@ -57,7 +67,7 @@ const СreateOrder = (props) => {
                   name="town"
                   placeholder="Город"
                   classNamePrefix="simple-select"
-                  className="simple-select-container borderless"
+                  className="simple-select-container borderless w-100"
                   options={townList}
                   defaultValue={townList[0]}
                   isSearchable={true}
@@ -68,21 +78,10 @@ const СreateOrder = (props) => {
                 <InputBudget/>
               </li>
               <li>
-                Сроки
+                <Limitation/>
               </li>
               <li>
-                <InputFile />
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <Select
-                  name="location"
-                  placeholder="Выберите категорию"
-                  classNamePrefix="simple-select"
-                  className="simple-select-container borderless"
-                  options={List}
-                />
+                <InputFile className={'w-100'} />
               </li>
             </ul>
             <hr />
@@ -92,7 +91,7 @@ const СreateOrder = (props) => {
                   <SlPhone />
                   <span className='ms-2'>+7 (909) 312 51 82</span>
                 </a>
-                <p className='gray-2 mt-2'>Исполнители не видят ваш номер телефона и не могут звонить вам сами</p>
+                <p className='gray-2 fs-09 mt-2'>Исполнители не видят ваш номер телефона и не могут звонить вам сами</p>
               </div>
               <input type="checkbox" className='switch'/>
             </div>

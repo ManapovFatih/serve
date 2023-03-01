@@ -2911,41 +2911,34 @@ nav.mobile-menu ul li a, nav.mobile-menu ul li button {
 .create-order-form ul {
   list-style: none;
   padding-left: 0px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: stretch;
-  flex-wrap: wrap;
-}
-@media (max-width: 991px) {
-  .create-order-form ul li {
-    margin-bottom: 0.5em;
-  }
-}
-.create-order-form ul li:not(:last-child) {
-  margin-right: 1em;
 }
 
 .budget {
   position: relative;
+  width: 100%;
 }
 .budget-btn {
+  width: 100%;
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: nowrap;
   padding: 1em;
   text-align: center;
   transition: 0.3s ease;
-  width: -moz-fit-content;
-  width: fit-content;
   font-size: 1em;
   font-weight: 500;
   border-radius: 2em;
   background-color: #fff;
+}
+@media (max-width: 575px) {
+  .budget-btn {
+    padding: 0.8em 1em;
+    border-radius: 1em;
+  }
 }
 .budget-inner {
   z-index: 2;
@@ -2966,6 +2959,56 @@ nav.mobile-menu ul li a, nav.mobile-menu ul li button {
   overflow: auto;
 }
 .budget-inner ul li:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+.limitation {
+  position: relative;
+  width: 100%;
+}
+.limitation-btn {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 1em;
+  text-align: center;
+  transition: 0.3s ease;
+  font-size: 1em;
+  font-weight: 500;
+  border-radius: 2em;
+  background-color: #fff;
+}
+@media (max-width: 575px) {
+  .limitation-btn {
+    padding: 0.8em 1em;
+    border-radius: 1em;
+  }
+}
+.limitation-inner {
+  z-index: 2;
+  position: absolute;
+  top: calc(100% + 0.3em);
+  left: 0px;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #fff;
+  border-radius: 2em;
+  padding: 1em;
+}
+.limitation-inner input {
+  border: 1px solid #BFBFBF;
+}
+.limitation-inner ul {
+  display: block;
+  max-height: 100px;
+  overflow: auto;
+}
+.limitation-inner ul li:not(:last-child) {
   margin-bottom: 0.5em;
 }
 
