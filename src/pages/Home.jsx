@@ -23,6 +23,15 @@ import icon2 from '../assets/imgs/icons/icon-2.png';
 import icon3 from '../assets/imgs/icons/icon-3.png';
 import icon4 from '../assets/imgs/icons/icon-4.png';
 import map from '../assets/imgs/map.jpg';
+import beauty from '../assets/imgs/icons/beauty.svg';
+import legal from '../assets/imgs/icons/legal.svg';
+import delivery from '../assets/imgs/icons/delivery.svg';
+import computer from '../assets/imgs/icons/computer.svg';
+import repair from '../assets/imgs/icons/repair.svg';
+import key from '../assets/imgs/icons/key.svg';
+import carRepair from '../assets/imgs/icons/car-repair.svg';
+import all from '../assets/imgs/icons/all.svg';
+
 import smartphone from '../assets/imgs/smartphone.png';
 import { TfiPaintRoller, TfiBriefcase, TfiTruck, TfiCar, TfiMore } from "react-icons/tfi";
 import { SlScreenDesktop } from "react-icons/sl";
@@ -40,7 +49,8 @@ const Home = () => {
                 navigation
                 >
                 <SwiperSlide>
-                    <section className="main">
+                    <img src="imgs/1slide1920.jpg" alt="1slide1920" className='bg'/>
+                    <section>
                         <Container>
                             <Row className='h-100'>
                                 <Col md={8} className='d-flex flex-column justify-content-end justify-content-md-center'>
@@ -52,7 +62,8 @@ const Home = () => {
                     </section>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <section className="main">
+                    <img src="imgs/2slide1920.jpg" alt="2slide1920" className='bg'/>
+                    <section>
                         <Container>
                             <Row className='h-100'>
                                 <Col md={8} className='d-flex flex-column justify-content-end justify-content-md-center'>
@@ -161,28 +172,28 @@ const Home = () => {
                     <h3>Поручите дела специалистам</h3>
                     <div className="grid mt-3 mt-sm-4">
                         <div>
-                            <CategoryCard title={"Электрика"} imgUrl={"imgs/1.png"}/>
+                            <CategoryCard title={"Электрика"} imgUrl={"imgs/socket.jpg"}/>
                         </div>
                         <div>
-                            <CategoryCard title={"Сантехника"} imgUrl={"imgs/2.png"}/>
+                            <CategoryCard title={"Сантехника"} imgUrl={"imgs/faucet.jpg"}/>
                         </div>
                         <div>
-                            <CategoryCard title={'Химчистка мебели'} imgUrl={'imgs/3.png'}/>
+                            <CategoryCard title={'Химчистка мебели'} imgUrl={'imgs/sofa.jpg'}/>
                         </div>
                         <div>
-                            <CategoryCard title={'Стиральные машины'} imgUrl={'imgs/4.png'}/>
+                            <CategoryCard title={'Стиральные машины'} imgUrl={'imgs/washing-machine.jpg'}/>
                         </div>
                         <div>
-                            <CategoryCard title={'Поверка счётчиков'} imgUrl={'imgs/5.png'}/>
+                            <CategoryCard title={'Поверка счётчиков'} imgUrl={'imgs/chemicals.jpg'}/>
                         </div>
                         <div>
-                            <CategoryCard title={'Дезинсекция'} imgUrl={'imgs/6.png'}/>
+                            <CategoryCard title={'Дезинсекция'} imgUrl={'imgs/pliers.jpg'}/>
                         </div>
                         <div>
-                            <CategoryCard title={'Ремонт и установка замков'} imgUrl={'imgs/7.png'}/>
+                            <CategoryCard title={'Ремонт и установка замков'} imgUrl={'imgs/keys.jpg'}/>
                         </div>
                         <div>
-                            <CategoryCard title={'Вывоз мусора'} imgUrl={'imgs/8.png'}/>
+                            <CategoryCard title={'Вывоз мусора'} imgUrl={'imgs/trash.jpg'}/>
                         </div>
                     </div>
                 </section>
@@ -259,49 +270,49 @@ const Home = () => {
                         <Row xs={1} sm={2} md={3} lg={4} className='g-4'>
                             <Col>
                                 <a href="/">
-                                    <TfiPaintRoller/>
-                                    <span>Ремонт и строительство</span>
-                                </a>
-                            </Col>
-                            <Col>
-                                <a href="/">
-                                    <TfiBriefcase/>
-                                    <span>Юристы</span>
-                                </a>
-                            </Col>
-                            <Col>
-                                <a href="/">
-                                    <TfiTruck/>
-                                    <span>Перевозки и курьеры</span>
-                                </a>
-                            </Col>
-                            <Col>
-                                <a href="/">
-                                    <SlScreenDesktop/>
-                                    <span>Компьютеры и IT</span>
-                                </a>
-                            </Col>
-                            <Col>
-                                <a href="/">
-                                    <RxScissors/>
+                                    <img src={beauty} alt="Красота" />
                                     <span>Красота</span>
                                 </a>
                             </Col>
                             <Col>
                                 <a href="/">
-                                    <RxLapTimer/>
+                                    <img src={legal} alt="Юристы" />
+                                    <span>Юристы</span>
+                                </a>
+                            </Col>
+                            <Col>
+                                <a href="/">
+                                    <img src={delivery} alt="Перевозки и курьеры" />
+                                    <span>Перевозки и курьеры</span>
+                                </a>
+                            </Col>
+                            <Col>
+                                <a href="/">
+                                    <img src={computer} alt="Компьютеры и IT" />
+                                    <span>Компьютеры и IT</span>
+                                </a>
+                            </Col>
+                            <Col>
+                                <a href="/">
+                                    <img src={repair} alt="Ремонт и строительство" />
+                                    <span>Ремонт и строительство</span>
+                                </a>
+                            </Col>
+                            <Col>
+                                <a href="/">
+                                    <img src={key} alt="Аренда" />
                                     <span>Аренда</span>
                                 </a>
                             </Col>
                             <Col>
                                 <a href="/">
-                                    <TfiCar/>
+                                    <img src={carRepair} alt="Ремонт авто" />
                                     <span>Ремонт авто</span>
                                 </a>
                             </Col>
                             <Col>
                                 <a href="/">
-                                    <TfiMore/>
+                                    <img src={all} alt="Посмотреть все услуги" />
                                     <span>Посмотреть все услуги</span>
                                 </a>
                             </Col>

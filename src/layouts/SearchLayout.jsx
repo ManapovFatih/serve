@@ -9,6 +9,7 @@ import FooterMob from '../components/FooterMob';
 import useIsMobile from '../hooks/isMobile';
 import HeaderSearch from '../components/HeaderSearch';
 import { SlGrid, SlDocs, SlUser } from "react-icons/sl";
+import HeaderMobile from '../components/HeaderMobile';
 
 const SearchLayout = () => {
   const {mobile} = useIsMobile('991px');
@@ -16,7 +17,11 @@ const SearchLayout = () => {
   return (
     <>
       <ScrollRestoration />
-      <HeaderSearch/>
+      {
+        (mobile) 
+        ? <HeaderMobile/>
+        : <HeaderSearch />
+      }
       <main className='py-4 py-lg-5'>
         <Container>
           <Row>

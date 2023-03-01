@@ -8,6 +8,7 @@ import logo from '../assets/imgs/servicio365.png';
 import СreateOrder from './forms/СreateOrder';
 import Notifications from './Notifications';
 import SearchForm from './forms/SearchForm';
+import LanguageSwitcher from './utils/LanguageSwitcher';
 
 const Header = () => {
     const {mobile} = useIsMobile('991px')
@@ -51,9 +52,7 @@ const Header = () => {
                                 </Link>
                             </li>
                             <li>
-                                <button type='button'>
-                                    RU
-                                </button>
+                                <LanguageSwitcher/>
                             </li>
                         </ul>
                     </nav>

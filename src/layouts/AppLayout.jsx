@@ -3,6 +3,7 @@ import {Outlet, ScrollRestoration} from 'react-router-dom'
 import Footer from '../components/Footer'
 import FooterMob from '../components/FooterMob'
 import Header from '../components/Header'
+import HeaderMobile from '../components/HeaderMobile'
 import useIsMobile from '../hooks/isMobile'
 
 const AppLayout = () => {
@@ -11,7 +12,11 @@ const AppLayout = () => {
     return (
         <>
             <ScrollRestoration />
-            <Header />
+            {
+                (mobile) 
+                ? <HeaderMobile/>
+                : <Header />
+            }
             <Outlet />
             <Footer />
             {

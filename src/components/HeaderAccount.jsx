@@ -4,8 +4,10 @@ import {Link, NavLink} from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 
-import { SlBell, SlUser } from "react-icons/sl"
+import { SlUser } from "react-icons/sl"
 import logo from '../assets/imgs/servicio365.png'
+import LanguageSwitcher from './utils/LanguageSwitcher'
+import Notifications from './Notifications'
 
 const HeaderAccount = () => {
     const {mobile} = useIsMobile('991px')
@@ -33,9 +35,7 @@ const HeaderAccount = () => {
                     <nav className='right'>
                         <ul>
                             <li>
-                                <button type='button'>
-                                    <SlBell/>
-                                </button>
+                                <Notifications/>
                             </li>
                             <li className='d-none d-lg-block'>
                                 <Link to='/account'>
@@ -43,9 +43,7 @@ const HeaderAccount = () => {
                                 </Link>
                             </li>
                             <li>
-                                <button type='button'>
-                                    RU
-                                </button>
+                                <LanguageSwitcher/>
                             </li>
                         </ul>
                     </nav>
