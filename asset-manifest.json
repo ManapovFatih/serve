@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.465eaa69.css",
-    "main.js": "/static/js/main.9cd6e03e.js",
-    "static/media/servicio365.png": "/static/media/servicio365.9ab2a8e33fb1bf9c11a8.png",
-    "static/media/map.jpg": "/static/media/map.970a7f7d1ea1f251fbfe.jpg",
-    "static/media/smartphone.png": "/static/media/smartphone.bb12211e232d020bb670.png",
-    "static/media/car-repair.svg": "/static/media/car-repair.232551ba75dd00cbe267c115c8af965a.svg",
-    "static/media/key.svg": "/static/media/key.ca4d9b22280cc3b6fd6c2967d7f812ec.svg",
-    "static/media/beauty.svg": "/static/media/beauty.c6c35255a86255ddb0cb422b2d9eca7c.svg",
-    "static/media/repair.svg": "/static/media/repair.5e8db9dfd92298289a96b70f3e0d9bda.svg",
-    "static/media/computer.svg": "/static/media/computer.0fdac23ef973327bec97763666dbc597.svg",
-    "static/media/legal.svg": "/static/media/legal.06b52e301e9da7318a1cd89c70d9e996.svg",
-    "static/media/delivery.svg": "/static/media/delivery.891c29be90c00028654331dc5935b2a7.svg",
-    "static/media/all.svg": "/static/media/all.57bdb05e0dd1a2d4908d7f3186a9b099.svg",
-    "static/media/mark-green.svg": "/static/media/mark-green.5a0176f9b35ce3d973a1.svg",
-    "index.html": "/index.html",
-    "main.465eaa69.css.map": "/static/css/main.465eaa69.css.map",
-    "main.9cd6e03e.js.map": "/static/js/main.9cd6e03e.js.map"
+    "main.css": "/serve/static/css/main.80d88343.css",
+    "main.js": "/serve/static/js/main.592e8fd5.js",
+    "static/media/servicio365.png": "/serve/static/media/servicio365.9ab2a8e33fb1bf9c11a8.png",
+    "static/media/map.jpg": "/serve/static/media/map.970a7f7d1ea1f251fbfe.jpg",
+    "static/media/smartphone.png": "/serve/static/media/smartphone.bb12211e232d020bb670.png",
+    "static/media/car-repair.svg": "/serve/static/media/car-repair.232551ba75dd00cbe267c115c8af965a.svg",
+    "static/media/key.svg": "/serve/static/media/key.ca4d9b22280cc3b6fd6c2967d7f812ec.svg",
+    "static/media/beauty.svg": "/serve/static/media/beauty.c6c35255a86255ddb0cb422b2d9eca7c.svg",
+    "static/media/repair.svg": "/serve/static/media/repair.5e8db9dfd92298289a96b70f3e0d9bda.svg",
+    "static/media/computer.svg": "/serve/static/media/computer.0fdac23ef973327bec97763666dbc597.svg",
+    "static/media/legal.svg": "/serve/static/media/legal.06b52e301e9da7318a1cd89c70d9e996.svg",
+    "static/media/delivery.svg": "/serve/static/media/delivery.891c29be90c00028654331dc5935b2a7.svg",
+    "static/media/all.svg": "/serve/static/media/all.57bdb05e0dd1a2d4908d7f3186a9b099.svg",
+    "static/media/mark-green.svg": "/serve/static/media/mark-green.5a0176f9b35ce3d973a1.svg",
+    "index.html": "/serve/index.html",
+    "main.80d88343.css.map": "/serve/static/css/main.80d88343.css.map",
+    "main.592e8fd5.js.map": "/serve/static/js/main.592e8fd5.js.map"
   },
   "entrypoints": [
-    "static/css/main.465eaa69.css",
-    "static/js/main.9cd6e03e.js"
+    "static/css/main.80d88343.css",
+    "static/js/main.592e8fd5.js"
   ]
 }
