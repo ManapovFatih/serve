@@ -2369,6 +2369,44 @@ nav.mobile-menu {
         }
     }
 }
+.budget {
+    position: relative;
+    &-btn {
+        position: relative;
+        z-index: 1;
+        @include flex(row, center, center, nowrap);
+        padding: 1em;
+        text-align: center;
+        transition: .3s ease;
+        width: -moz-fit-content;
+        width: fit-content;
+        font-size: 1em;
+        font-weight: 500;
+        border-radius: $radius;
+        background-color: #fff;
+    }
+    &-inner {
+        z-index: 2;
+        position: absolute;
+        top: calc(100% + .3em);
+        left: 0px;
+        width: 250px;
+        background-color: #fff;
+        border-radius: $radius;
+        padding: 1em;
+        input {
+            border: 1px solid $gray-2;
+        }
+        ul {
+            display: block;
+            max-height: 100px;
+            overflow: auto;
+            li {
+                &:not(:last-child){margin-bottom: .5em;}
+            }
+        }
+    }
+}
 
 .notifications-list {
     width: 300px;

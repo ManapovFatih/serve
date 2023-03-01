@@ -4,6 +4,7 @@ import { RxCross1 } from "react-icons/rx";
 import Select from 'react-select';
 import InputFile from '../../components/utils/InputFile';
 import { SlPhone } from "react-icons/sl";
+import InputBudget from '../utils/InputBudget';
 
 const locationList = [
   {value: '1', label: 'У меня'},
@@ -62,6 +63,12 @@ const СreateOrder = (props) => {
                   isSearchable={true}
                   isClearable={true}
                 />
+              </li>
+              <li>
+                <InputBudget/>
+              </li>
+              <li>
+                Сроки
               </li>
               <li>
                 <InputFile />

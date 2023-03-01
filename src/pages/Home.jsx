@@ -31,12 +31,7 @@ import repair from '../assets/imgs/icons/repair.svg';
 import key from '../assets/imgs/icons/key.svg';
 import carRepair from '../assets/imgs/icons/car-repair.svg';
 import all from '../assets/imgs/icons/all.svg';
-
 import smartphone from '../assets/imgs/smartphone.png';
-import { TfiPaintRoller, TfiBriefcase, TfiTruck, TfiCar, TfiMore } from "react-icons/tfi";
-import { SlScreenDesktop } from "react-icons/sl";
-import { RxScissors, RxLapTimer } from "react-icons/rx";
-
 
 const Home = () => {
     return (
