@@ -13,6 +13,8 @@ const SearchForm = (props) => {
             <span className='d-none d-lg-inline'>Найти</span>
             <TfiArrowRight className='d-lg-none'/>
           </>
+          : (props.btnInner === 'var3') ?
+          <TfiArrowRight/>
           : <SlMagnifier/>
         }
       </button>

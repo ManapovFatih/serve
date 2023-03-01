@@ -11,8 +11,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/free-mode';
 
 // import Labor from '../components/Labor'
-import SearchForm2 from '../components/SearchForm2';
 import AppLinks from '../components/AppLinks';
+import OrdersSlider from '../components/OrdersSlider';
+import HelpSlider from '../components/HelpSlider';
+import CategoryCard from '../components/CategoryCard';
+import CategoryMini from '../components/CategoryMini';
+import SearchForm from '../components/forms/SearchForm';
 
 import icon1 from '../assets/imgs/icons/icon-1.png';
 import icon2 from '../assets/imgs/icons/icon-2.png';
@@ -23,11 +27,7 @@ import smartphone from '../assets/imgs/smartphone.png';
 import { TfiPaintRoller, TfiBriefcase, TfiTruck, TfiCar, TfiMore } from "react-icons/tfi";
 import { SlScreenDesktop } from "react-icons/sl";
 import { RxScissors, RxLapTimer } from "react-icons/rx";
-import OrdersSlider from '../components/OrdersSlider';
-import HelpSlider from '../components/HelpSlider';
-import CategoryCard from '../components/CategoryCard';
-import CategoryMini from '../components/CategoryMini';
-import SearchForm from '../components/forms/SearchForm';
+
 
 const Home = () => {
     return (
@@ -45,8 +45,7 @@ const Home = () => {
                             <Row className='h-100'>
                                 <Col md={8} className='d-flex flex-column justify-content-end justify-content-md-center'>
                                     <h1>Не&nbsp;оставим наедине с&nbsp;проблемами</h1>
-                                    {/* <SearchForm2 /> */}
-                                    <SearchForm className={'form-search-2'} btnClassName={'btn-3'}/>
+                                    <SearchForm className={'form-search-2'} btnClassName={'btn-3'} btnInner={'var3'}/>
                                 </Col>
                             </Row>
                         </Container>
@@ -58,7 +57,7 @@ const Home = () => {
                             <Row className='h-100'>
                                 <Col md={8} className='d-flex flex-column justify-content-end justify-content-md-center'>
                                     <h1>Не&nbsp;оставим наедине с&nbsp;проблемами</h1>
-                                    <SearchForm2 />
+                                    <SearchForm className={'form-search-2'} btnClassName={'btn-3'} btnInner={'var3'}/>
                                 </Col>
                             </Row>
                         </Container>
