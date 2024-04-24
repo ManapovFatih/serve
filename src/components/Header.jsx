@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useIsMobile from '../hooks/isMobile';
-import {NavLink, Link} from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { SlUser, SlMagnifier } from "react-icons/sl";
@@ -9,9 +9,12 @@ import СreateOrder from './forms/СreateOrder';
 import Notifications from './Notifications';
 import SearchForm from './forms/SearchForm';
 import LanguageSwitcher from './utils/LanguageSwitcher';
-
+import { useDispatch, useSelector } from "react-redux";
 const Header = () => {
-    const {mobile} = useIsMobile('991px')
+    const { mobile } = useIsMobile('991px')
+    const { isAuth, user } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+    const userId = useSelector(state => state.auth?.user?.id);
 
     const [search, setSearch] = useState(false)
     const closeSearch = () => setSearch(false)
@@ -23,13 +26,13 @@ const Header = () => {
                 <Container>
                     <nav className='left'>
                         <Link to='/'>
-                            <img src={logo} alt="servicio365" className='logo'/>
+                            <img src={logo} alt="servicio365" className='logo' />
                         </Link>
-                        <SearchForm className={'d-none d-xl-block form-search-1'}/>
+                        <SearchForm className={'d-none d-xl-block form-search-1'} />
                         {
                             (!mobile) &&
                             <ul>
-                                <li><СreateOrder/></li>
+                                <li><СreateOrder /></li>
                                 <li><NavLink to="/search">Найти специалиста</NavLink></li>
                                 <li><NavLink to="/search/my-orders">Мои заказы</NavLink></li>
                                 <li><NavLink to="/registration">Стать исполнителем</NavLink></li>
@@ -40,19 +43,19 @@ const Header = () => {
                         <ul>
                             <li className='d-xl-none'>
                                 <button type='button' onClick={showSearch}>
-                                    <SlMagnifier/>
+                                    <SlMagnifier />
                                 </button>
                             </li>
                             <li>
-                                <Notifications/>
+                                <Notifications />
                             </li>
                             <li className='d-none d-lg-block'>
                                 <Link to='/account'>
-                                    <SlUser/>
+                                    <SlUser />
                                 </Link>
                             </li>
                             <li>
-                                <LanguageSwitcher/>
+                                <LanguageSwitcher />
                             </li>
                         </ul>
                     </nav>
@@ -62,7 +65,7 @@ const Header = () => {
             <Offcanvas show={search} onHide={closeSearch} placement={'top'}>
                 <Offcanvas.Body>
                     <Container>
-                        <SearchForm className={'form-search-1'}/>
+                        <SearchForm className={'form-search-1'} />
                     </Container>
                 </Offcanvas.Body>
             </Offcanvas>
