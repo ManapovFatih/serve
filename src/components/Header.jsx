@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import useIsMobile from '../hooks/isMobile';
-import { NavLink, Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { SlUser, SlMagnifier } from "react-icons/sl";
+import { SlLogin, SlLogout, SlMagnifier, SlUser } from "react-icons/sl";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/imgs/servicio365.png';
-import СreateOrder from './forms/СreateOrder';
+import useIsMobile from '../hooks/isMobile';
 import Notifications from './Notifications';
 import SearchForm from './forms/SearchForm';
+import СreateOrder from './forms/СreateOrder';
 import LanguageSwitcher from './utils/LanguageSwitcher';
-import { useDispatch, useSelector } from "react-redux";
+import { logout } from '../services/auth';
 const Header = () => {
     const { mobile } = useIsMobile('991px')
-    const { isAuth, user } = useSelector((state) => state.auth);
+    const isAuth = useSelector((state) => state.auth.isAuth);
     const dispatch = useDispatch();
     const userId = useSelector(state => state.auth?.user?.id);
 
@@ -35,7 +36,7 @@ const Header = () => {
                                 <li><СreateOrder /></li>
                                 <li><NavLink to="/search">Найти специалиста</NavLink></li>
                                 <li><NavLink to="/search/my-orders">Мои заказы</NavLink></li>
-                                <li><NavLink to="/registration">Стать исполнителем</NavLink></li>
+                                <li><NavLink to="/registrationPerformer">Стать исполнителем</NavLink></li>
                             </ul>
                         }
                     </nav>
@@ -46,14 +47,31 @@ const Header = () => {
                                     <SlMagnifier />
                                 </button>
                             </li>
-                            <li>
-                                <Notifications />
-                            </li>
-                            <li className='d-none d-lg-block'>
-                                <Link to='/account'>
-                                    <SlUser />
-                                </Link>
-                            </li>
+                            {isAuth ?
+                                <>
+                                    <li>
+                                        <Notifications />
+                                    </li>
+                                    <li className='d-none d-lg-block'>
+                                        <Link to='/account/'>
+
+                                            <SlUser />
+                                        </Link>
+                                    </li>
+                                    <li className='d-none d-lg-block'>
+                                        <Link to="/" onClick={() => dispatch(logout())}>
+                                            <SlLogout />
+                                        </Link>
+                                    </li>
+                                </>
+                                :
+                                <li className='d-none d-lg-block'>
+                                    <Link to='/account/'>
+                                        <span className="d-none d-xl-block">Войти</span>
+                                        <SlLogin />
+                                    </Link>
+                                </li>
+                            }
                             <li>
                                 <LanguageSwitcher />
                             </li>

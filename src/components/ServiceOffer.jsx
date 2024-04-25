@@ -10,10 +10,10 @@ import { SlPhone } from "react-icons/sl";
 const ServiceOffer = () => {
   return (
     <div className='service-offer'>
-      <div className='photo'><img src="imgs/img2.jpg" alt="img2.jpg" /></div>
+      <div className='photo'><img src="/imgs/img2.jpg" alt="img2.jpg" /></div>
       <div className='rating'>
         <div className="d-flex align-items-center fs-15">
-          <AiFillStar className='color-2'/>
+          <AiFillStar className='color-2' />
           <span className='ms-1 fw-6'>5.0</span>
         </div>
         <div className='fs-08 color-1 ms-3 ms-md-0'>4 оценки</div>
@@ -31,30 +31,30 @@ const ServiceOffer = () => {
           slidesPerView={'auto'}
           freeMode={true}
           navigation
-          >
+        >
           <SwiperSlide>
-            <img src="imgs/img2.jpg" alt="img2.jpg" />
+            <img src="/imgs/img2.jpg" alt="img2.jpg" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="imgs/img2.jpg" alt="img2.jpg" />
+            <img src="/imgs/img2.jpg" alt="img2.jpg" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="imgs/img2.jpg" alt="img2.jpg" />
+            <img src="/imgs/img2.jpg" alt="img2.jpg" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="imgs/img2.jpg" alt="img2.jpg" />
+            <img src="/imgs/img2.jpg" alt="img2.jpg" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="imgs/img2.jpg" alt="img2.jpg" />
+            <img src="/imgs/img2.jpg" alt="img2.jpg" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="imgs/img2.jpg" alt="img2.jpg" />
+            <img src="/imgs/img2.jpg" alt="img2.jpg" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="imgs/img2.jpg" alt="img2.jpg" />
+            <img src="/imgs/img2.jpg" alt="img2.jpg" />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="imgs/img2.jpg" alt="img2.jpg" />
+            <img src="/imgs/img2.jpg" alt="img2.jpg" />
           </SwiperSlide>
         </Swiper>
       </div>
@@ -75,7 +75,7 @@ const ServiceOffer = () => {
       </div>
       <div className="btns">
         <button type='button' className='btn-4'>
-          <SlPhone className='fs-15 d-sm-none'/>
+          <SlPhone className='fs-15 d-sm-none' />
           <span className='d-none d-sm-block'>Показать телефон</span>
         </button>
         <button type='button' className='btn-4 ms-3'>

@@ -3,7 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import TaskMini from '../../../components/TaskMini';
 import { SlLocationPin, SlEvent, SlOptionsVertical } from "react-icons/sl";
 import { MdEuroSymbol } from "react-icons/md";
@@ -11,8 +11,8 @@ import Select from 'react-select';
 import InputFile from '../../../components/utils/InputFile';
 
 const priceTypeList = [
-  {value: '1', label: 'За услугу'},
-  {value: '2', label: 'В час'},
+  { value: '1', label: 'За услугу' },
+  { value: '2', label: 'В час' },
 ]
 
 const OfferPage = () => {
@@ -24,7 +24,7 @@ const OfferPage = () => {
             <section className="offer-page-card box mb-5">
               <Dropdown align="end">
                 <Dropdown.Toggle variant="none" id="dropdown-basic">
-                  <SlOptionsVertical/>
+                  <SlOptionsVertical />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item as='button'>Пожаловаться</Dropdown.Item>
@@ -42,33 +42,33 @@ const OfferPage = () => {
               <hr />
               <p>
                 Добрый день!
-                <br/>Ищу хорошего добросоветного исполнителя
-                <br/>1. Загрузка на сайт товаров через модули импорта (html) ексель модули куплены (движок Битрикс)
-                <br/>2. Отрисовка банеров для каждой категории товаров.
-                <br/>3. Настройка метаатегов (дискрипшен тайтлы)внутренняя оптимизация на сайте.
-                <br/>4. Удобство пользователя на сайте. Улучшения качества юзабилити
-                <br/>5. Доукомплектовка сайта страницы портфолио, о компании.
-                <br/>5. Оплата сдельная, договорились на определённую сумму (исходя из объёмов) реализовали мы оплатили.
-                <br/>6.В случае заинтересованности жду предложение в ватсап восемь девятсот шестнадцать сто шедесят шесть девяносто два ноль два
-                <br/>Цена обсуждается
+                <br />Ищу хорошего добросоветного исполнителя
+                <br />1. Загрузка на сайт товаров через модули импорта (html) ексель модули куплены (движок Битрикс)
+                <br />2. Отрисовка банеров для каждой категории товаров.
+                <br />3. Настройка метаатегов (дискрипшен тайтлы)внутренняя оптимизация на сайте.
+                <br />4. Удобство пользователя на сайте. Улучшения качества юзабилити
+                <br />5. Доукомплектовка сайта страницы портфолио, о компании.
+                <br />5. Оплата сдельная, договорились на определённую сумму (исходя из объёмов) реализовали мы оплатили.
+                <br />6.В случае заинтересованности жду предложение в ватсап восемь девятсот шестнадцать сто шедесят шесть девяносто два ноль два
+                <br />Цена обсуждается
               </p>
               <ul className='vertical mt-4'>
                 <li>
-                  <div className="icon"><MdEuroSymbol/></div>
+                  <div className="icon"><MdEuroSymbol /></div>
                   <span className='ms-3'>До 500 €</span>
                 </li>
                 <li>
-                  <div className="icon"><SlEvent/></div>
+                  <div className="icon"><SlEvent /></div>
                   <span className='ms-3'>По договорённости</span>
                 </li>
                 <li>
-                  <div className="icon"><SlLocationPin/></div>
+                  <div className="icon"><SlLocationPin /></div>
                   <span className='ms-3'>Работа выполняется удалённо</span>
                 </li>
               </ul>
               <hr />
               <div className='user'>
-                <img src="imgs/user.png" alt="user" className='photo'/>
+                <img src="/imgs/user.png" alt="user" className='photo' />
                 <h5 className='ms-2 ms-sm-4 mb-0'>Михаил</h5>
               </div>
             </section>
@@ -78,14 +78,14 @@ const OfferPage = () => {
               <p className='color'>Предложения исполнителей скрыты и видны только заказчику</p>
 
               <div className="d-flex mt-4">
-                <img src="imgs/user.png" alt="user" className='photo'/>
+                <img src="/imgs/user.png" alt="user" className='photo' />
                 <div className='box flex-1'>
                   <p>Отклики станут доступны после публикации профиля</p>
                 </div>
               </div>
 
               <div className="d-flex mt-4">
-                <img src="imgs/user.png" alt="user" className='photo'/>
+                <img src="/imgs/user.png" alt="user" className='photo' />
                 <div className='box flex-1'>
                   <form action="" className='form-respond'>
                     <div className="d-sm-flex justify-content-between align-items-center mb-3 mb-sm-4">
@@ -94,7 +94,7 @@ const OfferPage = () => {
                     </div>
                     <textarea rows="5" placeholder='Расскажите, как и когда вы можете выполнить заказ.'></textarea>
                     <div className='my-3 my-md-4 d-sm-flex'>
-                      <input type="text" placeholder='Ваша цена' className='w-xs-100 w-auto me-sm-2 me-md-3'/>
+                      <input type="text" placeholder='Ваша цена' className='w-xs-100 w-auto me-sm-2 me-md-3' />
                       <Select
                         name="priceType"
                         placeholder="Единица измерения"
@@ -104,7 +104,7 @@ const OfferPage = () => {
                         defaultValue={priceTypeList[0]}
                       />
                     </div>
-                    <InputFile multiple={true}/>
+                    <InputFile multiple={true} />
                     <hr />
                     <div className='mt-3 mt-sm-4 d-sm-flex align-items-center'>
                       <button type='submit' className='btn-3 w-xs-100'>Откликнуться</button>
@@ -144,13 +144,13 @@ const OfferPage = () => {
                   <h3>Другие заказы</h3>
                   <ul className='list-bordered'>
                     <li>
-                      <TaskMini/>
+                      <TaskMini />
                     </li>
                     <li>
-                      <TaskMini/>
+                      <TaskMini />
                     </li>
                     <li>
-                      <TaskMini/>
+                      <TaskMini />
                     </li>
                   </ul>
                   <Link to='/account/offers' className='link d-inline-block mt-3'>Все заказы</Link>

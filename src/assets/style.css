@@ -38,20 +38,51 @@
 }
 
 /* mixins */
-a, a:hover, a:focus, a:active {
+a,
+a:hover,
+a:focus,
+a:active {
   color: inherit;
   outline: none;
   text-decoration: none;
   cursor: pointer;
 }
 
-h1, h2, h3, h4, h5, h6, p, label, span, a, button, form, fieldset, legend, select, input, textarea, button, div, blockquote, cite, figure, figcaption, table, ul, ol, dl, address {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+label,
+span,
+a,
+button,
+form,
+fieldset,
+legend,
+select,
+input,
+textarea,
+button,
+div,
+blockquote,
+cite,
+figure,
+figcaption,
+table,
+ul,
+ol,
+dl,
+address {
   line-height: 130%;
   margin-bottom: 0px;
 }
 
 /* Form elements */
-input, textarea {
+input,
+textarea {
   background: #fff;
   border: none;
   border-radius: 2em;
@@ -66,12 +97,14 @@ input::-moz-placeholder, textarea::-moz-placeholder {
   color: #737373;
   font-weight: 400;
 }
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: #737373;
   font-weight: 400;
 }
 @media (max-width: 575px) {
-  input, textarea {
+  input,
+  textarea {
     padding: 0.75em 1em;
     border-radius: 1em;
   }
@@ -1022,6 +1055,11 @@ header .container nav.right ul > li > button, header .container nav.right ul > l
   font-size: 1.5em;
   color: #737373;
   transition: 0.3s ease;
+  align-items: center;
+}
+header .container nav.right ul > li > button span, header .container nav.right ul > li > a span {
+  font-size: 0.75em;
+  margin-right: 0.3em;
 }
 @media (max-width: 1399px) {
   header .container nav.right ul > li > button, header .container nav.right ul > li > a {
@@ -1442,7 +1480,8 @@ main {
     z-index: 10;
     filter: drop-shadow(0px 3px 6px rgba(115, 115, 115, 0.4));
   }
-  .sec-2 .box form div, .sec-2 .box form button {
+  .sec-2 .box form div,
+  .sec-2 .box form button {
     display: none;
   }
 }
@@ -1790,7 +1829,8 @@ main {
 .sec-7 ul.categories li:not(:first-child) {
   margin-top: 1em;
 }
-.sec-7 ul.categories a, .sec-7 ul.categories button {
+.sec-7 ul.categories a,
+.sec-7 ul.categories button {
   color: #0D0D0D;
   font-weight: 500;
   transition: 0.3s ease;
@@ -1807,40 +1847,55 @@ main {
   flex-wrap: nowrap;
 }
 @media (max-width: 991px) {
-  .sec-7 ul.categories a, .sec-7 ul.categories button {
+  .sec-7 ul.categories a,
+  .sec-7 ul.categories button {
     font-size: 1.25em;
     padding: 1em 1em;
   }
 }
 @media (max-width: 575px) {
-  .sec-7 ul.categories a, .sec-7 ul.categories button {
+  .sec-7 ul.categories a,
+  .sec-7 ul.categories button {
     font-size: 1em;
   }
 }
-.sec-7 ul.categories a:hover, .sec-7 ul.categories a:focus, .sec-7 ul.categories a:active, .sec-7 ul.categories a.active, .sec-7 ul.categories button:hover, .sec-7 ul.categories button:focus, .sec-7 ul.categories button:active, .sec-7 ul.categories button.active {
+.sec-7 ul.categories a:hover, .sec-7 ul.categories a:focus, .sec-7 ul.categories a:active, .sec-7 ul.categories a.active,
+.sec-7 ul.categories button:hover,
+.sec-7 ul.categories button:focus,
+.sec-7 ul.categories button:active,
+.sec-7 ul.categories button.active {
   color: #105622;
 }
-.sec-7 ul.categories a span, .sec-7 ul.categories button span {
+.sec-7 ul.categories a span,
+.sec-7 ul.categories button span {
   flex: 1;
   line-height: 100%;
 }
-.sec-7 ul.categories a svg, .sec-7 ul.categories button svg {
+.sec-7 ul.categories a svg,
+.sec-7 ul.categories button svg {
   opacity: 0;
 }
 @media (max-width: 991px) {
-  .sec-7 ul.categories a svg, .sec-7 ul.categories button svg {
+  .sec-7 ul.categories a svg,
+  .sec-7 ul.categories button svg {
     opacity: 1;
   }
 }
-.sec-7 ul.categories a.active svg, .sec-7 ul.categories button.active svg {
+.sec-7 ul.categories a.active svg,
+.sec-7 ul.categories button.active svg {
   opacity: 1;
 }
-.sec-7 ul.subcategories a, .sec-7 ul.subcategories button {
+.sec-7 ul.subcategories a,
+.sec-7 ul.subcategories button {
   color: #0D0D0D;
   font-weight: 400;
   transition: 0.3s ease;
 }
-.sec-7 ul.subcategories a:hover, .sec-7 ul.subcategories a:focus, .sec-7 ul.subcategories a:active, .sec-7 ul.subcategories a.active, .sec-7 ul.subcategories button:hover, .sec-7 ul.subcategories button:focus, .sec-7 ul.subcategories button:active, .sec-7 ul.subcategories button.active {
+.sec-7 ul.subcategories a:hover, .sec-7 ul.subcategories a:focus, .sec-7 ul.subcategories a:active, .sec-7 ul.subcategories a.active,
+.sec-7 ul.subcategories button:hover,
+.sec-7 ul.subcategories button:focus,
+.sec-7 ul.subcategories button:active,
+.sec-7 ul.subcategories button.active {
   color: #FF6332;
 }
 .sec-7 ul.subcategories li:nth-child(1) a {
@@ -2026,7 +2081,8 @@ main {
   width: -moz-fit-content;
   width: fit-content;
 }
-.service-offer .imgs .slider .swiper-button-prev, .service-offer .imgs .slider .swiper-button-next {
+.service-offer .imgs .slider .swiper-button-prev,
+.service-offer .imgs .slider .swiper-button-next {
   font-size: 0.75em;
 }
 .service-offer .imgs img {
@@ -2092,11 +2148,15 @@ main {
 .filter fieldset {
   margin-bottom: 1em;
 }
-.filter fieldset a, .filter fieldset button {
+.filter fieldset a,
+.filter fieldset button {
   color: #105622;
   transition: 0.3s ease;
 }
-.filter fieldset a:hover, .filter fieldset a:focus, .filter fieldset a:active, .filter fieldset button:hover, .filter fieldset button:focus, .filter fieldset button:active {
+.filter fieldset a:hover, .filter fieldset a:focus, .filter fieldset a:active,
+.filter fieldset button:hover,
+.filter fieldset button:focus,
+.filter fieldset button:active {
   color: #26C24A;
 }
 .filter fieldset legend {
@@ -2238,7 +2298,8 @@ main {
 .tariff {
   text-align: center;
 }
-.tariff h3, .tariff h5 {
+.tariff h3,
+.tariff h5 {
   text-align: center;
 }
 .tariff hr {
@@ -2279,7 +2340,10 @@ main {
   align-items: center;
   flex-wrap: nowrap;
 }
-.task-mini:hover svg, .task-mini:hover .text h6, .task-mini:focus svg, .task-mini:focus .text h6, .task-mini:active svg, .task-mini:active .text h6 {
+.task-mini:hover svg,
+.task-mini:hover .text h6, .task-mini:focus svg,
+.task-mini:focus .text h6, .task-mini:active svg,
+.task-mini:active .text h6 {
   color: #FF6332;
 }
 .task-mini .text {
@@ -2533,11 +2597,13 @@ main {
     margin-left: 0.5em;
   }
 }
-.offers ul li button, .offers ul li a {
+.offers ul li button,
+.offers ul li a {
   padding: 1em 1.5em;
 }
 @media (max-width: 575px) {
-  .offers ul li button, .offers ul li a {
+  .offers ul li button,
+  .offers ul li a {
     padding: 0.75em 0.5em;
     line-height: 100%;
     font-size: 0.9em;
@@ -2693,11 +2759,13 @@ footer {
   color: #BFBFBF;
   font-size: 0.9em;
 }
-footer a, footer button {
+footer a,
+footer button {
   color: #BFBFBF;
   transition: 0.3s ease;
 }
-footer a:hover, footer button:hover {
+footer a:hover,
+footer button:hover {
   color: #F2F2F2;
 }
 footer .container {
@@ -2774,7 +2842,8 @@ footer.mobile nav ul {
 footer.mobile nav ul li {
   width: 25%;
 }
-footer.mobile nav ul li a, footer.mobile nav ul li button {
+footer.mobile nav ul li a,
+footer.mobile nav ul li button {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -2782,13 +2851,16 @@ footer.mobile nav ul li a, footer.mobile nav ul li button {
   flex-direction: column;
   color: #737373;
 }
-footer.mobile nav ul li a.active, footer.mobile nav ul li button.active {
+footer.mobile nav ul li a.active,
+footer.mobile nav ul li button.active {
   color: #FF6332;
 }
-footer.mobile nav ul li a svg, footer.mobile nav ul li button svg {
+footer.mobile nav ul li a svg,
+footer.mobile nav ul li button svg {
   font-size: 1.75em;
 }
-footer.mobile nav ul li a span, footer.mobile nav ul li button span {
+footer.mobile nav ul li a span,
+footer.mobile nav ul li button span {
   font-size: 0.8em;
   margin-top: 0.35em;
 }
@@ -2800,7 +2872,8 @@ nav.mobile-menu ul {
 nav.mobile-menu ul li:not(:first-child) {
   margin-top: 0.75em;
 }
-nav.mobile-menu ul li a, nav.mobile-menu ul li button {
+nav.mobile-menu ul li a,
+nav.mobile-menu ul li button {
   font-size: 1.2em;
   font-weight: 500;
 }

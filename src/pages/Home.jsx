@@ -42,28 +42,28 @@ const Home = () => {
                 spaceBetween={0}
                 slidesPerView={1}
                 navigation
-                >
+            >
                 <SwiperSlide>
-                    <img src="imgs/1slide1920.jpg" alt="1slide1920" className='bg'/>
+                    <img src="/imgs/1slide1920.jpg" alt="1slide1920" className='bg' />
                     <section>
                         <Container>
                             <Row className='h-100'>
                                 <Col md={8} className='d-flex flex-column justify-content-end justify-content-md-center'>
                                     <h1>Не&nbsp;оставим наедине с&nbsp;проблемами</h1>
-                                    <SearchForm className={'form-search-2'} btnClassName={'btn-3'} btnInner={'var3'}/>
+                                    <SearchForm className={'form-search-2'} btnClassName={'btn-3'} btnInner={'var3'} />
                                 </Col>
                             </Row>
                         </Container>
                     </section>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="imgs/2slide1920.jpg" alt="2slide1920" className='bg'/>
+                    <img src="/imgs/2slide1920.jpg" alt="2slide1920" className='bg' />
                     <section>
                         <Container>
                             <Row className='h-100'>
                                 <Col md={8} className='d-flex flex-column justify-content-end justify-content-md-center'>
                                     <h1>Не&nbsp;оставим наедине с&nbsp;проблемами</h1>
-                                    <SearchForm className={'form-search-2'} btnClassName={'btn-3'} btnInner={'var3'}/>
+                                    <SearchForm className={'form-search-2'} btnClassName={'btn-3'} btnInner={'var3'} />
                                 </Col>
                             </Row>
                         </Container>
@@ -73,7 +73,7 @@ const Home = () => {
 
             <Container>
                 <section className="sec-1 p-3 p-sm-4 p-md-5 mt-5">
-                        {/* <h3>Предложите ваше задание</h3>
+                    {/* <h3>Предложите ваше задание</h3>
                         <div className="position-relative">
                             <Swiper
                                 className='slider-6 mt-4'
@@ -128,7 +128,7 @@ const Home = () => {
                                 </SwiperSlide>
                             </Swiper>
                         </div> */}
-                    <SearchForm className={'mb-4 mb-sm-5'} btnClassName={'btn-3 ms-lg-3'} btnInner={'var2'}/>
+                    <SearchForm className={'mb-4 mb-sm-5'} btnClassName={'btn-3 ms-lg-3'} btnInner={'var2'} />
 
                     <Swiper
                         className='slider-auto mb-4 mb-sm-5'
@@ -137,58 +137,58 @@ const Home = () => {
                         spaceBetween={20}
                         slidesPerView={'auto'}
                         freeMode={true}
-                        >
+                    >
                         <SwiperSlide>
-                            <CategoryMini title={"Установка техники"} imgUrl={"imgs/img7.jpg"}/>
+                            <CategoryMini title={"Установка техники"} imgUrl={"/imgs/img7.jpg"} />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <CategoryMini title={"Электрика"} imgUrl={"imgs/img6.jpg"}/>
+                            <CategoryMini title={"Электрика"} imgUrl={"/imgs/img6.jpg"} />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <CategoryMini title={"Стиральные машины"} imgUrl={"imgs/img8.jpg"}/>
+                            <CategoryMini title={"Стиральные машины"} imgUrl={"/imgs/img8.jpg"} />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <CategoryMini title={"Химчистка мебели"} imgUrl={"imgs/img9.jpg"}/>
+                            <CategoryMini title={"Химчистка мебели"} imgUrl={"/imgs/img9.jpg"} />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <CategoryMini title={"Установка техники"} imgUrl={"imgs/img7.jpg"}/>
+                            <CategoryMini title={"Установка техники"} imgUrl={"/imgs/img7.jpg"} />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <CategoryMini title={"Электрика"} imgUrl={"imgs/img6.jpg"}/>
+                            <CategoryMini title={"Электрика"} imgUrl={"/imgs/img6.jpg"} />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <CategoryMini title={"Стиральные машины"} imgUrl={"imgs/img8.jpg"}/>
+                            <CategoryMini title={"Стиральные машины"} imgUrl={"/imgs/img8.jpg"} />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <CategoryMini title={"Химчистка мебели"} imgUrl={"imgs/img9.jpg"}/>
+                            <CategoryMini title={"Химчистка мебели"} imgUrl={"/imgs/img9.jpg"} />
                         </SwiperSlide>
                     </Swiper>
 
                     <h3>Поручите дела специалистам</h3>
                     <div className="grid mt-3 mt-sm-4">
                         <div>
-                            <CategoryCard title={"Электрика"} imgUrl={"imgs/socket.jpg"}/>
+                            <CategoryCard title={"Электрика"} imgUrl={"/imgs/socket.jpg"} />
                         </div>
                         <div>
-                            <CategoryCard title={"Сантехника"} imgUrl={"imgs/faucet.jpg"}/>
+                            <CategoryCard title={"Сантехника"} imgUrl={"/imgs/faucet.jpg"} />
                         </div>
                         <div>
-                            <CategoryCard title={'Химчистка мебели'} imgUrl={'imgs/sofa.jpg'}/>
+                            <CategoryCard title={'Химчистка мебели'} imgUrl={'/imgs/sofa.jpg'} />
                         </div>
                         <div>
-                            <CategoryCard title={'Стиральные машины'} imgUrl={'imgs/washing-machine.jpg'}/>
+                            <CategoryCard title={'Стиральные машины'} imgUrl={'/imgs/washing-machine.jpg'} />
                         </div>
                         <div>
-                            <CategoryCard title={'Поверка счётчиков'} imgUrl={'imgs/chemicals.jpg'}/>
+                            <CategoryCard title={'Поверка счётчиков'} imgUrl={'/imgs/chemicals.jpg'} />
                         </div>
                         <div>
-                            <CategoryCard title={'Дезинсекция'} imgUrl={'imgs/pliers.jpg'}/>
+                            <CategoryCard title={'Дезинсекция'} imgUrl={'/imgs/pliers.jpg'} />
                         </div>
                         <div>
-                            <CategoryCard title={'Ремонт и установка замков'} imgUrl={'imgs/keys.jpg'}/>
+                            <CategoryCard title={'Ремонт и установка замков'} imgUrl={'/imgs/keys.jpg'} />
                         </div>
                         <div>
-                            <CategoryCard title={'Вывоз мусора'} imgUrl={'imgs/trash.jpg'}/>
+                            <CategoryCard title={'Вывоз мусора'} imgUrl={'/imgs/trash.jpg'} />
                         </div>
                     </div>
                 </section>
@@ -208,7 +208,7 @@ const Home = () => {
                                         <h3>Рядом с вами</h3>
                                         <p>Мы найдём специалистов, которые живут рядом с вами!</p>
                                     </div>
-                                    <input type="text" placeholder='Ваш адрес'/>
+                                    <input type="text" placeholder='Ваш адрес' />
                                     <button type='button' className='btn-1 w-100 px-3'>Расскажите, что у&nbsp;вас случилось</button>
                                 </form>
                             </div>
@@ -230,7 +230,7 @@ const Home = () => {
                 <Container>
                     <Row className='gx-0 align-items-center'>
                         <Col lg={3} xxl={4}>
-                            <h3>Работаем <br className='d-none d-lg-inline'/> без остановок</h3>
+                            <h3>Работаем <br className='d-none d-lg-inline' /> без остановок</h3>
                         </Col>
                         <Col lg={9} xxl={8}>
                             <OrdersSlider />
@@ -248,11 +248,11 @@ const Home = () => {
             <section className="sec-5 mb-5">
                 <Container>
                     <h2 className='text-center text-lg-start'>В приложении <br />ещё удобнее</h2>
-                    <AppLinks/>
+                    <AppLinks />
                     <img src={smartphone} alt="smartphone" className='bg' />
                 </Container>
             </section>
-            
+
             <section className="sec-6 py-4 py-sm-5 mb-lg-5">
                 <Container>
                     <h3 className='mb-4'>Каталог услуг в Казани</h3>

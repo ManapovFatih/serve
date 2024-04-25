@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { SlBan, SlLocationPin, SlEvent } from "react-icons/sl";
 
 const Task = () => {
@@ -19,22 +19,22 @@ const Task = () => {
       <p className='text'>Сделали верстку, необходимо прикрутить форму к сайту.</p>
       <ul className='work'>
         <li>
-          <SlEvent className='fs-13 me-2'/>
+          <SlEvent className='fs-13 me-2' />
           <span>22 февраля</span>
         </li>
         <li className='ms-sm-4'>
-          <SlLocationPin className='fs-13 me-2'/>
+          <SlLocationPin className='fs-13 me-2' />
           <span>Работа выполняется удалённо</span>
         </li>
       </ul>
       <hr />
       <div className='user'>
-        <img src="imgs/img2.jpg" alt="img2.jpg" />
+        <img src="/imgs/img2.jpg" alt="img2.jpg" />
         <h5 className='ms-2 ms-sm-4 mb-0'>Михаил</h5>
       </div>
       <div className='btns'>
         <button type='button' className='btn-1'>Откликнуться</button>
-        <button type='button' className='red'><SlBan/></button>
+        <button type='button' className='red'><SlBan /></button>
       </div>
     </div>
   );
