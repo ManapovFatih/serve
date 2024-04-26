@@ -45,7 +45,7 @@ const Activate = () => {
                             <p className='mb-3'>Введите код, отправленный на указанную электронную почту</p>
                             <Row className='g-2 g-sm-4 align-items-center'>
                                 <Col md={3}>
-                                    <input className='mb-2' type="number" placeholder='0000' value={key} onChange={(e) => { e.target.value.length < 5 && setKey(e.target.value) }} />
+                                    <input className='mb-2' type="number" placeholder='0000' defaultValuevalue={key} onChange={(e) => { e.target.value.length < 5 && setKey(e.target.value) }} />
                                 </Col>
                                 <Col md={3}>
                                     <button type='button' className='btn-1 mx-auto mb-2' disabled={!key || key?.length < 4 || loading} onClick={() => onKey(key)}>Отправить</button>
