@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 
 const AuthRoute = ({ children }) => {
   const auth = useSelector((state) => state.auth);
-  return auth.isAuth ? children : <Navigate to="/" />;
+  const status = useSelector((state) => state?.auth.user.status);
+  return auth.isAuth ? status ? children : <Navigate to="/activate" /> : <Navigate to="/login" />;
 };
 
 export default AuthRoute;

@@ -66,7 +66,7 @@ const Header = () => {
                                 </>
                                 :
                                 <li className='d-none d-lg-block'>
-                                    <Link to='/account/'>
+                                    <Link to='/login/'>
                                         <span className="d-none d-xl-block">Войти</span>
                                         <SlLogin />
                                     </Link>

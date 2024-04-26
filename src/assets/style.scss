@@ -53,7 +53,7 @@ $radius: 2em;
 $radius-sm: 1em;
 
 /* mixins */
-@mixin flex($dir, $x, $y, $wrap) {
+@mixin flex($dir: row, $x: center, $y: center, $wrap: nowrap) {
     display: flex;
     flex-direction: $dir;
     justify-content: $x;
@@ -175,7 +175,7 @@ address {
 input,
 textarea {
     background: #fff;
-    border: none;
+    border: 1px solid transparent;
     border-radius: $radius;
     padding: 1em 1.5em;
     width: 100%;
@@ -191,6 +191,19 @@ textarea {
     &::-ms-input-placeholder {
         color: $gray-3;
         font-weight: 400;
+    }
+
+    &:focus {
+        border: 1px solid $gray-2;
+        box-shadow: none;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #fff inset !important;
+        -webkit-text-fill-color: var(--font-color) !important;
     }
 
     &::placeholder {
@@ -300,6 +313,111 @@ input {
                     left: 55%;
                     background-color: #fff;
                 }
+            }
+        }
+    }
+}
+
+.notification {
+    box-sizing: border-box;
+    padding: 13px 20px;
+    box-shadow: 0px 0px 2px #919eab1f, 0px 8px 24px -4px #919eab33 !important;
+    border-radius: 12px;
+    color: $gray-5;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 0.9em;
+    position: relative;
+    z-index: 999999;
+    margin-bottom: 15px;
+
+    &:hover,
+    &:focus {
+        opacity: 1;
+    }
+
+    &-container {
+        box-sizing: border-box;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 999999;
+        width: 320px;
+        top: 65px;
+        padding: 0px 15px;
+        max-height: calc(100% - 30px);
+    }
+
+    .title {
+        font-size: 1em;
+        line-height: 1.2em;
+        font-weight: bold;
+        margin: 0 0 5px 0;
+    }
+
+    &-enter {
+        visibility: hidden;
+        transform: translate3d(100%, 0, 0);
+
+        &.notification-enter-active {
+            visibility: visible;
+            transform: translate3d(0, 0, 0);
+            transition: all 0.4s;
+        }
+    }
+
+    &-exit {
+        visibility: visible;
+        transform: translate3d(0, 0, 0);
+
+        &.notification-exit-active {
+            visibility: hidden;
+            transform: translate3d(100%, 0, 0);
+            transition: all 0.4s;
+        }
+    }
+
+    &-info {
+        color: $blue;
+    }
+
+    &-success {
+        color: $color-2;
+    }
+
+    &-warning {
+        color: $color-5;
+    }
+
+    &-error {
+        color: $red;
+    }
+}
+
+.password {
+    position: relative;
+
+    input {
+        font-size: inherit;
+        font-weight: inherit;
+        position: relative;
+        z-index: 1;
+    }
+
+    button {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: 5;
+        color: $gray-3;
+        height: 100%;
+        width: 2em;
+        font-size: 1.6em;
+        @include flex();
+
+        svg {
+            path {
+                stroke-width: 1.25px;
             }
         }
     }
@@ -593,6 +711,46 @@ label {
     }
 }
 
+fieldset.labeled-input {
+    border-radius: $radius;
+    position: relative;
+
+    legend {
+        float: unset;
+        width: fit-content;
+        margin-left: 10px;
+        color: $gray-4;
+        font-size: .8em;
+        padding: 0px 10px;
+        margin-bottom: -0.3em;
+        z-index: 10;
+        position: relative;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    input,
+    select,
+    textarea {
+        border: 1px solid transparent;
+
+        &:focus {
+            border: 1px solid $gray-2;
+            box-shadow: none;
+        }
+    }
+
+    .error-text {
+        position: absolute;
+        top: 100%;
+        left: 1.5em;
+        color: $red;
+        font-size: 0.8em;
+    }
+}
+
 button {
     background: none;
     border: none;
@@ -689,6 +847,12 @@ button {
             background: $color-3;
         }
     }
+
+    &[disabled] {
+        color: #fff;
+        background: $gray-3;
+    }
+
 }
 
 

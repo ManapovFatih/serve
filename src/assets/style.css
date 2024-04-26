@@ -84,7 +84,7 @@ address {
 input,
 textarea {
   background: #fff;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 2em;
   padding: 1em 1.5em;
   width: 100%;
@@ -92,6 +92,28 @@ textarea {
   outline: none;
   display: block;
   transition: 0.3s ease;
+}
+input:-moz-placeholder, input::-moz-placeholder, input::-webkit-input-placeholder, input:-ms-input-placeholder, input::-ms-input-placeholder,
+textarea:-moz-placeholder,
+textarea::-moz-placeholder,
+textarea::-webkit-input-placeholder,
+textarea:-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+  color: #737373;
+  font-weight: 400;
+}
+input:focus,
+textarea:focus {
+  border: 1px solid #BFBFBF;
+  box-shadow: none;
+}
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #fff inset !important;
+  -webkit-text-fill-color: var(--font-color) !important;
 }
 input::-moz-placeholder, textarea::-moz-placeholder {
   color: #737373;
@@ -204,6 +226,98 @@ input[type=checkbox].switch:checked {
 input[type=checkbox].switch:checked::after {
   left: 55%;
   background-color: #fff;
+}
+
+.notification {
+  box-sizing: border-box;
+  padding: 13px 20px;
+  box-shadow: 0px 0px 2px rgba(145, 158, 171, 0.1215686275), 0px 8px 24px -4px rgba(145, 158, 171, 0.2) !important;
+  border-radius: 12px;
+  color: #0D0D0D;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 0.9em;
+  position: relative;
+  z-index: 999999;
+  margin-bottom: 15px;
+}
+.notification:hover, .notification:focus {
+  opacity: 1;
+}
+.notification-container {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 999999;
+  width: 320px;
+  top: 65px;
+  padding: 0px 15px;
+  max-height: calc(100% - 30px);
+}
+.notification .title {
+  font-size: 1em;
+  line-height: 1.2em;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+.notification-enter {
+  visibility: hidden;
+  transform: translate3d(100%, 0, 0);
+}
+.notification-enter.notification-enter-active {
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.4s;
+}
+.notification-exit {
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+}
+.notification-exit.notification-exit-active {
+  visibility: hidden;
+  transform: translate3d(100%, 0, 0);
+  transition: all 0.4s;
+}
+.notification-info {
+  color: #299dfc;
+}
+.notification-success {
+  color: #26C24A;
+}
+.notification-warning {
+  color: #FF6332;
+}
+.notification-error {
+  color: #d70000;
+}
+
+.password {
+  position: relative;
+}
+.password input {
+  font-size: inherit;
+  font-weight: inherit;
+  position: relative;
+  z-index: 1;
+}
+.password button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 5;
+  color: #737373;
+  height: 100%;
+  width: 2em;
+  font-size: 1.6em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.password button svg path {
+  stroke-width: 1.25px;
 }
 
 fieldset legend {
@@ -471,6 +585,44 @@ label span {
      object-fit: contain;
 }
 
+fieldset.labeled-input {
+  border-radius: 2em;
+  position: relative;
+}
+fieldset.labeled-input legend {
+  float: unset;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: 10px;
+  color: #404040;
+  font-size: 0.8em;
+  padding: 0px 10px;
+  margin-bottom: -0.3em;
+  z-index: 10;
+  position: relative;
+}
+fieldset.labeled-input legend:empty {
+  display: none;
+}
+fieldset.labeled-input input,
+fieldset.labeled-input select,
+fieldset.labeled-input textarea {
+  border: 1px solid transparent;
+}
+fieldset.labeled-input input:focus,
+fieldset.labeled-input select:focus,
+fieldset.labeled-input textarea:focus {
+  border: 1px solid #BFBFBF;
+  box-shadow: none;
+}
+fieldset.labeled-input .error-text {
+  position: absolute;
+  top: 100%;
+  left: 1.5em;
+  color: #d70000;
+  font-size: 0.8em;
+}
+
 button {
   background: none;
   border: none;
@@ -540,6 +692,10 @@ button {
 .btn-4:hover, .btn-4:focus, .btn-4:active, .btn-4.active {
   color: #0D0D0D;
   background: #AAEEBA;
+}
+.btn[disabled], [disabled].btn-1, [disabled].btn-2, [disabled].btn-3, [disabled].btn-4 {
+  color: #fff;
+  background: #737373;
 }
 
 .form-search-1 {

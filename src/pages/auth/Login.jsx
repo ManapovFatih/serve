@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Input from '../../components/utils/Input'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { login } from '../../services/auth'
 
@@ -14,7 +14,7 @@ const Login = () => {
 
     useEffect(() => {
         if (auth.isAuth) {
-            return navigate("/");
+            return navigate(-1);
         }
     }, [auth.isAuth]);
 
@@ -36,13 +36,14 @@ const Login = () => {
                     <Col xs={12} md={9} lg={8} xl={7} xxl={6}>
                         <h1 className='inner text-center'>Войти</h1>
 
-                        <form action="" className='box bg-1'>
+                        <form action="" className='box bg-1' onSubmit={handleSubmit(onSubmit)}>
                             <Row className='g-2 g-sm-4 align-items-center'>
                                 <Col sm={2}>
-                                    <div className="text-sm-end">E-mail</div>
+                                    <div className="text-sm-start mb-2">E-mail</div>
                                 </Col>
                                 <Col sm={10}>
                                     <Input
+                                        className="mb-2"
                                         type="login"
                                         name="login"
                                         placeholder="E-mail"
@@ -58,10 +59,11 @@ const Login = () => {
                                     />
                                 </Col>
                                 <Col sm={2}>
-                                    <div className="text-sm-end">Фамилия</div>
+                                    <div className="text-sm-start mb-2">Пароль</div>
                                 </Col>
                                 <Col sm={10}>
                                     <Input
+                                        className="mb-2"
                                         type="password"
                                         name="password"
                                         errors={errors}
@@ -77,25 +79,14 @@ const Login = () => {
                                         }}
                                     />
                                 </Col>
-                                <Col sm={2}>
-                                    <div className="text-sm-end">Телефон</div>
-                                </Col>
-                                <Col sm={10}>
-                                    <input type="tel" placeholder='+79000000000' />
-                                </Col>
-                                <Col sm={{ span: 10, offset: 2 }} >
-                                    <label className='fs-09 mt-3 mt-sm-0'>
-                                        <input type="checkbox" />
-                                        <span className='ms-2'>Даю свое согласие на использование моих персональных данных</span>
-                                    </label>
-                                    <label className='fs-09 mt-4'>
-                                        <input type="checkbox" />
-                                        <span className='ms-2'>Нажимая "Продолжить", я принимаю <a href="/" className='link'>Условия пользовательского соглашения</a></span>
-                                    </label>
-                                </Col>
+
+
                             </Row>
-                            <button type="button" className='btn-1 mx-auto mt-4'>Продолжить</button>
+
+                            <button type="submit" className='btn-1 mx-auto mt-4' disabled={!isValid}>Войти</button>
                         </form>
+                        <p className="mt-4">Ещё нет аккаунта? <Link to="/registration" className="link">Регистрация</Link></p>
+                        <p className="mt-2"><Link to="/password" className="link">Забыли пароль?</Link></p>
                     </Col>
                 </Row>
             </Container>

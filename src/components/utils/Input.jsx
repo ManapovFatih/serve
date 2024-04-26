@@ -6,6 +6,7 @@ import ReactInputMask from "react-input-mask";
 
 const Input = memo(
   ({
+    autoComplete,
     onFocus,
     onClick,
     onChange,
@@ -37,7 +38,7 @@ const Input = memo(
               defaultValue={defaultValue}
               autoFocus={autoFocus}
               type={visible ? "text" : "password"}
-              autoComplete="current-password"
+              autoComplete={autoComplete ?? "current-password"}
               minLength={minLength}
               maxLength={maxLength}
               required
@@ -70,6 +71,7 @@ const Input = memo(
           />
         ) : (
           <input
+            autoComplete={autoComplete}
             onClick={onClick}
             onFocus={onFocus}
             readOnly={readOnly}
