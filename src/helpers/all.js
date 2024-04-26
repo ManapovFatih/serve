@@ -1,22 +1,21 @@
 // value - цена, currency - выводить валюту (true|false))
-import { LiaRubleSignSolid } from "react-icons/lia";
+// import { LiaRubleSignSolid } from "react-icons/lia";
 import { FILE_URL } from "../config/api";
-import PhotoPlacement from "../assets/imgs/photo-placement.jpg";
 
-const customPrice = (value, currency = true) => {
-  if (!value) {
-    return 0 + "₽";
-  }
-  value = parseInt(value).toLocaleString();
-  if (currency) {
-    value = (
-      <>
-        {value}<LiaRubleSignSolid className="ruble" />
-      </>
-    );
-  }
-  return value;
-};
+// const customPrice = (value, currency = true) => {
+//   if (!value) {
+//     return 0 + "₽";
+//   }
+//   value = parseInt(value).toLocaleString();
+//   if (currency) {
+//     value = (
+//       <>
+//         {value}<LiaRubleSignSolid className="ruble" />
+//       </>
+//     );
+//   }
+//   return value;
+// };
 const declOfNum = (number, titles) => {
   const cases = [2, 0, 1, 1, 1, 2];
   return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
@@ -43,8 +42,8 @@ const getImageURL = ({ path = "", size = "mini", type = "user" }) => {
   else if (!type || type == 'product' || type == 'sale' || type == 'banner' || type == 'category' || type == 'news') {
     return "/imgs/img5.jpg";
   } else if (type == 'user') {
-    return PhotoPlacement;
+    return "/imgs/img5.jpg";
   }
 };
 
-export { customPrice, getImageURL, declOfNum };
+export { getImageURL, declOfNum };
