@@ -6,6 +6,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/free-mode';
 import { AiFillStar } from "react-icons/ai";
 import { SlPhone } from "react-icons/sl";
+import { Link } from 'react-router-dom';
 
 const ServiceOffer = () => {
   return (
@@ -19,7 +20,7 @@ const ServiceOffer = () => {
         <div className='fs-08 color-1 ms-3 ms-md-0'>4 оценки</div>
       </div>
       <div className="name">
-        <h4 className='mb-1'>Имя Фамиллия</h4>
+        <Link to="1"><h4 className='mb-1'>Имя Фамиллия</h4></Link>
         <p className='gray-3'>Город</p>
       </div>
       <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>

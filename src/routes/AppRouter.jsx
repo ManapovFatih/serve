@@ -18,11 +18,25 @@ const router = createBrowserRouter(
         <>
             <Route path="/" element={<AppLayout />}>
                 <Route index element={<Home />} />
-                <Route path="registrationPerformer" element={<RegistrationPerformer />} />
+                <Route
+                    path="registrationPerformer"
+                    element={
+                        <AuthRoute>
+                            <RegistrationPerformer />
+                        </AuthRoute>
+                    }
+                />
                 <Route path="login" element={<Login />} />
                 <Route path="registration" element={<Registration />} />
                 <Route path="password" element={<Recovery />} />
-                <Route path="activate" element={<Activate />} />
+                <Route
+                    path="activate"
+                    element={
+                        <AuthRoute>
+                            <Activate />
+                        </AuthRoute>
+                    }
+                />
                 <Route path="*" element={<NotFound />} />
             </Route>
             <Route path="search/*" element={<Search />} />

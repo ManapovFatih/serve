@@ -2295,6 +2295,221 @@ main {
   }
 }
 
+.view-offer .topic {
+  border-radius: 2em;
+  border: 1px solid #F2F2F2;
+  padding: 2em;
+  box-shadow: 0px 2px 6px #F2F2F2;
+  border-radius: 1em;
+  padding: 1em;
+  margin-bottom: 2em;
+}
+@media (max-width: 575px) {
+  .view-offer .topic {
+    border-radius: 1em;
+    padding: 1em;
+  }
+}
+.view-offer .topic hr {
+  background-color: #F2F2F2;
+  height: 1px;
+  width: 100%;
+  margin: 1em 0px;
+  border: none;
+  opacity: 1;
+}
+.view-offer .topic hr.dark {
+  background-color: transparent;
+  border: 1px dashed #BFBFBF;
+}
+.view-offer .topic .head {
+  display: flex;
+  margin-bottom: 1em;
+}
+.view-offer .topic .head .photo {
+  margin-right: 1em;
+}
+.view-offer .topic .head .photo img {
+  width: 100%;
+  height: 160px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1em;
+}
+@media (max-width: 1399px) {
+  .view-offer .topic .head .photo img {
+    height: 100px;
+  }
+}
+@media (max-width: 1199px) {
+  .view-offer .topic .head .photo img {
+    height: 120px;
+  }
+}
+@media (max-width: 575px) {
+  .view-offer .topic .head .photo img {
+    height: 100vw;
+  }
+}
+.view-offer .topic .head .title h2 {
+  font-size: 2em;
+  margin-bottom: 0.4em !important;
+}
+.view-offer .topic .head .title p {
+  margin-bottom: 1em;
+}
+.view-offer .topic .head .title .btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  font-size: 0.9em;
+}
+.view-offer .topic .head .title .btns button {
+  padding: 1em;
+}
+.view-offer .topic .head .drop {
+  display: flex;
+  justify-content: end;
+}
+.view-offer .topic .head .drop .dropdown-menu {
+  border-radius: 1em !important;
+}
+.view-offer .topic .text {
+  margin-bottom: 1em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.2em;
+  max-height: 2.4em;
+}
+.view-offer .topic .options {
+  margin-bottom: 1em;
+}
+.view-offer .topic .options li {
+  margin-bottom: 0.6em;
+}
+.view-offer .works {
+  border-radius: 2em;
+  border: 1px solid #F2F2F2;
+  padding: 2em;
+  box-shadow: 0px 2px 6px #F2F2F2;
+  border-radius: 1em;
+  padding: 1em;
+  margin-bottom: 2em;
+}
+@media (max-width: 575px) {
+  .view-offer .works {
+    border-radius: 1em;
+    padding: 1em;
+  }
+}
+.view-offer .works hr {
+  background-color: #F2F2F2;
+  height: 1px;
+  width: 100%;
+  margin: 1em 0px;
+  border: none;
+  opacity: 1;
+}
+.view-offer .works hr.dark {
+  background-color: transparent;
+  border: 1px dashed #BFBFBF;
+}
+.view-offer .works .imgs {
+  min-width: 0;
+  position: relative;
+}
+@media (max-width: 767px) {
+  .view-offer .works .imgs {
+    display: none;
+  }
+}
+.view-offer .works .imgs .slider {
+  max-width: 100%;
+  width: 100%;
+}
+.view-offer .works .imgs .slider .swiper-slide {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.view-offer .works .imgs .slider .swiper-button-prev,
+.view-offer .works .imgs .slider .swiper-button-next {
+  font-size: 0.75em;
+}
+.view-offer .works .imgs img {
+  width: 160px;
+  height: 160px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 1em;
+  margin-bottom: 0.4em;
+}
+.view-offer .works .imgs .title {
+  color: #737373;
+  font-size: 0.9em;
+  margin-bottom: 0.2em;
+}
+.view-offer .services {
+  border-radius: 2em;
+  border: 1px solid #F2F2F2;
+  padding: 2em;
+  box-shadow: 0px 2px 6px #F2F2F2;
+  border-radius: 1em;
+  padding: 1em;
+  margin-bottom: 2em;
+}
+@media (max-width: 575px) {
+  .view-offer .services {
+    border-radius: 1em;
+    padding: 1em;
+  }
+}
+.view-offer .services hr {
+  background-color: #F2F2F2;
+  height: 1px;
+  width: 100%;
+  margin: 1em 0px;
+  border: none;
+  opacity: 1;
+}
+.view-offer .services hr.dark {
+  background-color: transparent;
+  border: 1px dashed #BFBFBF;
+}
+.view-offer .services .price-list ul {
+  list-style: none;
+  padding-left: 0px;
+}
+.view-offer .services .price-list ul li {
+  padding: 0.25em 0.5em;
+  font-weight: 500;
+}
+.view-offer .services .price-list ul li .title {
+  color: #737373;
+  font-size: 0.9em;
+  margin-bottom: 0.2em;
+}
+.view-offer .services .price-list ul li .text {
+  margin-bottom: 1em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.2em;
+  max-height: 2.4em;
+}
+.view-offer .services .price-list ul li:not(:first-child) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-top: 0.25em;
+}
+
 .filter {
   background-color: rgba(16, 86, 34, 0.1);
   padding: 1em;

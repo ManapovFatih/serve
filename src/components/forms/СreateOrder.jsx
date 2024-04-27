@@ -6,28 +6,32 @@ import InputFile from '../../components/utils/InputFile';
 import { SlPhone } from "react-icons/sl";
 import InputBudget from '../utils/InputBudget';
 import Limitation from '../utils/Limitation';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const locationList = [
-  {value: '1', label: 'У меня'},
-  {value: '2', label: 'У исполнителя'},
-  {value: '3', label: 'Удаленно'},
+  { value: '1', label: 'У меня' },
+  { value: '2', label: 'У исполнителя' },
+  { value: '3', label: 'Удаленно' },
 ]
 const townList = [
-  {value: '1', label: 'Казань'},
-  {value: '2', label: 'Москва'},
-  {value: '3', label: 'Санкт-Петербург'},
+  { value: '1', label: 'Казань' },
+  { value: '2', label: 'Москва' },
+  { value: '3', label: 'Санкт-Петербург' },
 ]
 const List = [
-  {value: '1', label: '1'},
-  {value: '2', label: '2'},
-  {value: '3', label: '3'},
+  { value: '1', label: '1' },
+  { value: '2', label: '2' },
+  { value: '3', label: '3' },
 ]
 
 const СreateOrder = (props) => {
   const [showСreateOrder, setShowСreateOrder] = useState(false);
-
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  const status = useSelector((state) => state?.auth.user.status);
+  const navigate = useNavigate();
   const handleCloseСreateOrder = () => setShowСreateOrder(false);
-  const handleShowСreateOrder = () => setShowСreateOrder(true);
+  const handleShowСreateOrder = () => { isAuth ? status ? setShowСreateOrder(true) : navigate("/activate") : navigate("/login") };
 
   return (
     <>
@@ -35,13 +39,13 @@ const СreateOrder = (props) => {
 
       <Modal centered size="lg" show={showСreateOrder} onHide={handleCloseСreateOrder}>
         <button type='button' onClick={handleCloseСreateOrder} className='close'>
-          <RxCross1/>
+          <RxCross1 />
         </button>
         <Modal.Body>
           <form action="" className='create-order-form'>
             <h3>Что нужно сделать?</h3>
-            <input type="text" placeholder='Короткое название задачи' className='mb-3'/>
-            <textarea placeholder="Расскажите подробнее о задаче" rows="5"  className='mb-3'></textarea>
+            <input type="text" placeholder='Короткое название задачи' className='mb-3' />
+            <textarea placeholder="Расскажите подробнее о задаче" rows="5" className='mb-3'></textarea>
             <ul className='row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3 mb-3'>
               <li>
                 <Select
@@ -75,10 +79,10 @@ const СreateOrder = (props) => {
                 />
               </li>
               <li>
-                <InputBudget/>
+                <InputBudget />
               </li>
               <li>
-                <Limitation/>
+                <Limitation />
               </li>
               <li>
                 <InputFile className={'w-100'} />
@@ -93,7 +97,7 @@ const СreateOrder = (props) => {
                 </a>
                 <p className='gray-2 fs-09 mt-2'>Исполнители не видят ваш номер телефона и не могут звонить вам сами</p>
               </div>
-              <input type="checkbox" className='switch'/>
+              <input type="checkbox" className='switch' />
             </div>
             <hr />
             <button type='submit' className='btn-1'>Опубликовать</button>

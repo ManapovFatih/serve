@@ -8,6 +8,7 @@ import { useForm, useWatch } from 'react-hook-form'
 import { editAccount } from '../../services/account'
 import { setUser } from '../../store/reducers/authSlice'
 import { NotificationManager } from 'react-notifications'
+import City from '../../components/utils/City'
 
 const regularityList = [
     { value: '1', label: 'Как можно быстрее' },
@@ -65,7 +66,7 @@ const Settings = () => {
             nickname: user?.nickname,
             lastName: user?.lastName,
             phone: user?.phone,
-            nickname: user?.nickname,
+            data: { city: user?.data?.city, },
             lastName: user?.lastName,
         },
     });
@@ -120,7 +121,7 @@ const Settings = () => {
                                     </Col>
                                     <Col>
                                         <div className='fs-09 mb-1'>Город</div>
-                                        <input type="text" placeholder='Город' defaultValue={data?.data?.city} onChange={(e) => { setValue("data.city", e.target.value) }} />
+                                        <City defaultValue={data?.data?.city} setCity={(e) => setValue("data.city", e)} city={data?.data?.city} />
                                     </Col>
                                     <Col>
                                         <div className='fs-09 mb-1'>Телефон</div>

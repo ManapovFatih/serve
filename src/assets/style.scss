@@ -2432,6 +2432,171 @@ main {
 
 }
 
+.view-offer {
+    .topic {
+        @include box();
+        border-radius: $radius-sm;
+        padding: 1em;
+        margin-bottom: 2em;
+
+        .head {
+            display: flex;
+            margin-bottom: 1em;
+
+            .photo {
+                margin-right: 1em;
+
+                img {
+                    width: 100%;
+                    height: 160px;
+                    object-fit: cover;
+                    border-radius: $radius-sm;
+
+                    @media (max-width: 1399px) {
+                        height: 100px;
+                    }
+
+                    @media (max-width: 1199px) {
+                        height: 120px;
+                    }
+
+                    @media (max-width: 575px) {
+                        height: 100vw;
+                    }
+                }
+            }
+
+            .title {
+                h2 {
+                    font-size: 2em;
+                    margin-bottom: .4em !important;
+                }
+
+                p {
+                    margin-bottom: 1em;
+                }
+
+                .btns {
+                    @include flex(row, flex-start, center, nowrap);
+                    font-size: .9em;
+
+                    button {
+                        padding: 1em;
+                    }
+                }
+
+
+            }
+
+            .drop {
+                display: flex;
+                justify-content: end;
+
+                .dropdown-menu {
+                    border-radius: 1em !important;
+                }
+            }
+
+        }
+
+        .text {
+            margin-bottom: 1em;
+            @include clamp(2, 1.2em);
+        }
+
+        .options {
+            margin-bottom: 1em;
+
+            li {
+                margin-bottom: .6em;
+            }
+        }
+
+
+    }
+
+    .works {
+        @include box();
+        border-radius: $radius-sm;
+        padding: 1em;
+        margin-bottom: 2em;
+
+        .imgs {
+            min-width: 0;
+            position: relative;
+
+            @media (max-width: 767px) {
+                display: none;
+            }
+
+            .slider {
+                max-width: 100%;
+                width: 100%;
+
+                .swiper-slide {
+                    width: fit-content;
+                }
+
+                .swiper-button-prev,
+                .swiper-button-next {
+                    font-size: .75em;
+                }
+            }
+
+            img {
+                width: 160px;
+                height: 160px;
+                object-fit: cover;
+                border-radius: $radius-sm;
+                margin-bottom: .4em;
+            }
+
+            .title {
+                color: $gray-3;
+                font-size: .9em;
+                margin-bottom: .2em;
+            }
+        }
+    }
+
+    .services {
+        @include box();
+        border-radius: $radius-sm;
+        padding: 1em;
+        margin-bottom: 2em;
+
+        .price-list {
+
+            ul {
+                @include list();
+
+                li {
+
+                    .title {
+                        color: $gray-3;
+                        font-size: .9em;
+                        margin-bottom: .2em;
+                    }
+
+                    padding: .25em .5em;
+                    font-weight: 500;
+
+                    .text {
+                        margin-bottom: 1em;
+                        @include clamp(2, 1.2em);
+                    }
+
+                    &:not(:first-child) {
+                        @include flex(row, space-between, center, nowrap);
+                        margin-top: .25em;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
 .filter {
     background-color: rgba($color-1, .1);
     padding: 1em;
