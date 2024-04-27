@@ -2422,11 +2422,6 @@ main {
   min-width: 0;
   position: relative;
 }
-@media (max-width: 767px) {
-  .view-offer .works .imgs {
-    display: none;
-  }
-}
 .view-offer .works .imgs .slider {
   max-width: 100%;
   width: 100%;
@@ -2490,7 +2485,7 @@ main {
 .view-offer .services .price-list ul li .title {
   color: #737373;
   font-size: 0.9em;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.8em;
 }
 .view-offer .services .price-list ul li .text {
   margin-bottom: 1em;

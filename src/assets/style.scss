@@ -2525,9 +2525,6 @@ main {
             min-width: 0;
             position: relative;
 
-            @media (max-width: 767px) {
-                display: none;
-            }
 
             .slider {
                 max-width: 100%;
@@ -2575,7 +2572,7 @@ main {
                     .title {
                         color: $gray-3;
                         font-size: .9em;
-                        margin-bottom: .2em;
+                        margin-bottom: 0.8em;
                     }
 
                     padding: .25em .5em;
