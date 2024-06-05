@@ -233,61 +233,61 @@ const Messages = ({ isMobileXL }) => {
             </InfiniteScroll>
           </div>
 
-          {/* {!isMobileXL && */}
-          <div className="sec-messages-chat">
-            {!data?.id ? (
-              <div className="d-flex align-items-center flex-column">
-                <h2 className="mb-3 mt-5">Выберите диалог</h2>
-                <p className="text-center gray">
-                  В данный момент нет диалогов. <br />Возможно вы не выбрали
-                  конкретный диалог.
-                </p>
-              </div>
-            ) : messages.loading ? (
-              <div className="h-100 d-flex align-items-center justify-content-center flex-column">
-                <Loader />
-              </div>
-            ) : (
-              <>
-                {user && (
-                  <div className="sec-messages-chat-top">
-                    <button type="button" onClick={() => navigate(-1)} className='d-flex align-items-center d-xl-none return-icon ms-4 mb-2'>
-                      <ReturnIcon />
-                    </button>
-                    <div>
-                      <h5 className="fw-7 mb-0"><Link to={`/trader/${user.id}`}>{user.nickname}</Link></h5>
-                      <p className="fs-08 gray">
-                        {print ? (
-                          "Печатает сообщение..."
-                        ) : user.online?.status ? (
-                          <span className="text-success">Онлайн</span>
-                        ) : user.online?.end ? (
-                          "Был(-а) в сети " +
-                          moment(user.online?.end).fromNow()
-                        ) : (
-                          "Оффлайн"
-                        )}
-                      </p>
-                    </div>
+          {!isMobileXL &&
+            <div className="sec-messages-chat">
+              {!data?.id ? (
+                <div className="d-flex align-items-center flex-column">
+                  <h2 className="mb-3 mt-5">Выберите диалог</h2>
+                  <p className="text-center gray">
+                    В данный момент нет диалогов. <br />Возможно вы не выбрали
+                    конкретный диалог.
+                  </p>
+                </div>
+              ) : messages.loading ? (
+                <div className="h-100 d-flex align-items-center justify-content-center flex-column">
+                  <Loader />
+                </div>
+              ) : (
+                <>
+                  {user && (
+                    <div className="sec-messages-chat-top">
+                      <button type="button" onClick={() => navigate(-1)} className='d-flex align-items-center d-xl-none return-icon ms-4 mb-2'>
+                        <ReturnIcon />
+                      </button>
+                      <div>
+                        <h5 className="fw-7 mb-0"><Link to={`/trader/${user.id}`}>{user.nickname}</Link></h5>
+                        <p className="fs-08 gray">
+                          {print ? (
+                            "Печатает сообщение..."
+                          ) : user.online?.status ? (
+                            <span className="text-success">Онлайн</span>
+                          ) : user.online?.end ? (
+                            "Был(-а) в сети " +
+                            moment(user.online?.end).fromNow()
+                          ) : (
+                            "Оффлайн"
+                          )}
+                        </p>
+                      </div>
 
-                  </div>
-                )}
-                <Chat
-                  // print={print}
-                  onTask={(e) => onTask(e)}
-                  account="true"
-                  user={user}
-                  messages={messages}
-                  emptyText="Нет сообщений"
-                  onSubmit={(e) => onNewMessage(e)}
-                  onChange={(e) => setValue("text", e)}
-                  data={data}
-                  setImage={(e) => setValue("media", Array.from(e))}
-                />
-              </>
-            )}
-          </div>
-          {/* } */}
+                    </div>
+                  )}
+                  <Chat
+                    // print={print}
+                    onTask={(e) => onTask(e)}
+                    account="true"
+                    user={user}
+                    messages={messages}
+                    emptyText="Нет сообщений"
+                    onSubmit={(e) => onNewMessage(e)}
+                    onChange={(e) => setValue("text", e)}
+                    data={data}
+                    setImage={(e) => setValue("media", Array.from(e))}
+                  />
+                </>
+              )}
+            </div>
+          }
 
         </section >
       </Container>

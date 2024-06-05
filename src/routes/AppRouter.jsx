@@ -11,7 +11,11 @@ import Login from '../pages/auth/Login'
 import Registration from '../pages/auth/Registration'
 import Recovery from '../pages/auth/Recovery'
 import Activate from '../pages/auth/Activate'
+import Messages from '../pages/account/Messages'
+import MessagesDialogue from '../pages/account/MessagesDialogue'
+import useIsMobile from '../hooks/isMobile'
 
+const isMobileXL = useIsMobile('1199px')
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -37,6 +41,25 @@ const router = createBrowserRouter(
                         </AuthRoute>
                     }
                 />
+                <Route path="messages" element={
+                    <AuthRoute>
+                        <Messages isMobileXL={isMobileXL} />
+                    </AuthRoute>
+                } />
+                {
+                    (!isMobileXL)
+                        ? <Route path="messages/:dialogId" element={
+                            <AuthRoute>
+                                <Messages isMobileXL={isMobileXL} />
+                            </AuthRoute>
+                        }
+                        />
+                        : <Route path="messages/:dialogId" element={
+                            <AuthRoute>
+                                <MessagesDialogue />
+                            </AuthRoute>
+                        } />
+                }
                 <Route path="*" element={<NotFound />} />
             </Route>
             <Route path="search/*" element={<Search />} />

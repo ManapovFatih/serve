@@ -9,9 +9,9 @@ import 'swiper/css/autoplay'
 import 'swiper/css/free-mode'
 
 const OrdersSlider = () => {
-    const {mobile} = useIsMobile('991px')
-    
-    if (mobile) {
+    const isMobile = useIsMobile('991px')
+
+    if (isMobile) {
         return (
             <Swiper
                 modules={[Autoplay, FreeMode]}
@@ -38,7 +38,7 @@ const OrdersSlider = () => {
                         spaceBetween: 20,
                     },
                 }}
-                >
+            >
                 <SwiperSlide>
                     <RecentOrder scope={1} name={'Генеральная уборка'} />
                 </SwiperSlide>
@@ -104,7 +104,7 @@ const OrdersSlider = () => {
                 disableOnInteraction: false,
                 waitForTransition: true
             }}
-            >
+        >
             <SwiperSlide>
                 <div className="recent-orders">
                     <RecentOrder scope={1} name={'Генеральная уборка'} />

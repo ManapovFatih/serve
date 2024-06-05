@@ -1,12 +1,12 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {NavLink, Outlet} from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { RxDoubleArrowRight } from "react-icons/rx";
 import useIsMobile from '../hooks/isMobile';
 
 const SearchMenu = () => {
-  const {mobile} = useIsMobile('991px');
+  const isMobile = useIsMobile('991px');
   return (
     <div>
       <h1 className='inner'>Каталог услуг</h1>
@@ -16,72 +16,72 @@ const SearchMenu = () => {
             <li>
               <NavLink to='1'>
                 <span>Название раздела</span>
-                <RxDoubleArrowRight/>
+                <RxDoubleArrowRight />
               </NavLink>
             </li>
             <li>
               <NavLink to='2'>
                 <span>Длинное название раздела</span>
-                <RxDoubleArrowRight/>
+                <RxDoubleArrowRight />
               </NavLink>
             </li>
             <li>
               <NavLink to='3'>
                 <span>Название раздела</span>
-                <RxDoubleArrowRight/>
+                <RxDoubleArrowRight />
               </NavLink>
             </li>
             <li>
               <NavLink to='4'>
                 <span>Название раздела</span>
-                <RxDoubleArrowRight/>
+                <RxDoubleArrowRight />
               </NavLink>
             </li>
             <li>
               <NavLink to='5'>
                 <span>Название раздела</span>
-                <RxDoubleArrowRight/>
+                <RxDoubleArrowRight />
               </NavLink>
             </li>
             <li>
               <NavLink to='6'>
                 <span>Название раздела</span>
-                <RxDoubleArrowRight/>
+                <RxDoubleArrowRight />
               </NavLink>
             </li>
             <li>
               <NavLink to='7'>
                 <span>Название раздела</span>
-                <RxDoubleArrowRight/>
+                <RxDoubleArrowRight />
               </NavLink>
             </li>
             <li>
               <NavLink to='8'>
                 <span>Название раздела</span>
-                <RxDoubleArrowRight/>
+                <RxDoubleArrowRight />
               </NavLink>
             </li>
             <li>
               <NavLink to='9'>
                 <span>Название раздела</span>
-                <RxDoubleArrowRight/>
+                <RxDoubleArrowRight />
               </NavLink>
             </li>
             <li>
               <NavLink to='10'>
                 <span>Название раздела</span>
-                <RxDoubleArrowRight/>
+                <RxDoubleArrowRight />
               </NavLink>
             </li>
           </ul>
         </Col>
         {
-          (!mobile) &&
+          (!isMobile) &&
           <Col lg={8} xxl={9}>
-            <Outlet/>
+            <Outlet />
           </Col>
         }
-        
+
       </Row>
     </div>
   );

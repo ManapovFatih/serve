@@ -1,16 +1,16 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { RxDoubleArrowLeft } from "react-icons/rx";
 import useIsMobile from '../hooks/isMobile';
 
 const Submenu = () => {
-  const {mobile} = useIsMobile('991px')
+  const isMobile = useIsMobile('991px')
   return (
     <>
       {
-        (mobile) &&
+        (isMobile) &&
         <Link to='/search/category' className='d-flex align-items-center color-5 mb-4'>
-          <RxDoubleArrowLeft className='fs-12 me-2'/>
+          <RxDoubleArrowLeft className='fs-12 me-2' />
           <span>Вернуться назад</span>
         </Link>
       }
