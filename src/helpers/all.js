@@ -42,7 +42,7 @@ const getImageURL = ({ path = "", size = "mini", type = "user" }) => {
   else if (!type || type == 'product' || type == 'sale' || type == 'banner' || type == 'category' || type == 'news') {
     return "/imgs/img5.jpg";
   } else if (type == 'user') {
-    return "/imgs/img5.jpg";
+    return "/imgs/user.png";
   }
 };
 

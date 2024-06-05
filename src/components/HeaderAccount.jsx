@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom'
 
 import Container from 'react-bootstrap/Container'
 
-import { SlLogout, SlUser } from "react-icons/sl"
+import { SlBubble, SlEnvolope, SlLogout, SlUser } from "react-icons/sl"
 import logo from '../assets/imgs/servicio365.png'
 import LanguageSwitcher from './utils/LanguageSwitcher'
 import Notifications from './Notifications'
@@ -36,6 +36,11 @@ const HeaderAccount = () => {
                     </nav>
                     <nav className='right'>
                         <ul>
+                            <li className='d-none d-lg-block'>
+                                <Link to='/account/messages'>
+                                    <SlBubble />
+                                </Link>
+                            </li>
                             <li>
                                 <Notifications />
                             </li>

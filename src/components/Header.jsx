@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { SlLogin, SlLogout, SlMagnifier, SlUser } from "react-icons/sl";
+import { SlBubble, SlEnvolope, SlLogin, SlLogout, SlMagnifier, SlUser } from "react-icons/sl";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/imgs/servicio365.png';
@@ -49,6 +49,12 @@ const Header = () => {
                             </li>
                             {isAuth ?
                                 <>
+                                    <li className='d-none d-lg-block'>
+                                        <Link to='/account/messages'>
+
+                                            <SlBubble />
+                                        </Link>
+                                    </li>
                                     <li>
                                         <Notifications />
                                     </li>

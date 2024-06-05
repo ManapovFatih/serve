@@ -51,6 +51,18 @@ $red: #d70000;
 $transition: .3s ease;
 $radius: 2em;
 $radius-sm: 1em;
+$mess-mine: #EAFAED;
+$mess-user: #EBF3FC;
+$mess-admin: #FFE9D5;
+$mess-system: #F4F6F8;
+$mess-system-border: #212B360D;
+$mess-ban: #FF5630;
+
+$bp-sm: 575.98px;
+$bp-md: 767.98px;
+$bp-lg: 991.98px;
+$bp-xl: 1199.98px;
+$bp-xxl: 1399.98px;
 
 /* mixins */
 @mixin flex($dir: row, $x: center, $y: center, $wrap: nowrap) {
@@ -115,19 +127,35 @@ $radius-sm: 1em;
     }
 }
 
-@mixin clamp($count, $line) {
+
+@mixin clamp($count, $line, $strict: false) {
     display: -webkit-box;
     -webkit-line-clamp: $count;
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-height: $line;
-    max-height: $line * $count;
+
+    @if $strict {
+        height: $line * $count;
+    }
+
+    @else {
+        max-height: $line * $count;
+    }
 }
 
 @mixin list {
     list-style: none;
     padding-left: 0px;
 }
+
+@mixin rounedImg($w) {
+    width: $w;
+    height: $w;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 
 a,
 a:hover,
@@ -2490,7 +2518,7 @@ main {
 
             .drop {
                 display: flex;
-                justify-content: end;
+                justify-content: flex-end;
 
                 .dropdown-menu {
                     border-radius: 1em !important;
@@ -2683,6 +2711,412 @@ main {
             }
         }
     }
+}
+
+
+/* Chat */
+.chat {
+    position: relative;
+    // background: var(--glass);
+    // box-shadow: var(--shadow);
+    border-radius: 10px;
+    overflow: hidden;
+
+    &-window {
+        display: flex;
+        flex-direction: column-reverse;
+        height: 500px;
+        overflow: auto;
+        padding: 1em 1.5em;
+
+
+        @media (max-width: $bp-lg) {
+            padding: 1em 1.5em;
+            height: 500px;
+        }
+
+        @media (max-width: $bp-md) {
+            padding: 1em;
+        }
+
+        @media (max-width: $bp-sm) {
+            padding: 1em 0.5em;
+        }
+
+        &-message {
+            @include flex(row, flex-start, flex-start);
+            margin-bottom: 1.5em;
+
+            img {
+                width: 3.34em;
+                height: 3.34em;
+                border-radius: 50%;
+                position: relative;
+                z-index: 10;
+                margin-right: 1em;
+            }
+
+            .text {
+                flex: 1;
+                @include flex(column, flex-start, flex-start, nowrap);
+                white-space: pre-wrap;
+
+                .bubble {
+                    position: relative;
+                    width: fit-content;
+                    background: $mess-user;
+                    border-radius: $radius;
+                    padding: 1em;
+                    font-weight: 400;
+                    overflow-wrap: anywhere;
+                    font-size: 0.9em;
+                    text-align: left;
+
+                    &-img {
+                        max-height: 228px;
+                        max-width: 304px;
+                        height: 228px;
+                        width: 100%;
+                        object-fit: cover;
+                        border-radius: 3%;
+                        cursor: pointer;
+                        margin-left: 0px;
+                        margin-right: 0em;
+                        margin-top: 1em;
+                    }
+
+                    &-admin {
+                        position: relative;
+                        width: fit-content;
+                        min-width: 50%;
+                        background: $mess-admin;
+                        border-radius: $radius;
+                        padding: 1em;
+                        font-weight: 400;
+                        overflow-wrap: anywhere;
+                        font-size: 0.9em;
+                        text-align: left;
+                    }
+
+                    &-system {
+                        position: relative;
+                        width: fit-content;
+                        min-width: 50%;
+                        background: $mess-system;
+                        border-radius: $radius;
+                        padding: 1em;
+                        font-weight: 400;
+                        overflow-wrap: anywhere;
+                        font-size: 0.9em;
+                        text-align: center;
+                        white-space: normal;
+
+
+                        &-img {
+                            height: auto;
+                            width: 150px;
+                            color: #eee !important;
+                            border-radius: 0%;
+                        }
+                    }
+
+                    &-ban {
+                        position: relative;
+                        width: fit-content;
+                        min-width: 50%;
+                        background: $mess-ban;
+                        border-radius: $radius;
+                        padding: 1em;
+                        font-weight: 400;
+                        overflow-wrap: anywhere;
+                        font-size: 0.9em;
+                        text-align: left;
+                        color: white;
+                    }
+                }
+            }
+
+            &-mine {
+                @extend .chat-window-message;
+
+                img {
+                    margin-left: 1em;
+                    margin-right: 1em;
+                }
+
+                .text {
+                    align-items: flex-end;
+                    white-space: pre-wrap;
+
+                    .bubble {
+                        overflow-wrap: anywhere;
+                        background: $mess-mine;
+                        text-align: right;
+
+                        &-admin {
+                            overflow-wrap: anywhere;
+                            background: $mess-admin;
+                            text-align: right;
+                        }
+
+                        &-system {
+                            overflow-wrap: anywhere;
+                            background: $mess-system;
+                            text-align: center;
+                            white-space: normal;
+
+
+                            &-img {
+                                height: auto;
+                                width: 150px;
+                                color: $gray-1 !important;
+
+                                border-radius: 0%;
+                            }
+                        }
+
+                        &-ban {
+                            background: $mess-ban;
+                            color: white;
+                            overflow-wrap: anywhere;
+                            text-align: right;
+                        }
+
+                        &-img {
+                            margin-left: 0px;
+                            margin-right: 0em;
+                            margin-top: 1em;
+                            cursor: pointer;
+                            max-height: 228px;
+                            max-width: 304px;
+                            height: 228px;
+                            width: 100%;
+                            object-fit: cover;
+                            object-position: center;
+                            border-radius: 3%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-form {
+        @include flex(row, flex-start, stretch, nowrap);
+        border-top: 1px solid #9DC4EF4D;
+
+        textarea {
+            border: none;
+            background-color: transparent;
+            resize: none;
+        }
+
+        .input-file {
+            padding-right: 0;
+
+            &:hover,
+            &:active {
+                svg {
+                    color: $color-5 !important;
+                }
+            }
+        }
+
+        button {
+            background: $color-2;
+            margin-left: 1.25em;
+            padding: .9em 1.4em;
+            font-size: .9em;
+            color: white;
+            transition: $transition;
+            transition-property: background-color, color;
+            border-radius: 8px;
+
+            &:hover,
+            &:active {
+                background: $color-5;
+            }
+        }
+    }
+}
+
+
+.dialog-preview {
+    @include flex(row, flex-start, center, nowrap);
+    padding: 0.75em 1.3em;
+    position: relative;
+    width: 100%;
+
+    &.active {
+        background-color: var(--extrapale-gray);
+    }
+
+    img {
+        @include rounedImg(3em);
+        margin-right: 0.5em;
+        position: relative;
+        z-index: 1;
+    }
+
+    .indicator {
+        position: absolute;
+        bottom: 0.5em;
+        left: 3.5em;
+        width: 0.67em;
+        height: 0.67em;
+        border-radius: 50%;
+        z-index: 10;
+
+        &.green {
+            background-color: var(--green);
+        }
+    }
+
+    .count {
+
+
+        span {
+            display: flex;
+            background-color: #66c6e4 !important;
+            align-items: center;
+            justify-content: center;
+            color: #0d59ab;
+            font-size: 16px;
+            font-weight: 400;
+            width: 1.5em;
+            height: 1.5em;
+            border-radius: 50%;
+
+            @media (max-width: 767px) {
+                font-size: 13px;
+            }
+        }
+    }
+
+    .text {
+        flex: 1;
+        width: 80%;
+
+        h6 {
+            @include clamp(1, 1.2em, true);
+        }
+
+        time {
+            font-weight: 300;
+            color: var(--gray);
+            font-size: 0.7em;
+        }
+
+        p {
+            // @include clamp(1, 1.2em, true);
+            display: block;
+            font-weight: 300;
+            color: var(--gray);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 90%;
+            margin-top: .5em;
+        }
+    }
+}
+
+.sec-messages {
+    position: relative;
+    @include flex(row, flex-start, stretch, wrap);
+    background-color: var(--body-bg);
+    border: 1px solid var(--extrapale-gray);
+    box-shadow: 0px 4px 15px 0px rgba(100, 100, 100, 0.08);
+    backdrop-filter: blur(4px);
+    border-radius: $radius;
+    overflow: hidden;
+    @include safariFix();
+
+    &-list {
+        width: 30%;
+        border-right: 1px solid var(--extrapale-gray);
+
+        @media (max-width: $bp-xxl) {
+            width: 35%;
+        }
+
+        @media (max-width: $bp-xl) {
+            width: 100%;
+            border-right: none;
+        }
+
+        ul {
+            margin-top: 1em;
+            @include list();
+        }
+
+        .general-chat {
+            @include flex(row, flex-start, center, nowrap);
+            padding: 0.75em 1.3em;
+
+            .count {
+                background-color: var(--black);
+                color: var(--white);
+                @include rounedImg(4.8em);
+                @include flex(column, center, center, nowrap);
+                font-size: 10px;
+                text-align: center;
+                line-height: 100%;
+            }
+
+            h6 {
+                margin-left: 0.5em;
+                flex: 1;
+                text-align: left;
+            }
+        }
+    }
+
+    &-chat {
+        width: 70%;
+        position: relative;
+
+        @media (max-width: $bp-xxl) {
+            width: 65%;
+        }
+
+        @media (max-width: $bp-xl) {
+            width: 100%;
+        }
+
+        &-top {
+            @include flex(row, flex-start, center, nowrap);
+            padding: 0.75em 1.5em;
+            border-bottom: 1px solid var(--extrapale-blue);
+        }
+
+        .chat {
+            border: none;
+
+            &-window {
+                height: 600px;
+
+                @media (max-width: $bp-sm) {
+                    height: 400px;
+                }
+            }
+        }
+    }
+}
+
+.return-title {
+    display: none;
+
+    @media (max-width: $bp-lg) {
+        @include flex(row, flex-start, center, nowrap);
+        margin-bottom: 2em;
+    }
+}
+
+.return-icon {
+    display: flex;
+    font-size: 2em;
+    color: var(--blue);
 }
 
 .sw-mini {

@@ -16,10 +16,15 @@ import Profile from '../pages/account/profile/Profile'
 import ProfilePhoto from '../pages/account/profile/ProfilePhoto'
 import Services from '../pages/account/profile/Services'
 import Specialties from '../pages/account/profile/Specialties'
+import useIsMobile from '../hooks/isMobile'
+import Messages from '../pages/account/Messages'
+import MessagesDialogue from '../pages/account/MessagesDialogue'
 
 
 
 const AccountRouter = () => {
+  const isMobileLG = useIsMobile('991px')
+  const isMobileXL = useIsMobile('1199px')
   return (
     <Routes>
       <Route path="/" element={<AccountLayout />}>
@@ -32,6 +37,12 @@ const AccountRouter = () => {
           <Route path="specialties" element={<Specialties />} />
           <Route path="services" element={<Services />} />
         </Route>
+        <Route path="messages" element={<Messages isMobileXL={isMobileXL} />} />
+        {
+          (!isMobileXL)
+            ? <Route path="messages/:dialogId" element={<Messages isMobileXL={isMobileXL} />} />
+            : <Route path="messages/:dialogId" element={<MessagesDialogue />} />
+        }
         <Route path="your-orders" element={<Index />} />
         <Route path="offers" element={<OffersLayout />}>
           <Route index element={<Navigate to="new" replace={true} />} />
