@@ -6,7 +6,7 @@ import SimpleInputFile from '../utils/SimpleInputFile';
 import Message from './Message';
 
 
-const Chat = memo(({ general, messages, emptyText, onChange, className, onSubmit, user, type, account, setImage, data, onTask }) => {
+const Chat = memo(({ messages, emptyText, onChange, className, onSubmit, user, type, account, setImage, data, onTask }) => {
   const userId = useSelector((state) => state.auth?.user?.id);
   const [text, setText] = useState();
   const [rows, setRows] = useState(1);
@@ -54,7 +54,6 @@ const Chat = memo(({ general, messages, emptyText, onChange, className, onSubmit
                 key={index}
                 {...item}
                 my={item.userId === userId}
-                general={general}
                 admin={type != "task" && item.memberId}
               />
 
@@ -75,13 +74,12 @@ const Chat = memo(({ general, messages, emptyText, onChange, className, onSubmit
               rows={rows}
               value={text}
               type="text"
-              placeholder={general == "general" ? "Начните общаться" : "Ваше сообщение"}
+              placeholder={"Ваше сообщение"}
               onChange={(e) => onChangeText(e.target.value)}
               onKeyPress={onKeyPress}
             />
-            {general != "general" &&
-              <SimpleInputFile media={data?.media} setImage={(e) => setImage(e)} />
-            }
+            <SimpleInputFile media={data?.media} setImage={(e) => setImage(e)} />
+
             <button onClick={onClick} type='submit'>Отправить</button>
 
           </div>

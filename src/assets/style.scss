@@ -2698,6 +2698,7 @@ main {
         li {
             margin-bottom: 1em;
 
+
             a {
                 font-weight: 600;
                 color: $gray-3;
@@ -3025,16 +3026,16 @@ main {
     position: relative;
     @include flex(row, flex-start, stretch, wrap);
     background-color: var(--body-bg);
-    border: 1px solid var(--extrapale-gray);
-    box-shadow: 0px 4px 15px 0px rgba(100, 100, 100, 0.08);
-    backdrop-filter: blur(4px);
+    border: 1px solid $gray-1;
+    box-shadow: 0px 2px 6px $gray-1;
+
     border-radius: $radius;
     overflow: hidden;
     @include safariFix();
 
     &-list {
         width: 30%;
-        border-right: 1px solid var(--extrapale-gray);
+        border-right: 1px solid $gray-1;
 
         @media (max-width: $bp-xxl) {
             width: 35%;
@@ -3073,6 +3074,7 @@ main {
     }
 
     &-chat {
+        box-shadow: 0px 2px 6px $gray-1;
         width: 70%;
         position: relative;
 
@@ -3103,6 +3105,35 @@ main {
         }
     }
 }
+
+::-webkit-scrollbar {
+    width: 7px;
+    background-color: $gray-1;
+    border-radius: 6px;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $gray-2;
+    border-radius: 6px;
+
+
+    &:hover {
+        background-color: $gray-3;
+    }
+
+    &:active {
+        background-color: $gray-3;
+    }
+}
+
+::-webkit-scrollbar-button:vertical:start:decrement,
+::-webkit-scrollbar-button:vertical:end:increment,
+::-webkit-scrollbar-button:horizontal:start:decrement,
+::-webkit-scrollbar-button:horizontal:end:increment {
+    display: none;
+}
+
 
 .return-title {
     display: none;

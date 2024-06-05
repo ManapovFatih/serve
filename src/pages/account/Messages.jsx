@@ -80,31 +80,20 @@ const Messages = ({ isMobileXL }) => {
 
   useEffect(() => {
     if (data?.id) {
-      // viewMessages(data);
-      if (data?.id == "general") {
-        getMessagesGeneral()
-          .then((res) =>
-            setMessages((prev) => ({
-              ...prev,
-              loading: false,
-              items: res.messages.items,
-            }))
-          )
-          .catch(() => setMessages((prev) => ({ ...prev, loading: false })));
-      } else {
-        getMessages(data)
-          .then((res) => {
-            setMessages((prev) => ({
-              ...prev,
-              loading: false,
-              items: res.messages.items,
-              dialog: res.dialog,
-              dialog: res.dialog,
-            }));
-          })
-          .catch(() => setMessages((prev) => ({ ...prev, loading: false })));
-      }
+
+      getMessages(data)
+        .then((res) => {
+          setMessages((prev) => ({
+            ...prev,
+            loading: false,
+            items: res.messages.items,
+            dialog: res.dialog,
+            dialog: res.dialog,
+          }));
+        })
+        .catch(() => setMessages((prev) => ({ ...prev, loading: false })));
     }
+
   }, [data?.id]);
 
   useEffect(() => {
@@ -165,12 +154,7 @@ const Messages = ({ isMobileXL }) => {
 
   const onNewMessage = useCallback(
     (text) => {
-      if (data?.id === "general" || dialogId === "general") {
-        createMessageGeneral({ ...data, text });
-      } else {
-        createMessage(data);
-      }
-
+      createMessage(data);
       reset({ id: data.id ?? dialogId });
     },
     [data, state, dialogId]
@@ -204,7 +188,6 @@ const Messages = ({ isMobileXL }) => {
       onLoadDialogs();
     }
   };
-
   if (dialogs.loading) {
     return <Loader full />;
   }
@@ -233,18 +216,6 @@ const Messages = ({ isMobileXL }) => {
                 />
               </form>
               <ul>
-
-
-
-                <li>
-                  <Link to="/account/messages/general" className='general-chat'>
-                    <div className="count">
-                      <div class="fs-13">{dialogs.count}</div>
-                      <div>online</div>
-                    </div>
-                    <h6>Общий чат</h6>
-                  </Link>
-                </li>
                 {dialogs?.items?.length > 0 ? (
                   dialogs.items.map((dialog) => (
                     <li>
@@ -262,76 +233,61 @@ const Messages = ({ isMobileXL }) => {
             </InfiniteScroll>
           </div>
 
-          {!isMobileXL &&
-            <div className="sec-messages-chat">
-              {!data?.id ? (
-                <div className="d-flex align-items-center flex-column">
-                  <h2 className="mb-3 mt-5">Выберите диалог</h2>
-                  <p className="text-center gray">
-                    В данный момент нет диалогов. <br />Возможно вы не выбрали
-                    конкретный диалог.
-                  </p>
-                </div>
-              ) : messages.loading ? (
-                <div className="h-100 d-flex align-items-center justify-content-center flex-column">
-                  <Loader />
-                </div>
-              ) : (
-                <>
-                  {data?.id == 'general' ? (
-                    <div className="sec-messages-chat-top">
-                      <button type="button" onClick={() => navigate(-1)} className='d-flex align-items-center d-xl-none return-icon ms-4 mb-2'>
-                        <ReturnIcon />
-                      </button>
-                      <div>
-                        <h5 className="fw-7 mb-0">Общий чат</h5>
-                        <p className="text-muted">
-                          <span className="fw-7 mb-0">{dialogs.count} </span>
-                          <span className="text-success"> Онлайн</span>
-                        </p>
-                      </div>
+          {/* {!isMobileXL && */}
+          <div className="sec-messages-chat">
+            {!data?.id ? (
+              <div className="d-flex align-items-center flex-column">
+                <h2 className="mb-3 mt-5">Выберите диалог</h2>
+                <p className="text-center gray">
+                  В данный момент нет диалогов. <br />Возможно вы не выбрали
+                  конкретный диалог.
+                </p>
+              </div>
+            ) : messages.loading ? (
+              <div className="h-100 d-flex align-items-center justify-content-center flex-column">
+                <Loader />
+              </div>
+            ) : (
+              <>
+                {user && (
+                  <div className="sec-messages-chat-top">
+                    <button type="button" onClick={() => navigate(-1)} className='d-flex align-items-center d-xl-none return-icon ms-4 mb-2'>
+                      <ReturnIcon />
+                    </button>
+                    <div>
+                      <h5 className="fw-7 mb-0"><Link to={`/trader/${user.id}`}>{user.nickname}</Link></h5>
+                      <p className="fs-08 gray">
+                        {print ? (
+                          "Печатает сообщение..."
+                        ) : user.online?.status ? (
+                          <span className="text-success">Онлайн</span>
+                        ) : user.online?.end ? (
+                          "Был(-а) в сети " +
+                          moment(user.online?.end).fromNow()
+                        ) : (
+                          "Оффлайн"
+                        )}
+                      </p>
                     </div>
-                  ) : (
-                    user && (
-                      <div className="sec-messages-chat-top">
-                        <button type="button" onClick={() => navigate(-1)} className='d-flex align-items-center d-xl-none return-icon ms-4 mb-2'>
-                          <ReturnIcon />
-                        </button>
-                        <div>
-                          <h5 className="fw-7 mb-0"><Link to={`/trader/${user.id}`}>{user.nickname}</Link></h5>
-                          <p className="fs-08 gray">
-                            {print ? (
-                              "Печатает сообщение..."
-                            ) : user.online?.status ? (
-                              <span className="text-success">Онлайн</span>
-                            ) : user.online?.end ? (
-                              "Был(-а) в сети " +
-                              moment(user.online?.end).fromNow()
-                            ) : (
-                              "Оффлайн"
-                            )}
-                          </p>
-                        </div>
 
-                      </div>
-                    ))}
-                  <Chat
-                    print={print}
-                    onTask={(e) => onTask(e)}
-                    account="true"
-                    general={data.id}
-                    user={user}
-                    messages={messages}
-                    emptyText="Нет сообщений"
-                    onSubmit={(e) => onNewMessage(e)}
-                    onChange={(e) => setValue("text", e)}
-                    data={data}
-                    setImage={(e) => setValue("media", Array.from(e))}
-                  />
-                </>
-              )}
-            </div>
-          }
+                  </div>
+                )}
+                <Chat
+                  // print={print}
+                  onTask={(e) => onTask(e)}
+                  account="true"
+                  user={user}
+                  messages={messages}
+                  emptyText="Нет сообщений"
+                  onSubmit={(e) => onNewMessage(e)}
+                  onChange={(e) => setValue("text", e)}
+                  data={data}
+                  setImage={(e) => setValue("media", Array.from(e))}
+                />
+              </>
+            )}
+          </div>
+          {/* } */}
 
         </section >
       </Container>

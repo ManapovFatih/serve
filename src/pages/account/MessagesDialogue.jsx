@@ -21,6 +21,7 @@ import { Container } from "react-bootstrap";
 const MessagesDialogue = () => {
   const { dialogId } = useParams();
   const { state } = useLocation();
+  const navigate = useNavigate();
 
   const timer = useRef(0);
   const userId = useSelector((state) => state.auth?.user?.id);
@@ -51,30 +52,19 @@ const MessagesDialogue = () => {
 
   useEffect(() => {
     if (data?.id) {
-      // viewMessages(data);
-      if (data?.id == "general") {
-        getMessagesGeneral()
-          .then((res) =>
-            setMessages((prev) => ({
-              ...prev,
-              loading: false,
-              items: res.messages.items,
-            }))
-          )
-          .catch(() => setMessages((prev) => ({ ...prev, loading: false })));
-      } else {
-        getMessages(data)
-          .then((res) => {
-            setMessages((prev) => ({
-              ...prev,
-              loading: false,
-              items: res.messages.items,
-              dialog: res.dialog,
-              dialog: res.dialog,
-            }));
-          })
-          .catch(() => setMessages((prev) => ({ ...prev, loading: false })));
-      }
+
+      getMessages(data)
+        .then((res) => {
+          setMessages((prev) => ({
+            ...prev,
+            loading: false,
+            items: res.messages.items,
+            dialog: res.dialog,
+            dialog: res.dialog,
+          }));
+        })
+        .catch(() => setMessages((prev) => ({ ...prev, loading: false })));
+
     }
   }, [data?.id]);
 
@@ -136,12 +126,7 @@ const MessagesDialogue = () => {
 
   const onNewMessage = useCallback(
     (text) => {
-      if (data?.id === "general" || dialogId === "general") {
-        createMessageGeneral({ ...data, text });
-      } else {
-        createMessage(data);
-      }
-
+      createMessage(data);
       reset({ id: data.id ?? dialogId });
     },
     [data, state, dialogId]
@@ -182,10 +167,9 @@ const MessagesDialogue = () => {
             }</h5>
           </div>
           <Chat
-            print={print}
+            // print={print}
             onTask={(e) => onTask(e)}
             account="true"
-            general={data.id}
             user={user}
             messages={messages}
             emptyText="Нет сообщений"

@@ -1,12 +1,12 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Menu = () => {
     return (
         <nav className='account-nav'>
             <ul>
                 <li>
-                    <NavLink to='/account/profile' end>Профиль</NavLink>
+                    <NavLink to='/account/profile' end className="fs-13">Профиль</NavLink>
                 </li>
                 <li>
                     <NavLink to='/account/promotion'>Продвижение: 0 ₽</NavLink>
