@@ -154,7 +154,7 @@ const MessagesDialogue = () => {
   return (
     <main className='py-4 py-sm-5'>
       <Container>
-        <section className="">
+        <section className="sec-messages-chat">
           <Meta title="Сообщения" />
           <div className="d-flex">
             <button type="button" onClick={() => navigate(-1)} className='d-flex align-items-center return-icon me-4 mb-2'>

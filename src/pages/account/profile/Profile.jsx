@@ -14,7 +14,6 @@ import { useSelector } from 'react-redux'
 
 const Profile = () => {
     const user = useSelector((state) => state.auth.user);
-    console.log(user)
     return (
         <section>
             <h1 className='inner text-center mb-2'>{user?.firstName}</h1>

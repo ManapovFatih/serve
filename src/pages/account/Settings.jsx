@@ -190,12 +190,6 @@ const Settings = () => {
                                                 <span className='ms-2'>почте SMS и мобильные уведомления</span>
                                             </label>
                                         </li>
-                                        <li>
-                                            <label>
-                                                <input type="checkbox" />
-                                                <span className='ms-2'>Автоматический звонок о предложенном заказе</span>
-                                            </label>
-                                        </li>
                                     </ul>
                                 </fieldset>
                                 <fieldset>

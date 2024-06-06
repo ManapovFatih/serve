@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet, ScrollRestoration } from 'react-router-dom'
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom'
 import Footer from '../components/Footer'
 import FooterMob from '../components/FooterMob'
 import Header from '../components/Header'
@@ -8,6 +8,7 @@ import useIsMobile from '../hooks/isMobile'
 
 const AppLayout = () => {
     const isMobile = useIsMobile('991px')
+    const location = useLocation();
 
     return (
         <>
@@ -22,7 +23,7 @@ const AppLayout = () => {
                 (isMobile === true) ?
                     <FooterMob />
                     :
-                    <Footer />
+                    location.pathname !== '/messages' && <Footer />
             }
         </>
     )

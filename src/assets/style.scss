@@ -2726,22 +2726,28 @@ main {
     &-window {
         display: flex;
         flex-direction: column-reverse;
-        height: 500px;
+        height: 100%;
         overflow: auto;
         padding: 1em 1.5em;
+        max-height: calc(100vh - var(--h-height) - 10em);
+
+
+
 
 
         @media (max-width: $bp-lg) {
             padding: 1em 1.5em;
-            height: 500px;
+            max-height: calc(100vh - var(--h-height) - var(--m-footer) - 10em);
         }
 
         @media (max-width: $bp-md) {
             padding: 1em;
+            max-height: calc(100vh - var(--h-height) - var(--m-footer) - 10em);
         }
 
         @media (max-width: $bp-sm) {
             padding: 1em 0.5em;
+            max-height: calc(100vh - var(--h-height) - var(--m-footer) - 8em);
         }
 
         &-message {
@@ -2949,7 +2955,7 @@ main {
     width: 100%;
 
     &.active {
-        background-color: var(--extrapale-gray);
+        background-color: $gray-1;
     }
 
     img {
@@ -3028,10 +3034,14 @@ main {
     background-color: var(--body-bg);
     border: 1px solid $gray-1;
     box-shadow: 0px 2px 6px $gray-1;
-
     border-radius: $radius;
     overflow: hidden;
     @include safariFix();
+    max-height: calc(100vh - var(--h-height) - 2em);
+
+    @media (max-width: $bp-lg) {
+        max-height: calc(100vh - var(--h-height) - var(--m-footer));
+    }
 
     &-list {
         width: 30%;
@@ -3046,31 +3056,22 @@ main {
             border-right: none;
         }
 
+
         ul {
-            margin-top: 1em;
+            max-height: calc(100vh - var(--h-height) - 10em);
             @include list();
-        }
+            overflow-y: auto;
 
-        .general-chat {
-            @include flex(row, flex-start, center, nowrap);
-            padding: 0.75em 1.3em;
-
-            .count {
-                background-color: var(--black);
-                color: var(--white);
-                @include rounedImg(4.8em);
-                @include flex(column, center, center, nowrap);
-                font-size: 10px;
-                text-align: center;
-                line-height: 100%;
+            @media (max-width: $bp-lg) {
+                max-height: calc(100vh - var(--h-height) - var(--m-footer) - 14em);
             }
 
-            h6 {
-                margin-left: 0.5em;
-                flex: 1;
-                text-align: left;
+            @media (max-width: $bp-sm) {
+                max-height: calc(100vh - var(--h-height) - var(--m-footer) - 11em);
             }
         }
+
+
     }
 
     &-chat {
@@ -3095,13 +3096,7 @@ main {
         .chat {
             border: none;
 
-            &-window {
-                height: 600px;
 
-                @media (max-width: $bp-sm) {
-                    height: 400px;
-                }
-            }
         }
     }
 }

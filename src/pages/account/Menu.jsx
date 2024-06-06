@@ -25,7 +25,7 @@ const Menu = () => {
                 </li>
             </ul>
 
-            <h6 className='gray-2 fw-4 mt-5 mb-3'>Разное</h6>
+            {/* <h6 className='gray-2 fw-4 mt-5 mb-3'>Разное</h6>
             <ul>
                 <li>
                     <NavLink to='/account/profile/services'>Интернет-маркетолог</NavLink>
@@ -46,7 +46,7 @@ const Menu = () => {
                 <li>
                     <NavLink to='/account/profile/services'>Другое</NavLink>
                 </li>
-            </ul>
+            </ul> */}
         </nav>
     );
 };
