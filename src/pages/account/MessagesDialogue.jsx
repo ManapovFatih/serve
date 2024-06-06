@@ -160,11 +160,7 @@ const MessagesDialogue = () => {
             <button type="button" onClick={() => navigate(-1)} className='d-flex align-items-center return-icon me-4 mb-2'>
               <ReturnIcon />
             </button>
-            <h5>{
-              (user)
-                ? user.nickname
-                : "Общий чат"
-            }</h5>
+            <h5>{user.nickname}</h5>
           </div>
           <Chat
             // print={print}

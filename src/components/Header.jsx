@@ -50,7 +50,7 @@ const Header = () => {
                             {isAuth ?
                                 <>
                                     <li className='d-none d-lg-block'>
-                                        <Link to='/account/messages'>
+                                        <Link to='/messages'>
 
                                             <SlBubble />
                                         </Link>

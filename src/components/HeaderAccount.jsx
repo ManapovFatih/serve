@@ -37,7 +37,7 @@ const HeaderAccount = () => {
                     <nav className='right'>
                         <ul>
                             <li className='d-none d-lg-block'>
-                                <Link to='/account/messages'>
+                                <Link to='/messages'>
                                     <SlBubble />
                                 </Link>
                             </li>

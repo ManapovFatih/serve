@@ -31,13 +31,13 @@ const FooterMob = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/account/messages">
+                                <NavLink to="/messages">
                                     <SlBubble />
                                     <span>Чат</span>
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink exact to="/account">
+                                <NavLink to="/account">
                                     <SlUser />
                                     <span>Профиль</span>
                                 </NavLink>
