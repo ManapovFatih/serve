@@ -6,12 +6,14 @@ import { RxCross2 } from "react-icons/rx";
 import { NavLink, Link } from 'react-router-dom';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import CreateOrder from './forms/СreateOrder';
+import { useSelector } from 'react-redux';
 
 const FooterMob = () => {
     // const [showFMenu, setShowFMenu] = useState(false);
     // const handleCloseFMenu = () => setShowFMenu(false);
     // const handleShowFMenu = () => setShowFMenu(true);
 
+    const unreadCount = useSelector((state) => state.notification.message);
     return (
         <>
             <footer className="mobile">
@@ -33,6 +35,8 @@ const FooterMob = () => {
                             <li>
                                 <NavLink to="/messages">
                                     <SlBubble />
+
+                                    {unreadCount && unreadCount > 0 ? <div className="unread-header-conversations-count" /> : ""}
                                     <span>Чат</span>
                                 </NavLink>
                             </li>

@@ -1371,17 +1371,22 @@ header {
                 @include list();
                 @include flex-center();
                 margin-left: 2em;
+                position: relative;
 
                 &>li {
                     &:not(:first-child) {
                         margin-left: 1.25em;
                     }
 
+                    position: relative;
+
                     &>a,
                     &>button {
                         font-size: 1em;
                         color: $gray-3;
                         transition: $transition;
+                        position: relative;
+
 
                         &:hover,
                         &:focus,
@@ -1405,7 +1410,24 @@ header {
                         margin-left: 1em;
                     }
 
+                    position: relative;
 
+                    .unread-header-conversations-count {
+                        position: absolute;
+                        top: .1em;
+                        right: .1em;
+                        transform: translate(50%, -50%);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: 16px;
+                        font-weight: 700;
+                        width: .6em;
+                        height: .6em;
+                        border-radius: 50%;
+                        background-color: $color-5;
+                        color: $color-4;
+                    }
 
                     &>button,
                     &>a {
@@ -1414,6 +1436,7 @@ header {
                         color: $gray-3;
                         transition: $transition;
                         align-items: center;
+
 
                         span {
                             font-size: .75em;
@@ -3058,16 +3081,20 @@ main {
 
 
         ul {
-            max-height: calc(100vh - var(--h-height) - 10em);
+            height: calc(100vh - var(--h-height) - 10em);
             @include list();
             overflow-y: auto;
 
+            .div {
+                height: calc(100vh - var(--h-height) - 11em);
+            }
+
             @media (max-width: $bp-lg) {
-                max-height: calc(100vh - var(--h-height) - var(--m-footer) - 14em);
+                height: calc(100vh - var(--h-height) - var(--m-footer) - 14em);
             }
 
             @media (max-width: $bp-sm) {
-                max-height: calc(100vh - var(--h-height) - var(--m-footer) - 11em);
+                height: calc(100vh - var(--h-height) - var(--m-footer) - 11em);
             }
         }
 
@@ -3143,6 +3170,83 @@ main {
     display: flex;
     font-size: 2em;
     color: var(--blue);
+}
+
+/* Modal */
+.modal {
+
+
+    &-img {
+        max-width: 100%;
+        width: auto;
+        max-height: 80vh;
+        border-radius: 4%;
+        // object-fit: contain;
+    }
+
+    &-content {
+        padding: 0em 1em 2em 1em !important;
+        background-color: $gray-1;
+        border: none;
+        border-radius: $radius;
+    }
+
+    &-header {
+        position: relative;
+        height: 35px;
+        padding: 0px;
+        background-color: $color-4;
+        border-radius: $radius;
+        border: none;
+
+        .warning {
+            position: absolute;
+            right: 2em;
+            bottom: 0.25em;
+
+            @media (max-width: $bp-lg) {
+                width: 20%;
+            }
+        }
+
+        .btn-close {
+            background: url(imgs/close.svg) no-repeat center;
+            background-size: contain;
+            background-color: var(--white);
+            width: 1.34em;
+            height: 1.34em;
+            padding: 0px;
+            margin: 0px;
+            border-radius: 50%;
+            overflow: hidden;
+            @include safariFix();
+            transition: $transition;
+            position: absolute;
+            top: 0.5em;
+            right: 0.5em;
+            z-index: 1;
+
+            &:hover,
+            &:focus {
+                background-color: var(--dark-blue);
+            }
+        }
+    }
+
+    &-dialog {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-height: 80vh;
+    }
+
+    &-body {
+        padding: 1.34em 2.68em;
+
+        @media (max-width: $bp-sm) {
+            padding: 1.34em;
+        }
+    }
 }
 
 .sw-mini {
@@ -3714,6 +3818,25 @@ footer {
                         @include flex-center();
                         flex-direction: column;
                         color: $gray-3;
+                        position: relative;
+
+                        .unread-header-conversations-count {
+                            margin-left: 1em;
+                            position: absolute;
+                            top: .1em;
+                            right: auto;
+                            transform: translate(50%, -50%);
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 16px;
+                            font-weight: 700;
+                            width: .6em;
+                            height: .6em;
+                            border-radius: 50%;
+                            background-color: $color-5;
+                            color: $color-4;
+                        }
 
                         &.active {
                             color: $color-5;
@@ -3996,5 +4119,47 @@ nav.mobile-menu {
             white-space: normal;
             font-size: .9em;
         }
+    }
+}
+
+.scroll-to-top {
+    z-index: 1042;
+    position: fixed;
+    bottom: 2em;
+    right: 1em;
+    backdrop-filter: blur(5px);
+
+    &.mini {
+        right: 5em;
+    }
+
+    &.maxi {
+        right: 24em;
+    }
+
+    @media (max-width: $bp-lg) {
+        right: 1em;
+    }
+
+
+    background: $gray-1;
+    opacity: 0.6;
+    font-size: 1.5em;
+    color: $color-3;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    // box-shadow: var(--shadowMobile);
+    transition: color 0.3s ease-in;
+
+    &:hover,
+    &:active {
+        // background-color: var(--body-bg);
+        opacity: 1;
+        color: $color-2;
     }
 }

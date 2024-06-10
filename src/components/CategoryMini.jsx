@@ -1,10 +1,11 @@
 import React from 'react'
+import { getImageURL } from '../helpers/all'
 
-const CategoryMini = (props) => {
+const CategoryMini = ({ title, media }) => {
     return (
         <figure className='category-mini'>
-            <img src={props.imgUrl} alt={props.title} />
-            <figcaption><a href='/' className='stretched-link'>{props.title}</a></figcaption>
+            <img src={getImageURL({ path: media, size: "", type: "story" })} alt={title} />
+            <figcaption><a href='/' className='stretched-link'>{title}</a></figcaption>
         </figure>
     )
 }

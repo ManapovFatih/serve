@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -32,8 +32,29 @@ import key from '../assets/imgs/icons/key.svg';
 import carRepair from '../assets/imgs/icons/car-repair.svg';
 import all from '../assets/imgs/icons/all.svg';
 import smartphone from '../assets/imgs/smartphone.png';
+import Loader from '../components/utils/Loader';
+import { getHome } from '../services/Home';
 
 const Home = () => {
+    const [home, setHome] = useState({ loading: true, top: { items: [] } })
+    const onLoad = useCallback(() => {
+        getHome()
+            .then((res) => {
+                setHome((prev) => ({ ...prev, loading: false, categories: res.categories, top: res?.top, stories: res?.stories }))
+            })
+            .catch(() => {
+                setHome((prev) => ({ ...prev, loading: false }))
+            })
+    }, [])
+
+    useEffect(() => {
+        onLoad()
+    }, [])
+    console.log(home)
+    if (home.loading) {
+        return <Loader full />;
+    }
+
     return (
         <main>
             <Swiper
@@ -138,7 +159,12 @@ const Home = () => {
                         slidesPerView={'auto'}
                         freeMode={true}
                     >
-                        <SwiperSlide>
+                        {home?.stories.length > 0 && home?.stories.map(item =>
+                            <SwiperSlide>
+                                <CategoryMini {...item} />
+                            </SwiperSlide>
+                        )}
+                        {/* <SwiperSlide>
                             <CategoryMini title={"Установка техники"} imgUrl={"/imgs/img7.jpg"} />
                         </SwiperSlide>
                         <SwiperSlide>
@@ -161,12 +187,17 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <CategoryMini title={"Химчистка мебели"} imgUrl={"/imgs/img9.jpg"} />
-                        </SwiperSlide>
+                        </SwiperSlide> */}
                     </Swiper>
 
                     <h3>Поручите дела специалистам</h3>
                     <div className="grid mt-3 mt-sm-4">
-                        <div>
+                        {home?.categories.length > 0 && home?.categories.map(item =>
+                            <div>
+                                <CategoryCard {...item} />
+                            </div>
+                        )}
+                        {/* <div>
                             <CategoryCard title={"Электрика"} imgUrl={"/imgs/socket.jpg"} />
                         </div>
                         <div>
@@ -189,7 +220,7 @@ const Home = () => {
                         </div>
                         <div>
                             <CategoryCard title={'Вывоз мусора'} imgUrl={'/imgs/trash.jpg'} />
-                        </div>
+                        </div> */}
                     </div>
                 </section>
             </Container>

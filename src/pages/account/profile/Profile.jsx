@@ -17,11 +17,11 @@ const Profile = () => {
     return (
         <section>
             <h1 className='inner text-center mb-2'>{user?.firstName}</h1>
-            <p className='d-flex align-items-center justify-content-center text-center gray-3 mb-4 mb-sm-5'>
+            {/* <p className='d-flex align-items-center justify-content-center text-center gray-3 mb-4 mb-sm-5'>
                 <IoAlertCircleOutline className='fs-13 red' />
                 <span className='ms-2'>Профиль опубликован – 1 ошибка</span>
-            </p>
-
+            </p> */}
+            {/* 
             <div className="box mb-4">
                 <div className="d-flex">
                     <button type='button' className='btn-4 p-2 p-sm-3'>
@@ -38,9 +38,9 @@ const Profile = () => {
                     <input type="checkbox" />
                     <span className='ms-2'>Принимаю заказы</span>
                 </label>
-            </div>
+            </div> */}
 
-            <div className="box mb-4 position-relative">
+            {/* <div className="box mb-4 position-relative">
                 <Swiper
                     className='sw-mini'
                     modules={[Navigation, Pagination]}
@@ -121,7 +121,7 @@ const Profile = () => {
                         </div>
                     </SwiperSlide>
                 </Swiper>
-            </div>
+            </div> */}
 
             <div className="box mb-4 d-flex align-items-center">
                 <div className='flex-1'>
@@ -181,13 +181,13 @@ const Profile = () => {
                 </Col>
             </Row>
 
-            <Link to='specialties' className="box d-block mb-4">
+            {/* <Link to='specialties' className="box d-block mb-4">
                 <div className='d-flex align-items-center mb-3'>
                     <IoListOutline className='fs-18 color-2' />
                     <h4 className='mb-0 ms-2'>Специальности</h4>
                 </div>
                 <p>Специальности добавлены (1)</p>
-            </Link>
+            </Link> */}
 
             <Link to='services' className="box d-flex align-items-center justify-content-between mb-4">
                 <div className='flex-1'>
@@ -199,7 +199,7 @@ const Profile = () => {
 
             <button type="button" className='btn-4 w-100'>
                 <IoAddOutline />
-                <span className='ms-2'>Добавить специальность</span>
+                <span className='ms-2'>Добавить услугу</span>
             </button>
         </section>
     )

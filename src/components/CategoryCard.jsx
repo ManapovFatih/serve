@@ -1,12 +1,13 @@
 import React from 'react'
+import { getImageURL } from '../helpers/all'
 
-const CategoryCard = (props) => {
+const CategoryCard = ({ title, media }) => {
     return (
         <a href="/" className='category-card'>
             <figure>
-                <img src={props.imgUrl} alt={props.title} />
+                <img src={getImageURL({ path: media, size: "", type: "category" })} alt={title} />
                 <figcaption>
-                    <h3>{props.title}</h3>
+                    <h3>{title}</h3>
                 </figcaption>
             </figure>
         </a>

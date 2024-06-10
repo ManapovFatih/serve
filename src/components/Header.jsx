@@ -16,7 +16,7 @@ const Header = () => {
     const isAuth = useSelector((state) => state.auth.isAuth);
     const dispatch = useDispatch();
     const userId = useSelector(state => state.auth?.user?.id);
-
+    const unreadCount = useSelector((state) => state.notification.message);
     const [search, setSearch] = useState(false)
     const closeSearch = () => setSearch(false)
     const showSearch = () => setSearch(true)
@@ -53,10 +53,12 @@ const Header = () => {
                                         <Link to='/messages'>
 
                                             <SlBubble />
+                                            {unreadCount && unreadCount > 0 ? <div className="unread-header-conversations-count" /> : ""}
                                         </Link>
                                     </li>
                                     <li>
                                         <Notifications />
+                                        {unreadCount && unreadCount > 0 ? <div className="unread-header-conversations-count" /> : ""}
                                     </li>
                                     <li className='d-none d-lg-block'>
                                         <Link to='/account/'>

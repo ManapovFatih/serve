@@ -5,6 +5,7 @@ import FooterMob from '../components/FooterMob'
 import Header from '../components/Header'
 import HeaderMobile from '../components/HeaderMobile'
 import useIsMobile from '../hooks/isMobile'
+import ScrollToTopButton from '../components/utils/ScrollToTopButton'
 
 const AppLayout = () => {
     const isMobile = useIsMobile('991px')
@@ -18,12 +19,13 @@ const AppLayout = () => {
                     ? <HeaderMobile />
                     : <Header />
             }
+            <ScrollToTopButton />
             <Outlet />
             {
                 (isMobile === true) ?
                     <FooterMob />
                     :
-                    location.pathname !== '/messages' && <Footer />
+                    !location.pathname.includes('/messages') && <Footer />
             }
         </>
     )

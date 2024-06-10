@@ -8,12 +8,14 @@ import { SlBubble, SlEnvolope, SlLogout, SlUser } from "react-icons/sl"
 import logo from '../assets/imgs/servicio365.png'
 import LanguageSwitcher from './utils/LanguageSwitcher'
 import Notifications from './Notifications'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../services/auth'
 
 const HeaderAccount = () => {
     const { mobile } = useIsMobile('991px')
     const dispatch = useDispatch();
+
+    const unreadCount = useSelector((state) => state.notification.message);
     return (
         <>
             <header>
@@ -38,11 +40,14 @@ const HeaderAccount = () => {
                         <ul>
                             <li className='d-none d-lg-block'>
                                 <Link to='/messages'>
+
                                     <SlBubble />
+                                    {unreadCount && unreadCount > 0 ? <div className="unread-header-conversations-count" /> : ""}
                                 </Link>
                             </li>
                             <li>
                                 <Notifications />
+                                {unreadCount && unreadCount > 0 ? <div className="unread-header-conversations-count" /> : ""}
                             </li>
                             <li className='d-none d-lg-block'>
                                 <Link to='/account'>

@@ -20,9 +20,9 @@ const Menu = () => {
                 <li>
                     <NavLink to='/account/profile/about'>О себе</NavLink>
                 </li>
-                <li>
+                {/* <li>
                     <NavLink to='/account/profile/specialties'>Специальности</NavLink>
-                </li>
+                </li> */}
             </ul>
 
             {/* <h6 className='gray-2 fw-4 mt-5 mb-3'>Разное</h6>

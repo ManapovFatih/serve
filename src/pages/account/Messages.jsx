@@ -213,24 +213,24 @@ const Messages = ({ isMobileXL }) => {
 
             <ul id="scrollableDiv" >
               <InfiniteScroll
+                useWindow={false}
                 pageStart={1}
                 loadMore={onLoadDialogs}
                 hasMore={dialogs.hasMore}
                 loader={<Loader />}
-                ScrollableTarget="scrollableDiv"
+                getScrollParent={() => document.getElementById('scrollableDiv')}
               >
-
                 {dialogs?.items?.length > 0 ? (
                   dialogs.items.map((dialog) => (
-                    <li>
+                    <li key={dialog.id}>
                       <DialogPreview {...dialog} userId={userId} />
                     </li>
-                  ))) : (
+                  ))
+                ) : (
                   <p className="w-100 py-5 text-center text-muted fs-09 d-flex flex-column align-items-center justify-content-center">
                     В данный момент нет диалогов
                   </p>
-                )
-                }
+                )}
               </InfiniteScroll>
             </ul>
 
