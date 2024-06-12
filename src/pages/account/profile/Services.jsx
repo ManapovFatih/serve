@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 import { Link } from 'react-router-dom'
 import { IoAddOutline, IoArrowUndoOutline } from "react-icons/io5"
 import { Col } from 'react-bootstrap'
+import { useForm, useWatch } from 'react-hook-form'
+import { getCategories, getCategoryList } from '../../../services/Home'
+import { removeDescendants } from '../../../helpers/all'
+import { NotificationManager } from 'react-notifications'
 
 const experienceList = [
     { value: '1', label: 'Менее года' },
@@ -59,44 +63,153 @@ const timeList = [
 ]
 
 
-const renderSelects = (tree) => {
-    if (tree.children && tree.children.length > 0) {
-        if (tree.children.length == 1 && !data.option.find(e => e.parent == tree.id)) {
-            onSaveOption(tree.children[0])
 
-        }
-        if (tree.children[0].data?.max) {
-            return tree.children.map(child =>
-                maxOption(child)
-            );
-        }
-        else {
-            return (
-                <>
-
-                    < Col xs={12} sm={6} md={4}>
-                        <Select
-                            value={data.option && data.option.find(e => e.parent == tree.id) && data.option.find(e => e.parent == tree.id).id}
-                            title={tree?.title}
-                            onClick={(e) => onSaveOption(e.data)}
-                            data={[
-                                { value: null, data: tree, title: tree.title },
-                                ...(tree?.children?.sort((a, b) => a.priority - b.priority).map((item) => ({ value: item.id, data: item, title: item.title })))
-                            ]}
-                        />
-                    </Col >
-                    {console.log(data.option && data.option.find(e => e.parent == tree.id))}
-                    {data.option && data.option.find(e => e.parent == tree.id) &&
-                        renderSelects(data.option.find(e => e.parent == tree.id))
-                    }
-                </>
-            );
-        }
-    }
-    return null;
-};
 
 const Services = () => {
+    const {
+        control,
+        register,
+        formState: { errors, isValid },
+        handleSubmit,
+        reset,
+        setValue,
+    } = useForm({
+        mode: "onChange",
+        reValidateMode: "onSubmit",
+    });
+
+    const data = useWatch({ control });
+    const [categories, setCategories] = useState({ items: [], loading: true });
+    useEffect(() => {
+        getCategoryList()
+            .then((res) => {
+                setCategories((prev) => ({
+                    ...prev,
+                    items: res,
+                    loading: false
+                }));
+            })
+            .catch(() => setCategories((prev) => ({ ...prev, loading: false })));
+
+    }, []);
+    const onSaveOption = (param, isMulti, parentId) => {
+        console.log(param)
+        setValue('param', removeDescendants(data, param, isMulti, parentId));
+    };
+
+    const renderSelects = (tree) => {
+        if (tree.children && tree.children.length > 0) {
+
+            if (tree.children.length == 1 && !data.option.find(e => e.parentId == tree.id)) {
+                onSaveOption(tree.children[0])
+
+            }
+            // if (tree.children[0].data?.max) {
+            //     return tree.children.map(child =>
+            //         maxOption(child)
+            //     );
+            // }
+            else {
+                const isMulti = true;
+                return (
+                    <>
+                        <li>
+                            <div className='mb-1'>{tree.title}</div>
+                            <Select
+                                name="experience"
+                                placeholder={tree.title}
+                                classNamePrefix="simple-select"
+                                className="simple-select-container w-100"
+                                defaultValue={data?.param && data.param.find(e => e?.parentId == tree?.id) && data.param.find(e => e?.parentId == tree?.id).id}
+                                onChange={(e) => { onSaveOption(e, isMulti, tree.id) }}
+                                options={tree?.children?.sort((a, b) => a.priority - b.priority).map((item) => ({ value: item.id, data: item, label: item.title }))}
+                                isMulti
+                                isClearable={true}
+                                isSearchable={true}
+                            />
+                        </li>
+                        {!isMulti && data.param && data.param.find(e => e?.parentId == tree?.id) &&
+                            renderSelects(data.param.find(e => e?.parentId == tree?.id))
+                        }
+                    </>
+                );
+            }
+        }
+        return null;
+    };
+
+    const onSubmit = useCallback((data) => {
+        if (!data.categoryId) {
+            return NotificationManager.error(
+                "Выберите категорию"
+            )
+        }
+        // if (!id) {
+        createUserProduct({
+            id: data.id,
+            categoryId: data.categoryId,
+            region: data.region,
+            server: data.server,
+            param: data.param,
+            option: data.option,
+            desc: data.desc,
+            count: data.count,
+            price: data.price,
+            status: data.status,
+            data: {
+                minCount: data.minCount,
+                typeCount: data.typeCount
+            },
+            protectedData: data.protectedData,
+
+        })
+            .then(() => {
+                NotificationManager.success("Лот создан");
+                reset();
+                navigate(-1);
+            })
+            .catch((error) =>
+                NotificationManager.error(
+                    typeof error?.response?.data?.error == "string"
+                        ? error.response.data.error
+                        : "Неизвестная ошибка при отправке"
+                )
+            );
+        // }
+        // else {
+        //   editUserProduct({
+        //     id: data.id,
+        //     categoryId: data.categoryId,
+        //     region: data.region,
+        //     server: data.server,
+        //     param: data.param,
+        //     option: data.option,
+        //     desc: data.desc,
+        //     count: data.count,
+        //     price: data.price,
+        //     status: data.status,
+        //     data: {
+        //       minCount: data.minCount,
+        //       typeCount: data.typeCount
+        //     },
+        //     protectedData: data.protectedData,
+        //   })
+        //     .then(() => {
+        //       NotificationManager.success("Лот обновлён");
+        //       reset();
+        //       navigate(-1);
+        //     })
+        //     .catch(
+        //       (err) =>
+        //         err &&
+        //         NotificationManager.error(
+        //           err?.response?.data?.error ?? "Неизвестная ошибка при отправке"
+        //         )
+        //     );
+        // }
+    }, []);
+
+    console.log(data)
     return (
         <section>
             <h1 className='inner text-center mb-2'>Услуги</h1>
@@ -162,36 +275,22 @@ const Services = () => {
                         <Select
                             classNamePrefix="simple-select"
                             className="simple-select-container w-100"
-                            // value={data.option && data.option.find(e => e.parent == tree.id) && data.option.find(e => e.parent == tree.id).id}
+                            defaultValue={data?.categoryId}
                             placeholder="Категория"
-                            options={experienceList}
                             isClearable={true}
                             isSearchable={true}
-                        // onClick={(e) => onSaveOption(e.data)}
-                        // data={[
-                        //     { value: null, data: tree, title: tree.title },
-                        //     ...(tree?.children?.sort((a, b) => a.priority - b.priority).map((item) => ({ value: item.id, data: item, title: item.title })))
-                        // ]}
+                            onChange={(e) => {
+                                reset({
+                                    categoryId: e?.value,
+                                    category: e?.data
+                                })
+                            }}
+                            options={categories?.items?.sort((a, b) => a.priority - b.priority).map((item) => ({ value: item.id, data: item, label: item.title }))}
                         />
                     </li>
+
                     <li>
-                        <Select
-                            classNamePrefix="simple-select"
-                            className="simple-select-container w-100"
-                            // value={data.option && data.option.find(e => e.parent == tree.id) && data.option.find(e => e.parent == tree.id).id}
-                            placeholder="Специализация"
-                            options={experienceList}
-                            isClearable={true}
-                            isSearchable={true}
-                        // onClick={(e) => onSaveOption(e.data)}
-                        // data={[
-                        //     { value: null, data: tree, title: tree.title },
-                        //     ...(tree?.children?.sort((a, b) => a.priority - b.priority).map((item) => ({ value: item.id, data: item, title: item.title })))
-                        // ]}
-                        />
-                    </li>
-                    <li>
-                        <input type="text" placeholder='Название' />
+                        <input type="text" className='text' placeholder='Название' value={data?.title ?? ""} onChange={(e) => setValue("title", e.target.value)} />
                     </li>
                 </ul>
                 {/* <button type='button' className='btn-1 py-3 px-5 mt-4 w-xs-100'>
@@ -204,19 +303,13 @@ const Services = () => {
                 <fieldset>
                     <legend>О специализации</legend>
                     <ul className="list-unstyled row row-cols-sm-2 g-4">
-                        <li>
-                            <div className='mb-1'>Опыт работы</div>
-                            <Select
-                                name="experience"
-                                placeholder="Опыт работы"
-                                classNamePrefix="simple-select"
-                                className="simple-select-container w-100"
-                                options={experienceList}
-                                isClearable={true}
-                                isSearchable={true}
-                            />
-                        </li>
-                        <li>
+                        {data?.category?.params && data?.category?.params?.length > 0 &&
+                            data?.category?.params.map((e) => {
+                                return renderSelects(e)
+
+                            })
+                        }
+                        {/* <li>
                             <div className='mb-1'>Параметр 1</div>
                             <Select
                                 name="experience"
@@ -254,7 +347,7 @@ const Services = () => {
                                 isClearable={true}
                                 isSearchable={true}
                             />
-                        </li>
+                        </li> */}
                     </ul>
                 </fieldset>
                 <fieldset>

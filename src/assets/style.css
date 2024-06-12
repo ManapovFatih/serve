@@ -4049,4 +4049,13 @@ nav.mobile-menu ul li button {
 .scroll-to-top:hover, .scroll-to-top:active {
   opacity: 1;
   color: #26C24A;
+}
+
+.text {
+  border: 1px solid #bfbfbf;
+  box-shadow: none;
+}
+.text:focus {
+  border: 1px solid #26C24A !important;
+  box-shadow: none !important;
 }/*# sourceMappingURL=style.css.map */

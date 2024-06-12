@@ -44,8 +44,8 @@ const Login = () => {
                                 <Col sm={10}>
                                     <Input
                                         className="mb-2"
-                                        type="login"
-                                        name="login"
+                                        type="email"
+                                        name="email"
                                         placeholder="E-mail"
                                         errors={errors}
                                         register={register}

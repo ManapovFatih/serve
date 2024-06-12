@@ -20,6 +20,88 @@ const declOfNum = (number, titles) => {
   const cases = [2, 0, 1, 1, 1, 2];
   return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
 }
+const removeDescendants = (data, param, isMulti, parentId) => {
+  if (!data.param) {
+    if (isMulti) {
+      return [param[0].data];
+    }
+    else {
+      return [param];
+    }
+  }
+
+  const filteredOptions = [...data.param];
+  // if (param.data?.max) {
+  //   const existingOptionIndex = filteredOptions.findIndex(item => item.id === option.id);
+
+  //   // Если элемент найден, обновляем его
+  //   if (existingOptionIndex !== -1) {
+  //     if (option.max) {
+  //       filteredOptions[existingOptionIndex] = {
+  //         ...filteredOptions[existingOptionIndex],
+  //         max: option.max,
+  //       };
+  //     }
+  //     else if (option.min) {
+  //       filteredOptions[existingOptionIndex] = {
+  //         ...filteredOptions[existingOptionIndex],
+  //         min: option.min,
+  //       };
+  //     }
+  //     else {
+  //       filteredOptions[existingOptionIndex] = {
+  //         ...filteredOptions[existingOptionIndex],
+  //         value: option.value,
+  //       };
+  //     }
+  //   } else {
+  //     // Если элемент не найден, добавляем его
+  //     filteredOptions.push({
+  //       ...option,
+  //     });
+  //   }
+  // }
+  // else {
+
+  const descendants = [];
+
+  // Ищем потомков с parentId, равным id option
+  const findDescendants = (id) => {
+    const found = filteredOptions.filter(item => item?.parentId === id);
+    if (found.length > 0) {
+      found.forEach(item => {
+        descendants.push(item); // Добавляем найденного потомка в массив descendants
+        findDescendants(item.id); // Рекурсивно ищем потомков этого потомка
+      });
+    }
+  };
+  if (isMulti) {
+    findDescendants(param[0]?.data?.parentId ?? parentId);
+  }
+  else {
+    findDescendants(param.id); // Начинаем поиск потомков с option.id
+    if (param.parentId) {
+      findDescendants(param.parentId ?? parentId);
+    }
+  }// Удаляем потомков из массива filteredOptions
+  descendants.forEach(item => {
+    filteredOptions.splice(filteredOptions.indexOf(item), 1);
+  });
+
+  // Добавляем option в filteredOptions
+  if (isMulti) {
+    if (param[0]?.data?.parentId) {
+      filteredOptions.push(...param.map(e => e.data));
+    }
+  }
+  else {
+    if (param.parentId) {
+      filteredOptions.push(param);
+    }
+  }
+
+  return filteredOptions;
+};
 
 const getImageURL = ({ path = "", size = "mini", type = "user" }) => {
   if (path && Array.isArray(path) && path?.length > 0) {
@@ -46,4 +128,4 @@ const getImageURL = ({ path = "", size = "mini", type = "user" }) => {
   }
 };
 
-export { getImageURL, declOfNum };
+export { getImageURL, declOfNum, removeDescendants };

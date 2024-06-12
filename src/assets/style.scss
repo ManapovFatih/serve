@@ -4163,3 +4163,13 @@ nav.mobile-menu {
         color: $color-2;
     }
 }
+
+.text {
+    border: 1px solid #bfbfbf;
+    box-shadow: none;
+
+    &:focus {
+        border: 1px solid $color-2 !important;
+        box-shadow: none !important;
+    }
+}
