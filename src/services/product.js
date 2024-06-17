@@ -41,19 +41,8 @@ const getFree = async () => {
 
 const createUserProduct = async (data) => {
 
-    var formData = new FormData();
 
-    formData.append("dataParse", JSON.stringify(data));
-
-    if (data?.medias) {
-        data.medias.forEach(file => {
-            formData.append("media", file);
-        });
-    }
-    if (data?.cover) {
-        formData.append("cover", data.cover);
-    }
-    const response = await $authApi.post(apiRoutes.USER_PRODUCTS, formData)
+    const response = await $authApi.post(apiRoutes.USER_PRODUCTS, data)
     return response?.data
 }
 

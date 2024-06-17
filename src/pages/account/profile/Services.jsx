@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Select from 'react-select'
 import { Link } from 'react-router-dom'
 import { IoAddOutline, IoArrowUndoOutline } from "react-icons/io5"
@@ -7,6 +7,8 @@ import { useForm, useWatch } from 'react-hook-form'
 import { getCategories, getCategoryList } from '../../../services/Home'
 import { removeDescendants } from '../../../helpers/all'
 import { NotificationManager } from 'react-notifications'
+import { useSelector } from 'react-redux'
+import { createUserProduct } from '../../../services/product'
 
 const experienceList = [
     { value: '1', label: 'Менее года' },
@@ -139,34 +141,15 @@ const Services = () => {
     };
 
     const onSubmit = useCallback((data) => {
-        if (!data.categoryId) {
+        if (!data.id) {
             return NotificationManager.error(
                 "Выберите категорию"
             )
         }
         // if (!id) {
-        createUserProduct({
-            id: data.id,
-            categoryId: data.categoryId,
-            region: data.region,
-            server: data.server,
-            param: data.param,
-            option: data.option,
-            desc: data.desc,
-            count: data.count,
-            price: data.price,
-            status: data.status,
-            data: {
-                minCount: data.minCount,
-                typeCount: data.typeCount
-            },
-            protectedData: data.protectedData,
-
-        })
+        createUserProduct(data)
             .then(() => {
                 NotificationManager.success("Лот создан");
-                reset();
-                navigate(-1);
             })
             .catch((error) =>
                 NotificationManager.error(
@@ -281,8 +264,8 @@ const Services = () => {
                             isSearchable={true}
                             onChange={(e) => {
                                 reset({
-                                    categoryId: e?.value,
-                                    category: e?.data
+                                    id: e?.value,
+                                    car: e?.data
                                 })
                             }}
                             options={categories?.items?.sort((a, b) => a.priority - b.priority).map((item) => ({ value: item.id, data: item, label: item.title }))}
@@ -291,6 +274,9 @@ const Services = () => {
 
                     <li>
                         <input type="text" className='text' placeholder='Название' value={data?.title ?? ""} onChange={(e) => setValue("title", e.target.value)} />
+                    </li>
+                    <li>
+                        <input type="number" className='text' placeholder='Цена' value={data?.price ?? ""} onChange={(e) => setValue("price", e.target.value)} />
                     </li>
                 </ul>
                 {/* <button type='button' className='btn-1 py-3 px-5 mt-4 w-xs-100'>
@@ -303,8 +289,8 @@ const Services = () => {
                 <fieldset>
                     <legend>О специализации</legend>
                     <ul className="list-unstyled row row-cols-sm-2 g-4">
-                        {data?.category?.params && data?.category?.params?.length > 0 &&
-                            data?.category?.params.map((e) => {
+                        {data?.car?.params && data?.car?.params?.length > 0 &&
+                            data?.car?.params.map((e) => {
                                 return renderSelects(e)
 
                             })
@@ -391,12 +377,12 @@ const Services = () => {
                 </fieldset>
                 <fieldset>
                     <legend>Дополнительное описание</legend>
-                    <textarea rows="5" placeholder='Описание'></textarea>
+                    <textarea rows="5" placeholder='Описание' value={data?.desc ?? ""} onChange={(e) => setValue("desc", e.target.value)}></textarea>
                 </fieldset>
-                <button type='submit' className='btn-1 px-5 w-xs-100'>Сохранить</button>
+                <button type='submit' className='btn-1 px-5 w-xs-100' onClick={handleSubmit(onSubmit)}>Сохранить</button>
             </form>
 
-            <form className="box form-about-info mt-4 mt-sm-5">
+            {/* <form className="box form-about-info mt-4 mt-sm-5">
                 <h3 className='fw-6 mb-2'>Специальное предложение</h3>
                 <p className='mb-4'>Например, скидка или подарок клиенту</p>
                 <h6 className='mb-2'>Размер скидки и сроки</h6>
@@ -430,7 +416,7 @@ const Services = () => {
                     </li>
                 </ul>
                 <button type='button' className='btn-1 px-5 mt-4 w-xs-100'>Запустить</button>
-            </form>
+            </form> */}
 
             <form className="box form-about-info mt-4 mt-sm-5">
                 <h3 className='fw-6 mb-4'>Как вы оказываете услуги</h3>

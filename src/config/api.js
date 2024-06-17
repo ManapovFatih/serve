@@ -82,7 +82,7 @@ const apiRoutes = {
 
   // Product
   PRODUCT: BASE_URL + "/product/one",
-  USER_PRODUCTS: BASE_URL + "/user/product/",
+  USER_PRODUCTS: BASE_URL + "/ads",
   USER_PRODUCT: BASE_URL + "/user/product/one",
 
   // Sale
