@@ -159,7 +159,7 @@ const Home = () => {
                         slidesPerView={'auto'}
                         freeMode={true}
                     >
-                        {home?.stories.length > 0 && home?.stories.map(item =>
+                        {home?.stories && home?.stories.length > 0 && home?.stories.map(item =>
                             <SwiperSlide>
                                 <CategoryMini {...item} />
                             </SwiperSlide>
@@ -192,7 +192,7 @@ const Home = () => {
 
                     <h3>Поручите дела специалистам</h3>
                     <div className="grid mt-3 mt-sm-4">
-                        {home?.categories.length > 0 && home?.categories.map(item =>
+                        {home?.categories && home?.categories.length > 0 && home?.categories.map(item =>
                             <div>
                                 <CategoryCard {...item} />
                             </div>
