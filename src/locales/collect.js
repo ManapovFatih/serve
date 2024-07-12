@@ -10,7 +10,7 @@ const ignoredSentences = [];
 const savedComments = [];
 const savedSentences = [];
 const savedWords = [];
-const ignoredDirectories = ['assets', 'config', 'contexts', 'hooks', 'layouts', 'locales', 'providers', 'routes', 'services', 'store']; // Папки, которые нужно игнорировать
+const ignoredDirectories = ['assets', 'config', 'contexts', 'hooks', 'layouts', 'locales', 'providers', 'routes', 'services', 'store', 'helpers']; // Папки, которые нужно игнорировать
 
 
 const translateFolderPath = './src/locales/translate';
@@ -27,7 +27,7 @@ if (fs.existsSync(RuPath)) {
     i18nContent = JSON.parse(fs.readFileSync(RuPath, 'utf8'));
 }
 const i18nPath = path.join(__dirname, './files/i18n.json');
-
+let templates = 0;
 
 
 function readFiles(directoryPath) {
@@ -94,6 +94,7 @@ function readFiles(directoryPath) {
 
 
             console.log(result);
+            templates += result?.length;
 
             // const russianWords = content.match(/([>"'()\[\]]*)(?:[0-9]*?[a-zA-Z]*[А-Яа-яЁё]+[А-Яа-яЁё]*[\sА-Яа-яЁё]+?[\s0-9]*?[\sa-zA-Z]*?[\s,.?!«»%()\]\-_'’"\s]+[/sА-Яа-яЁё]*?[,.?!«»%()<\]\-_'’"0-9a-zA-Z\s]*)+/gis);
 
@@ -184,6 +185,7 @@ function readFiles(directoryPath) {
     });
 }
 
+
 readFiles(directoryPath);
 // Создаем файл i18n
 const valuesArray = Object.values(i18nContent);
@@ -191,3 +193,5 @@ const valuesArray = Object.values(i18nContent);
 fs.writeFileSync(RuPath, JSON.stringify(i18nContent, null, 2));
 fs.writeFileSync(i18nPath, JSON.stringify(valuesArray, null, 2));
 console.log('Скрипт выполнен успешно.');
+console.log(`Выделено: ${templates} мест`)
+console.log(`Предложений для перевода: ${i18nContent?.length} штук`)
