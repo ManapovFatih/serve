@@ -1,16 +1,18 @@
+import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState } from 'react';
 import { AsyncTypeahead } from 'react-bootstrap-typeahead';
 import useDebounce from '../../hooks/useDebounce'
 import { getDadataStreets } from '../../services/daData';
 
 const City = ({ defaultValue, city, setCity, className }) => {
+    const { t } = useTranslation();
     const [streetsDadata, setStreetsDadata] = useState([])
     const streetText = useDebounce(city, 1000)
     useEffect(() => {
         if (streetText) {
             getDadataStreets({
                 query: streetText,
-                locations: [{ city_type_full: 'город' }],
+                locations: [{ city_type_full: t('город') }],
                 restrict_value: false,
                 from_bound: { value: 'city' },
                 to_bound: { value: 'city' },
@@ -29,7 +31,7 @@ const City = ({ defaultValue, city, setCity, className }) => {
             labelKey={(option) => option?.value}
             minLength={1}
             dropup
-            emptyLabel={'Ничего не найдено'}
+            emptyLabel={t('Ничего не найдено')}
             onSearch={(e) => setCity(e)}
             onChange={(e) => {
                 if (e[0]?.data?.country && e[0]?.data?.city) {
@@ -38,9 +40,9 @@ const City = ({ defaultValue, city, setCity, className }) => {
             }
             }
             options={streetsDadata}
-            searchText={'Поиск...'}
-            promptText={'Введите город'}
-            placeholder={'Введите город'}
+            searchText={t('Поиск...')}
+            promptText={t('Введите город')}
+            placeholder={t('Введите город')}
             renderMenuItemChildren={(option) => option?.value}
             inputProps={{ className: 'input' }}
         />

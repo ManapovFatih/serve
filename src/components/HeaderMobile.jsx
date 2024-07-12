@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
@@ -11,6 +12,7 @@ import { RxCross2 } from 'react-icons/rx';
 import CreateOrder from './forms/СreateOrder';
 
 const HeaderMobile = () => {
+  const { t } = useTranslation();
   const [search, setSearch] = useState(false)
   const closeSearch = () => setSearch(false)
   const showSearch = () => setSearch(true)
@@ -66,22 +68,22 @@ const HeaderMobile = () => {
             <nav className='mobile-menu'>
               <ul onClick={handleCloseFMenu}>
                 <li>
-                  <Link to='/account/profile'>Мой профиль</Link>
+                  <Link to='/account/profile'>{t('Мой профиль')}</Link>
                 </li>
                 <li>
-                  <Link to='/account/your-orders'>Ваши заказы</Link>
+                  <Link to='/account/your-orders'>{t('Ваши заказы')}</Link>
                 </li>
                 <li>
-                  <Link to='/account/offers'>Поиск заказов</Link>
+                  <Link to='/account/offers'>{t('Поиск заказов')}</Link>
                 </li>
                 <li>
-                  <Link to='/account/promotion'>Продвижение</Link>
+                  <Link to='/account/promotion'>{t('Продвижение')}</Link>
                 </li>
                 <li>
-                  <Link to='/account/subscriptions'>Подписки</Link>
+                  <Link to='/account/subscriptions'>{t('Подписки')}</Link>
                 </li>
                 <li>
-                  <Link to='/account/settings'>Настройки</Link>
+                  <Link to='/account/settings'>{t('Настройки')}</Link>
                 </li>
               </ul>
               <hr />
@@ -90,10 +92,10 @@ const HeaderMobile = () => {
                   <CreateOrder />
                 </li>
                 <li onClick={handleCloseFMenu}>
-                  <Link to='/search'>Найти специалиста</Link>
+                  <Link to='/search'>{t('Найти специалиста')}</Link>
                 </li>
                 <li onClick={handleCloseFMenu}>
-                  <Link to='/search/my-orders'>Мои заказы</Link>
+                  <Link to='/search/my-orders'>{t('Мои заказы')}</Link>
                 </li>
               </ul>
             </nav>

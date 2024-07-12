@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import Container from 'react-bootstrap/Container';
@@ -36,6 +37,7 @@ import Loader from '../components/utils/Loader';
 import { getHome } from '../services/Home';
 
 const Home = () => {
+    const { t } = useTranslation();
     const [home, setHome] = useState({ loading: true, top: { items: [] } })
     const onLoad = useCallback(() => {
         getHome()
@@ -70,7 +72,7 @@ const Home = () => {
                         <Container>
                             <Row className='h-100'>
                                 <Col md={8} className='d-flex flex-column justify-content-end justify-content-md-center'>
-                                    <h1>Не&nbsp;оставим наедине с&nbsp;проблемами</h1>
+                                    <h1>{t('Не оставим наедине с проблемами')}</h1>
                                     <SearchForm className={'form-search-2'} btnClassName={'btn-3'} btnInner={'var3'} />
                                 </Col>
                             </Row>
@@ -83,7 +85,7 @@ const Home = () => {
                         <Container>
                             <Row className='h-100'>
                                 <Col md={8} className='d-flex flex-column justify-content-end justify-content-md-center'>
-                                    <h1>Не&nbsp;оставим наедине с&nbsp;проблемами</h1>
+                                    <h1>{t('Не оставим наедине с проблемами')}</h1>
                                     <SearchForm className={'form-search-2'} btnClassName={'btn-3'} btnInner={'var3'} />
                                 </Col>
                             </Row>
@@ -190,7 +192,7 @@ const Home = () => {
                         </SwiperSlide> */}
                     </Swiper>
 
-                    <h3>Поручите дела специалистам</h3>
+                    <h3>{t('Поручите дела специалистам')}</h3>
                     <div className="grid mt-3 mt-sm-4">
                         {home?.categories && home?.categories.length > 0 && home?.categories.map(item =>
                             <div>
@@ -228,19 +230,19 @@ const Home = () => {
             <section className="sec-2 py-4 py-sm-5">
                 <Container>
                     <div className="d-lg-none mb-4">
-                        <h3>Рядом с вами</h3>
-                        <p>Мы найдём специалистов, которые живут рядом с вами!</p>
+                        <h3>{t('Рядом с вами')}</h3>
+                        <p>{t('Мы найдём специалистов, которые живут рядом с вами!')}</p>
                     </div>
                     <Row className='gx-0 position-relative'>
                         <Col lg={4}>
                             <div className="box">
                                 <form action="">
                                     <div>
-                                        <h3>Рядом с вами</h3>
-                                        <p>Мы найдём специалистов, которые живут рядом с вами!</p>
+                                        <h3>{t('Рядом с вами')}</h3>
+                                        <p>{t('Мы найдём специалистов, которые живут рядом с вами!')}</p>
                                     </div>
-                                    <input type="text" placeholder='Ваш адрес' />
-                                    <button type='button' className='btn-1 w-100 px-3'>Расскажите, что у&nbsp;вас случилось</button>
+                                    <input type="text" placeholder={t('Ваш адрес')} />
+                                    <button type='button' className='btn-1 w-100 px-3'>{t('Расскажите, что у вас случилось')}</button>
                                 </form>
                             </div>
                         </Col>
@@ -261,7 +263,7 @@ const Home = () => {
                 <Container>
                     <Row className='gx-0 align-items-center'>
                         <Col lg={3} xxl={4}>
-                            <h3>Работаем <br className='d-none d-lg-inline' /> без остановок</h3>
+                            <h3>{t('Работаем')}<br className='d-none d-lg-inline' />{t('без остановок')}</h3>
                         </Col>
                         <Col lg={9} xxl={8}>
                             <OrdersSlider />
@@ -278,7 +280,7 @@ const Home = () => {
 
             <section className="sec-5 mb-5">
                 <Container>
-                    <h2 className='text-center text-lg-start'>В приложении <br />ещё удобнее</h2>
+                    <h2 className='text-center text-lg-start'>{t('В приложении')}<br />{t('ещё удобнее')}</h2>
                     <AppLinks />
                     <img src={smartphone} alt="smartphone" className='bg' />
                 </Container>
@@ -286,60 +288,60 @@ const Home = () => {
 
             <section className="sec-6 py-4 py-sm-5 mb-lg-5">
                 <Container>
-                    <h3 className='mb-4'>Каталог услуг в Казани</h3>
+                    <h3 className='mb-4'>{t('Каталог услуг в Казани')}</h3>
                     <div className="box">
-                        <p>Опишите задачу, а мастера сами предложат свои услуги.</p>
-                        <p>Выберите исполнителя по рейтингу и отзывам других клиентов.</p>
-                        <p>Договоритесь о цене самостоятельно</p>
+                        <p>{t('Опишите задачу, а мастера сами предложат свои услуги.')}</p>
+                        <p>{t('Выберите исполнителя по рейтингу и отзывам других клиентов.')}</p>
+                        <p>{t('Договоритесь о цене самостоятельно')}</p>
                     </div>
                     <nav className="services-grid">
                         <Row xs={1} sm={2} md={3} lg={4} className='g-4'>
                             <Col>
                                 <a href="/">
-                                    <img src={beauty} alt="Красота" />
-                                    <span>Красота</span>
+                                    <img src={beauty} alt={t('Красота')} />
+                                    <span>{t('Красота')}</span>
                                 </a>
                             </Col>
                             <Col>
                                 <a href="/">
-                                    <img src={legal} alt="Юристы" />
-                                    <span>Юристы</span>
+                                    <img src={legal} alt={t('Юристы')} />
+                                    <span>{t('Юристы')}</span>
                                 </a>
                             </Col>
                             <Col>
                                 <a href="/">
-                                    <img src={delivery} alt="Перевозки и курьеры" />
-                                    <span>Перевозки и курьеры</span>
+                                    <img src={delivery} alt={t('Перевозки и курьеры')} />
+                                    <span>{t('Перевозки и курьеры')}</span>
                                 </a>
                             </Col>
                             <Col>
                                 <a href="/">
-                                    <img src={computer} alt="Компьютеры и IT" />
-                                    <span>Компьютеры и IT</span>
+                                    <img src={computer} alt={t('Компьютеры и IT')} />
+                                    <span>{t('Компьютеры и IT')}</span>
                                 </a>
                             </Col>
                             <Col>
                                 <a href="/">
-                                    <img src={repair} alt="Ремонт и строительство" />
-                                    <span>Ремонт и строительство</span>
+                                    <img src={repair} alt={t('Ремонт и строительство')} />
+                                    <span>{t('Ремонт и строительство')}</span>
                                 </a>
                             </Col>
                             <Col>
                                 <a href="/">
-                                    <img src={key} alt="Аренда" />
-                                    <span>Аренда</span>
+                                    <img src={key} alt={t('Аренда')} />
+                                    <span>{t('Аренда')}</span>
                                 </a>
                             </Col>
                             <Col>
                                 <a href="/">
-                                    <img src={carRepair} alt="Ремонт авто" />
-                                    <span>Ремонт авто</span>
+                                    <img src={carRepair} alt={t('Ремонт авто')} />
+                                    <span>{t('Ремонт авто')}</span>
                                 </a>
                             </Col>
                             <Col>
                                 <a href="/">
-                                    <img src={all} alt="Посмотреть все услуги" />
-                                    <span>Посмотреть все услуги</span>
+                                    <img src={all} alt={t('Посмотреть все услуги')} />
+                                    <span>{t('Посмотреть все услуги')}</span>
                                 </a>
                             </Col>
                         </Row>

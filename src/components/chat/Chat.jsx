@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { memo, useCallback, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +8,7 @@ import Message from './Message';
 
 
 const Chat = memo(({ messages, emptyText, onChange, className, onSubmit, user, type, account, setImage, data, onTask }) => {
+const {t} = useTranslation();
   const userId = useSelector((state) => state.auth?.user?.id);
   const [text, setText] = useState();
   const [rows, setRows] = useState(1);
@@ -44,7 +46,7 @@ const Chat = memo(({ messages, emptyText, onChange, className, onSubmit, user, t
       {
         messages.loading ? (
           <div className="w-100 py-5 text-center text-muted fs-09 d-flex flex-column align-items-center justify-content-center">
-            Загрузка сообщений...
+            {t('Загрузка сообщений...')}
           </div>
         ) : messages?.items?.length > 0 ? (
           <div className="chat-window">
@@ -74,19 +76,19 @@ const Chat = memo(({ messages, emptyText, onChange, className, onSubmit, user, t
               rows={rows}
               value={text}
               type="text"
-              placeholder={"Ваше сообщение"}
+              placeholder={t('Ваше сообщение')}
               onChange={(e) => onChangeText(e.target.value)}
               onKeyPress={onKeyPress}
             />
             <SimpleInputFile media={data?.media} setImage={(e) => setImage(e)} />
 
-            <button onClick={onClick} type='submit'>Отправить</button>
+            <button onClick={onClick} type='submit'>{t('Отправить')}</button>
 
           </div>
         </>
         : (
           <div className="w-100 py-5 text-center text-muted fs-09 d-flex flex-column align-items-center justify-content-center">
-            Для отправки сообщений войдите в аккаунт!
+            {t('Для отправки сообщений войдите в аккаунт!')}
           </div>
         )
       }

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Col from 'react-bootstrap/Col';
@@ -13,6 +14,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { IoEllipsisVertical } from 'react-icons/io5';
 
 const OfferPage = () => {
+const {t} = useTranslation();
   const [showFilter, setShowFilter] = useState(false);
 
   const handleCloseFilter = () => setShowFilter(false);
@@ -26,16 +28,16 @@ const OfferPage = () => {
               <div className='head'>
                 <div className='photo'><img src="/imgs/img2.jpg" alt="img2.jpg" /></div>
                 <div className='title'>
-                  <Link to="1"><h2 className='fw-7 mb-1'>Алексей Сергеевич Добанов</h2></Link>
-                  <p className='gray-3'>Город</p>
+                  <Link to="1"><h2 className='fw-7 mb-1'>{t('Алексей Сергеевич Добанов')}</h2></Link>
+                  <p className='gray-3'>{t('Город')}</p>
 
                   <div className="btns">
                     <button type='button' className='btn-3'>
                       <SlPhone className='fs-15 d-sm-none' />
-                      <span className='d-none d-sm-block'>Показать телефон</span>
+                      <span className='d-none d-sm-block'>{t('Показать телефон')}</span>
                     </button>
                     <button type='button' className='btn-4 ms-3'>
-                      Предложить заказ
+                      {t('Предложить заказ')}
                     </button>
                   </div>
                 </div>
@@ -47,10 +49,10 @@ const OfferPage = () => {
 
                     <Dropdown.Menu align="end">
                       <Dropdown.Item as="button">
-                        <span>Пожаловаться</span>
+                        <span>{t('Пожаловаться')}</span>
                       </Dropdown.Item>
                       <Dropdown.Item as="button">
-                        <span>Поделиться</span>
+                        <span>{t('Поделиться')}</span>
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
@@ -60,19 +62,19 @@ const OfferPage = () => {
               <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
               <ul className="options">
                 <li>
-                  <p ><strong>Время для связи:</strong> c 08:00 до 21:00</p>
+                  <p ><strong>{t('Время для связи:')}</strong>{t('c 08:00 до 21:00')}</p>
                 </li>
                 <li>
-                  <p ><strong>Время для связи:</strong> c 08:00 до 21:00</p>
+                  <p ><strong>{t('Время для связи:')}</strong>{t('c 08:00 до 21:00')}</p>
                 </li>
                 <li>
-                  <p ><strong>Время для связи:</strong> c 08:00 до 21:00</p>
+                  <p ><strong>{t('Время для связи:')}</strong>{t('c 08:00 до 21:00')}</p>
                 </li>
               </ul>
             </div>
             <div className='works'>
               <div className='imgs'>
-                <h3 className='fw-8'>Пример работ</h3>
+                <h3 className='fw-8'>{t('Пример работ')}</h3>
                 <Swiper
                   className='slider'
                   loop={false}
@@ -89,71 +91,71 @@ const OfferPage = () => {
                 >
                   <SwiperSlide key={1}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
                   <SwiperSlide key={2}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
                   <SwiperSlide key={3}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
                   <SwiperSlide key={4}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
                   <SwiperSlide key={5}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
                   <SwiperSlide key={6}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
                   <SwiperSlide key={7}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
 
 
                   <SwiperSlide key={8}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
                   <SwiperSlide key={9}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
                   <SwiperSlide key={10}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
 
                   <SwiperSlide key={11}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
                   <SwiperSlide key={12}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
                   <SwiperSlide key={13}>
                     <img src="/imgs/img2.jpg" alt="img2.jpg" />
-                    <p className='title'>Дизайн проект</p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p className='title'>{t('Дизайн проект')}</p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </SwiperSlide>
                 </Swiper>
               </div>
@@ -162,20 +164,20 @@ const OfferPage = () => {
               <div className="price-list">
                 <ul>
                   <li>
-                    <h3 className='fw-8 mb-1'>Ремонт квартир и домов</h3>
-                    <p className='title'>Ремонт и строительсто</p>
+                    <h3 className='fw-8 mb-1'>{t('Ремонт квартир и домов')}</h3>
+                    <p className='title'>{t('Ремонт и строительсто')}</p>
                     <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                   </li>
                   <li>
-                    <p ><strong>Название услуги</strong></p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p ><strong>{t('Название услуги')}</strong></p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </li>
                   <li>
-                    <p ><strong>Название услуги</strong></p>
-                    <p ><strong>160 290 Р</strong></p>
+                    <p ><strong>{t('Название услуги')}</strong></p>
+                    <p ><strong>{t('160 290 Р')}</strong></p>
                   </li>
                   <li>
-                    <p ><strong>Еще 10 услуг</strong></p>
+                    <p ><strong>{t('Еще 10 услуг')}</strong></p>
                   </li>
                 </ul>
               </div>

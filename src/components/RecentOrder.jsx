@@ -1,9 +1,11 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react'
 import { TfiPaintRoller, TfiBriefcase, TfiTruck, TfiCar, TfiSpray, TfiPlug, TfiBlackboard } from "react-icons/tfi"
 import { SlScreenDesktop, SlWrench } from "react-icons/sl"
 import { RxScissors, RxLapTimer } from "react-icons/rx"
 
 const RecentOrder = (props) => {
+const {t} = useTranslation();
     const scopes = [
         {
             id: 1,
@@ -61,7 +63,7 @@ const RecentOrder = (props) => {
                 </div>
                 <p>{props.name}</p>
             </div>
-            <p className='gray-2'>Сделали 12 ч. назад</p>
+            <p className='gray-2'>{t('Сделали 12 ч. назад')}</p>
         </div>
     );
 };

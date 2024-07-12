@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import moment from "moment";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
@@ -24,6 +25,7 @@ import { Container } from "react-bootstrap";
 
 
 const Messages = ({ isMobileXL }) => {
+  const { t } = useTranslation();
   const { dialogId } = useParams();
   const { state } = useLocation();
   const timer = useRef(0);
@@ -167,12 +169,12 @@ const Messages = ({ isMobileXL }) => {
   const onTask = useCallback(() => {
     createTask({ type: "report", userId: user.id })
       .then(() => {
-        NotificationManager.success("Жалоба отправлена");
+        NotificationManager.success(t('Жалоба отправлена'));
 
       })
       .catch((err) => {
         NotificationManager.error(
-          err?.response?.data?.error ?? "Ошибка при отправке"
+          err?.response?.data?.error ?? t('Ошибка при отправке')
         );
       });
   }, [user]);
@@ -196,15 +198,15 @@ const Messages = ({ isMobileXL }) => {
   return (
     <main className='py-4 py-sm-5'>
       <Container>
-        <Meta title="Сообщения" />
-        <ReturnTitle link={'/account'} title={'Сообщения'} />
+        <Meta title={t('Сообщения')} />
+        <ReturnTitle link={'/account'} title={t('Сообщения')} />
         <section className='sec-messages'>
 
           <div className='sec-messages-list'>
             <form action="" className='p-2 p-sm-3'>
               <input
                 type="search"
-                placeholder="Поиск пользователя"
+                placeholder={t('Поиск пользователя')}
                 className="p-blue"
                 onChange={e => setSearch(e.target.value)}
                 onKeyPress={(e) => onKeyPress1(e)}
@@ -228,7 +230,7 @@ const Messages = ({ isMobileXL }) => {
                   ))
                 ) : (
                   <p className="w-100 py-5 text-center text-muted fs-09 d-flex flex-column align-items-center justify-content-center">
-                    В данный момент нет диалогов
+                    {t('В данный момент нет диалогов')}
                   </p>
                 )}
               </InfiniteScroll>
@@ -241,10 +243,10 @@ const Messages = ({ isMobileXL }) => {
             <div className="sec-messages-chat">
               {!data?.id ? (
                 <div className="d-flex align-items-center flex-column">
-                  <h2 className="mb-3 mt-5">Выберите диалог</h2>
+                  <h2 className="mb-3 mt-5">{t('Выберите диалог')}</h2>
                   <p className="text-center gray">
-                    В данный момент нет диалогов. <br />Возможно вы не выбрали
-                    конкретный диалог.
+                    {t('В данный момент нет диалогов.')} <br />{t('Возможно вы не выбрали')}
+                    {t('конкретный диалог.')}
                   </p>
                 </div>
               ) : messages.loading ? (
@@ -262,14 +264,14 @@ const Messages = ({ isMobileXL }) => {
                         <h5 className="fw-7 mb-0"><Link to={`/trader/${user.id}`}>{user.nickname}</Link></h5>
                         <p className="fs-08 gray">
                           {print ? (
-                            "Печатает сообщение..."
+                            t('Печатает сообщение...')
                           ) : user.online?.status ? (
-                            <span className="text-success">Онлайн</span>
+                            <span className="text-success">{t('Онлайн')}</span>
                           ) : user.online?.end ? (
-                            "Был(-а) в сети " +
+                            t('Был(-а) в сети') +
                             moment(user.online?.end).fromNow()
                           ) : (
-                            "Оффлайн"
+                            t('Оффлайн')
                           )}
                         </p>
                       </div>
@@ -282,7 +284,7 @@ const Messages = ({ isMobileXL }) => {
                     account="true"
                     user={user}
                     messages={messages}
-                    emptyText="Нет сообщений"
+                    emptyText={t('Нет сообщений')}
                     onSubmit={(e) => onNewMessage(e)}
                     onChange={(e) => setValue("text", e)}
                     data={data}

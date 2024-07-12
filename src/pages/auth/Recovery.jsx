@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useCallback } from 'react'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -9,6 +10,7 @@ import { authPasswordRecovery } from '../../services/auth'
 import { NotificationManager } from 'react-notifications'
 
 const Recovery = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate()
     const {
         control,
@@ -32,8 +34,8 @@ const Recovery = () => {
                 if (data.step == 1 || data.step == 3) {
                     NotificationManager.success(
                         data.step == 1
-                            ? "Код подтверждения отправлен"
-                            : data.step == 3 && "Пароль успешно изменен"
+                            ? t('Код подтверждения отправлен')
+                            : data.step == 3 && t('Пароль успешно изменен')
                     );
                     if (data.step == 3) {
                         navigate("/login/")
@@ -45,7 +47,7 @@ const Recovery = () => {
                 NotificationManager.error(
                     typeof error?.response?.data?.error === "string"
                         ? error.response.data.error
-                        : "Неизвестная ошибка"
+                        : t('Неизвестная ошибка')
                 )
             });
     }, []);
@@ -54,13 +56,13 @@ const Recovery = () => {
             <Container className='h-100'>
                 <Row className='justify-content-center'>
                     <Col xs={12} md={9} lg={8} xl={7} xxl={6}>
-                        <h1 className='inner text-center'>Восстановление пароля</h1>
+                        <h1 className='inner text-center'>{t('Восстановление пароля')}</h1>
 
                         <form action="" className='box bg-1' onSubmit={handleSubmit(onSubmit)}>
                             {!data.step || data.step === 1 ? (
                                 <>
                                     <Row className='g-2 g-sm-4 align-items-center'>
-                                        <p className='mb-3'>Введите адрес электронной почты, которую вы вводили при регистрации</p>
+                                        <p className='mb-3'>{t('Введите адрес электронной почты, которую вы вводили при регистрации')}</p>
                                         <Col sm={2}>
                                             <div className="text-sm-start mb-2">E-mail</div>
                                         </Col>
@@ -73,29 +75,29 @@ const Recovery = () => {
                                                 errors={errors}
                                                 register={register}
                                                 validation={{
-                                                    required: "Введите имя пользователя или email",
+                                                    required: t('Введите имя пользователя или email'),
                                                     maxLength: {
                                                         value: 250,
-                                                        message: "Максимально 250 символов",
+                                                        message: t('Максимально 250 символов'),
                                                     },
                                                 }}
                                             />
                                         </Col>
                                         <Col sm={4}>
-                                            <button type='submit' className='btn-1 mx-auto mb-2' disabled={!data?.email || data?.email?.length < 4}>Восстановить</button>
+                                            <button type='submit' className='btn-1 mx-auto mb-2' disabled={!data?.email || data?.email?.length < 4}>{t('Восстановить')}</button>
                                         </Col>
 
                                     </Row>
                                 </>
                             ) : data.step === 2 ? (
                                 <>
-                                    <p className='mb-3'>Введите код, отправленный на указанную электронную почту</p>
+                                    <p className='mb-3'>{t('Введите код, отправленный на указанную электронную почту')}</p>
                                     <Row className='g-2 g-sm-4 align-items-center'>
                                         <Col md={3}>
                                             <input className='mb-2' type="number" placeholder='0000' onChange={(e) => setValue("key", e.target.value)} />
                                         </Col>
                                         <Col md={3}>
-                                            <button type='submit' className='btn-1 mx-auto mb-2' disabled={!data?.key || data?.key?.length < 4}>Отправить</button>
+                                            <button type='submit' className='btn-1 mx-auto mb-2' disabled={!data?.key || data?.key?.length < 4}>{t('Отправить')}</button>
                                         </Col>
                                     </Row>
                                 </>
@@ -103,61 +105,61 @@ const Recovery = () => {
                                 <>
                                     <Row className='g-2 g-sm-4 align-items-center'>
                                         <Col sm={5}>
-                                            <div className="text-sm-end mb-2">Новый пароль</div>
+                                            <div className="text-sm-end mb-2">{t('Новый пароль')}</div>
                                         </Col>
                                         <Col sm={7}>
                                             <Input
                                                 className="mb-2"
                                                 autoComplete="new-password"
                                                 type="password"
-                                                placeholder="Придумайте пароль"
+                                                placeholder={t('Придумайте пароль')}
                                                 name="password"
                                                 errors={errors}
                                                 register={register}
                                                 validation={{
-                                                    required: "Введите пароль",
+                                                    required: t('Введите пароль'),
                                                     minLength: {
                                                         value: 6,
-                                                        message: "Минимальное кол-во символов 6",
+                                                        message: t('Минимальное кол-во символов 6'),
                                                     },
                                                     maxLength: {
                                                         value: 250,
-                                                        message: "Максимальное кол-во символов 250",
+                                                        message: t('Максимальное кол-во символов 250'),
                                                     },
                                                     pattern: {
                                                         value: /(?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{6,}/g,
                                                         message:
-                                                            "Пароль должен содержать не менее 6 символов латинского алфавита и цифры",
+                                                            t('Пароль должен содержать не менее 6 символов латинского алфавита и цифры'),
                                                     },
                                                 }}
                                             />
                                         </Col>
                                         <Col sm={5}>
-                                            <div className="text-sm-end mb-2">Подтверждение пароля</div>
+                                            <div className="text-sm-end mb-2">{t('Подтверждение пароля')}</div>
                                         </Col>
                                         <Col sm={7}>
                                             <Input
                                                 autoComplete="new-password"
                                                 className="mb-2"
                                                 type="password"
-                                                placeholder="Повторите пароль"
+                                                placeholder={t('Повторите пароль')}
                                                 name="passwordConfirm"
                                                 errors={errors}
                                                 register={register}
                                                 validation={{
-                                                    required: "Введите повторный пароль",
+                                                    required: t('Введите повторный пароль'),
                                                     minLength: {
                                                         value: 6,
-                                                        message: "Минимальное кол-во символов 6",
+                                                        message: t('Минимальное кол-во символов 6'),
                                                     },
                                                     maxLength: {
                                                         value: 250,
-                                                        message: "Максимальное кол-во символов 250",
+                                                        message: t('Максимальное кол-во символов 250'),
                                                     },
                                                     pattern: {
                                                         value: /(?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{6,}/g,
                                                         message:
-                                                            "Пароль должен содержать не менее 6 символов латинского алфавита и цифры",
+                                                            t('Пароль должен содержать не менее 6 символов латинского алфавита и цифры'),
                                                     },
                                                 }}
                                             />
@@ -165,7 +167,7 @@ const Recovery = () => {
 
                                     </Row>
 
-                                    <button type="submit" className='btn-1 mx-auto mt-4' disabled={!isValid}>Сохранить</button>
+                                    <button type="submit" className='btn-1 mx-auto mt-4' disabled={!isValid}>{t('Сохранить')}</button>
                                 </>
                             )}
                         </form>

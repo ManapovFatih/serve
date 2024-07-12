@@ -151,14 +151,6 @@ function readFiles(directoryPath) {
                             newWord = `[t('${newWord}')]`;
                         }
                     }
-                    else if (word.startsWith('{')) {
-                        newWord = word.replace(/^\[|\]$/g, ''); // Удаляем скобки в начале и конце строки
-                        newWord = newWord.trim(); // Удаляем пробелы в начале и конце
-                        newWord = newWord.replace(/^["']|["']$/g, ''); // Удаляем кавычки
-                        newWord = newWord.trim();
-                        saveRu.push(newWord);
-                        newWord = `{t('${newWord}')}`;
-                    }
                     else if (word.startsWith('>')) {
                         newWord = word.replace(/^[>]|[<]$/g, '');
                         newWord = newWord.trim();
@@ -166,6 +158,33 @@ function readFiles(directoryPath) {
                         newWord = `>{t('${newWord}')}<`;
 
                     }
+                    else if (word.startsWith('{')) {
+                        let Element = [];
+                        const newElement = [];
+                        Element = word.match(/(["'])[^"']*?\1/gi);
+                        newWord = word
+                        if (Element) {
+                            for (const e of Element) { // Убрали проверку if(Element)
+                                let newWords;
+                                let russianMatch = [];
+                                russianMatch = e.match(/[А-Яа-яЁё]+/);
+                                if (russianMatch) {
+                                    newWords = e.trim();
+                                    newElement.push(newWords);
+                                    newWords = newWords.replace(/^["']|["']$/g, '');
+                                    saveRu.push(newWords);
+                                }
+                            }
+                        }
+                        newElement.forEach((e) => {
+                            let startIndexWords = newWord.indexOf(e); // Используем word, а не content
+                            if (startIndexWords !== -1) {
+                                newWord = newWord.slice(0, startIndexWords) + `t('${e.replace(/^["']|["']$/g, '')}')` + newWord.slice(startIndexWords + e.length); // Используем word
+                            }
+                        });
+
+                    }
+
                     else {
                         newWord = word.replace(/^["']|["']$/g, '');
                         newWord = newWord.trim();

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useCallback, useState } from 'react'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -9,6 +10,7 @@ import { authActivate } from '../../services/auth'
 import { NotificationManager } from 'react-notifications'
 
 const Activate = () => {
+    const { t } = useTranslation();
     const [key, setKey] = useState();
     const auth = useSelector((state) => state?.auth);
     const navigate = useNavigate();
@@ -19,7 +21,7 @@ const Activate = () => {
         setLoading(true);
         authActivate(key)
             .then(() => {
-                NotificationManager.success("Ваш аккаунт подтвержден");
+                NotificationManager.success(t('Ваш аккаунт подтвержден'));
 
                 setLoading(false);
                 dispatch(refreshAuth());
@@ -29,7 +31,7 @@ const Activate = () => {
                 NotificationManager.error(
                     typeof error?.response?.data?.error === "string"
                         ? error.response.data.error
-                        : "Неизвестная ошибка"
+                        : t('Неизвестная ошибка')
                 )
                 setLoading(false);
             });
@@ -39,16 +41,16 @@ const Activate = () => {
             <Container className='h-100'>
                 <Row className='justify-content-center'>
                     <Col xs={12} md={9} lg={8} xl={7} xxl={6}>
-                        <h1 className='inner text-center'>Подтверждение почты</h1>
+                        <h1 className='inner text-center'>{t('Подтверждение почты')}</h1>
 
                         <div className='box bg-1'>
-                            <p className='mb-3'>Введите код, отправленный на указанную электронную почту</p>
+                            <p className='mb-3'>{t('Введите код, отправленный на указанную электронную почту')}</p>
                             <Row className='g-2 g-sm-4 align-items-center'>
                                 <Col md={3}>
                                     <input className='mb-2' type="number" placeholder='0000' defaultValuevalue={key} onChange={(e) => { e.target.value.length < 5 && setKey(e.target.value) }} />
                                 </Col>
                                 <Col md={3}>
-                                    <button type='button' className='btn-1 mx-auto mb-2' disabled={!key || key?.length < 4 || loading} onClick={() => onKey(key)}>Отправить</button>
+                                    <button type='button' className='btn-1 mx-auto mb-2' disabled={!key || key?.length < 4 || loading} onClick={() => onKey(key)}>{t('Отправить')}</button>
                                 </Col>
                             </Row>
                         </div>

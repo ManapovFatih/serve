@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
@@ -13,6 +14,7 @@ import { IoAlertCircleOutline, IoTrendingUpOutline, IoAddOutline, IoEyeOutline, 
 import { useSelector } from 'react-redux'
 
 const Profile = () => {
+const {t} = useTranslation();
     const user = useSelector((state) => state.auth.user);
     return (
         <section>
@@ -125,9 +127,9 @@ const Profile = () => {
 
             <div className="box mb-4 d-flex align-items-center">
                 <div className='flex-1'>
-                    <h3>Увеличьте количество заказов</h3>
-                    <p className='gray-3'>Подключите продвижение, чтобы поднять ваш профиль в результатах поиска</p>
-                    <Link to='/account/promotion' className='btn-3 py-3 mt-3'>Подключить продвижение</Link>
+                    <h3>{t('Увеличьте количество заказов')}</h3>
+                    <p className='gray-3'>{t('Подключите продвижение, чтобы поднять ваш профиль в результатах поиска')}</p>
+                    <Link to='/account/promotion' className='btn-3 py-3 mt-3'>{t('Подключить продвижение')}</Link>
                 </div>
                 <div className='d-none d-sm-flex icon-mini'>
                     <IoTrendingUpOutline />
@@ -137,9 +139,9 @@ const Profile = () => {
             <Link to='/' className="box d-block mb-4">
                 <div className='d-flex align-items-center mb-3'>
                     <IoEyeOutline className='fs-18 color-2' />
-                    <h4 className='mb-0 ms-2'>Публичный профиль</h4>
+                    <h4 className='mb-0 ms-2'>{t('Публичный профиль')}</h4>
                 </div>
-                <p>Посмотрите, как заказчики видят ваш профиль</p>
+                <p>{t('Посмотрите, как заказчики видят ваш профиль')}</p>
             </Link>
 
             <Row xs={1} md={2}>
@@ -147,36 +149,36 @@ const Profile = () => {
                     <Link to='/account/promotion' className="box d-block mb-4">
                         <div className='d-flex align-items-center mb-3'>
                             <IoCashOutline className='fs-18 color-5' />
-                            <h4 className='mb-0 ms-2'>Продвижение: 0 ₽</h4>
+                            <h4 className='mb-0 ms-2'>{t('Продвижение: 0 ₽')}</h4>
                         </div>
-                        <p>Счёт для оплаты продвижения</p>
+                        <p>{t('Счёт для оплаты продвижения')}</p>
                     </Link>
                 </Col>
                 <Col>
                     <Link to='photo' className="box d-block mb-4">
                         <div className='d-flex align-items-center mb-3'>
                             <IoPersonCircleOutline className='fs-18 color-2' />
-                            <h4 className='mb-0 ms-2'>Фото профиля</h4>
+                            <h4 className='mb-0 ms-2'>{t('Фото профиля')}</h4>
                         </div>
-                        <p>Фото добавлено</p>
+                        <p>{t('Фото добавлено')}</p>
                     </Link>
                 </Col>
                 <Col>
                     <Link to='addresses' className="box d-block mb-4">
                         <div className='d-flex align-items-center mb-3'>
                             <IoLocationOutline className='fs-18 color-5' />
-                            <h4 className='mb-0 ms-2'>Адреса</h4>
+                            <h4 className='mb-0 ms-2'>{t('Адреса')}</h4>
                         </div>
-                        <p>Адрес не добавлен</p>
+                        <p>{t('Адрес не добавлен')}</p>
                     </Link>
                 </Col>
                 <Col>
                     <Link to='about' className="box d-block mb-4">
                         <div className='d-flex align-items-center mb-3'>
                             <IoInformationCircleOutline className='fs-18 color-5' />
-                            <h4 className='mb-0 ms-2'>О себе</h4>
+                            <h4 className='mb-0 ms-2'>{t('О себе')}</h4>
                         </div>
-                        <p>Заполнено 0 из 18</p>
+                        <p>{t('Заполнено 0 из 18')}</p>
                     </Link>
                 </Col>
             </Row>
@@ -191,15 +193,15 @@ const Profile = () => {
 
             <Link to='services' className="box d-flex align-items-center justify-content-between mb-4">
                 <div className='flex-1'>
-                    <div className='mb-1'>Компьютеры и IT</div>
-                    <h3 className='mb-0'>Разработка сайтов</h3>
+                    <div className='mb-1'>{t('Компьютеры и IT')}</div>
+                    <h3 className='mb-0'>{t('Разработка сайтов')}</h3>
                 </div>
-                <div>1 услуга</div>
+                <div>{t('1 услуга')}</div>
             </Link>
 
             <button type="button" className='btn-4 w-100'>
                 <IoAddOutline />
-                <span className='ms-2'>Добавить услугу</span>
+                <span className='ms-2'>{t('Добавить услугу')}</span>
             </button>
         </section>
     )

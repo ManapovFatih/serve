@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useSelector } from "react-redux";
@@ -19,6 +20,7 @@ import { Container } from "react-bootstrap";
 
 
 const MessagesDialogue = () => {
+  const { t } = useTranslation();
   const { dialogId } = useParams();
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -139,12 +141,12 @@ const MessagesDialogue = () => {
   const onTask = useCallback(() => {
     createTask({ type: "report", userId: user.id })
       .then(() => {
-        NotificationManager.success("Жалоба отправлена");
+        NotificationManager.success(t('Жалоба отправлена'));
 
       })
       .catch((err) => {
         NotificationManager.error(
-          err?.response?.data?.error ?? "Ошибка при отправке"
+          err?.response?.data?.error ?? t('Ошибка при отправке')
         );
       });
   }, [user]);
@@ -155,7 +157,7 @@ const MessagesDialogue = () => {
     <main className='py-4 py-sm-5'>
       <Container>
         <section className="sec-messages-chat">
-          <Meta title="Сообщения" />
+          <Meta title={t('Сообщения')} />
           <div className="d-flex">
             <button type="button" onClick={() => navigate(-1)} className='d-flex align-items-center return-icon me-4 mb-2'>
               <ReturnIcon />
@@ -168,7 +170,7 @@ const MessagesDialogue = () => {
             account="true"
             user={user}
             messages={messages}
-            emptyText="Нет сообщений"
+            emptyText={t('Нет сообщений')}
             onSubmit={(e) => onNewMessage(e)}
             onChange={(e) => setValue("text", e)}
             data={data}

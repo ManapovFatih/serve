@@ -1,4 +1,6 @@
 import en from './translate/en.json';
+import es from './translate/es.json';
+import fr from './translate/fr.json';
 import ru from './translate/ru.json';
 
 import i18n from 'i18next';
@@ -8,11 +10,19 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 const resources = {
 
-  "En": {
+  "EN": {
     translation: en
   },
 
-  "Ru": {
+  "ES": {
+    translation: es
+  },
+
+  "FR": {
+    translation: fr
+  },
+
+  "RU": {
     translation: ru
   },
 
@@ -24,7 +34,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'Ru',
+    fallbackLng: 'ru',
     interpolation: {
       escapeValue: false
     }

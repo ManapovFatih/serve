@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import moment from "moment";
 import React, { useState } from 'react';
 
@@ -8,6 +9,7 @@ import { getImageURL } from '../../helpers/all';
 
 
 const Message = ({ my, userId, general, createdAt, media, text, name, admin, user, view, type, status }) => {
+const {t} = useTranslation();
   const image = getImageURL({ path: user?.media, size: "mini", type: "user" })
   const [showShare, setShowShare] = useState(false);
   const time = createdAt
@@ -22,7 +24,7 @@ const Message = ({ my, userId, general, createdAt, media, text, name, admin, use
           <div className='text'>
             <div className='gray fs-08 d-flex align-items-center mb-2'>
               {type == "system" &&
-                <h6 className="name me-2">Системное сообщение</h6>
+                <h6 className="name me-2">{t('Системное сообщение')}</h6>
 
               }
               <time className='me-2'>
@@ -51,7 +53,7 @@ const Message = ({ my, userId, general, createdAt, media, text, name, admin, use
                 }
               </div>
               :
-              <i className='bubble-ban'>Сообщение заблокировано администрацией</i>
+              <i className='bubble-ban'>{t('Сообщение заблокировано администрацией')}</i>
             }
           </div>
           {type == "system" ?
@@ -100,7 +102,7 @@ const Message = ({ my, userId, general, createdAt, media, text, name, admin, use
 
                 }
                 {type == "system" &&
-                  <h6 className="name me-2">Системное сообщение</h6>
+                  <h6 className="name me-2">{t('Системное сообщение')}</h6>
 
                 }
                 <time className='me-2'>{time}</time>
@@ -121,7 +123,7 @@ const Message = ({ my, userId, general, createdAt, media, text, name, admin, use
                   }
                 </div>
                 :
-                <i className='bubble-ban'>Сообщение заблокировано администрацией</i>
+                <i className='bubble-ban'>{t('Сообщение заблокировано администрацией')}</i>
               }
             </div>
           </div>

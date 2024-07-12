@@ -1,24 +1,26 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Menu = () => {
+const {t} = useTranslation();
     return (
         <nav className='account-nav'>
             <ul>
                 <li>
-                    <NavLink to='/account/profile' end className="fs-13">Профиль</NavLink>
+                    <NavLink to='/account/profile' end className="fs-13">{t('Профиль')}</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/account/promotion'>Продвижение: 0 ₽</NavLink>
+                    <NavLink to='/account/promotion'>{t('Продвижение: 0 ₽')}</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/account/profile/photo'>Фото профиля</NavLink>
+                    <NavLink to='/account/profile/photo'>{t('Фото профиля')}</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/account/profile/addresses'>Адреса</NavLink>
+                    <NavLink to='/account/profile/addresses'>{t('Адреса')}</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/account/profile/about'>О себе</NavLink>
+                    <NavLink to='/account/profile/about'>{t('О себе')}</NavLink>
                 </li>
                 {/* <li>
                     <NavLink to='/account/profile/specialties'>Специальности</NavLink>

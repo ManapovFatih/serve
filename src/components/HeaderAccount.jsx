@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react'
 import useIsMobile from '../hooks/isMobile'
 import { Link, NavLink } from 'react-router-dom'
@@ -12,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../services/auth'
 
 const HeaderAccount = () => {
+const {t} = useTranslation();
     const { mobile } = useIsMobile('991px')
     const dispatch = useDispatch();
 
@@ -27,12 +29,12 @@ const HeaderAccount = () => {
                         {
                             (!mobile) &&
                             <ul>
-                                <li><NavLink to="/account/your-orders">Ваши заказы</NavLink></li>
-                                <li><NavLink to="/account/offers">Поиск заказов</NavLink></li>
-                                <li><NavLink to="/account/profile">Мой профиль</NavLink></li>
-                                <li><NavLink to="/account/promotion">Продвижение</NavLink></li>
-                                <li><NavLink to="/account/subscriptions">Подписки</NavLink></li>
-                                <li><NavLink to="/account/settings">Настройки</NavLink></li>
+                                <li><NavLink to="/account/your-orders">{t('Ваши заказы')}</NavLink></li>
+                                <li><NavLink to="/account/offers">{t('Поиск заказов')}</NavLink></li>
+                                <li><NavLink to="/account/profile">{t('Мой профиль')}</NavLink></li>
+                                <li><NavLink to="/account/promotion">{t('Продвижение')}</NavLink></li>
+                                <li><NavLink to="/account/subscriptions">{t('Подписки')}</NavLink></li>
+                                <li><NavLink to="/account/settings">{t('Настройки')}</NavLink></li>
                             </ul>
                         }
                     </nav>

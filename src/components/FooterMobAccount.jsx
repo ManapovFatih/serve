@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react'
 import Container from 'react-bootstrap/Container'
 import { SlUser } from "react-icons/sl"
@@ -7,6 +8,7 @@ import { IoFileTrayFullOutline } from "react-icons/io5"
 import { RxIdCard } from "react-icons/rx"
 
 const FooterMobAccount = () => {
+const {t} = useTranslation();
     return (
         <footer className="mobile">
             <Container>
@@ -15,25 +17,25 @@ const FooterMobAccount = () => {
                         <li>
                             <NavLink to="/my-orders">
                                 <IoFileTrayFullOutline/>
-                                <span>Ваши заказы</span>
+                                <span>{t('Ваши заказы')}</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/">
                                 <RxIdCard/>
-                                <span>Заказы</span>
+                                <span>{t('Заказы')}</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to="/account">
                                 <SlUser/>
-                                <span>Профиль</span>
+                                <span>{t('Профиль')}</span>
                             </NavLink>
                         </li>
                         <li>
                             <button type='button'>
                                 <TfiMore/>
-                                <span>Ещё</span>
+                                <span>{t('Ещё')}</span>
                             </button>
                         </li>
                     </ul>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import { SlGrid, SlUser, SlOptions, SlBubble } from "react-icons/sl";
@@ -9,6 +10,7 @@ import CreateOrder from './forms/СreateOrder';
 import { useSelector } from 'react-redux';
 
 const FooterMob = () => {
+    const { t } = useTranslation();
     // const [showFMenu, setShowFMenu] = useState(false);
     // const handleCloseFMenu = () => setShowFMenu(false);
     // const handleShowFMenu = () => setShowFMenu(true);
@@ -23,13 +25,13 @@ const FooterMob = () => {
                             <li>
                                 <NavLink to="/">
                                     <SlGrid />
-                                    <span>Главная</span>
+                                    <span>{t('Главная')}</span>
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="/search/my-orders">
                                     <TfiPencilAlt />
-                                    <span>Заказы</span>
+                                    <span>{t('Заказы')}</span>
                                 </NavLink>
                             </li>
                             <li>
@@ -37,13 +39,13 @@ const FooterMob = () => {
                                     <SlBubble />
 
                                     {unreadCount && unreadCount > 0 ? <div className="unread-header-conversations-count" /> : ""}
-                                    <span>Чат</span>
+                                    <span>{t('Чат')}</span>
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink to="/account">
                                     <SlUser />
-                                    <span>Профиль</span>
+                                    <span>{t('Профиль')}</span>
                                 </NavLink>
                             </li>
                             {/* <li>

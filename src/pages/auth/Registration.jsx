@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useCallback, useEffect } from 'react'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -10,6 +11,7 @@ import Input from '../../components/utils/Input'
 import { authRegister, login } from '../../services/auth'
 
 const Registration = () => {
+    const { t } = useTranslation();
     const isAuth = useSelector((state) => state?.auth?.isAuth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -173,7 +175,7 @@ const Registration = () => {
             let domain = data.email.split("@")[1];
             if (!domain || !successDomain.includes(domain)) {
                 NotificationManager.error(
-                    "Разрешены только популярные почтовые сервисы"
+                    t('Разрешены только популярные почтовые сервисы')
                 );
                 return false;
             }
@@ -182,14 +184,14 @@ const Registration = () => {
         authRegister(data)
             .then(() => {
                 dispatch(login({ login: data.email, password: data.password }));
-                NotificationManager.success("Завершите регистрацию, подтвердив почту");
+                NotificationManager.success(t('Завершите регистрацию, подтвердив почту'));
                 navigate("/activate");
             })
             .catch(
                 (err) =>
                     err &&
                     NotificationManager.error(
-                        err?.response?.data?.error ?? "Неизвестная ошибка при регистрации"
+                        err?.response?.data?.error ?? t('Неизвестная ошибка при регистрации')
                     )
             );
     }, []);
@@ -198,12 +200,12 @@ const Registration = () => {
             <Container className='h-100'>
                 <Row className='justify-content-center'>
                     <Col xs={12} md={9} lg={8} xl={7} xxl={6}>
-                        <h1 className='inner text-center'>Регистрация</h1>
+                        <h1 className='inner text-center'>{t('Регистрация')}</h1>
 
                         <form action="" className='box bg-1' onSubmit={handleSubmit(onSubmit)}>
                             <Row className='g-2 g-sm-4 align-items-center'>
                                 <Col sm={4}>
-                                    <div className="text-sm-end mb-2">ФИО</div>
+                                    <div className="text-sm-end mb-2">{t('ФИО')}</div>
                                 </Col>
                                 <Col sm={8}>
                                     <Input
@@ -211,19 +213,19 @@ const Registration = () => {
                                         autoComplete="new-password"
                                         autoFocus
                                         type="text"
-                                        placeholder="Введите ФИО"
+                                        placeholder={t('Введите ФИО')}
                                         name="firstName"
                                         errors={errors}
                                         register={register}
                                         validation={{
-                                            required: "Введите имя",
+                                            required: t('Введите имя'),
                                             minLength: {
                                                 value: 3,
-                                                message: "Минимально 3 символа",
+                                                message: t('Минимально 3 символа'),
                                             },
                                             maxLength: {
                                                 value: 250,
-                                                message: "Максимально 250 символов",
+                                                message: t('Максимально 250 символов'),
                                             },
                                         }}
                                     />
@@ -236,83 +238,83 @@ const Registration = () => {
                                         className='mb-2'
                                         autoComplete="new-password"
                                         type="email"
-                                        placeholder="Введите почту"
+                                        placeholder={t('Введите почту')}
                                         name="email"
                                         errors={errors}
                                         register={register}
                                         validation={{
-                                            required: "Введите почту",
+                                            required: t('Введите почту'),
                                             minLength: {
                                                 value: 3,
-                                                message: "Минимально 3 символа",
+                                                message: t('Минимально 3 символа'),
                                             },
                                             maxLength: {
                                                 value: 250,
-                                                message: "Максимально 250 символов",
+                                                message: t('Максимально 250 символов'),
                                             },
                                             pattern: {
                                                 value: /\S+@\S+\.\S+/,
-                                                message: "Неверный формат Email",
+                                                message: t('Неверный формат Email'),
                                             },
                                         }}
                                     />
                                 </Col>
                                 <Col sm={4}>
-                                    <div className="text-sm-end mb-2">Пароль</div>
+                                    <div className="text-sm-end mb-2">{t('Пароль')}</div>
                                 </Col>
                                 <Col sm={8}>
                                     <Input
                                         className='mb-2'
                                         autoComplete="new-password"
                                         type="password"
-                                        placeholder="Придумайте пароль"
+                                        placeholder={t('Придумайте пароль')}
                                         name="password"
                                         errors={errors}
                                         register={register}
                                         validation={{
-                                            required: "Введите пароль",
+                                            required: t('Введите пароль'),
                                             minLength: {
                                                 value: 6,
-                                                message: "Минимальное кол-во символов 6",
+                                                message: t('Минимальное кол-во символов 6'),
                                             },
                                             maxLength: {
                                                 value: 250,
-                                                message: "Максимальное кол-во символов 250",
+                                                message: t('Максимальное кол-во символов 250'),
                                             },
                                             pattern: {
                                                 value: /(?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{6,}/g,
                                                 message:
-                                                    "Пароль должен содержать не менее 6 символов латинского алфавита и цифры",
+                                                    t('Пароль должен содержать не менее 6 символов латинского алфавита и цифры'),
                                             },
                                         }}
                                     />
                                 </Col>
                                 <Col sm={4}>
-                                    <div className="text-sm-end mb-2">Подтверждение пароля</div>
+                                    <div className="text-sm-end mb-2">{t('Подтверждение пароля')}</div>
                                 </Col>
                                 <Col sm={8}>
                                     <Input
                                         className='mb-2'
                                         autoComplete="new-password"
                                         type="password"
-                                        placeholder="Повторите пароль"
+                                        placeholder={t('Повторите пароль')}
                                         name="passwordConfirm"
                                         errors={errors}
                                         register={register}
                                         validation={{
-                                            required: "Введите повторный пароль",
+                                            required: t('Введите повторный пароль'),
                                             minLength: {
                                                 value: 6,
-                                                message: "Минимальное кол-во символов 6",
+                                                message: t('Минимальное кол-во символов 6'),
                                             },
                                             maxLength: {
                                                 value: 250,
-                                                message: "Максимальное кол-во символов 250",
+                                                message: t('Максимальное кол-во символов 250'),
                                             },
                                             pattern: {
                                                 value: /(?=.*[0-9])(?=.*[a-z])[0-9a-zA-Z]{6,}/g,
                                                 message:
-                                                    "Пароль должен содержать не менее 6 символов латинского алфавита и цифры",
+                                                    t('Пароль должен содержать не менее 6 символов латинского алфавита и цифры'),
                                             },
                                         }}
                                     />
@@ -326,19 +328,19 @@ const Registration = () => {
                                             className="checkbox me-2"
                                             {...register("accept", {
                                                 required:
-                                                    "Примите условия пользовательского соглашения",
+                                                    t('Примите условия пользовательского соглашения'),
                                             })}
                                         />
                                         <span className="fs-09">
-                                            Принять условия Пользовательского соглашения
+                                            {t('Принять условия Пользовательского соглашения')}
                                         </span>
                                     </label>
                                 </Col>
                             </Row>
 
-                            <button type="submit" className='btn-1 mx-auto mt-4' disabled={!isValid}>Зарегистрироваться</button>
+                            <button type="submit" className='btn-1 mx-auto mt-4' disabled={!isValid}>{t('Зарегистрироваться')}</button>
                         </form>
-                        <p className="mt-4">Есть аккаунт? <Link to="/login" className="link">Войти</Link></p>
+                        <p className="mt-4">{t('Есть аккаунт?')}<Link to="/login" className="link">{t('Войти')}</Link></p>
                     </Col>
                 </Row>
             </Container>

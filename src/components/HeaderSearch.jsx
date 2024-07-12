@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ import Notifications from './Notifications';
 import { useSelector } from 'react-redux';
 
 const HeaderSearch = () => {
+const {t} = useTranslation();
   const [search, setSearch] = useState(false);
   const closeSearch = () => setSearch(false);
   const showSearch = () => setSearch(true);
@@ -61,7 +63,7 @@ const HeaderSearch = () => {
         <Offcanvas.Body>
           <Container>
             <form action="" className='form-search-1'>
-              <input type="text" placeholder='Чем вам помочь?' />
+              <input type="text" placeholder={t('Чем вам помочь?')} />
               <button type='button'>
                 <SlMagnifier />
               </button>

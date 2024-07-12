@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,13 +7,14 @@ import {Link} from 'react-router-dom';
 import TaskFilter from '../../../components/TaskFilter';
 
 const OffersNew = () => {
+const {t} = useTranslation();
   return (
     <Row className='flex-lg-row-reverse'>
       <Col lg={4}>
         <div className="box mb-4 d-none d-lg-block">
-          <h4>Увеличьте количество заказов</h4>
-          <p>Подключите продвижение, чтобы поднять ваш профиль в результатах поиска</p>
-          <Link to='/account/promotion' className="btn-3 py-3 w-100 mt-3">Подключить продвижение</Link>
+          <h4>{t('Увеличьте количество заказов')}</h4>
+          <p>{t('Подключите продвижение, чтобы поднять ваш профиль в результатах поиска')}</p>
+          <Link to='/account/promotion' className="btn-3 py-3 w-100 mt-3">{t('Подключить продвижение')}</Link>
         </div>
         <TaskFilter />
       </Col>

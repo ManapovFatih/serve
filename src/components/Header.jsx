@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -12,6 +13,7 @@ import СreateOrder from './forms/СreateOrder';
 import LanguageSwitcher from './utils/LanguageSwitcher';
 import { logout } from '../services/auth';
 const Header = () => {
+    const { t } = useTranslation();
     const { mobile } = useIsMobile('991px')
     const isAuth = useSelector((state) => state.auth.isAuth);
     const dispatch = useDispatch();
@@ -34,9 +36,9 @@ const Header = () => {
                             (!mobile) &&
                             <ul>
                                 <li><СreateOrder /></li>
-                                <li><NavLink to="/search">Найти специалиста</NavLink></li>
-                                <li><NavLink to="/search/my-orders">Мои заказы</NavLink></li>
-                                <li><NavLink to="/registrationPerformer">Стать исполнителем</NavLink></li>
+                                <li><NavLink to="/search">{t('Найти специалиста')}</NavLink></li>
+                                <li><NavLink to="/search/my-orders">{t('Мои заказы')}</NavLink></li>
+                                <li><NavLink to="/registrationPerformer">{t('Стать исполнителем')}</NavLink></li>
                             </ul>
                         }
                     </nav>
@@ -75,7 +77,7 @@ const Header = () => {
                                 :
                                 <li className='d-none d-lg-block'>
                                     <Link to='/login/'>
-                                        <span className="d-none d-xl-block">Войти</span>
+                                        <span className="d-none d-xl-block">{t('Войти')}</span>
                                         <SlLogin />
                                     </Link>
                                 </li>

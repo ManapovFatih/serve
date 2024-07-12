@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React, { useRef, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
@@ -5,6 +6,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const Limitation = () => {
+const {t} = useTranslation();
   const [showCalendar, setShowCalendar] = useState(false);
   const initialDays = [];
   const [days, setDays] = React.useState(initialDays);
@@ -23,7 +25,7 @@ const Limitation = () => {
     <div ref={ref} className="limitation">
       <div className="limitation-btn" onClick={() => setShowCalendar(!showCalendar)}>
         <IoCalendarOutline className='color-2 fs-12 me-2' />
-        <span>Сроки</span>
+        <span>{t('Сроки')}</span>
         {/* <button type="button" className='ms-2 red fs-12'><IoClose/></button> */}
       </div>
       {
