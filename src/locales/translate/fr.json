@@ -141,10 +141,10 @@
   "Дополнительное образование": "Formation complémentaire",
   "Добавить образование": "Ajouter une éducation",
   "Добавить ещё образование": "Ajouter plus d'éducation",
-  "город": "ville",
-  "Ничего не найдено": "Rien trouvé",
-  "Поиск...": "Recherche...",
-  "Введите город": "Entrez la ville",
+  "город": "Rien trouvé",
+  "Ничего не найдено": "Recherche...",
+  "Поиск...": "Entrez la ville",
+  "Введите город": "ville",
   "за услугу": "pour le service",
   "за минуту": "en une minute",
   "за час": "en une heure",
@@ -498,5 +498,9 @@
   "Работает сейчас": "Fonctionne maintenant",
   "Вернуться назад": "Rebrousser chemin",
   "772 специалиста": "772 spécialistes",
-  "Длинное название подраздела": "Titre long de la sous-section"
+  "Длинное название подраздела": "Titre long de la sous-section",
+  "Новые": "Nouveaux",
+  "Вы откликнулись": "Vous avez répondu",
+  "Вас пригласили": "Vous avez été invité",
+  "Кабинет исполнителя": "Cabinet de l'artiste"
 }

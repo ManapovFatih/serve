@@ -141,10 +141,10 @@
   "Дополнительное образование": "Additional education",
   "Добавить образование": "Add education",
   "Добавить ещё образование": "Add more education",
-  "город": "the city",
-  "Ничего не найдено": "Nothing found",
-  "Поиск...": "Search...",
-  "Введите город": "Enter the city",
+  "город": "Nothing found",
+  "Ничего не найдено": "Search...",
+  "Поиск...": "Enter the city",
+  "Введите город": "the city",
   "за услугу": "for the service",
   "за минуту": "in a minute",
   "за час": "per hour",
@@ -498,5 +498,9 @@
   "Работает сейчас": "It's working now",
   "Вернуться назад": "Go back",
   "772 специалиста": "772 specialists",
-  "Длинное название подраздела": "Long subsection name"
+  "Длинное название подраздела": "Long subsection name",
+  "Новые": "New",
+  "Вы откликнулись": "You responded",
+  "Вас пригласили": "You were invited",
+  "Кабинет исполнителя": "Executive Office"
 }

@@ -2,12 +2,12 @@ const fs = require('fs-extra');
 const path = require('path');
 
 
-const directoryPath = './src'; // Укажите путь к директории с файлами
+const directoryPath = './src/layouts'; // Укажите путь к директории с файлами
 
 let i18nContent = {};
 
 
-const ignoredDirectories = ['assets', 'config', 'contexts', 'hooks', 'layouts', 'locales', 'providers', 'routes', 'services', 'store', 'helpers']; // Папки, которые нужно игнорировать
+const ignoredDirectories = ['assets', 'config', 'contexts', 'hooks', 'locales', 'providers', 'routes', 'services', 'store', 'helpers']; // Папки, которые нужно игнорировать
 
 
 const translateFolderPath = './src/locales/translate';

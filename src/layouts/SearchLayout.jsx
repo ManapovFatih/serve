@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
@@ -12,6 +13,7 @@ import { SlGrid, SlDocs, SlUser } from "react-icons/sl";
 import HeaderMobile from '../components/HeaderMobile';
 
 const SearchLayout = () => {
+const {t} = useTranslation();
   const isMobile = useIsMobile('991px');
 
   return (
@@ -33,19 +35,19 @@ const SearchLayout = () => {
                     <li className='mb-4'>
                       <NavLink to="/search/category/1" end>
                         <SlGrid />
-                        <span>Найти специалиста</span>
+                        <span>{t('Найти специалиста')}</span>
                       </NavLink>
                     </li>
                     <li className='mb-4'>
                       <NavLink to="my-orders" end>
                         <SlDocs />
-                        <span>Мои заказы</span>
+                        <span>{t('Мои заказы')}</span>
                       </NavLink>
                     </li>
                     <li className='mb-4'>
                       <NavLink to="/account/profile">
                         <SlUser />
-                        <span>Кабинет исполнителя</span>
+                        <span>{t('Кабинет исполнителя')}</span>
                       </NavLink>
                     </li>
                   </ul>

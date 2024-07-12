@@ -57,7 +57,7 @@ for (const filename of translates) {
   if (filename.endsWith('.json')) {
     const lang = filename.replace('.json', '');
     i18nJsContent += `
-    ${lang}: {
+    "${lang.toUpperCase()}": {
       translation: ${lang}
     },
   `;
