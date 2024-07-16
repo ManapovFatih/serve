@@ -1,13 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import Input from '../../components/utils/Input'
-import { authActivate } from '../../services/auth'
+import { authActivate, authNewKeyActivate, logout } from '../../services/auth'
 import { NotificationManager } from 'react-notifications'
+import { Timer } from "../../helpers/all";
+import useIsMobile from '../../hooks/isMobile';
 
 const Activate = () => {
     const { t } = useTranslation();
@@ -16,6 +18,8 @@ const Activate = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false);
+    const [endTimer, setEndTimer] = useState(false);
+    const isMobile = useIsMobile('767px')
 
     const onKey = useCallback((key) => {
         setLoading(true);
@@ -36,6 +40,28 @@ const Activate = () => {
                 setLoading(false);
             });
     }, []);
+    const getKey = useCallback(() => {
+        setEndTimer(false)
+        authNewKeyActivate()
+            .then(() => {
+                NotificationManager.success("Код подтверждения отправлен повторно");
+
+                setLoading(false);
+            })
+            .catch((error) => {
+                NotificationManager.error(
+                    typeof error?.response?.data?.error === "string"
+                        ? error.response.data.error
+                        : "Неизвестная ошибка"
+                )
+                setLoading(false);
+            });
+    }, []);
+    useEffect(() => {
+        if (!auth.isAuth) {
+            return navigate("/");
+        }
+    }, [auth.isAuth]);
     return (
         <main className='py-4 py-sm-5'>
             <Container className='h-100'>
@@ -45,14 +71,35 @@ const Activate = () => {
 
                         <div className='box bg-1'>
                             <p className='mb-3'>{t('Введите код, отправленный на указанную электронную почту')}</p>
-                            <Row className='g-2 g-sm-4 align-items-center'>
+                            <Row className='g-2 g-sm-4 align-items-center justify-content-center'>
                                 <Col md={3}>
                                     <input className='mb-2' type="number" placeholder='0000' defaultValuevalue={key} onChange={(e) => { e.target.value.length < 5 && setKey(e.target.value) }} />
+                                    {isMobile && (endTimer ? (
+                                        <p className="pointer" onClick={() => getKey()}>
+                                            Отправить повторно код подтверждения
+                                        </p>
+                                    ) : (
+                                        <p>
+                                            Повторить отправку кода через <Timer onEnd={() => setEndTimer(true)} /> сек
+                                        </p>
+                                    ))}
                                 </Col>
-                                <Col md={3}>
+
+                                <Col md={6} className='d-flex'>
                                     <button type='button' className='btn-1 mx-auto mb-2' disabled={!key || key?.length < 4 || loading} onClick={() => onKey(key)}>{t('Отправить')}</button>
+
+                                    <button type='button' className='btn-3 mx-auto mb-2' onClick={() => logout()}>{t('Выйти')}</button>
                                 </Col>
                             </Row>
+                            {!isMobile && (endTimer ? (
+                                <p className="pointer" onClick={() => getKey()}>
+                                    Отправить повторно код подтверждения
+                                </p>
+                            ) : (
+                                <p>
+                                    Повторить отправку кода через <Timer onEnd={() => setEndTimer(true)} /> сек
+                                </p>
+                            ))}
                         </div>
                     </Col>
                 </Row>

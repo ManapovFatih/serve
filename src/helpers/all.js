@@ -1,5 +1,6 @@
 // value - цена, currency - выводить валюту (true|false))
 // import { LiaRubleSignSolid } from "react-icons/lia";
+import { useEffect, useState } from "react";
 import { FILE_URL } from "../config/api";
 
 // const customPrice = (value, currency = true) => {
@@ -103,6 +104,22 @@ const removeDescendants = (data, param, isMulti, parentId) => {
   return filteredOptions;
 };
 
+const Timer = ({ update = false, value = 60, onEnd }) => {
+  const [counter, setCounter] = useState(value);
+
+  // Third Attempts
+  useEffect(() => {
+    const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    if (counter === 0) {
+      onEnd()
+    }
+    return () => clearInterval(timer);
+  }, [counter, update]);
+
+  return counter
+}
+
 const getImageURL = ({ path = "", size = "mini", type = "user" }) => {
   if (path && Array.isArray(path) && path?.length > 0) {
     if (size == "mini") {
@@ -128,4 +145,4 @@ const getImageURL = ({ path = "", size = "mini", type = "user" }) => {
   }
 };
 
-export { getImageURL, declOfNum, removeDescendants };
+export { getImageURL, declOfNum, removeDescendants, Timer };

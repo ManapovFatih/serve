@@ -2,6 +2,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { $api, $authApi } from ".";
 import { apiRoutes } from "../config/api";
 import socket from "../config/socket";
+import { resetFavoriteSync } from "../store/reducers/favoriteSlice";
+import { clearNotification } from "../store/reducers/notificationSlice";
 // import socket from "../config/socket";
 
 const login = createAsyncThunk("auth/login", async (payloads, thunkAPI) => {
@@ -19,12 +21,15 @@ const login = createAsyncThunk("auth/login", async (payloads, thunkAPI) => {
 
 const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   socket.io.opts.query = false
-  socket.disconnect().connect()
+  socket.disconnect()
   try {
-    const response = await $api.post(apiRoutes.AUTH_LOGOUT);
+    const response = await $authApi.post(apiRoutes.AUTH_LOGOUT);
+    thunkAPI.dispatch(resetFavoriteSync());
+    thunkAPI.dispatch(clearNotification());
+    socket.connect()
     return response?.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
@@ -71,6 +76,11 @@ const authEditPassword = async (params) => {
   return response?.data;
 };
 
+const newKeyRecovery = async (params) => {
+  const response = await $api.post(apiRoutes.AUTH_NEW_KEY_RECOVERY, params);
+  return response?.data;
+};
+
 const authNewKeyActivate = async (params) => {
   const response = await $authApi.post(apiRoutes.AUTH_NEW_KEY_ACTIVATE, params);
   return response?.data;
@@ -89,14 +99,11 @@ const authEditEmail = async (data) => {
 export {
   authActivate,
   authActivateEmail,
-  authEditEmail,
-  authNewKeyActivate,
-  authEditPassword,
-  authEditPhone,
-  authPasswordRecovery,
+  authEditEmail, authEditPassword,
+  authEditPhone, authNewKeyActivate, authPasswordRecovery,
   authRegister,
   checkAuth,
   login,
-  logout,
-  refreshAuth,
+  logout, newKeyRecovery, refreshAuth
 };
+

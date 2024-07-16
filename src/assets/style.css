@@ -4058,4 +4058,14 @@ nav.mobile-menu ul li button {
 .text:focus {
   border: 1px solid #26C24A !important;
   box-shadow: none !important;
+}
+
+.pointer {
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-block;
+}
+.pointer:hover, .pointer:active, .pointer.active {
+  color: #26C24A;
+  font-weight: 500;
 }/*# sourceMappingURL=style.css.map */

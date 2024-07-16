@@ -16,13 +16,25 @@ import { setNotification, updateNotification } from "./store/reducers/notificati
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-  const { isAuth } = useSelector((state) => state.auth);
+  const { isAuth, token, user } = useSelector((state) => state.auth);
+
 
   useEffect(() => {
     if (isAuth) {
       socket.on('notification', (data) => {
-        if (data) {
+        if (data?.user) {
+          dispatch(setUser(data.user))
+        }
+        if (data.message) {
           dispatch(updateNotification(data))
+        }
+      })
+
+      socket.on('logout/' + user.id, (data) => {
+
+        if (data) {
+          dispatch(logout())
+
         }
       })
     }
@@ -35,10 +47,11 @@ function App() {
           ({ data }) => data?.ip && dispatch(setSettings({ ip: data.ip }))
         ))();
 
-    if (localStorage.getItem("token")) {
+    if (token) {
       checkAuth()
         .then((data) => {
-          if (data && data.status === 0) {
+          console.log("sdfsd")
+          if (data && data.status === -1) {
             dispatch(logout());
           } else {
             if (data?.message) {
@@ -61,6 +74,7 @@ function App() {
     }
 
   }, []);
+
 
   if (loading) {
     return <Loader full />;

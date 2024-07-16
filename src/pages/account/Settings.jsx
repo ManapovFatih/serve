@@ -111,7 +111,7 @@ const Settings = () => {
                                         <div className='fs-09 mb-1'>{t('Отчество')}</div>
                                         <input type="text" placeholder={t('Отчество')} defaultValue={data?.lastName} onChange={(e) => { setValue("lastName", e.target.value) }} />
                                     </Col>
-                                    <Col>
+                                    {/* <Col>
                                         <label className='mt-sm-4'>
                                             <input type="checkbox" />
                                             <span className='ms-2'>{t('Показывать отчество')}</span>
@@ -119,8 +119,8 @@ const Settings = () => {
                                         <label className='mt-3'>
                                             <input type="checkbox" />
                                             <span className='ms-2'>{t('Сократить фамилию до первой буквы')}</span>
-                                        </label>
-                                    </Col>
+                                        </label> 
+                                    </Col> */}
                                     <Col>
                                         <div className='fs-09 mb-1'>{t('Город')}</div>
                                         <City defaultValue={data?.data?.city} setCity={(e) => setValue("data.city", e)} city={data?.data?.city} />
@@ -175,7 +175,7 @@ const Settings = () => {
                                 <button type='button' className='btn-1 w-xs-100'>{t('Сохранить')}</button>
                             </form>
 
-                            <form action="" className='box form-about-info mb-4'>
+                            {/* <form action="" className='box form-about-info mb-4'>
                                 <h3 className='mb-4'>{t('Письма и уведомления')}</h3>
                                 <fieldset>
                                     <legend className='mini'>{t('О том, что вас выбрали исполнителем или предложили заказ')}</legend>
@@ -271,9 +271,9 @@ const Settings = () => {
                                     </label>
                                 </fieldset>
                                 <button type='button' className='btn-1 w-xs-100'>{t('Сохранить')}</button>
-                            </form>
+                            </form> */}
 
-                            <form action="" className='box form-about-info mb-4'>
+                            {/* <form action="" className='box form-about-info mb-4'>
                                 <h3 className='mb-4'>{t('Способы связи')}</h3>
                                 <h6>{t('Выберите, каким образом заказчики могут с вами связаться')}</h6>
                                 <ul className='list-unstyled'>
@@ -298,7 +298,7 @@ const Settings = () => {
                                 </ul>
                                 <p className='gray-3 fs-09 mt-4'>{t('Вы можете в любой момент включить или выключить нужные способы связи. Новые настройки вступят в силу в течение нескольких часов.')}</p>
                                 <button type='button' className='btn-1 w-xs-100 mt-4'>{t('Сохранить')}</button>
-                            </form>
+                            </form> */}
 
                             <form action="" className='box form-about-info mb-4'>
                                 <h3 className='mb-4'>{t('Снять профиль с публикации')}</h3>

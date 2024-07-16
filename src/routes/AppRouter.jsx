@@ -30,14 +30,7 @@ const router = createBrowserRouter(
                 <Route path="login" element={<Login />} />
                 <Route path="registration" element={<Registration />} />
                 <Route path="password" element={<Recovery />} />
-                <Route
-                    path="activate"
-                    element={
-                        <AuthRoute>
-                            <Activate />
-                        </AuthRoute>
-                    }
-                />
+                <Route path="activate" element={<Activate />} />
                 <Route path="messages/*" element={
                     <AuthRoute>
                         <MessagesRouter />
