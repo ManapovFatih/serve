@@ -12,7 +12,7 @@ const City = ({ defaultValue, city, setCity, className }) => {
         if (streetText) {
             getDadataStreets({
                 query: streetText,
-                locations: [{ city_type_full: t('город') }],
+                locations: [{ country: '*' }],
                 restrict_value: false,
                 from_bound: { value: 'city' },
                 to_bound: { value: 'city' },

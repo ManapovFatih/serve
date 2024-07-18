@@ -213,15 +213,15 @@ const Registration = () => {
                                         autoComplete="new-password"
                                         autoFocus
                                         type="text"
-                                        placeholder={t('Введите ФИО')}
-                                        name="firstName"
+                                        placeholder={t('Введите имя')}
+                                        name="lastName"
                                         errors={errors}
                                         register={register}
                                         validation={{
                                             required: t('Введите имя'),
                                             minLength: {
-                                                value: 3,
-                                                message: t('Минимально 3 символа'),
+                                                value: 1,
+                                                message: t('Минимально 1 символа'),
                                             },
                                             maxLength: {
                                                 value: 250,

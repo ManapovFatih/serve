@@ -1,15 +1,17 @@
+import React, { useCallback } from 'react';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import { useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import React, { useCallback } from 'react'
-import Select from 'react-select'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import { useDispatch, useSelector } from 'react-redux'
-import { useForm, useWatch } from 'react-hook-form'
-import { editAccount } from '../../services/account'
-import { setUser } from '../../store/reducers/authSlice'
-import { NotificationManager } from 'react-notifications'
-import City from '../../components/utils/City'
+import { NotificationManager } from 'react-notifications';
+import { useDispatch, useSelector } from 'react-redux';
+import Select from 'react-select';
+import City from '../../components/utils/City';
+import Input from '../../components/utils/Input';
+import { editAccount } from '../../services/account';
+import { setUser } from '../../store/reducers/authSlice';
+import PhoneInput from 'react-phone-input-2';
 
 
 
@@ -22,29 +24,29 @@ const Settings = () => {
     ]
     const timeList = [
         { value: '1', label: '00:00' },
-        { value: '2', label: '00:01' },
-        { value: '3', label: '00:02' },
-        { value: '4', label: '00:03' },
-        { value: '5', label: '00:04' },
-        { value: '6', label: '00:05' },
-        { value: '7', label: '00:06' },
-        { value: '1', label: '00:07' },
-        { value: '1', label: '00:08' },
-        { value: '1', label: '00:09' },
-        { value: '1', label: '00:10' },
-        { value: '1', label: '00:11' },
-        { value: '1', label: '00:12' },
-        { value: '1', label: '00:13' },
-        { value: '1', label: '00:14' },
-        { value: '1', label: '00:15' },
-        { value: '1', label: '00:16' },
-        { value: '1', label: '00:17' },
-        { value: '1', label: '00:18' },
-        { value: '1', label: '00:19' },
-        { value: '1', label: '00:20' },
-        { value: '1', label: '00:21' },
-        { value: '1', label: '00:22' },
-        { value: '1', label: '00:23' },
+        { value: '2', label: '01:00' },
+        { value: '3', label: '02:00' },
+        { value: '4', label: '03:00' },
+        { value: '5', label: '04:00' },
+        { value: '6', label: '05:00' },
+        { value: '7', label: '06:00' },
+        { value: '8', label: '07:00' },
+        { value: '9', label: '08:00' },
+        { value: '10', label: '09:00' },
+        { value: '11', label: '10:00' },
+        { value: '12', label: '11:00' },
+        { value: '13', label: '12:00' },
+        { value: '14', label: '13:00' },
+        { value: '15', label: '14:00' },
+        { value: '16', label: '15:00' },
+        { value: '17', label: '16:00' },
+        { value: '18', label: '17:00' },
+        { value: '19', label: '18:00' },
+        { value: '20', label: '19:00' },
+        { value: '21', label: '20:00' },
+        { value: '22', label: '21:00' },
+        { value: '23', label: '22:00' },
+        { value: '24', label: '23:00' },
     ]
     const periodList = [
         { value: '1', label: t('На неделю') },
@@ -65,11 +67,9 @@ const Settings = () => {
         reValidateMode: "onSubmit",
         defaultValues: {
             firstName: user?.firstName,
-            nickname: user?.nickname,
             lastName: user?.lastName,
             phone: user?.phone,
-            data: { city: user?.data?.city, },
-            lastName: user?.lastName,
+            data: user?.data,
         },
     });
 
@@ -88,6 +88,28 @@ const Settings = () => {
                 );
             });
     }, []);
+    const handleChangeTime = (e, name) => {
+        // Get the raw input value (without mask)
+        const rawValue = e.replace(/[^0-9]/g, '');
+
+        console.log(rawValue)
+        // Validate the input:
+        if (rawValue.length <= 4) { // Only allow up to 4 digits (HH:MM)
+            let hours = +rawValue.substring(0, 2) || "";
+            let minutes = +rawValue.substring(2, 4) || "";
+
+            if (hours > 23) {
+                hours = 23
+            }
+            if (minutes > 59) {
+                minutes = 59
+
+            }
+            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+            return setValue(`data.${name}`, formattedTime) // Update the state with the validated value
+        }
+    }
+    console.log(data)
     return (
         <main className='py-4 py-sm-5'>
             <Container>
@@ -95,7 +117,7 @@ const Settings = () => {
                     <h1 className='inner text-center'>{t('Настройки')}</h1>
                     <Row className='justify-content-center'>
                         <Col xs={12} md={10} lg={9} xl={8} xxl={7}>
-                            <form action="" className='box bg-1 mb-4' onSubmit={handleSubmit(onEditAccount)}>
+                            <form action="" className='box bg-1 mb-4'>
                                 <h3 className='mb-4'>{t('Персональные данные')}</h3>
 
                                 <Row xs={1} sm={2} className='g-4 mb-4'>
@@ -105,12 +127,12 @@ const Settings = () => {
                                     </Col>
                                     <Col>
                                         <div className='fs-09 mb-1'>{t('Имя')}</div>
-                                        <input type="text" placeholder={t('Имя')} defaultValue={data?.nickname} onChange={(e) => { setValue("nickname", e.target.value) }} />
+                                        <input type="text" placeholder={t('Имя')} defaultValue={data?.lastName} onChange={(e) => { setValue("lastName", e.target.value) }} />
                                     </Col>
-                                    <Col>
+                                    {/* <Col>
                                         <div className='fs-09 mb-1'>{t('Отчество')}</div>
-                                        <input type="text" placeholder={t('Отчество')} defaultValue={data?.lastName} onChange={(e) => { setValue("lastName", e.target.value) }} />
-                                    </Col>
+                                        <input type="text" placeholder={t('Отчество')} defaultValue={data?.lastName} onChange={(e) => { setValue("patronymic", e.target.value) }} />
+                                    </Col> */}
                                     {/* <Col>
                                         <label className='mt-sm-4'>
                                             <input type="checkbox" />
@@ -127,32 +149,29 @@ const Settings = () => {
                                     </Col>
                                     <Col>
                                         <div className='fs-09 mb-1'>{t('Телефон')}</div>
-                                        <input type="tel" placeholder={t('Телефон')} defaultValue={data?.phone} onChange={(e) => { setValue("phone", e.target.value) }} />
+                                        <PhoneInput country="" placeholder={t('Телефон')} value={data?.phone} onChange={(e) => { setValue("phone", e) }} />
                                     </Col>
                                 </Row>
 
                                 <div className='fs-09 mb-1'>{t('Время для связи')}</div>
                                 <Row xs={1} sm={2} className='mb-4'>
                                     <Col>
-                                        <Select
+                                        <Input
                                             name="start"
                                             placeholder={t('С')}
-                                            classNamePrefix="simple-select"
-                                            className="simple-select-container w-100"
-                                            options={timeList}
-                                            isClearable={true}
-                                            isSearchable={true}
+                                            value={data?.data?.startPhone}
+                                            onChange={(e) => { handleChangeTime(e, "startPhone") }}
+                                            mask="99:99"
+
                                         />
                                     </Col>
                                     <Col className='mt-3 mt-sm-0'>
-                                        <Select
+                                        <Input
                                             name="end"
                                             placeholder={t('До')}
-                                            classNamePrefix="simple-select"
-                                            className="simple-select-container w-100"
-                                            options={timeList}
-                                            isClearable={true}
-                                            isSearchable={true}
+                                            value={data?.data?.endPhone}
+                                            onChange={(e) => { handleChangeTime(e, "endPhone") }}
+                                            mask="99:99"
                                         />
                                     </Col>
                                 </Row>
@@ -172,7 +191,7 @@ const Settings = () => {
                                     <span className='ms-2'>{t('Даю свое согласие на использование моих персональных данных')}</span>
                                 </label>
 
-                                <button type='button' className='btn-1 w-xs-100'>{t('Сохранить')}</button>
+                                <button type='button' className='btn-1 w-xs-100' onClick={handleSubmit(onEditAccount)}>{t('Сохранить')}</button>
                             </form>
 
                             {/* <form action="" className='box form-about-info mb-4'>
