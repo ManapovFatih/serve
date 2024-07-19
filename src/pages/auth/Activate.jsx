@@ -1,15 +1,14 @@
+import React, { useCallback, useEffect, useState } from 'react';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import { useTranslation } from 'react-i18next';
-import React, { useCallback, useEffect, useState } from 'react'
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import Input from '../../components/utils/Input'
-import { authActivate, authNewKeyActivate, logout } from '../../services/auth'
-import { NotificationManager } from 'react-notifications'
+import { NotificationManager } from 'react-notifications';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Timer } from "../../helpers/all";
 import useIsMobile from '../../hooks/isMobile';
+import { authActivate, authNewKeyActivate, logout, refreshAuth } from '../../services/auth';
 
 const Activate = () => {
     const { t } = useTranslation();
@@ -20,16 +19,19 @@ const Activate = () => {
     const [loading, setLoading] = useState(false);
     const [endTimer, setEndTimer] = useState(false);
     const isMobile = useIsMobile('767px')
-
+    const status = useSelector((state) => state?.auth?.user?.status);
+    useEffect(() => {
+        if (status) {
+            return navigate("/");
+        }
+    }, [status]);
     const onKey = useCallback((key) => {
         setLoading(true);
         authActivate(key)
             .then(() => {
                 NotificationManager.success(t('Ваш аккаунт подтвержден'));
-
-                setLoading(false);
                 dispatch(refreshAuth());
-                navigate(-1)
+
             })
             .catch((error) => {
                 NotificationManager.error(
@@ -37,6 +39,8 @@ const Activate = () => {
                         ? error.response.data.error
                         : t('Неизвестная ошибка')
                 )
+            })
+            .finally(() => {
                 setLoading(false);
             });
     }, []);

@@ -17,7 +17,7 @@ const Registration = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         if (isAuth) {
-            return navigate("/");
+            return navigate("/activate");
         }
     }, [isAuth]);
 
@@ -183,9 +183,8 @@ const Registration = () => {
 
         authRegister(data)
             .then(() => {
-                dispatch(login({ login: data.email, password: data.password }));
+                dispatch(login({ email: data.email, password: data.password }));
                 NotificationManager.success(t('Завершите регистрацию, подтвердив почту'));
-                navigate("/activate");
             })
             .catch(
                 (err) =>
@@ -205,7 +204,7 @@ const Registration = () => {
                         <form action="" className='box bg-1' onSubmit={handleSubmit(onSubmit)}>
                             <Row className='g-2 g-sm-4 align-items-center'>
                                 <Col sm={4}>
-                                    <div className="text-sm-end mb-2">{t('ФИО')}</div>
+                                    <div className="text-sm-end mb-2">{t('Имя')}</div>
                                 </Col>
                                 <Col sm={8}>
                                     <Input

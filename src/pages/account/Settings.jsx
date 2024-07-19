@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -12,11 +12,19 @@ import Input from '../../components/utils/Input';
 import { editAccount } from '../../services/account';
 import { setUser } from '../../store/reducers/authSlice';
 import PhoneInput from 'react-phone-input-2';
+import { deleteUser } from '../../services/user';
+import { useNavigate } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
+import { RxCross1 } from 'react-icons/rx';
+import { checkAuth, logout } from '../../services/auth';
 
 
 
 const Settings = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
+    const [showShare, setShowShare] = useState(false);
+    const [password, setPassword] = useState();
     const regularityList = [
         { value: '1', label: t('Как можно быстрее') },
         { value: '2', label: t('Не чаще, чем раз в час') },
@@ -66,10 +74,7 @@ const Settings = () => {
         mode: "onChange",
         reValidateMode: "onSubmit",
         defaultValues: {
-            firstName: user?.firstName,
-            lastName: user?.lastName,
-            phone: user?.phone,
-            data: user?.data,
+            ...user
         },
     });
 
@@ -92,7 +97,6 @@ const Settings = () => {
         // Get the raw input value (without mask)
         const rawValue = e.replace(/[^0-9]/g, '');
 
-        console.log(rawValue)
         // Validate the input:
         if (rawValue.length <= 4) { // Only allow up to 4 digits (HH:MM)
             let hours = +rawValue.substring(0, 2) || "";
@@ -109,7 +113,20 @@ const Settings = () => {
             return setValue(`data.${name}`, formattedTime) // Update the state with the validated value
         }
     }
-    console.log(data)
+    const onDeleteUser = useCallback(() => {
+        deleteUser({ id: parseInt(user.id), password: password })
+            .then((res) => {
+                NotificationManager.success(t('Аккаунт успешно удален'));
+                navigate('/')
+                dispatch(logout())
+
+            })
+            .catch((err) => {
+                NotificationManager.error(
+                    err?.response?.data?.error ?? t('Ошибка при удалении')
+                );
+            });
+    }, [user, password]);
     return (
         <main className='py-4 py-sm-5'>
             <Container>
@@ -149,7 +166,7 @@ const Settings = () => {
                                     </Col>
                                     <Col>
                                         <div className='fs-09 mb-1'>{t('Телефон')}</div>
-                                        <PhoneInput country="" placeholder={t('Телефон')} value={data?.phone} onChange={(e) => { setValue("phone", e) }} />
+                                        <PhoneInput placeholder={t('Телефон')} className="" value={data?.phone} onChange={(e) => { setValue("phone", e) }} />
                                     </Col>
                                 </Row>
 
@@ -340,12 +357,47 @@ const Settings = () => {
                                 <fieldset>
                                     <legend className="mini">{t('Навсегда')}</legend>
                                     <p>{t('Ваш аккаунт будет удалён вместе со всеми личными данными.')}</p>
-                                    <button type='button' className='btn-2 py-3 mt-4 w-xs-100'>{t('Удалить мой профиль')}</button>
+                                    <button type='button' className='btn-2 py-3 mt-4 w-xs-100' onClick={setShowShare}>{t('Удалить мой профиль')}</button>
                                 </fieldset>
                             </form>
                         </Col>
                     </Row>
                 </section>
+                <Modal show={showShare} onHide={setShowShare} centered size="md" >
+                    <button type='button' onClick={() => setShowShare(false)} className='close'>
+                        <RxCross1 />
+                    </button>
+                    <Modal.Body className='box bg-1 mt-4'>
+                        <h3 className='text-center mt-4'>Потвердите удаление аккунта</h3>
+                        <Row className='g-2 g-sm-4 align-items-center mt-3'>
+                            <Col sm={2}>
+                                <div className="text-sm-start mb-2">{t('Пароль')}</div>
+                            </Col>
+                            <Col sm={10}>
+                                <Input
+                                    className="mb-2"
+                                    autoComplete="check-password"
+                                    type="password"
+                                    placeholder={t('Введите пароль')}
+                                    validation={{
+                                        required: t('Введите пароль'),
+                                        minLength: {
+                                            value: 4,
+                                            message:
+                                                t('Минимальный пароль должен состоять из 4-ех символов'),
+                                        },
+                                    }}
+                                    onChange={(e) => { setPassword(e) }}
+                                />
+                            </Col>
+                        </Row>
+                        <Col sm={12} className='d-flex justify-content-center'>
+                            <button type='button' className='btn-2 py-3 mt-4 w-xs-100' onClick={onDeleteUser}>{t('Удалить мой профиль')}</button>
+                        </Col>
+
+
+                    </Modal.Body>
+                </Modal>
             </Container>
         </main>
     )

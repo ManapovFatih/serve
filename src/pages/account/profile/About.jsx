@@ -28,9 +28,7 @@ const About = () => {
         mode: "onChange",
         reValidateMode: "onSubmit",
         defaultValues: {
-            about: user?.about,
-            birthday: user?.birthday,
-            sex: user?.sex,
+            ...user
         },
     });
 
@@ -67,8 +65,8 @@ const About = () => {
                             <input
                                 type="radio"
                                 name="sex"
-                                value="female"
-                                checked={data?.sex === "female"}
+                                value="woman"
+                                checked={data?.sex === "woman"}
                                 onClick={(e) => setValue("sex", e.target.value)}
                             />
                             <span className="ms-2">{t('Женский')}</span>
@@ -77,8 +75,8 @@ const About = () => {
                             <input
                                 type="radio"
                                 name="sex"
-                                value="male"
-                                checked={data?.sex === "male"}
+                                value="man"
+                                checked={data?.sex === "man"}
                                 onClick={(e) => setValue("sex", e.target.value)}
                             />
                             <span className="ms-2">{t('Мужской')}</span>
@@ -119,28 +117,28 @@ const About = () => {
                                 <IoLogoWhatsapp className='fs-13 color-2' />
                                 <span className='ms-1'>WhatsApp</span>
                             </div>
-                            <input type="text" placeholder='' />
+                            <input type="text" placeholder='' defaultValue={data?.data?.WhatsApp} onChange={(e) => { setValue("data.WhatsApp", e.target.value) }} />
                         </li>
                         <li>
                             <div className='d-flex align-items-center mb-2'>
                                 <BsTelegram className='fs-13 blue' />
                                 <span className='ms-1'>Telegram</span>
                             </div>
-                            <input type="text" placeholder='' />
+                            <input type="text" placeholder='' defaultValue={data?.data?.Telegram} onChange={(e) => { setValue("data.Telegram", e.target.value) }} />
                         </li>
                         <li>
                             <div className='d-flex align-items-center mb-2'>
                                 <IoLogoSkype className='fs-13 blue' />
                                 <span className='ms-1'>Skype</span>
                             </div>
-                            <input type="text" placeholder='' />
+                            <input type="text" placeholder='' defaultValue={data?.data?.Skype} onChange={(e) => { setValue("data.Skype", e.target.value) }} />
                         </li>
                         <li>
                             <div className='d-flex align-items-center mb-2'>
                                 <IoMailOutline className='fs-13 color-2' />
                                 <span className='ms-1'>{t('Электронная почта для связи')}</span>
                             </div>
-                            <input type="text" placeholder='' />
+                            <input type="text" placeholder='' defaultValue={data?.data?.email} onChange={(e) => { setValue("data.email", e.target.value) }} />
                         </li>
                     </ul>
 
@@ -151,14 +149,14 @@ const About = () => {
                                 <IoLogoYoutube className='fs-13 red' />
                                 <span className='ms-1'>YouTube</span>
                             </div>
-                            <input type="text" placeholder='' />
+                            <input type="text" placeholder='' defaultValue={data?.data?.YouTube} onChange={(e) => { setValue("data.YouTube", e.target.value) }} />
                         </li>
                         <li>
                             <div className='d-flex align-items-center mb-2'>
                                 <IoGlobeOutline className='fs-13 color-5' />
                                 <span className='ms-1'>{t('Личный сайт')}</span>
                             </div>
-                            <input type="text" placeholder='' />
+                            <input type="text" placeholder='' defaultValue={data?.data?.website} onChange={(e) => { setValue("data.website", e.target.value) }} />
                         </li>
                     </ul>
                 </fieldset>

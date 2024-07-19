@@ -16,5 +16,11 @@ const deleteSession = async (data) => {
   });
   return response?.data;
 };
+const deleteUser = async (data) => {
+  const response = await $authApi.delete(apiRoutes.USER_DELETE, {
+    data,
+  });
+  return response?.data;
+};
 
-export { getUser, deleteSession, getUserAuth };
+export { getUser, deleteSession, getUserAuth, deleteUser };
