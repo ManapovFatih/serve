@@ -14,11 +14,11 @@ import { IoAlertCircleOutline, IoTrendingUpOutline, IoAddOutline, IoEyeOutline, 
 import { useSelector } from 'react-redux'
 
 const Profile = () => {
-const {t} = useTranslation();
+    const { t } = useTranslation();
     const user = useSelector((state) => state.auth.user);
     return (
         <section>
-            <h1 className='inner text-center mb-2'>{user?.firstName}</h1>
+            <h1 className='inner text-center mb-2'>{user?.firstName} {user?.lastName}</h1>
             {/* <p className='d-flex align-items-center justify-content-center text-center gray-3 mb-4 mb-sm-5'>
                 <IoAlertCircleOutline className='fs-13 red' />
                 <span className='ms-2'>Профиль опубликован – 1 ошибка</span>
@@ -160,7 +160,11 @@ const {t} = useTranslation();
                             <IoPersonCircleOutline className='fs-18 color-2' />
                             <h4 className='mb-0 ms-2'>{t('Фото профиля')}</h4>
                         </div>
-                        <p>{t('Фото добавлено')}</p>
+                        {!user.media ?
+                            <p>{t('Фото добавлено')}</p>
+                            :
+                            <p className='color-5'>Фото не добавлен</p>
+                        }
                     </Link>
                 </Col>
                 <Col>
