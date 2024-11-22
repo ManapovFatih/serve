@@ -47,6 +47,7 @@ const About = () => {
                 );
             });
     }, []);
+    console.log(data)
     return (
         <section>
             <h1 className='inner text-center mb-4'>{t('О себе')}</h1>
@@ -87,24 +88,24 @@ const About = () => {
                     <div className='mt-4 mb-3'>{t('Дата рождения')}</div>
                     <input type="date" defaultValue={data?.birthday} onChange={(e) => { setValue("birthday", e.target.value) }} />
 
-                    <div className='mt-4 mb-3'>{t('Видео о себе')}</div>
-                    <Form.Control type="file" multiple accept="video/*" />
+                    {/* <div className='mt-4 mb-3'>{t('Видео о себе')}</div>
+                    <Form.Control type="file" multiple accept="video/*" /> */}
                 </fieldset>
 
                 <fieldset>
                     <legend>{t('Профильное образование')}</legend>
                     <p className='mb-4'>{t('Подробно опишите ваше образование: вуз, название специальности, тип обучения,например, «РГГУ, маркетинг и технологии, бакалавр» или «УГТУ УПИ, графический дизайн, курсы переподготовки»')}</p>
 
-                    <AddInput />
+                    <AddInput educations={data?.data?.educations} setEducations={(e) => setValue("data.educations", e)} />
 
-                    <h5 className='mt-4'>{t('Дипломы, сертификаты, лицензии')}</h5>
+                    {/* <h5 className='mt-4'>{t('Дипломы, сертификаты, лицензии')}</h5>
                     <p>{t('Приложите фотографии или сканы документов, подтверждающих вашу квалификацию')}</p>
                     <div className="mt-3 d-flex flex-wrap">
                         <AddPhoto name={'img-1'} id={'img1'} className='me-2 mb-2' />
                         <AddPhoto name={'img-2'} id={'img2'} className='me-2 mb-2' />
                         <AddPhoto name={'img-3'} id={'img3'} className='me-2 mb-2' />
                         <AddPhoto name={'img-4'} id={'img4'} className='me-2 mb-2' />
-                    </div>
+                    </div> */}
                 </fieldset>
 
                 <fieldset>

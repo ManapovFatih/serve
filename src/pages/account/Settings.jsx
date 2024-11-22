@@ -25,37 +25,8 @@ const Settings = () => {
     const navigate = useNavigate();
     const [showShare, setShowShare] = useState(false);
     const [password, setPassword] = useState();
-    const regularityList = [
-        { value: '1', label: t('Как можно быстрее') },
-        { value: '2', label: t('Не чаще, чем раз в час') },
-        { value: '3', label: t('Не чаще, чем раз в день') },
-    ]
-    const timeList = [
-        { value: '1', label: '00:00' },
-        { value: '2', label: '01:00' },
-        { value: '3', label: '02:00' },
-        { value: '4', label: '03:00' },
-        { value: '5', label: '04:00' },
-        { value: '6', label: '05:00' },
-        { value: '7', label: '06:00' },
-        { value: '8', label: '07:00' },
-        { value: '9', label: '08:00' },
-        { value: '10', label: '09:00' },
-        { value: '11', label: '10:00' },
-        { value: '12', label: '11:00' },
-        { value: '13', label: '12:00' },
-        { value: '14', label: '13:00' },
-        { value: '15', label: '14:00' },
-        { value: '16', label: '15:00' },
-        { value: '17', label: '16:00' },
-        { value: '18', label: '17:00' },
-        { value: '19', label: '18:00' },
-        { value: '20', label: '19:00' },
-        { value: '21', label: '20:00' },
-        { value: '22', label: '21:00' },
-        { value: '23', label: '22:00' },
-        { value: '24', label: '23:00' },
-    ]
+
+
     const periodList = [
         { value: '1', label: t('На неделю') },
         { value: '2', label: t('На 2 недели') },
@@ -204,11 +175,15 @@ const Settings = () => {
                                 <input type="email" placeholder='email' className='mb-4' /> */}
 
                                 <label className='fs-09 mb-4'>
-                                    <input type="checkbox" />
+                                    <input
+                                        type="checkbox"
+                                        checked={data?.data.accept}
+                                        onClick={(e) => setValue("data.accept", e.target.value)}
+                                    />
                                     <span className='ms-2'>{t('Даю свое согласие на использование моих персональных данных')}</span>
                                 </label>
 
-                                <button type='button' className='btn-1 w-xs-100' onClick={handleSubmit(onEditAccount)}>{t('Сохранить')}</button>
+                                <button type='button' className='btn-3 w-xs-100' onClick={handleSubmit(onEditAccount)}>{t('Сохранить')}</button>
                             </form>
 
                             {/* <form action="" className='box form-about-info mb-4'>

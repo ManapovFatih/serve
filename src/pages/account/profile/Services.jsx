@@ -10,6 +10,7 @@ import { removeDescendants } from '../../../helpers/all'
 import { NotificationManager } from 'react-notifications'
 import { useSelector } from 'react-redux'
 import { createUserProduct } from '../../../services/product'
+import Input from '../../../components/utils/Input';
 
 
 
@@ -37,40 +38,18 @@ const Services = () => {
         { value: '3', label: 'param 3' },
     ]
     const weekList = [
-        { value: '1', label: t('Понедельник') },
-        { value: '2', label: t('Вторник') },
-        { value: '3', label: t('Среда') },
-        { value: '4', label: t('Четверг') },
-        { value: '5', label: t('Пятница') },
-        { value: '6', label: t('Суббота') },
-        { value: '7', label: t('Воскресенье') },
+        { value: '1', label: 'Каждый день' },
+        { value: '2', label: 'По будням' },
+        { value: '3', label: 'По выходным' },
+        { value: '4', label: t('Понедельник') },
+        { value: '5', label: t('Вторник') },
+        { value: '6', label: t('Среда') },
+        { value: '7', label: t('Четверг') },
+        { value: '8', label: t('Пятница') },
+        { value: '9', label: t('Суббота') },
+        { value: '10', label: t('Воскресенье') },
     ]
-    const timeList = [
-        { value: '1', label: '00:00' },
-        { value: '2', label: '00:01' },
-        { value: '3', label: '00:02' },
-        { value: '4', label: '00:03' },
-        { value: '5', label: '00:04' },
-        { value: '6', label: '00:05' },
-        { value: '7', label: '00:06' },
-        { value: '1', label: '00:07' },
-        { value: '1', label: '00:08' },
-        { value: '1', label: '00:09' },
-        { value: '1', label: '00:10' },
-        { value: '1', label: '00:11' },
-        { value: '1', label: '00:12' },
-        { value: '1', label: '00:13' },
-        { value: '1', label: '00:14' },
-        { value: '1', label: '00:15' },
-        { value: '1', label: '00:16' },
-        { value: '1', label: '00:17' },
-        { value: '1', label: '00:18' },
-        { value: '1', label: '00:19' },
-        { value: '1', label: '00:20' },
-        { value: '1', label: '00:21' },
-        { value: '1', label: '00:22' },
-        { value: '1', label: '00:23' },
-    ]
+
     const {
         control,
         register,
@@ -144,7 +123,7 @@ const Services = () => {
     };
 
     const onSubmit = useCallback((data) => {
-        if (!data.id) {
+        if (!data.categoryId) {
             return NotificationManager.error(
                 t('Выберите категорию')
             )
@@ -194,6 +173,26 @@ const Services = () => {
         //     );
         // }
     }, []);
+    const handleChangeTime = (e, name) => {
+        // Get the raw input value (without mask)
+        const rawValue = e.replace(/[^0-9]/g, '');
+
+        // Validate the input:
+        if (rawValue.length <= 4) { // Only allow up to 4 digits (HH:MM)
+            let hours = +rawValue.substring(0, 2) || "";
+            let minutes = +rawValue.substring(2, 4) || "";
+
+            if (hours > 23) {
+                hours = 23
+            }
+            if (minutes > 59) {
+                minutes = 59
+
+            }
+            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+            return setValue(`${name}`, formattedTime) // Update the state with the validated value
+        }
+    }
 
     console.log(data)
     return (
@@ -267,8 +266,8 @@ const Services = () => {
                             isSearchable={true}
                             onChange={(e) => {
                                 reset({
-                                    id: e?.value,
-                                    car: e?.data
+                                    categoryId: e?.value,
+                                    category: e?.data
                                 })
                             }}
                             options={categories?.items?.sort((a, b) => a.priority - b.priority).map((item) => ({ value: item.id, data: item, label: item.title }))}
@@ -289,16 +288,15 @@ const Services = () => {
             </div>
 
             <form className="box form-about-info mt-4 mt-sm-5">
-                <fieldset>
-                    <legend>{t('О специализации')}</legend>
-                    <ul className="list-unstyled row row-cols-sm-2 g-4">
-                        {data?.car?.params && data?.car?.params?.length > 0 &&
-                            data?.car?.params.map((e) => {
+                {data?.category?.params && data?.category?.params?.length > 0 &&
+                    <fieldset>
+                        <legend>{t('О специализации')}</legend>
+                        <ul className="list-unstyled row row-cols-sm-2 g-4">
+                            {data?.category?.params.map((e) => {
                                 return renderSelects(e)
 
-                            })
-                        }
-                        {/* <li>
+                            })}
+                            {/* <li>
                             <div className='mb-1'>Параметр 1</div>
                             <Select
                                 name="experience"
@@ -337,8 +335,9 @@ const Services = () => {
                                 isSearchable={true}
                             />
                         </li> */}
-                    </ul>
-                </fieldset>
+                        </ul>
+                    </fieldset>
+                }
                 <fieldset>
                     <legend>{t('Дни и время работы')}</legend>
                     <ul className="list-unstyled row g-4">
@@ -352,28 +351,28 @@ const Services = () => {
                                 isMulti
                                 isClearable={true}
                                 isSearchable={true}
+                                value={data?.data?.workDays}
+                                onChange={(e) => { setValue("data.workDays", e) }}
                             />
                         </li>
                         <li className="col-12 col-sm-6 col-md-3">
-                            <Select
+                            <Input
                                 name="start"
                                 placeholder={t('С')}
-                                classNamePrefix="simple-select"
-                                className="simple-select-container w-100"
-                                options={timeList}
-                                isClearable={true}
-                                isSearchable={true}
+                                value={data?.data?.startWork}
+                                onChange={(e) => { handleChangeTime(e, "data.startWork") }}
+                                mask="99:99"
+
                             />
                         </li>
                         <li className="col-12 col-sm-6 col-md-3">
-                            <Select
+                            <Input
                                 name="end"
                                 placeholder={t('До')}
-                                classNamePrefix="simple-select"
-                                className="simple-select-container w-100"
-                                options={timeList}
-                                isClearable={true}
-                                isSearchable={true}
+                                value={data?.data?.endWork}
+                                onChange={(e) => { handleChangeTime(e, "data.endWork") }}
+                                mask="99:99"
+
                             />
                         </li>
                     </ul>
@@ -421,7 +420,7 @@ const Services = () => {
                 <button type='button' className='btn-1 px-5 mt-4 w-xs-100'>Запустить</button>
             </form> */}
 
-            <form className="box form-about-info mt-4 mt-sm-5">
+            {/* <form className="box form-about-info mt-4 mt-sm-5">
                 <h3 className='fw-6 mb-4'>{t('Как вы оказываете услуги')}</h3>
                 <label>
                     <input type="checkbox" />
@@ -436,7 +435,7 @@ const Services = () => {
                     <span className='ms-2'>{t('Оказываю удалённо услуги этой специализации')}</span>
                 </label>
                 <button type='button' className='btn-1 px-5 mt-4 w-xs-100'>{t('Сохранить')}</button>
-            </form>
+            </form> */}
 
             <Link to='/account/profile' className='btn-4 mx-auto mt-4 mt-sm-5 w-xs-100'>
                 <IoArrowUndoOutline className='fs-13 me-2' />

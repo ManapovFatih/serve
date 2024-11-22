@@ -44,10 +44,10 @@ const Addresses = () => {
                 );
             });
     }, []);
+
     return (
         <section>
             <h1 className='inner text-center mb-4'>{t('Адреса')}</h1>
-            <p className='text-center gray-3 mb-5'>{t('Ищем заказы рядом и чаще показываем ваш профиль заказчикам в этих районах.')}</p>
 
             {/* <div className="box mt-3">
                 <div className='d-sm-flex align-items-center'>
@@ -67,20 +67,16 @@ const Addresses = () => {
                     <div className="flex-1">
                         <h4 className='mb-2'>{t('Принимаете клиентов у себя?')}</h4>
                         <p>{t('Укажите улицу и дом, где вы готовы принимать клиентов.')}</p>
-                    </div>
-                    <button type='button' className='btn-4 p-3 mt-3 mt-sm-0 ms-sm-3 w-xs-100'>
-                        <IoAddOutline className='fs-13 me-1' />
-                        <span>{t('Добавить')}</span>
-                    </button>
-                </div>
-                <hr />
-                <div className="d-flex">
-                    <div className='flex-1'>
+                        <hr />
                         <Adress defaultValue={data?.data?.address} setCity={(e) => setValue("data.address", e)} city={data?.data?.address} placeholder={'Введите адрес'} />
+
                     </div>
-                    {/* <button type='button'>
-                        <FiEdit3 className='fs-15 gray-3' />
-                    </button> */}
+                    <input
+                        type="checkbox"
+                        className='switch ms-4'
+                        checked={data?.data.workHomeIn}
+                        onClick={(e) => setValue("data.workHomeIn", e.target.value)}
+                    />
                 </div>
             </div>
 
@@ -88,12 +84,14 @@ const Addresses = () => {
                 <div className='d-sm-flex align-items-center'>
                     <div className="flex-1">
                         <h4 className='mb-2'>{t('Выезжаете на заказы?')}</h4>
-                        <p>{t('Укажите область, город или район, куда вы готовы приехать.')}</p>
+                        <p>{t('Укажите город')}</p>
                     </div>
-                    <button type='button' className='btn-4 p-3 mt-3 mt-sm-0 ms-sm-3 w-xs-100'>
-                        <IoAddOutline className='fs-13 me-1' />
-                        <span>{t('Добавить')}</span>
-                    </button>
+                    <input
+                        type="checkbox"
+                        className='switch'
+                        checked={data?.data.workHomeOut}
+                        onClick={(e) => setValue("data.workHomeOut", e.target.value)}
+                    />
                 </div>
             </div>
 
@@ -101,11 +99,18 @@ const Addresses = () => {
                 <div className='d-flex align-items-center'>
                     <div className="flex-1">
                         <h4 className='mb-2'>{t('Работаете удалённо?')}</h4>
-                        <p>{t('Зайдите в настройки ваших услуг и подтвердите, что работаете удалённо. Тогда вы сможете получать заказы из других городов.')}</p>
                     </div>
+                    <input
+                        type="checkbox"
+                        className='switch'
+                        checked={data?.data.workHomeRemote}
+                        onClick={(e) => setValue("data.workHomeRemote", e.target.value)}
+                    />
                 </div>
             </div>
-
+            <div className='d-flex justify-content-center mt-4'>
+                <button type='button' className='btn-3 w-xs-100' onClick={handleSubmit(onEditAccount)}>{t('Сохранить')}</button>
+            </div>
             <Link to='/account/profile' className='btn-4 mx-auto mt-4'>
                 <IoArrowUndoOutline className='fs-13 me-2' />
                 <span>{t('Вернуться на страницу профиля')}</span>

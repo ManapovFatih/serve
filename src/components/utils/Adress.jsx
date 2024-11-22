@@ -13,7 +13,7 @@ const Adress = ({ defaultValue, city, setCity, className, placeholder }) => {
             getDadataStreets({
                 query: streetText,
                 locations: [{ country: '*' }],
-                restrict_value: false,
+                restrict_value: true,
                 from_bound: { value: 'city' },
                 to_bound: { value: 'house' },
             }).then((res) => {
@@ -30,12 +30,11 @@ const Adress = ({ defaultValue, city, setCity, className, placeholder }) => {
             defaultInputValue={defaultValue ?? ''}
             labelKey={(option) => option?.value}
             minLength={1}
-            dropup
             emptyLabel={t('Ничего не найдено')}
             onSearch={(e) => setCity(e)}
             onChange={(e) => {
                 if (e[0]?.data?.street && e[0]?.data?.house) {
-                    setCity(e[0].unrestricted_value)
+                    setCity(e[0].value)
                 }
             }
             }
