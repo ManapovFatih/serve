@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import React, { useCallback, useEffect, useState } from 'react'
 import Select from 'react-select'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { IoAddOutline, IoArrowUndoOutline } from "react-icons/io5"
 import { Col } from 'react-bootstrap'
 import { useForm, useWatch } from 'react-hook-form'
@@ -9,7 +9,7 @@ import { getCategories, getCategoryList } from '../../../services/Home'
 import { removeDescendants } from '../../../helpers/all'
 import { NotificationManager } from 'react-notifications'
 import { useSelector } from 'react-redux'
-import { createUserProduct } from '../../../services/product'
+import { createUserProduct, getProduct, getUserProduct } from '../../../services/product'
 import Input from '../../../components/utils/Input';
 
 
@@ -18,6 +18,8 @@ import Input from '../../../components/utils/Input';
 
 
 const Services = () => {
+    const { serviceId } = useParams();
+    const navigate = useNavigate();
     const { t } = useTranslation();
     const experienceList = [
         { value: '1', label: t('Менее года') },
@@ -74,7 +76,13 @@ const Services = () => {
                 }));
             })
             .catch(() => setCategories((prev) => ({ ...prev, loading: false })));
-
+        if (serviceId) {
+            getUserProduct({ id: serviceId })
+                .then((res) => {
+                    console.log(res)
+                })
+                .catch((err) => NotificationManager.error(err ?? t('Услуга создана')));
+        }
     }, []);
     const onSaveOption = (param, isMulti, parentId) => {
         console.log(param)
@@ -131,7 +139,8 @@ const Services = () => {
         // if (!id) {
         createUserProduct(data)
             .then(() => {
-                NotificationManager.success(t('Лот создан'));
+                navigate(-1);
+                NotificationManager.success(t('Услуга создана'));
             })
             .catch((error) =>
                 NotificationManager.error(

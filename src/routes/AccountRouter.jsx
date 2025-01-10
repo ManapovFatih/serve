@@ -32,6 +32,7 @@ const AccountRouter = () => {
           <Route path="photo" element={<ProfilePhoto />} />
           <Route path="specialties" element={<Specialties />} />
           <Route path="services" element={<Services />} />
+          <Route path="services/:serviceId" element={<Services />} />
         </Route>
 
         <Route path="your-orders" element={<Index />} />

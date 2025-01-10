@@ -39,7 +39,7 @@ const AddInput = ({ educations, setEducations }) => {
     return (
         <div>
             {
-                educations.map((obj) => {
+                educations && educations.map((obj) => {
                     if (obj.index === 0) {
                         return <div key={obj.index} className='mb-3'>
                             <div className='mb-2'>{t('Образование')}</div>
@@ -71,7 +71,7 @@ const AddInput = ({ educations, setEducations }) => {
                 })
             }
             {
-                (educations.length === 0)
+                (!educations || educations.length === 0)
                     ? <button type='button' className='btn-2' onClick={() => addObj()}>
                         <IoAdd className='fs-15 me-2' />
                         <span>{t('Добавить образование')}</span>

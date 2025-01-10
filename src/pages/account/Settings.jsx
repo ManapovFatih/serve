@@ -177,7 +177,7 @@ const Settings = () => {
                                 <label className='fs-09 mb-4'>
                                     <input
                                         type="checkbox"
-                                        checked={data?.data.accept}
+                                        checked={data?.data?.accept}
                                         onClick={(e) => setValue("data.accept", e.target.value)}
                                     />
                                     <span className='ms-2'>{t('Даю свое согласие на использование моих персональных данных')}</span>

@@ -74,7 +74,7 @@ const Addresses = () => {
                     <input
                         type="checkbox"
                         className='switch ms-4'
-                        checked={data?.data.workHomeIn}
+                        checked={data?.data?.workHomeIn}
                         onClick={(e) => setValue("data.workHomeIn", e.target.value)}
                     />
                 </div>
@@ -89,7 +89,7 @@ const Addresses = () => {
                     <input
                         type="checkbox"
                         className='switch'
-                        checked={data?.data.workHomeOut}
+                        checked={data?.data?.workHomeOut}
                         onClick={(e) => setValue("data.workHomeOut", e.target.value)}
                     />
                 </div>
@@ -103,7 +103,7 @@ const Addresses = () => {
                     <input
                         type="checkbox"
                         className='switch'
-                        checked={data?.data.workHomeRemote}
+                        checked={data?.data?.workHomeRemote}
                         onClick={(e) => setValue("data.workHomeRemote", e.target.value)}
                     />
                 </div>
