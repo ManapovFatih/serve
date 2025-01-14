@@ -11,14 +11,15 @@ import { NotificationManager } from 'react-notifications'
 import { useSelector } from 'react-redux'
 import { createUserProduct, getProduct, getUserProduct } from '../../../services/product'
 import Input from '../../../components/utils/Input';
-import { createAd } from '../../../services/ads';
+import { editAd, getAd } from '../../../services/ads';
 
 
 
 
 
 
-const Services = () => {
+const EditServices = () => {
+    const { serviceId } = useParams();
     const navigate = useNavigate();
     const { t } = useTranslation();
     const experienceList = [
@@ -76,8 +77,24 @@ const Services = () => {
                 }));
             })
             .catch(() => setCategories((prev) => ({ ...prev, loading: false })));
+
+        getAd({ id: serviceId })
+            .then((res) => {
+                reset({
+                    id: serviceId,
+                    category: res.category,
+                    categoryId: res.categoryId,
+                    title: res.title,
+                    desc: res.desc,
+                    price: res.price,
+                    data: res.data,
+                })
+            })
+            .catch((err) => NotificationManager.error(err ?? t('Услуга создана')));
+
     }, []);
     const onSaveOption = (param, isMulti, parentId) => {
+        console.log(param)
         setValue('param', removeDescendants(data, param, isMulti, parentId));
     };
 
@@ -128,8 +145,7 @@ const Services = () => {
                 t('Выберите категорию')
             )
         }
-        // if (!id) {
-        createAd(data)
+        editAd(data)
             .then(() => {
                 navigate(-1);
                 NotificationManager.success(t('Услуга создана'));
@@ -165,6 +181,7 @@ const Services = () => {
     }
 
     console.log(data)
+    console.log(categories)
     return (
         <section>
             <h1 className='inner text-center mb-2'>{t('Услуги')}</h1>
@@ -174,74 +191,27 @@ const Services = () => {
                 <h3 className='mb-2'>{t('Добавьте услуги')}</h3>
                 <p className='mb-4'>{t('Выберите из предложенных услуг или добавьте свои')}</p>
 
-                {/* <ul className='servises-list'>
-                    <li>
-                        <p>Название услуги</p>
-                        <button type='button' className='btn-4 fs-09'>
-                            <IoAddOutline className='fs-12 me-1'/>
-                            <span>Добавить</span>
-                        </button>
-                    </li>
-                    <li>
-                        <p>Название услуги</p>
-                        <button type='button' className='btn-4 fs-09'>
-                            <IoAddOutline className='fs-12 me-1'/>
-                            <span>Добавить</span>
-                        </button>
-                    </li>
-                    <li>
-                        <p>Название услуги</p>
-                        <button type='button' className='btn-4 fs-09'>
-                            <IoAddOutline className='fs-12 me-1'/>
-                            <span>Добавить</span>
-                        </button>
-                    </li>
-                    <li>
-                        <p>Название услуги</p>
-                        <button type='button' className='btn-4 fs-09'>
-                            <IoAddOutline className='fs-12 me-1'/>
-                            <span>Добавить</span>
-                        </button>
-                    </li>
-                    <li>
-                        <p>Название услуги</p>
-                        <button type='button' className='btn-4 fs-09'>
-                            <IoAddOutline className='fs-12 me-1'/>
-                            <span>Добавить</span>
-                        </button>
-                    </li>
-                    <li>
-                        <p>Название услуги</p>
-                        <button type='button' className='btn-4 fs-09'>
-                            <IoAddOutline className='fs-12 me-1'/>
-                            <span>Добавить</span>
-                        </button>
-                    </li>
-                    <li>
-                        <p>Название услуги</p>
-                        <button type='button' className='btn-4 fs-09'>
-                            <IoAddOutline className='fs-12 me-1'/>
-                            <span>Добавить</span>
-                        </button>
-                    </li>
-                </ul> */}
+
                 <ul className="list-unstyled row row-cols-sm-2 g-4">
                     <li>
                         <Select
+                            name="category"
                             classNamePrefix="simple-select"
                             className="simple-select-container w-100"
-                            defaultValue={data?.categoryId}
+                            value={categories?.items?.map((item) => ({ value: item.id, data: item, label: item.title })).find(option => option.value === data?.categoryId)}
                             placeholder={t('Категория')}
                             isClearable={true}
                             isSearchable={true}
                             onChange={(e) => {
                                 reset({
+                                    ...data,
                                     categoryId: e?.value,
                                     category: e?.data
                                 })
                             }}
-                            options={categories?.items?.sort((a, b) => a.priority - b.priority).map((item) => ({ value: item.id, data: item, label: item.title }))}
+                            options={categories?.items?.map((item) => ({ value: item.id, data: item, label: item.title }))}
                         />
+
                     </li>
 
                     <li>
@@ -251,10 +221,7 @@ const Services = () => {
                         <input type="number" className='text' placeholder={t('Цена')} value={data?.price ?? ""} onChange={(e) => setValue("price", e.target.value)} />
                     </li>
                 </ul>
-                {/* <button type='button' className='btn-1 py-3 px-5 mt-4 w-xs-100'>
-                    <IoAddOutline className='fs-15 me-1' />
-                    <span>Добавить</span>
-                </button> */}
+
             </div>
 
             <form className="box form-about-info mt-4 mt-sm-5">
@@ -266,45 +233,7 @@ const Services = () => {
                                 return renderSelects(e)
 
                             })}
-                            {/* <li>
-                            <div className='mb-1'>Параметр 1</div>
-                            <Select
-                                name="experience"
-                                placeholder="Параметры"
-                                classNamePrefix="simple-select"
-                                className="simple-select-container w-100"
-                                options={paramsList}
-                                isMulti
-                                isClearable={true}
-                                isSearchable={true}
-                            />
-                        </li>
-                        <li>
-                            <div className='mb-1'>Параметр 2</div>
-                            <Select
-                                name="experience"
-                                placeholder="Параметры"
-                                classNamePrefix="simple-select"
-                                className="simple-select-container w-100"
-                                options={paramsList}
-                                isMulti
-                                isClearable={true}
-                                isSearchable={true}
-                            />
-                        </li>
-                        <li>
-                            <div className='mb-1'>Параметр 3</div>
-                            <Select
-                                name="experience"
-                                placeholder="Параметры"
-                                classNamePrefix="simple-select"
-                                className="simple-select-container w-100"
-                                options={paramsList}
-                                isMulti
-                                isClearable={true}
-                                isSearchable={true}
-                            />
-                        </li> */}
+
                         </ul>
                     </fieldset>
                 }
@@ -354,58 +283,7 @@ const Services = () => {
                 <button type='submit' className='btn-1 px-5 w-xs-100' onClick={handleSubmit(onSubmit)}>{t('Сохранить')}</button>
             </form>
 
-            {/* <form className="box form-about-info mt-4 mt-sm-5">
-                <h3 className='fw-6 mb-2'>Специальное предложение</h3>
-                <p className='mb-4'>Например, скидка или подарок клиенту</p>
-                <h6 className='mb-2'>Размер скидки и сроки</h6>
-                <ul className="list-unstyled row g-4">
-                    <li className='col-12 col-sm-6'>
-                        <Select
-                            name="discont"
-                            placeholder="Скидки"
-                            classNamePrefix="simple-select"
-                            className="simple-select-container w-100"
-                            options={paramsList}
-                            isClearable={true}
-                            isSearchable={true}
-                        />
-                    </li>
-                    <li className='col-12 col-sm-6'>
-                        <Select
-                            name="discont"
-                            placeholder="Сроки"
-                            classNamePrefix="simple-select"
-                            className="simple-select-container w-100"
-                            options={paramsList}
-                            isMulti
-                            isClearable={true}
-                            isSearchable={true}
-                        />
-                    </li>
-                    <li className='col-12'>
-                        <h6 className='mb-2'>Описание</h6>
-                        <textarea rows="4" placeholder='В чём заключается ваше спецпредложение и какие у него условия?'></textarea>
-                    </li>
-                </ul>
-                <button type='button' className='btn-1 px-5 mt-4 w-xs-100'>Запустить</button>
-            </form> */}
 
-            {/* <form className="box form-about-info mt-4 mt-sm-5">
-                <h3 className='fw-6 mb-4'>{t('Как вы оказываете услуги')}</h3>
-                <label>
-                    <input type="checkbox" />
-                    <span className='ms-2'>{t('Выезжаю в указанные районы')}</span>
-                </label>
-                <label className='mt-3 mt-sm-4'>
-                    <input type="checkbox" />
-                    <span className='ms-2'>{t('Оказываю услуги по адресу')}</span>
-                </label>
-                <label className='mt-3 mt-sm-4'>
-                    <input type="checkbox" />
-                    <span className='ms-2'>{t('Оказываю удалённо услуги этой специализации')}</span>
-                </label>
-                <button type='button' className='btn-1 px-5 mt-4 w-xs-100'>{t('Сохранить')}</button>
-            </form> */}
 
             <Link to='/account/profile' className='btn-4 mx-auto mt-4 mt-sm-5 w-xs-100'>
                 <IoArrowUndoOutline className='fs-13 me-2' />
@@ -415,4 +293,4 @@ const Services = () => {
     )
 }
 
-export default Services
+export default EditServices

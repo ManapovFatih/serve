@@ -17,6 +17,7 @@ import Profile from '../pages/account/profile/Profile'
 import ProfilePhoto from '../pages/account/profile/ProfilePhoto'
 import Services from '../pages/account/profile/Services'
 import Specialties from '../pages/account/profile/Specialties'
+import EditServices from '../pages/account/profile/EditServices'
 
 
 
@@ -32,7 +33,7 @@ const AccountRouter = () => {
           <Route path="photo" element={<ProfilePhoto />} />
           <Route path="specialties" element={<Specialties />} />
           <Route path="services" element={<Services />} />
-          <Route path="services/:serviceId" element={<Services />} />
+          <Route path="services/:serviceId" element={<EditServices />} />
         </Route>
 
         <Route path="your-orders" element={<Index />} />
