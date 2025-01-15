@@ -9,32 +9,45 @@ const getAds = async (payloads = {}) => {
     return response?.data
 
 }
+const getAd = async (payloads = {}) => {
+    const response = await $api.get(apiRoutes.ADS_ONE, {
+        params: payloads,
+    })
+    return response?.data
+}
 
 const createAd = async (data) => {
 
 
-    const response = await $authApi.post(apiRoutes.ADS, data)
+    const response = await $authApi.post(apiRoutes.USER_ADS, data)
     return response?.data
 }
 
+const getUserAds = async (payloads = {}) => {
+    const response = await $authApi.get(apiRoutes.USER_ADS, {
+        params: payloads,
+    })
 
-const getAd = async (payloads = {}) => {
-    const response = await $authApi.get(apiRoutes.ADS_ONE, {
+    return response?.data
+
+}
+const getUserAd = async (payloads = {}) => {
+    const response = await $authApi.get(apiRoutes.USER_ADS_ONE, {
         params: payloads,
     })
     return response?.data
 }
 
 const editAd = async (data) => {
-    const response = await $authApi.put(apiRoutes.ADS, data)
+    const response = await $authApi.put(apiRoutes.USER_ADS, data)
     return response?.data
 
 };
 
-const deleteAd = async (ids) => {
-    const response = await $authApi.delete(apiRoutes.ADS, {
-        data: { ids },
+const deleteAd = async (id) => {
+    const response = await $authApi.delete(apiRoutes.USER_ADS, {
+        data: { id },
     });
     return response?.data;
 };
-export { getAd, getAds, createAd, editAd, deleteAd }
+export { getAd, getAds, createAd, editAd, deleteAd, getUserAds, getUserAd }

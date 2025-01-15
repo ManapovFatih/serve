@@ -11,7 +11,7 @@ import { NotificationManager } from 'react-notifications'
 import { useSelector } from 'react-redux'
 import { createUserProduct, getProduct, getUserProduct } from '../../../services/product'
 import Input from '../../../components/utils/Input';
-import { editAd, getAd } from '../../../services/ads';
+import { editAd, getAd, getUserAd } from '../../../services/ads';
 
 
 
@@ -78,7 +78,7 @@ const EditServices = () => {
             })
             .catch(() => setCategories((prev) => ({ ...prev, loading: false })));
 
-        getAd({ id: serviceId })
+        getUserAd({ id: serviceId })
             .then((res) => {
                 reset({
                     id: serviceId,
@@ -148,7 +148,7 @@ const EditServices = () => {
         editAd(data)
             .then(() => {
                 navigate(-1);
-                NotificationManager.success(t('Услуга создана'));
+                NotificationManager.success(t('Услуга отредактирована'));
             })
             .catch((error) =>
                 NotificationManager.error(

@@ -1,18 +1,18 @@
+import React, { useCallback, useEffect, useState } from 'react';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import { useTranslation } from 'react-i18next';
-import React, { useCallback, useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import { RxOpenInNewWindow } from "react-icons/rx";
+import { Link, useNavigate } from 'react-router-dom';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-
-import { IoAlertCircleOutline, IoTrendingUpOutline, IoAddOutline, IoEyeOutline, IoCashOutline, IoPersonCircleOutline, IoInformationCircleOutline, IoLocationOutline, IoListOutline, IoCheckmarkCircleOutline, IoArrowForwardOutline } from "react-icons/io5"
-import { useSelector } from 'react-redux'
-import { getUserProducts } from '../../../services/product';
+import { FiEdit3, FiTrash2 } from "react-icons/fi";
+import { IoAddOutline, IoCashOutline, IoEyeOutline, IoInformationCircleOutline, IoLocationOutline, IoPersonCircleOutline, IoTrendingUpOutline } from "react-icons/io5";
+import { NotificationManager } from 'react-notifications';
+import { useSelector } from 'react-redux';
+import { deleteAd, getUserAds } from '../../../services/ads';
 
 const Profile = () => {
     const { t } = useTranslation();
@@ -20,7 +20,7 @@ const Profile = () => {
     const navigate = useNavigate();
     const [ads, setAds] = useState({ loading: true })
     const onLoad = useCallback(() => {
-        getUserProducts()
+        getUserAds()
             .then((res) => {
                 setAds((prev) => ({ ...prev, ...res, loading: false }))
             })
@@ -28,11 +28,23 @@ const Profile = () => {
                 setAds((prev) => ({ ...prev, loading: false }))
             })
     }, [])
-
+    const onDeleteAds = useCallback((id) => {
+        deleteAd(id)
+            .then((res) => {
+                NotificationManager.success(t('Услуга удалена'));
+                onLoad();
+            })
+            .catch((error) =>
+                NotificationManager.error(
+                    typeof error?.response?.data?.error == "string"
+                        ? error.response.data.error
+                        : t('Неизвестная ошибка при удалении')
+                )
+            );
+    }, [])
     useEffect(() => {
         onLoad()
     }, [])
-    console.log(ads)
     return (
         <section>
             <h1 className='inner text-center mb-2'>{user?.firstName} {user?.lastName}</h1>
@@ -214,9 +226,34 @@ const Profile = () => {
             {ads?.items && ads?.items.length > 0 && ads.items.map(item =>
                 <Link to={'services/' + item.uid} className="box d-flex align-items-center justify-content-between mb-4">
                     <div className='flex-1'>
-                        <div className='mb-1'>{item.category.title}</div>
+                        <div className='mb-1'>{item.category?.title}</div>
                         <h3 className='mb-0'>{item.title}</h3>
+                        <div className='d-flex mt-3'>
+                            <button type="button" className='btn-4 me-3' onClick={(e) => {
+                                e.preventDefault(); // Предотвращаем стандартное поведение ссылки
+                                navigate("/search/offers/" + item.uid);
+                            }}>
+                                <RxOpenInNewWindow />
+                                <span className='ms-2'>{t('Посмотреть на сайте')}</span>
+                            </button>
+                            <button type="button" className='btn-4 me-3' onClick={(e) => {
+                                e.preventDefault(); // Предотвращаем стандартное поведение ссылки
+                                navigate('services/' + item.uid);
+                            }}>
+                                <FiEdit3 />
+                                <span className='ms-2'>{t('Редактировать')}</span>
+                            </button>
+                            <button type="button" className='btn-3' onClick={(e) => {
+                                e.preventDefault(); // Предотвращаем стандартное поведение ссылки
+                                onDeleteAds(item.id); // Добавлен e, чтобы иметь доступ к event
+                            }}>
+                                <FiTrash2 />
+                                <span className='ms-2'>{t('Удалить')}</span>
+                            </button>
+                        </div>
+
                     </div>
+
                 </Link>
             )}
             <button type="button" className='btn-4 w-100' onClick={() => navigate("/account/profile/services")}>

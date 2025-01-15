@@ -89,6 +89,8 @@ const apiRoutes = {
   // ads
   ADS: BASE_URL + "/ads",
   ADS_ONE: BASE_URL + "/ads/one",
+  USER_ADS: BASE_URL + "/user/ads",
+  USER_ADS_ONE: BASE_URL + "/user/ads/one",
 
 
   // Sale

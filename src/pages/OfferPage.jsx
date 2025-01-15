@@ -1,24 +1,44 @@
 import { useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { AiFillStar, AiOutlineStop } from "react-icons/ai";
-import { RxMixerHorizontal } from "react-icons/rx";
+import { RxCross1, RxMixerHorizontal } from "react-icons/rx";
 import { SlPhone } from "react-icons/sl";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FreeMode, Mousewheel } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IoEllipsisVertical } from 'react-icons/io5';
+import { getAd } from '../services/ads';
+import { Modal } from 'react-bootstrap';
+import PhoneInput from 'react-phone-input-2';
+import { getImageURL } from '../helpers/all';
 
 const OfferPage = () => {
-const {t} = useTranslation();
+  const { t } = useTranslation();
   const [showFilter, setShowFilter] = useState(false);
+  const [showPhone, setShowPhone] = useState(false);
+  const { offerId } = useParams();
+
 
   const handleCloseFilter = () => setShowFilter(false);
   const handleShowFilter = () => setShowFilter(true);
+  const [offers, setOffers] = useState({ items: [], loading: true });
+  useEffect(() => {
+    getAd({ id: offerId })
+      .then((res) => {
+        setOffers((prev) => ({
+          ...prev,
+          ...res,
+          loading: false
+        }));
+      })
+      .catch(() => setOffers((prev) => ({ ...prev, loading: false })));
+  }, []);
+  console.log(offers)
   return (
     <div>
       <Row>
@@ -26,13 +46,13 @@ const {t} = useTranslation();
           <div className='view-offer'>
             <div className='topic'>
               <div className='head'>
-                <div className='photo'><img src="/imgs/img2.jpg" alt="img2.jpg" /></div>
+                <div className='photo'> <img src={getImageURL({ path: offers?.user?.media, size: "mini", type: "user" })} alt="img2.jpg" /></div>
                 <div className='title'>
-                  <Link to="1"><h2 className='fw-7 mb-1'>{t('Алексей Сергеевич Добанов')}</h2></Link>
-                  <p className='gray-3'>{t('Город')}</p>
+                  <Link to="1"><h2 className='fw-7 mb-1'>{offers?.user?.firstName} {offers?.user?.lastName}</h2></Link>
+                  <p className='gray-3'>{offers?.user?.data?.city}</p>
 
                   <div className="btns">
-                    <button type='button' className='btn-3'>
+                    <button type='button' className='btn-3' onClick={setShowPhone}>
                       <SlPhone className='fs-15 d-sm-none' />
                       <span className='d-none d-sm-block'>{t('Показать телефон')}</span>
                     </button>
@@ -59,20 +79,14 @@ const {t} = useTranslation();
                 </div>
               </div>
 
-              <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+              <p className="text">{offers?.user?.about}</p>
               <ul className="options">
                 <li>
-                  <p ><strong>{t('Время для связи:')}</strong>{t('c 08:00 до 21:00')}</p>
-                </li>
-                <li>
-                  <p ><strong>{t('Время для связи:')}</strong>{t('c 08:00 до 21:00')}</p>
-                </li>
-                <li>
-                  <p ><strong>{t('Время для связи:')}</strong>{t('c 08:00 до 21:00')}</p>
+                  <p ><strong>{t('Время для связи:')}</strong> {t('c')} {offers?.user?.data?.startPhone} {t('до')} {offers?.user?.data?.endPhone}</p>
                 </li>
               </ul>
             </div>
-            <div className='works'>
+            {/* <div className='works'>
               <div className='imgs'>
                 <h3 className='fw-8'>{t('Пример работ')}</h3>
                 <Swiper
@@ -159,33 +173,34 @@ const {t} = useTranslation();
                   </SwiperSlide>
                 </Swiper>
               </div>
-            </div>
+            </div> */}
             <div className='services'>
               <div className="price-list">
                 <ul>
                   <li>
-                    <h3 className='fw-8 mb-1'>{t('Ремонт квартир и домов')}</h3>
-                    <p className='title'>{t('Ремонт и строительсто')}</p>
-                    <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                    <h3 className='fw-8 mb-1'>{offers?.title}</h3>
+                    <p className='title'>{offers?.category?.title}</p>
+                    <p className="text">{offers?.desc}</p>
                   </li>
-                  <li>
+                  {/* <li>
                     <p ><strong>{t('Название услуги')}</strong></p>
                     <p ><strong>{t('160 290 Р')}</strong></p>
                   </li>
                   <li>
                     <p ><strong>{t('Название услуги')}</strong></p>
                     <p ><strong>{t('160 290 Р')}</strong></p>
-                  </li>
+                  </li> */}
                   <li>
-                    <p ><strong>{t('Еще 10 услуг')}</strong></p>
+                    {/* <p ><strong>{t('Цена')}</strong></p> */}
+                    <p ><strong>{t('Цена')}: {offers?.price}</strong></p>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         </Col>
-        <Col xl={3}>
-          {/* <Offcanvas show={showFilter} onHide={handleCloseFilter} responsive="xl" placement={'end'}>
+        {/* <Col xl={3}>
+          <Offcanvas show={showFilter} onHide={handleCloseFilter} responsive="xl" placement={'end'}>
             <Offcanvas.Body>
               <button type='button' className='close d-xl-none' onClick={handleCloseFilter}>
                 <RxCross2 />
@@ -313,10 +328,21 @@ const {t} = useTranslation();
                 </fieldset>
               </form>
             </Offcanvas.Body>
-          </Offcanvas> */}
+          </Offcanvas>
 
-        </Col>
+        </Col> */}
       </Row>
+      <Modal show={showPhone} onHide={setShowPhone} centered size="md" >
+        <h3 className='text-center mt-3'>{t('Номер телефона')}</h3>
+        <button type='button' onClick={() => setShowPhone(false)} className='close'>
+          <RxCross1 />
+        </button>
+        <Modal.Body className='box bg-1 mt-3'>
+          {/* <h3 className='text-center '>{t('Номер телефона')}</h3> */}
+
+          <PhoneInput className="text-center" disabled value={offers.user?.phone} />
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

@@ -12,7 +12,10 @@ const SearchRoutes = ({ isMobile }) => {
   return (
     <Routes>
       <Route path="/" element={<SearchLayout />}>
-        {isMobile
+        <Route index element={<Navigate to="category" replace={true} />} />
+        <Route path="category" element={<SearchMenu />} />
+        <Route path="category/:categoryId" element={<ServiceOffersPage />} />
+        {/* {isMobile
           ? <Route index element={<Navigate to="category" replace={true} />} />
           : <Route index element={<Navigate to="category/:categoryId" replace={true} />} />
         }
@@ -25,8 +28,8 @@ const SearchRoutes = ({ isMobile }) => {
             : <Route path='category' element={<SearchMenu />}>
               <Route path=":categoryId" element={<Submenu />} />
             </Route>
-        }
-        <Route path="offers" element={<ServiceOffersPage />} />
+        } */}
+        {/* <Route path="offers" element={<ServiceOffersPage />} /> */}
         <Route path="offers/:offerId" element={<OfferPage />} />
         <Route
           path="my-orders"

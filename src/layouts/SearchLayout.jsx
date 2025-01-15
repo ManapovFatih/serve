@@ -13,7 +13,7 @@ import { SlGrid, SlDocs, SlUser } from "react-icons/sl";
 import HeaderMobile from '../components/HeaderMobile';
 
 const SearchLayout = () => {
-const {t} = useTranslation();
+  const { t } = useTranslation();
   const isMobile = useIsMobile('991px');
 
   return (
@@ -33,7 +33,7 @@ const {t} = useTranslation();
                 <nav className='nav-2'>
                   <ul className='row row-cols-3 row-cols-lg-1'>
                     <li className='mb-4'>
-                      <NavLink to="/search/category/1" end>
+                      <NavLink to="/search/category" end>
                         <SlGrid />
                         <span>{t('Найти специалиста')}</span>
                       </NavLink>

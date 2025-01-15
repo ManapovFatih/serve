@@ -817,7 +817,6 @@ button {
         }
 
         &:hover,
-        &:focus,
         &:active,
         &.active {
             border: none;
@@ -830,7 +829,6 @@ button {
         background: $color-2;
 
         &:hover,
-        &:focus,
         &:active,
         &.active {
             color: #fff;
@@ -844,7 +842,6 @@ button {
         background: #fff;
 
         &:hover,
-        &:focus,
         &:active,
         &.active {
             color: #fff;
@@ -858,7 +855,6 @@ button {
         background: $color-5;
 
         &:hover,
-        &:focus,
         &:active,
         &.active {
             color: #fff;
@@ -872,7 +868,6 @@ button {
         background: $gray-1;
 
         &:hover,
-        &:focus,
         &:active,
         &.active {
             color: $gray-5;
@@ -2346,11 +2341,8 @@ main {
     @include box();
     border-radius: $radius-sm;
     padding: 1em;
-    display: grid;
-    grid-template-columns: 2fr 8fr;
-    grid-template-rows: auto;
-    grid-auto-flow: dense;
-    grid-auto-rows: auto;
+    display: flex;
+
     gap: 1em 1em;
     margin-bottom: 2em;
 
@@ -2360,130 +2352,58 @@ main {
     }
 
     .photo {
-        grid-column: 1/2;
-        grid-row: 1/3;
-
-        @media (max-width: 575px) {
-            grid-row: 1/2;
-        }
+        width: 200px;
 
         img {
             width: 100%;
-            height: 120px;
             object-fit: cover;
+            aspect-ratio: 1/1;
             border-radius: $radius-sm;
+            margin-bottom: 1em;
 
-            @media (max-width: 1399px) {
-                height: 100px;
-            }
 
-            @media (max-width: 1199px) {
-                height: 120px;
+        }
+
+        .rating {
+            gap: 10px;
+
+            @media (max-width: 767px) {
+                @include flex(row, flex-start, center, nowrap);
             }
+        }
+    }
+
+    .content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+        width: 100%;
+
+        p {
+            @include clamp(2, 1.2em);
 
             @media (max-width: 575px) {
-                height: 20vw;
+                display: none;
             }
         }
-    }
 
-    .rating {
-        grid-column: 1/2;
-        grid-row: 3/4;
 
-        @media (max-width: 767px) {
-            grid-column: 1/3;
+
+        .btns {
+            position: absolute;
+            bottom: 0;
+            display: flex;
             @include flex(row, flex-start, center, nowrap);
-        }
-    }
-
-    .name {
-        grid-column: 2/3;
-        grid-row: 1/2;
-    }
-
-    .text {
-        grid-column: 2/3;
-        grid-row: 2/3;
-        @include clamp(2, 1.2em);
-
-        @media (max-width: 575px) {
-            display: none;
-        }
-    }
-
-    .imgs {
-        grid-column: 2/3;
-        grid-row: span 1;
-        min-width: 0;
-        position: relative;
-
-        @media (max-width: 767px) {
-            display: none;
-        }
-
-        .slider {
-            max-width: 100%;
-            width: 100%;
-
-            .swiper-slide {
-                width: fit-content;
-            }
-
-            .swiper-button-prev,
-            .swiper-button-next {
-                font-size: .75em;
-            }
-        }
-
-        img {
-            width: 65px;
-            height: 65px;
-            object-fit: cover;
-            border-radius: $radius-sm;
-        }
-    }
-
-    .price-list {
-        grid-column: 2/3;
-        grid-row: span 1;
-
-        @media (max-width: 767px) {
-            grid-column: 1/3;
-        }
-
-        ul {
-            @include list();
             font-size: .9em;
+            margin-top: 1em;
 
-            li {
-                @include flex(row, space-between, center, nowrap);
-                background-color: rgba($color-1, .1);
-                padding: .25em .5em;
-                font-weight: 500;
-                border-radius: $radius-sm;
-
-                &:not(:first-child) {
-                    margin-top: .25em;
-                }
+            button {
+                padding: 1em;
             }
         }
     }
 
-    .btns {
-        grid-column: 2/3;
-        grid-row: span 1;
-        @include flex(row, flex-start, center, nowrap);
-        font-size: .9em;
-
-        button {
-            padding: 1em;
-        }
-
-        @media (max-width: 767px) {
-            grid-column: 1/3;
-        }
-    }
 
 }
 
@@ -2493,6 +2413,18 @@ main {
         border-radius: $radius-sm;
         padding: 1em;
         margin-bottom: 2em;
+        position: relative;
+
+        .drop {
+            position: absolute;
+            top: 1em;
+            right: 1em;
+
+            .dropdown-menu {
+                border-radius: 1em !important;
+            }
+        }
+
 
         .head {
             display: flex;
@@ -2543,14 +2475,6 @@ main {
 
             }
 
-            .drop {
-                display: flex;
-                justify-content: flex-end;
-
-                .dropdown-menu {
-                    border-radius: 1em !important;
-                }
-            }
 
         }
 
